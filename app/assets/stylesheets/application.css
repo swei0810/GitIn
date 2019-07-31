@@ -15,35 +15,106 @@
  */
 
 
- header {
-    font-size: 30px; 
-    color: lightskyblue; 
+ .logo {
+    width: 20px; 
+    height: 20px; 
+    position: absolute; 
+    display: block; 
+ }
+
+header{
+   display: flex; 
+   justify-content: space-between; 
+   padding-left: 40px; 
+   padding-right: 40px; 
+   top: 20px; 
+
+}
+.welcome {
+   font-size: 55px; 
+   padding-left: 40px; 
+   color: lightskyblue; 
 }
 
-
-.splash-img{ 
-   /* background-image:  url("https://static-exp2.licdn.com/sc/h/d80ave0ov78t6vlt7maud1pwd");
-   background-repeat: no-repeat; */
-   display: inline-block;
-   height: 400px;
-   width: 700px;
-   /* padding-left: 600px; 
-   padding-top: 100px;  */
-   /* background-position: 70% 50%;  */
-}
-.greeting-pic {
-   height: 300px;
-   width: 500px;
+.splash-img {
+   z-index: -1;
+   height: 600px;
+   width: 800px;
    position: absolute;
-   left: 0;
-   padding-left: 700px; 
-   padding-top: 200px; 
+   left: 550px;
+   top: 150px;
+}
+
+button{
+
+   background-color: white;
+   color: black;
+   border: 2px solid lightskyblue;
+
+
+   /* font-weight: bolder; */
+   padding: 7px;
+   border-radius: 3px;
+   transition: none;
+   font-family: inherit;
+   font-size: inherit;
+   /* text-align: center; */
+   cursor: pointer; 
+}
+
+button:hover {
+   background-color: lightskyblue;
+   color: white;
+ }
+
+.session-submit {
+   background-color: rgb(0, 140, 255);
+   border-color:rgb(0, 140, 255);
+   color: white;
+   /* font-weight: bolder; */
+   padding: 7px;
+   border-radius: 3px;
+   transition: none;
+   font-family: inherit;
+   font-size: inherit;
+   text-align: left;
+   cursor: pointer; 
 
 }
+
 
 .login-signup {
-
-
-
+   top:30px; 
+   left: 1000px; 
+   position: absolute; 
+   
 }
 
+.login-form-container {
+   display: flex;
+   justify-content: center;
+   margin-top: 100px;
+ }
+
+
+ .login-form {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+ }
+
+ .login-input {
+   margin-left: 20px;
+ }
+
+ .login-form-box {
+   outline: 1px solid black;
+   padding: 50px;
+   background-color: #f2f2f2;
+
+ }
+
+body {
+
+    /* background-color: #ffe6e6;  */
+ }

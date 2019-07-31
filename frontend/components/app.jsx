@@ -11,22 +11,30 @@ import {
 import GreetingContainer from './greeting/greeting_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
+import SplashContainer from './splash/splash';
+
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+// import logo from "../../app/assets/images/linkedin.png";
 
 const App = () => (
   <div className = 'splash'>
     <header>
-      <Link to="/" className="header-link">
-        <h1>GitIn</h1>
-      </Link>
-      <p> Welcome to your professional community
-        <img className='splash-img' src="https://static-exp2.licdn.com/sc/h/d80ave0ov78t6vlt7maud1pwd" alt="" align='right'/>
-      </p>
-      <GreetingContainer />
+        <Link to="/" className="header-link">
+          <h1 className="header-link">GitIn</h1>
+          <div>
+          {/* <img className='logo' src={logo} alt=""/> */}
+
+          </div>
+          
+
+        </Link>
     </header>
+
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <Route exact path="/" component={SplashContainer} />
+
     </Switch>
   </div>
 );

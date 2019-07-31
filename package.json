@@ -24,5 +24,8 @@
   "engine": {
     "node": "10.13.0",
     "npm": "6.4.1"
+  },
+  "devDependencies": {
+    "file-loader": "^4.1.0"
   }
 }
