@@ -48,15 +48,14 @@ class SignupForm extends React.Component {
 
 
   render() {
-    const errors = this.props.errors; 
     return (
 
       <div className="login-form-container">
         <h2 className="login-header"> Make the most of your professional life </h2>
 
-        <form onSubmit={this.validateSubmit} className="login-form-box">
+        <form onSubmit={this.validateSubmit} className="signup-form-box">
           <div className='signup-errors'>
-            {errors}
+            {this.props.errors}
           </div> 
           <div className="login-form">
             <br />
@@ -64,7 +63,7 @@ class SignupForm extends React.Component {
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="login-input"
+                className="signup-input"
               />
             </label>
             <br />
@@ -72,7 +71,7 @@ class SignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
+                className="signup-input"
               />
             </label>
             <br />

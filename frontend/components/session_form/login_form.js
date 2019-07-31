@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
   validateSubmit(e) {
     e.preventDefault();
     if (this.state.email === "" && this.state.password === "") {
-      this.props.receiveErrors('Please enter a valid username');
+      this.props.receiveErrors('Please enter a valid email address');
     } else if (!emailIsValid(this.state.email)){
       this.props.receiveErrors('Please enter a valid email address')
     }else if (this.state.password.length < 6) {
@@ -52,38 +52,52 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    return (
+    let emailError = '';
+    let passwordError = ''; 
+    if (this.props.errors){
+      if (this.props.errors.includes('email')) {
+        emailError = this.props.errors;
+      } else if (this.props.errors.includes('password')) {
+        passwordError = this.props.errors;
+      }
+    }
 
+
+
+    return (
+      
       <div className="login-form-container">
         <div>
           <h2 className="login-header"> Welcome Back </h2>
-          <p>Don't miss your next opportunity. Sign in to stay updated on your professional world.</p> 
+          <p>Don't miss your next opportunity. Sign in to stay updated on your professional world. </p> 
+          
         </div> 
       
 
 
         <form onSubmit={this.validateSubmit} className="login-form-box">
-          <div className='login-errors'> 
-            {this.props.errors}
-          </div> 
-      
+
           <div className="login-form">
             <br />
-            <label>Email <br />
+            <label>
               <input type="text"
                 value={this.state.email}
+                placeholder='Email'
                 onChange={this.update('email')}
                 className="login-input"
               />
             </label>
+            <p className='login-errors'>{emailError}</p>
             <br />
-            <label>Password <br />
+            <label>
               <input type="password"
                 value={this.state.password}
+                placeholder='Password'
                 onChange={this.update('password')}
                 className="login-input"
               />
             </label>
+            <p className='login-errors'>{passwordError}</p>
             <br />
             <input className="session-submit" type="submit" value={this.props.formType} />
             <p>New to GitIn ? {this.props.navLink} </p>

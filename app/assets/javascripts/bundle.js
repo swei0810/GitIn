@@ -413,7 +413,7 @@ function (_React$Component) {
       e.preventDefault();
 
       if (this.state.email === "" && this.state.password === "") {
-        this.props.receiveErrors('Please enter a valid username');
+        this.props.receiveErrors('Please enter a valid email address');
       } else if (!emailIsValid(this.state.email)) {
         this.props.receiveErrors('Please enter a valid email address');
       } else if (this.state.password.length < 6) {
@@ -438,28 +438,43 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var emailError = '';
+      var passwordError = '';
+
+      if (this.props.errors) {
+        if (this.props.errors.includes('email')) {
+          emailError = this.props.errors;
+        } else if (this.props.errors.includes('password')) {
+          passwordError = this.props.errors;
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "login-header"
-      }, " Welcome Back "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't miss your next opportunity. Sign in to stay updated on your professional world.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, " Welcome Back "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't miss your next opportunity. Sign in to stay updated on your professional world. ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.validateSubmit,
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-errors"
-      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
+        placeholder: "Email",
         onChange: this.update('email'),
         className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "login-errors"
+      }, emailError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
+        placeholder: "Password",
         onChange: this.update('password'),
         className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "login-errors"
+      }, passwordError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "session-submit",
         type: "submit",
         value: this.props.formType
@@ -627,28 +642,27 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var errors = this.props.errors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "login-header"
       }, " Make the most of your professional life "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.validateSubmit,
-        className: "login-form-box"
+        className: "signup-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-errors"
-      }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
-        className: "login-input"
+        className: "signup-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password(6 or more characters) ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        className: "login-input"
+        className: "signup-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You agree to the GitIn User Agreement, Privacy Policy, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "and Cookie Policy. "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "session-submit",
         type: "submit",
@@ -732,7 +746,7 @@ var Splash = function Splash() {
     className: "header-link"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "welcome"
-  }, " Welcome to your ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " professional community "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, " Welcome to your ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " professional ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " community "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "splash-img",
     src: window.splash_img
   }));

@@ -35,6 +35,7 @@ header{
    padding-left: 40px !important; 
    color: lightskyblue; 
    text-align: left !important; 
+   line-height: 80px; 
 }
 
 .splash-img {
@@ -51,15 +52,11 @@ button{
    background-color: white;
    color: black;
    border: 2px solid lightskyblue;
-
-
-   /* font-weight: bolder; */
    padding: 7px;
    border-radius: 3px;
    transition: none;
    font-family: inherit;
    font-size: inherit;
-   /* text-align: center; */
    cursor: pointer; 
 }
 
@@ -104,12 +101,26 @@ button:hover {
    flex-direction: column;
  }
 
- .login-input {
+ .signup-input {
    /* margin-left: 20px; */
    width: 400px; 
+   padding: 7px;
+   font-family: inherit;
+   font-size: inherit;
  }
 
- .login-form-box {
+  .login-input {
+   /* margin-left: 20px; */
+   width: 400px; 
+   padding: 7px;
+   border-radius: 3px;
+   transition: none;
+   font-family: inherit;
+   font-size: inherit;
+   text-align: left;
+ }
+
+ .signup-form-box {
    outline: 1px solid black;
    padding: 50px;
    background-color: #f2f2f2;
@@ -121,10 +132,16 @@ button:hover {
 
  }
 
+ .login-form-box { 
+   display: flex;
+   justify-content: center;
+   top: 300px; 
+   position: absolute; 
+ }
 
  .login-header{
    color: lightskyblue;
-   top: 100px; 
+   top: 80px; 
    /* left: 680px;  */
    /* position: absolute;  */
     text-align: center; 
@@ -141,24 +158,31 @@ body {
     text-align: center; 
  }
 
-.signup-errors  {
+.signup-errors {
    display: block; 
    background-color: red; 
    color: white; 
-
-    font-size: 15px;
-    line-height: 17px;
-    font-weight: normal;
+   font-size: 20px;
+   line-height: 25px;
+   font-weight: normal;
     /* padding-left: 35px;
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 30px; */
-    overflow: hidden;
-    position: absolute;
-    top: 20px; 
-    width: 400px; 
-    text-align: center; 
+   overflow: hidden;
+   position: absolute;
+   top: 20px; 
+   width: 400px; 
+   text-align: center; 
 
 
+}
+
+.login-errors {
+   color: red; 
+}
+
+html { 
+       font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Fira Sans",Ubuntu,Oxygen,"Oxygen Sans",Cantarell,"Droid Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Emoji","Segoe UI Symbol","Lucida Grande",Helvetica,Arial,sans-serif;
 }
