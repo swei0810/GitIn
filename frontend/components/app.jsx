@@ -14,20 +14,19 @@ import LogInFormContainer from './session_form/login_form_container';
 import SplashContainer from './splash/splash';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-// import logo from "../../app/assets/images/linkedin.png"; //DO BOOTSTAPING 
 
 const App = () => (
   <div className = 'splash'>
     <header>
-        <Link to="/" className="header-link">
-          <h1 className="header-link">GitIn</h1>
+        {/* <Link to="/" className="header-link"> */}
+          {/* <h1 className="header-link">GitIn</h1> */}
           <div>
           {/* <img className='logo' src={logo} alt=""/> */}
 
           </div>
           
 
-        </Link>
+        {/* </Link> */}
     </header>
 
     <Switch>

@@ -188,17 +188,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import logo from "../../app/assets/images/linkedin.png"; //DO BOOTSTAPING 
+
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    to: "/",
-    className: "header-link"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "header-link"
-  }, "GitIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -241,9 +236,13 @@ var Greeting = function Greeting(_ref) {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Join now")), "\xA0  \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "signup-button"
+    }, "Join now")), "\xA0  \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/login"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Sign in")));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "signin-button"
+    }, "Sign in")));
   };
 
   var personalGreeting = function personalGreeting() {
@@ -440,18 +439,29 @@ function (_React$Component) {
     value: function render() {
       var emailError = '';
       var passwordError = '';
+      var errorStyleEmail = '';
+      var errorStylePassword = '';
 
       if (this.props.errors) {
         if (this.props.errors.includes('email')) {
           emailError = this.props.errors;
+          errorStyleEmail = 'error-border';
         } else if (this.props.errors.includes('password')) {
           passwordError = this.props.errors;
+          errorStylePassword = 'error-border';
         }
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "logo-login",
+        src: window.logo
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "login-header"
       }, " Welcome Back "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't miss your next opportunity. Sign in to stay updated on your professional world. ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.validateSubmit,
@@ -463,7 +473,7 @@ function (_React$Component) {
         value: this.state.email,
         placeholder: "Email",
         onChange: this.update('email'),
-        className: "login-input"
+        className: "login-input ".concat(errorStyleEmail)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-errors"
       }, emailError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -471,7 +481,7 @@ function (_React$Component) {
         value: this.state.password,
         placeholder: "Password",
         onChange: this.update('password'),
-        className: "login-input"
+        className: "login-input ".concat(errorStylePassword)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-errors"
       }, passwordError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -602,6 +612,11 @@ function (_React$Component) {
   }
 
   _createClass(SignupForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -638,10 +653,25 @@ function (_React$Component) {
       this.props.processForm(user).then(function () {
         return _this3.props.history.push('/');
       });
-    }
+    } //onclick add class hidden, display none for styling hidden 
+    //button inside a
+    //addbutton around this.props.errors, whole thing 
+    //vanila javascript addClass of hidden to the button 
+
   }, {
     key: "render",
     value: function render() {
+      var errorStyleEmail = '';
+      var errorStylePassword = '';
+
+      if (this.props.errors) {
+        if (this.props.errors.includes('email')) {
+          errorStyleEmail = 'error-border';
+        } else if (this.props.errors.includes('password')) {
+          errorStylePassword = 'error-border';
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -657,12 +687,12 @@ function (_React$Component) {
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
-        className: "signup-input"
+        className: "signup-input ".concat(errorStyleEmail)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password(6 or more characters) ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        className: "signup-input"
+        className: "signup-input ".concat(errorStylePassword)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You agree to the GitIn User Agreement, Privacy Policy, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "and Cookie Policy. "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "session-submit",
         type: "submit",
@@ -717,6 +747,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     receiveErrors: function receiveErrors(error) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["receiveErrors"])(error));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -736,19 +769,38 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./frontend/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
- // import { Link } from 'react-router-dom';
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./frontend/node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
+
 
 
 
 var Splash = function Splash() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "header-link"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "logo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "logo-img",
+    src: window.logo
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "welcome"
   }, " Welcome to your ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " professional ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " community "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "splash-img",
     src: window.splash_img
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "welcome-2"
+  }, "Join your colleagues, classmates, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " and friends on LinkedIn."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/signup"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "splash-button"
+  }, "Get started")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "splash-img-2",
+    src: window.splash_img_2
   }));
 };
 

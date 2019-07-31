@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 //flow of rendering error 
 //email as @
@@ -54,11 +54,16 @@ class LoginForm extends React.Component {
   render() {
     let emailError = '';
     let passwordError = ''; 
+    let errorStyleEmail = '';
+    let errorStylePassword = '';
+
     if (this.props.errors){
       if (this.props.errors.includes('email')) {
         emailError = this.props.errors;
+        errorStyleEmail = 'error-border';
       } else if (this.props.errors.includes('password')) {
         passwordError = this.props.errors;
+        errorStylePassword = 'error-border';
       }
     }
 
@@ -68,6 +73,7 @@ class LoginForm extends React.Component {
       
       <div className="login-form-container">
         <div>
+          <Link to='/'><div className='logo'><img className='logo-login' src={window.logo} /></div></Link> 
           <h2 className="login-header"> Welcome Back </h2>
           <p>Don't miss your next opportunity. Sign in to stay updated on your professional world. </p> 
           
@@ -84,7 +90,7 @@ class LoginForm extends React.Component {
                 value={this.state.email}
                 placeholder='Email'
                 onChange={this.update('email')}
-                className="login-input"
+                className={`login-input ${errorStyleEmail}`} 
               />
             </label>
             <p className='login-errors'>{emailError}</p>
@@ -94,7 +100,7 @@ class LoginForm extends React.Component {
                 value={this.state.password}
                 placeholder='Password'
                 onChange={this.update('password')}
-                className="login-input"
+                className={`login-input ${errorStylePassword}`} 
               />
             </label>
             <p className='login-errors'>{passwordError}</p>

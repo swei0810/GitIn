@@ -21,6 +21,10 @@ class SignupForm extends React.Component {
 
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -47,23 +51,46 @@ class SignupForm extends React.Component {
   }
 
 
+//onclick add class hidden, display none for styling hidden 
+//button inside a
+//addbutton around this.props.errors, whole thing 
+//vanila javascript addClass of hidden to the button 
+
   render() {
+
+    let errorStyleEmail = '';
+    let errorStylePassword = '';
+
+    if (this.props.errors) {
+      if (this.props.errors.includes('email')) {
+        errorStyleEmail = 'error-border';
+      } else if (this.props.errors.includes('password')) {
+        errorStylePassword = 'error-border';
+      }
+    }
+
+
+
     return (
 
       <div className="login-form-container">
         <h2 className="login-header"> Make the most of your professional life </h2>
 
         <form onSubmit={this.validateSubmit} className="signup-form-box">
-          <div className='signup-errors'>
+
+
+          <div className='signup-errors' >
             {this.props.errors}
           </div> 
+
+
           <div className="login-form">
             <br />
             <label>Email <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="signup-input"
+                className={`signup-input ${errorStyleEmail}`}
               />
             </label>
             <br />
@@ -71,7 +98,7 @@ class SignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="signup-input"
+                className={`signup-input ${errorStylePassword}`}
               />
             </label>
             <br />
