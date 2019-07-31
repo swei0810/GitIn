@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_225703) do
+ActiveRecord::Schema.define(version: 2019_07_31_234643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connections", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "requester_id", null: false
+    t.integer "requestee_id", null: false
+    t.string "status"
+    t.index ["requester_id", "requestee_id"], name: "index_connections_on_requester_id_and_requestee_id", unique: true
+  end
+
+  create_table "education_items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "school", null: false
+    t.string "degree"
+    t.string "field"
+    t.integer "start_yr"
+    t.integer "end_yr"
+    t.text "activities"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "experience_items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.string "company", null: false
+    t.string "location", null: false
+    t.integer "start_date", null: false
+    t.integer "end_date"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
