@@ -1,15 +1,18 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+//flow of rendering error 
+//email as @
+//password long enough 
+//email real
+//password matches 
+
+
 function emailIsValid(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
-  //sign up errors 
-  //Password must be 6 characters or more 
-  //Please enter a valid email address 
-
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +21,10 @@ class SignupForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateSubmit = this.validateSubmit.bind(this);
+  }
 
+  componentWillUnmount() {
+    this.props.clearErrors(); 
   }
 
   update(field) {
@@ -27,40 +33,43 @@ class SignupForm extends React.Component {
     });
   }
 
-
- //will be onSubmit callback to the form 
   validateSubmit(e) {
     e.preventDefault();
     if (this.state.email === "" && this.state.password === "") {
-      this.props.receiveErrors('Please enter a valid email address');
-    } else if (!emailIsValid(this.state.email)) {
+      this.props.receiveErrors('Please enter a valid username');
+    } else if (!emailIsValid(this.state.email)){
       this.props.receiveErrors('Please enter a valid email address')
-    } else if (this.state.password.length < 6) {
-      this.props.receiveErrors('Password must be 6 characters or more')
+    }else if (this.state.password.length < 6) {
+      this.props.receiveErrors('The password you provided have at least 6 characters')
     } else {
       this.handleSubmit();
     }
   }
+
   handleSubmit() {
-    const user ={email: this.state.email, password: this.state.password};
+    const user = { email: this.state.email, password: this.state.password };
     this.props.processForm(user).then(() => this.props.history.push('/'));
   }
 
-
   render() {
-    const errors = this.props.errors; 
     return (
 
       <div className="login-form-container">
-        <h2 className="login-header"> Make the most of your professional life </h2>
+        <div>
+          <h2 className="login-header"> Welcome Back </h2>
+          <p>Don't miss your next opportunity. Sign in to stay updated on your professional world.</p> 
+        </div> 
+      
+
 
         <form onSubmit={this.validateSubmit} className="login-form-box">
-          <div className='signup-errors'>
-            {errors}
+          <div className='login-errors'> 
+            {this.props.errors}
           </div> 
+      
           <div className="login-form">
             <br />
-            <label>Email <br/>
+            <label>Email <br />
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -68,7 +77,7 @@ class SignupForm extends React.Component {
               />
             </label>
             <br />
-            <label>Password(6 or more characters) <br />
+            <label>Password <br />
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
@@ -76,9 +85,8 @@ class SignupForm extends React.Component {
               />
             </label>
             <br />
-            <p>You agree to the GitIn User Agreement, Privacy Policy, <br />and Cookie Policy. </p>
-            <input className="session-submit" type="submit" value={this.props.formType}/>
-            <p>Already on GitIn ? {this.props.navLink} </p>
+            <input className="session-submit" type="submit" value={this.props.formType} />
+            <p>New to GitIn ? {this.props.navLink} </p>
           </div>
         </form>
       </div>
@@ -86,4 +94,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default withRouter(SignupForm);
+export default withRouter(LoginForm);

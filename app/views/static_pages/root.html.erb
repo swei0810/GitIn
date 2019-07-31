@@ -1,3 +1,8 @@
+<script  text='test/javascript'>
+  window.splash_img ="<%=image_url('splash.svg')%>"
+</script>
+
+
 <% if logged_in? %>
   <script id="bootstrap-current-user" type="text/javascript">
   	window.currentUser = <%= render("api/users/user.json.jbuilder",

@@ -4,12 +4,15 @@ class Api::SessionsController < ApplicationController
           params[:user][:email],
           params[:user][:password]
         )
-    
+        
+        # @user2 = User.find_by(params[:user][:email])
         if @user
           login!(@user)
           render "api/users/show"
+        elsif User.find_by(email: params[:user][:email])
+          render json: "Hmm, that's not the right password.", status: 401 
         else
-          render json: ["Invalid email/password combination"], status: 401
+          render json: "Hmm, we don't recognize that email. Please try again.", status: 401
         end
       end
     
@@ -19,7 +22,7 @@ class Api::SessionsController < ApplicationController
           logout!
           render "api/users/show"
         else
-          render json: ["No one is currently signed in"], status: 404
+          render json: "No one is currently signed in", status: 404
         end
       end
 

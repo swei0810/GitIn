@@ -14,7 +14,7 @@ import LogInFormContainer from './session_form/login_form_container';
 import SplashContainer from './splash/splash';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-// import logo from "../../app/assets/images/linkedin.png";
+// import logo from "../../app/assets/images/linkedin.png"; //DO BOOTSTAPING 
 
 const App = () => (
   <div className = 'splash'>

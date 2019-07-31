@@ -31,9 +31,10 @@ header{
 
 }
 .welcome {
-   font-size: 55px; 
-   padding-left: 40px; 
+   font-size: 55px ; 
+   padding-left: 40px !important; 
    color: lightskyblue; 
+   text-align: left !important; 
 }
 
 .splash-img {
@@ -105,7 +106,7 @@ button:hover {
 
  .login-input {
    /* margin-left: 20px; */
-   width: 100px; 
+   width: 400px; 
  }
 
  .login-form-box {
@@ -123,6 +124,11 @@ button:hover {
 
  .login-header{
    color: lightskyblue;
+   top: 100px; 
+   /* left: 680px;  */
+   /* position: absolute;  */
+    text-align: center; 
+
  }
 
 
@@ -130,3 +136,29 @@ body {
 
     /* background-color: #ffe6e6;  */
  }
+
+ p {
+    text-align: center; 
+ }
+
+.signup-errors  {
+   display: block; 
+   background-color: red; 
+   color: white; 
+
+    font-size: 15px;
+    line-height: 17px;
+    font-weight: normal;
+    /* padding-left: 35px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 30px; */
+    overflow: hidden;
+    position: absolute;
+    top: 20px; 
+    width: 400px; 
+    text-align: center; 
+
+
+}
