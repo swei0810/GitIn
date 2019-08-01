@@ -17,6 +17,7 @@ class SignupForm extends React.Component {
       password: '', 
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
     this.validateSubmit = this.validateSubmit.bind(this);
 
   }
@@ -50,11 +51,11 @@ class SignupForm extends React.Component {
     this.props.processForm(user).then(() => this.props.history.push('/'));
   }
 
+  handleDemo(){
+    const demo = {email: 'demo@gmail.com', password: 'hunter12'};
+    this.props.demoLogin(demo).then(() => this.props.history.push('/'));
+  }
 
-//onclick add class hidden, display none for styling hidden 
-//button inside a
-//addbutton around this.props.errors, whole thing 
-//vanila javascript addClass of hidden to the button 
 
   render() {
 
@@ -69,22 +70,16 @@ class SignupForm extends React.Component {
       }
     }
 
-
-
     return (
 
       <div className="login-form-container">
         <h2 className="login-header"> Make the most of your professional life </h2>
 
-        <form onSubmit={this.validateSubmit} className="signup-form-box">
-
-
-          <div className='signup-errors' >
-            {this.props.errors}
-          </div> 
-
-
-          <div className="login-form">
+      <div className='signup-form-box'> 
+      <div className="login-form">
+        <form onSubmit={this.validateSubmit}>
+          <button className='signup-errors' onClick= {(e)=>e.target.classList.add('hidden')}>{this.props.errors}</button> 
+         
             <br />
             <label>Email <br/>
               <input type="text"
@@ -104,9 +99,13 @@ class SignupForm extends React.Component {
             <br />
             <p>You agree to the GitIn User Agreement, Privacy Policy, <br />and Cookie Policy. </p>
             <input className="session-submit" type="submit" value={this.props.formType}/>
-            <p>Already on GitIn ? {this.props.navLink} </p>
-          </div>
+              <br />
+              <br />
         </form>
+           <button className='demo-login' onClick={this.handleDemo}>Demo User</button>
+            <p>Already on GitIn ? {this.props.navLink} </p>
+        </div>
+        </div>
       </div>
     );
   }
