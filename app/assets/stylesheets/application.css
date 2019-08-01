@@ -15,8 +15,10 @@
  */
 
  .splash-container{
-   width: 60%; 
-   margin: 0 auto; 
+   width: 100%; 
+   /* left: 50px; 
+   position: absolute;  */
+   /* margin: 0 auto;  */
 }
 
 
@@ -32,12 +34,14 @@ header{
 }
 .welcome {
   font-size: 65px ; 
-  padding-top: 50px; 
+  padding-top: 75px; 
   font-weight: 400 !important; 
   /* padding-left: 40px !important;  */
   color: lightskyblue; 
   text-align: left !important; 
   line-height: 80px; 
+  position: absolute; 
+  left: 70px;
 }
 
 .welcome-2 {
@@ -46,7 +50,7 @@ header{
   /* text-align: center;  */
   position: absolute; 
   top: 800px; 
-  left: 500px; 
+  left: 270px; 
 
 
 }
@@ -55,26 +59,28 @@ header{
   z-index: -1;
   height: 600px;
   width: 800px;
-  position: relative; 
-  left: 500px; 
-  top: -230px; 
-  /* position: absolute;
-  left: 550px;
+  left: 570px; 
+  top: 160px; 
+  position: absolute;
+  /*left: 550px;
   top: 150px; */
 }
 
 .splash-img-2 {
   z-index: -1;
   position: absolute;
+  width: 100%;
   top: 1000px; 
+  left: 1px; 
 
 }
 
 .logo-img { 
   width: 30px; 
   height: 30px; 
-  position: relative; 
-  top: 0px; 
+  position: absolute; 
+  top: 20px; 
+  left: 70px
 }
 
 .logo-login {
@@ -126,7 +132,7 @@ header{
   text-align: center; 
   position: absolute; 
   top: 1050px; 
-  left: 850px; 
+  left: 590px; 
   padding: 20px;
   background-color: #2977c9;
   color: #fff;
@@ -180,9 +186,9 @@ header{
 
 
 .login-signup {
-  position: relative; 
-  top: 30px; 
-  left: 900px; 
+  position: absolute; 
+  top: 20px; 
+  left: 1000px; 
 }
 
 .login-form-container {
@@ -268,4 +274,5 @@ p {
 
 html { 
       font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Fira Sans",Ubuntu,Oxygen,"Oxygen Sans",Cantarell,"Droid Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Emoji","Segoe UI Symbol","Lucida Grande",Helvetica,Arial,sans-serif;
+      overflow-x: hidden
 }
