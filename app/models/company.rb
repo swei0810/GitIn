@@ -15,7 +15,16 @@
 class Company < ApplicationRecord 
     validates :name, :field, :description, :website_url, :location,  presence: true 
     has_many :posts 
-    has_many :employees
+
+
+    #user has to belong to a company?????
+    #followers -> people who are interested in the company 
+    has_many :employees, 
+        primary_key: :id, 
+        foreign_key: :user_id, 
+        class_name: 'User'
+
     has_many :followers
+
 
 end 
