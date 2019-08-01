@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_08_01_220836) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "interests", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "company_id", null: false
@@ -80,6 +81,8 @@ ActiveRecord::Schema.define(version: 2019_08_01_220836) do
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> ebf0fa0a46d7643947dbf96b59bea5c61dedaeab
   create_table "posts", force: :cascade do |t|
     t.integer "author_id", null: false
     t.text "body"
