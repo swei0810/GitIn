@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
     #associations 
     has_many :experience_items
-    has_many :educations 
+    has_many :education_items
     has_many :companies,
         through: :experience_items
     has_many :posts
@@ -34,9 +34,11 @@ class User < ApplicationRecord
     has_many :interests
     has_many :connections  #first degree connection 
     has_many :second_connections, 
-        through: :connections
+        through: :connections, 
+        source: :, 
     has_many :third_connections, 
         through: :second_connections
+        source: :, 
 
 
     def total_connections 

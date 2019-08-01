@@ -16,4 +16,5 @@
 
 class EducationItem < ApplicationRecord 
     validates :user_id, :school, presence: true 
+    
 end 
