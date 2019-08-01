@@ -12,6 +12,10 @@
 
 class Connection < ApplicationRecord 
     validates :requester_id, uniqueness: { scope: :requestee_id }
+    belongs_to :requester 
+    belongs_to :requestee 
+
+    
     has_many :second_connections 
     has_many :third_connections, 
         through: :second_connections 

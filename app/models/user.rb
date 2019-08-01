@@ -33,12 +33,12 @@ class User < ApplicationRecord
     has_many :skills
     has_many :interests
     has_many :connections  #first degree connection 
-    has_many :second_connections, 
-        through: :connections, 
-        source: :, 
-    has_many :third_connections, 
-        through: :second_connections
-        source: :, 
+    # has_many :second_connections, 
+    #     through: :connections, 
+    #     source: :, 
+    # has_many :third_connections, 
+    #     through: :second_connections
+    #     source: :, 
 
 
     def total_connections 

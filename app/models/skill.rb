@@ -15,7 +15,7 @@ class Skill < ApplicationRecord
     has_many :endorsments  #
 
 
-    has_many :endorsers #
+    has_many :endorsers, #
         primary_key: :id, 
         foreign_key: :user_id, 
         class_name: 'User'
