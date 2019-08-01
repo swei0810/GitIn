@@ -78,6 +78,7 @@ class LoginForm extends React.Component {
 
     return (
       
+      
       <div className="login-form-container">
         <div>
           <Link to='/'><div className='logo'><img className='logo-login' src={window.logo} /></div></Link> 

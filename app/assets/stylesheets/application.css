@@ -163,6 +163,7 @@ header{
 }
 
 .demo-login {
+<<<<<<< HEAD
   background-color: rgb(0, 140, 255);
   border-color:rgb(0, 140, 255);
   color: white;
@@ -174,6 +175,19 @@ header{
   text-align: center;
   cursor: pointer; 
   width: 420px; 
+=======
+   background-color: rgb(0, 140, 255);
+   border-color:rgb(0, 140, 255);
+   color: white;
+   padding: 7px;
+   border-radius: 3px;
+   transition: none;
+   font-family: inherit;
+   font-size: inherit;
+   text-align: center;
+   cursor: pointer; 
+   width: 420px; 
+>>>>>>> Try making error component for error box
 }
 
 .splash-nav {
