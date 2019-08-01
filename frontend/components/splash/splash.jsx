@@ -7,19 +7,26 @@ import GreetingContainer from '../greeting/greeting_container';
 const Splash = () => {
     return (
 
-        <div>
+        <div className='splash'>
             <div className='splash-container'>
-                <GreetingContainer className='header-link' />
-                <Link to='/'><div className='logo'><img className='logo-img' src={window.logo} /></div></Link> 
-                <p className='welcome'> Welcome to your <br /> professional <br /> community </p>
-                <img className='splash-img' src={window.splash_img} />
+                <div className='splash-nav'> 
                 
+                <Link to='/'><div className='logo'><img className='logo-img' src={window.logo} /></div></Link> 
+                <GreetingContainer className='header-link' />
+
+                </div>
+              <div className='splash-top'> 
+                <div className='splash-left'> <p className='welcome'> Welcome to your <br /> professional <br /> community </p> </div>
+                <div className='splash-right'> <img className='splash-img' src={window.splash_img} /></div>
+             </div> 
 
             </div>
 
-            <p className='welcome-2'>Join your colleagues, classmates, <br/> and friends on LinkedIn.</p>
-            <Link to="/signup"><button className='splash-button'>Get started</button></Link>
-            <img className='splash-img-2' src={window.splash_img_2} />
+            <div className='splash-container-2'>
+                <p className='welcome-2'>Join your colleagues, classmates, <br/> and friends on LinkedIn.</p>
+                <Link to="/signup"><button className='splash-button'>Get started</button></Link>
+                <img className='splash-img-2' src={window.splash_img_2} />
+            </div>
         </div>
     )
 };

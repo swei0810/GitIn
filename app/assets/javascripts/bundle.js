@@ -232,7 +232,7 @@ var Greeting = function Greeting(_ref) {
       logout = _ref.logout;
 
   var sessionLinks = function sessionLinks() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup"
@@ -809,23 +809,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Splash = function Splash() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splash-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    className: "header-link"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-nav"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "logo-img",
     src: window.logo
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "header-link"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-top"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-left"
+  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "welcome"
-  }, " Welcome to your ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " professional ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " community "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, " Welcome to your ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " professional ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " community "), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-right"
+  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "splash-img",
     src: window.splash_img
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-container-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "welcome-2"
   }, "Join your colleagues, classmates, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " and friends on LinkedIn."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/signup"
@@ -834,7 +846,7 @@ var Splash = function Splash() {
   }, "Get started")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "splash-img-2",
     src: window.splash_img_2
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);

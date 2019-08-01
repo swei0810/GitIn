@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <nav className="login-signup">
+    <div className="login-signup">
       <Link to="/signup"><button className='signup-button'>Join now</button></Link>
       &nbsp;  &nbsp;
       <Link to="/login"><button className='signin-button'>Sign in</button></Link>
 
-    </nav>
+    </div>
     
   );
   const personalGreeting = () => (

@@ -14,12 +14,7 @@
  *= require_self
  */
 
- .splash-container{
-   width: 100%; 
-   /* left: 50px; 
-   position: absolute;  */
-   /* margin: 0 auto;  */
-}
+
 
 
 
@@ -40,47 +35,56 @@ header{
   color: lightskyblue; 
   text-align: left !important; 
   line-height: 80px; 
-  position: absolute; 
-  left: 70px;
+  /* position: relative;  */
+  /* left: 70px; */
 }
 
 .welcome-2 {
   font-size: 55px ; 
   color: lightskyblue; 
-  /* text-align: center;  */
-  position: absolute; 
-  top: 800px; 
-  left: 270px; 
-
-
 }
 
 .splash-img {
-  z-index: -1;
+  /* z-index: -1; */
   height: 600px;
   width: 800px;
-  left: 570px; 
-  top: 160px; 
-  position: absolute;
+  /* top:160px;  */
+  /* position: relative;  */
+  /* left: 570px; 
+  top: 160px;  */
   /*left: 550px;
   top: 150px; */
 }
 
 .splash-img-2 {
   z-index: -1;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 1000px; 
-  left: 1px; 
+  /* top: 1000px;  */
+  /* left: 2px;  */
 
 }
 
+.splash-top { 
+  width: 100%;
+  display: flex; 
+  justify-content: space-between; 
+  /* padding-left: 60px;  */
+}
+
+.splash-left{
+  width: 50%;
+}
+
+.splash-right{
+  width: 50%;
+}
 .logo-img { 
-  width: 30px; 
+  /* width: 30px; 
   height: 30px; 
   position: absolute; 
   top: 20px; 
-  left: 70px;
+  left: 70px; */
 }
 
 .logo-login {
@@ -128,9 +132,9 @@ header{
 
 
 .splash-button{ 
-  position: absolute; 
   text-align: center; 
-  position: absolute; 
+  /* position: center;  */
+  /* position: absolute;  */
   top: 1050px; 
   left: 590px; 
   padding: 20px;
@@ -184,11 +188,27 @@ header{
   width: 420px; 
 }
 
+.splash-nav {
+  display: flex; 
+  justify-content: space-between; 
+  padding-right: 70px; 
+  padding-left: 20px; 
+  padding-top: 10px; 
+}
+
+.splash-container-2{
+  display: flex; 
+
+  flex-direction: column; 
+  align-items: center; 
+
+  /* flex direction and center it  */
+}
 
 .login-signup {
-  position: absolute; 
+  /* position: absolute; 
   top: 20px; 
-  left: 1000px; 
+  left: 1000px;  */
 }
 
 .login-form-container {
