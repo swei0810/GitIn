@@ -16,7 +16,7 @@ const Splash = () => {
 
                 </div>
               <div className='splash-top'> 
-                <div className='splash-left'> <p className='welcome'> Welcome to your <br /> professional <br /> community </p> </div>
+                <div className='splash-left'> <p className='welcome'> Welcome to your  <br />professional community </p> </div>
                 <div className='splash-right'> <img className='splash-img' src={window.splash_img} /></div>
              </div> 
 

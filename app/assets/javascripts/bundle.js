@@ -830,7 +830,7 @@ var Splash = function Splash() {
     className: "splash-left"
   }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "welcome"
-  }, " Welcome to your ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " professional ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " community "), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, " Welcome to your  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "professional community "), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splash-right"
   }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "splash-img",

@@ -28,15 +28,12 @@ header{
 
 }
 .welcome {
-  font-size: 65px ; 
-  padding-top: 75px; 
+  font-size: 60px ; 
+  padding-top: 35px; 
   font-weight: 400 !important; 
-  /* padding-left: 40px !important;  */
   color: lightskyblue; 
   text-align: left !important; 
   line-height: 80px; 
-  /* position: relative;  */
-  /* left: 70px; */
 }
 
 .welcome-2 {
@@ -45,46 +42,44 @@ header{
 }
 
 .splash-img {
-  /* z-index: -1; */
-  height: 600px;
-  width: 800px;
-  /* top:160px;  */
-  /* position: relative;  */
-  /* left: 570px; 
-  top: 160px;  */
-  /*left: 550px;
-  top: 150px; */
+  z-index: -1;
+  width: 700px;
+  height: 670px;
+  position: absolute;
+  bottom: calc(-266px - 201px);
+  right: 100px;
+  top: 100px; 
 }
 
 .splash-img-2 {
   z-index: -1;
-  position: relative;
   width: 100%;
-  /* top: 1000px;  */
-  /* left: 2px;  */
-
 }
 
 .splash-top { 
   width: 100%;
+  min-width: 700px; 
   display: flex; 
   justify-content: space-between; 
-  /* padding-left: 60px;  */
+  position: relative;
+  padding-left: 60px; 
+  padding-bottom: 430px; 
 }
 
 .splash-left{
-  width: 50%;
+  width: 60%;
 }
 
 .splash-right{
-  width: 50%;
-}
-.logo-img { 
-  /* width: 30px; 
-  height: 30px; 
+  width: 40%;
   position: absolute; 
-  top: 20px; 
-  left: 70px; */
+  z-index: -1; 
+  right:-80px; 
+}
+
+.logo-img { 
+  width: 30px; 
+  height: 32px; 
 }
 
 .logo-login {
@@ -133,8 +128,6 @@ header{
 
 .splash-button{ 
   text-align: center; 
-  /* position: center;  */
-  /* position: absolute;  */
   top: 1050px; 
   left: 590px; 
   padding: 20px;
@@ -192,29 +185,20 @@ header{
   display: flex; 
   justify-content: space-between; 
   padding-right: 70px; 
-  padding-left: 20px; 
+  padding-left: 60px; 
   padding-top: 10px; 
 }
 
 .splash-container-2{
   display: flex; 
-
   flex-direction: column; 
   align-items: center; 
-
-  /* flex direction and center it  */
-}
-
-.login-signup {
-  /* position: absolute; 
-  top: 20px; 
-  left: 1000px;  */
 }
 
 .login-form-container {
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .signup-input {
@@ -227,8 +211,6 @@ header{
 .error-border{
    border-color: red; 
 } 
-
-
 
  .login-input {
   width: 400px; 
@@ -246,10 +228,8 @@ header{
   background-color: #f2f2f2;
   display: flex;
   justify-content: center;
-  top: 230px; 
+  top: 170px; 
   position: absolute; 
-  
-
 }
 
 .login-form-box { 
@@ -262,10 +242,8 @@ header{
 
 .login-header{
   color: lightskyblue;
-  top: 80px; 
   text-align: center; 
 }
-
 
 p {
    text-align: center; 
