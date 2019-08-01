@@ -14,297 +14,258 @@
  *= require_self
  */
 
-
- /* .logo {
-    width: 20px; 
-    height: 20px; 
-    position: absolute; 
-    display: block; 
- } */
-
  .splash-container{
-    width: 60%; 
-    margin: 0 auto; 
- }
+   width: 60%; 
+   margin: 0 auto; 
+}
 
 
 
- 
+
 header{
-   display: flex; 
-   justify-content: space-between; 
-   padding-left: 40px; 
-   padding-right: 40px; 
-   top: 20px; 
+  display: flex; 
+  justify-content: space-between; 
+  padding-left: 40px; 
+  padding-right: 40px; 
+  top: 20px; 
 
 }
 .welcome {
-   font-size: 65px ; 
-   padding-top: 50px; 
-   font-weight: 400 !important; 
-   /* padding-left: 40px !important;  */
-   color: lightskyblue; 
-   text-align: left !important; 
-   line-height: 80px; 
+  font-size: 65px ; 
+  padding-top: 50px; 
+  font-weight: 400 !important; 
+  /* padding-left: 40px !important;  */
+  color: lightskyblue; 
+  text-align: left !important; 
+  line-height: 80px; 
 }
 
 .welcome-2 {
-   font-size: 55px ; 
-   color: lightskyblue; 
-   /* text-align: center;  */
-   position: absolute; 
-   top: 800px; 
-   left: 500px; 
+  font-size: 55px ; 
+  color: lightskyblue; 
+  /* text-align: center;  */
+  position: absolute; 
+  top: 800px; 
+  left: 500px; 
 
 
 }
 
 .splash-img {
-   z-index: -1;
-   height: 600px;
-   width: 800px;
-   position: relative; 
-   left: 500px; 
-   top: -230px; 
-   /* position: absolute;
-   left: 550px;
-   top: 150px; */
+  z-index: -1;
+  height: 600px;
+  width: 800px;
+  position: relative; 
+  left: 500px; 
+  top: -230px; 
+  /* position: absolute;
+  left: 550px;
+  top: 150px; */
 }
 
 .splash-img-2 {
-   z-index: -1;
-   position: absolute;
-   top: 1000px; 
+  z-index: -1;
+  position: absolute;
+  top: 1000px; 
 
 }
 
 .logo-img { 
-   width: 30px; 
-   height: 30px; 
-   position: relative; 
-   /* position: absolute; 
-   left: 50px;  */
-   top: 0px; 
+  width: 30px; 
+  height: 30px; 
+  position: relative; 
+  top: 0px; 
 }
 
 .logo-login {
-   width: 30px; 
-   height: 30px; 
-   position: relative; 
-   left: 290px; 
+  width: 30px; 
+  height: 30px; 
+  position: relative; 
+  left: 290px; 
 }
 
-/* .logo {
-   display: flex; 
-} */
-
-/* .logo-text {
-   color: navy; 
-   font-weight: bolder; 
-   font-size: 40px; 
-   flex-direction: row;
-} */
-
-/* button{
-
-   background-color: white;
-   color: black;
-   border: 2px solid lightskyblue;
-   padding: 7px;
-   border-radius: 3px;
-   transition: none;
-   font-family: inherit;
-   font-size: inherit;
-   cursor: pointer; 
-} */
-
 .signin-button {
-   border: 1px solid  #2977c9; 
-   color:  #2977c9; 
-   padding: 7px;
-   padding-right: 15px; 
-   padding-left: 15px; 
-   border-radius: 3px;
-   transition: none;
-   font-family: inherit;
-   font-size: inherit;
-   font-weight: bold; 
-   cursor: pointer; 
+  border: 1px solid  #2977c9; 
+  color:  #2977c9; 
+  padding: 7px;
+  padding-right: 15px; 
+  padding-left: 15px; 
+  border-radius: 3px;
+  transition: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold; 
+  cursor: pointer; 
 
 }
 
 .signup-button {
-   background-color: rgba(0,0,0,0);
-    border: 0;
-    border-radius: 2px;
-    color: rgba(0,0,0,0.6);
-    cursor: pointer;
-    display: inline-block;
-    font-size:inherit;
-    font-weight: 600;
-    font-family: inherit;
-    height: 32px;
-    line-height: 32px;
-    overflow: hidden;
-    outline-width: 2px;
-    padding: 0 8px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
+  background-color: rgba(0,0,0,0);
+   border: 0;
+   border-radius: 2px;
+   color: rgba(0,0,0,0.6);
+   cursor: pointer;
+   display: inline-block;
+   font-size:inherit;
+   font-weight: 600;
+   font-family: inherit;
+   height: 32px;
+   line-height: 32px;
+   overflow: hidden;
+   outline-width: 2px;
+   padding: 0 8px;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
 
 }
 
 
 .splash-button{ 
-   position: absolute; 
-   text-align: center; 
-   position: absolute; 
-   top: 1050px; 
-   left: 850px; 
-   padding: 20px;
-   background-color: #2977c9;
-   color: #fff;
-   font-weight: normal;
-   border: 2px solid #2977c9;
-   border-radius: 40px;
-   font-size: 20px; 
+  position: absolute; 
+  text-align: center; 
+  position: absolute; 
+  top: 1050px; 
+  left: 850px; 
+  padding: 20px;
+  background-color: #2977c9;
+  color: #fff;
+  font-weight: normal;
+  border: 2px solid #2977c9;
+  border-radius: 40px;
+  font-size: 20px; 
 
 }
 
 
-button:hover {
-   background-color: lightskyblue;
-   color: white;
- }
+.signin-button:hover {
+  background-color: rgb(193, 229, 252);
+  color:  #2160a3; 
+  border: 1px solid  #154374;
+
+}
+
+.signup-button:hover {
+  background-color: lightgrey;
+}
 
 .session-submit {
-   background-color: rgb(0, 140, 255);
-   border-color:rgb(0, 140, 255);
-   color: white;
-   /* font-weight: bolder; */
-   padding: 7px;
-   border-radius: 3px;
-   transition: none;
-   font-family: inherit;
-   font-size: inherit;
-   text-align: center;
-   cursor: pointer; 
-   width: 420px; 
+  background-color: rgb(0, 140, 255);
+  border-color:rgb(0, 140, 255);
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  transition: none;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+  cursor: pointer; 
+  width: 420px; 
 
+}
+
+.demo-login {
+  background-color: rgb(0, 140, 255);
+  border-color:rgb(0, 140, 255);
+  color: white;
+  padding: 7px;
+  border-radius: 3px;
+  transition: none;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+  cursor: pointer; 
+  width: 420px; 
 }
 
 
 .login-signup {
-   position: relative; 
-   top: 30px; 
-   left: 900px; 
-   /* top:30px; 
-   left: 1000px; 
-   position: absolute;  */
-   
+  position: relative; 
+  top: 30px; 
+  left: 900px; 
 }
 
 .login-form-container {
-   display: flex;
-   justify-content: center;
-   margin-top: 100px;
- }
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
 
+.signup-input {
+  width: 400px; 
+  padding: 7px;
+  font-family: inherit;
+  font-size: inherit;
+}
 
- .login-form  {
-   /* display: flex;
-   justify-content: center;
-   flex-direction: column; */
- }
-
- .signup-input {
-   /* margin-left: 20px; */
-   width: 400px; 
-   padding: 7px;
-   font-family: inherit;
-   font-size: inherit;
- }
-
- .error-border{
-    border-color: red; 
- } 
+.error-border{
+   border-color: red; 
+} 
 
 
 
-  .login-input {
-   /* margin-left: 20px; */
-   width: 400px; 
-   padding: 7px;
-   border-radius: 3px;
-   transition: none;
-   font-family: inherit;
-   font-size: inherit;
-   text-align: left;
- }
+ .login-input {
+  width: 400px; 
+  padding: 7px;
+  border-radius: 3px;
+  transition: none;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+}
 
- .signup-form-box {
-   outline: 1px solid black;
-   padding: 50px;
-   background-color: #f2f2f2;
-   display: flex;
-   justify-content: center;
-   top: 230px; 
-   position: absolute; 
-   
+.signup-form-box {
+  outline: 1px solid black;
+  padding: 50px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  top: 230px; 
+  position: absolute; 
+  
 
- }
+}
 
- .login-form-box { 
-   display: flex;
-   justify-content: center;
-   top: 250px; 
-   position: absolute; 
- }
+.login-form-box { 
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+  top: 250px; 
+  position: absolute; 
+}
 
- .login-header{
-   color: lightskyblue;
-   top: 80px; 
-   /* left: 680px;  */
-   /* position: absolute;  */
-    text-align: center; 
-
- }
+.login-header{
+  color: lightskyblue;
+  top: 80px; 
+  text-align: center; 
+}
 
 
-body {
-
-    /* background-color: #ffe6e6;  */
- }
-
- p {
-    text-align: center; 
- }
+p {
+   text-align: center; 
+}
 
 .signup-errors {
-   display: block; 
-   background-color: red; 
-   color: white; 
-   font-size: 20px;
-   line-height: 25px;
-   font-weight: normal;
-    /* padding-left: 35px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 30px; */
-   overflow: hidden;
-   position: absolute;
-   top: 20px; 
-   width: 400px; 
-   text-align: center; 
+  display: block; 
+  background-color: red; 
+  color: white; 
+  font-size: 20px;
+  font-weight: normal;
+  overflow: hidden;
+  position: absolute;
+  top: 20px; 
+  width: 400px; 
+  text-align: center; 
+}
 
-
+.signup-errors.hidden {
+  display: none; 
 }
 
 .login-errors {
-   color: red; 
+  color: red; 
 }
 
 html { 
-       font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Fira Sans",Ubuntu,Oxygen,"Oxygen Sans",Cantarell,"Droid Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Emoji","Segoe UI Symbol","Lucida Grande",Helvetica,Arial,sans-serif;
+      font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Fira Sans",Ubuntu,Oxygen,"Oxygen Sans",Cantarell,"Droid Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Emoji","Segoe UI Symbol","Lucida Grande",Helvetica,Arial,sans-serif;
 }

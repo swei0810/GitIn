@@ -389,6 +389,7 @@ function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.validateSubmit = _this.validateSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -435,6 +436,19 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleDemo",
+    value: function handleDemo() {
+      var _this4 = this;
+
+      var demo = {
+        email: 'demo@gmail.com',
+        password: 'hunter12'
+      };
+      this.props.processForm(demo).then(function () {
+        return _this4.props.history.push('/');
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var emailError = '';
@@ -463,11 +477,10 @@ function (_React$Component) {
         src: window.logo
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "login-header"
-      }, " Welcome Back "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't miss your next opportunity. Sign in to stay updated on your professional world. ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.validateSubmit,
+      }, " Welcome Back "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't miss your next opportunity. Sign in to stay updated on your professional world. ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.validateSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
@@ -488,7 +501,10 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: this.props.formType
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "New to GitIn ? ", this.props.navLink, " "))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "demo-login",
+        onClick: this.handleDemo
+      }, "Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "New to GitIn ? ", this.props.navLink, " ")));
     }
   }]);
 
@@ -607,6 +623,7 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     _this.validateSubmit = _this.validateSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -653,11 +670,20 @@ function (_React$Component) {
       this.props.processForm(user).then(function () {
         return _this3.props.history.push('/');
       });
-    } //onclick add class hidden, display none for styling hidden 
-    //button inside a
-    //addbutton around this.props.errors, whole thing 
-    //vanila javascript addClass of hidden to the button 
+    }
+  }, {
+    key: "handleDemo",
+    value: function handleDemo() {
+      var _this4 = this;
 
+      var demo = {
+        email: 'demo@gmail.com',
+        password: 'hunter12'
+      };
+      this.props.demoLogin(demo).then(function () {
+        return _this4.props.history.push('/');
+      });
+    }
   }, {
     key: "render",
     value: function render() {
@@ -676,14 +702,18 @@ function (_React$Component) {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "login-header"
-      }, " Make the most of your professional life "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.validateSubmit,
+      }, " Make the most of your professional life "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signup-errors"
-      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.validateSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "signup-errors",
+        onClick: function onClick(e) {
+          return e.target.classList.add('hidden');
+        }
+      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
@@ -697,7 +727,10 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: this.props.formType
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already on GitIn ? ", this.props.navLink, " "))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "demo-login",
+        onClick: this.handleDemo
+      }, "Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already on GitIn ? ", this.props.navLink, " "))));
     }
   }]);
 
@@ -744,6 +777,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
+    },
+    demoLogin: function demoLogin(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     },
     receiveErrors: function receiveErrors(error) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["receiveErrors"])(error));
@@ -35660,7 +35696,7 @@ var login = function login(user) {
 var signup = function signup(user) {
   return $.ajax({
     method: 'POST',
-    url: '/api/user',
+    url: '/api/users',
     data: {
       user: user
     }

@@ -21,6 +21,8 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateSubmit = this.validateSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
+
   }
 
   componentWillUnmount() {
@@ -51,6 +53,11 @@ class LoginForm extends React.Component {
     this.props.processForm(user).then(() => this.props.history.push('/'));
   }
 
+  handleDemo(){
+    const demo = {email: 'demo@gmail.com', password: 'hunter12'};
+    this.props.processForm(demo).then(() => this.props.history.push('/'));
+  }
+
   render() {
     let emailError = '';
     let passwordError = ''; 
@@ -78,40 +85,40 @@ class LoginForm extends React.Component {
           <p>Don't miss your next opportunity. Sign in to stay updated on your professional world. </p> 
           
         </div> 
-      
-
-
-        <form onSubmit={this.validateSubmit} className="login-form-box">
-
-          <div className="login-form">
-            <br />
-            <label>
-              <input type="text"
-                value={this.state.email}
-                placeholder='Email'
-                onChange={this.update('email')}
-                className={`login-input ${errorStyleEmail}`} 
-              />
-            </label>
-            <p className='login-errors'>{emailError}</p>
-            <br />
-            <label>
-              <input type="password"
-                value={this.state.password}
-                placeholder='Password'
-                onChange={this.update('password')}
-                className={`login-input ${errorStylePassword}`} 
-              />
-            </label>
-            <p className='login-errors'>{passwordError}</p>
-            <br />
-            <input className="session-submit" type="submit" value={this.props.formType} />
-            <p>New to GitIn ? {this.props.navLink} </p>
+       
+         <div className="login-form-box">
+            <form onSubmit={this.validateSubmit} >
+              <br />
+              <label>
+                <input type="text"
+                  value={this.state.email}
+                  placeholder='Email'
+                  onChange={this.update('email')}
+                  className={`login-input ${errorStyleEmail}`} 
+                />
+              </label>
+              <p className='login-errors'>{emailError}</p>
+              <br />
+              <label>
+                <input type="password"
+                  value={this.state.password}
+                  placeholder='Password'
+                  onChange={this.update('password')}
+                  className={`login-input ${errorStylePassword}`} 
+                />
+              </label>
+              <p className='login-errors'>{passwordError}</p>
+              <br />
+              <input className="session-submit" type="submit" value={this.props.formType} />
+              <br />
+              <br />
+            </form>
+              <button className='demo-login' onClick={this.handleDemo}>Demo User</button>
+              <p>New to GitIn ? {this.props.navLink} </p>
           </div>
-        </form>
+        
       </div>
     );
   }
 }
-
 export default withRouter(LoginForm);
