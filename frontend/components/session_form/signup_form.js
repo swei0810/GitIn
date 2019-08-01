@@ -78,8 +78,8 @@ class SignupForm extends React.Component {
       <div className='signup-form-box'> 
       <div className="login-form">
         <form onSubmit={this.validateSubmit}>
-          <button className='signup-errors' onClick= {(e)=>e.target.classList.add('hidden')}>{this.props.errors}</button> 
-         
+          {/* <button className='signup-errors' onClick= {(e)=>e.target.classList.add('hidden')}>{this.props.errors}</button>  */}
+            <p className='signup-errors'>{this.props.errors} </p>
             <br />
             <label>Email <br/>
               <input type="text"
