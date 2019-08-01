@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+// import Error from './error_form'; 
 
 function emailIsValid(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -73,6 +74,7 @@ class SignupForm extends React.Component {
     return (
 
       <div className="login-form-container">
+        {/* <Error /> */}
         <h2 className="login-header"> Make the most of your professional life </h2>
 
       <div className='signup-form-box'> 
