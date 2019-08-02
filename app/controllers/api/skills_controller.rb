@@ -9,16 +9,19 @@ class Api::SkillsController < ApplicationController
     def create 
         @skill = current_user.skills.new(skill_params)
         if @skill.save 
-            render 'api/users/show'
+            render :show
         else
             render json: @skill.errors, status: 422
         end 
     end 
 
-    def edit 
-    end 
-
     def update 
+        @skill = Skill.find(params[:id]) 
+        if @skill.update(skill.params)
+            render :show 
+        else 
+            render json: @skill.errors, status: 422
+        end 
     end 
 
     def destroy 
@@ -29,7 +32,7 @@ class Api::SkillsController < ApplicationController
 
     private 
     def skill_params 
-        params.require(:skill).permit(:user_id, :title)
+        params.require(:skill).permit(:title)
     end 
 
 end  

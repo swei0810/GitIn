@@ -3,23 +3,29 @@ class Api::ExperienceItemsController < ApplicationController
 
 
     def show
-        @experience_item = ExperienceItem.find(params[:id])   #do i need routes sfor this 
+        @experience_item = ExperienceItem.find(params[:id]) 
     end
+
 
     def create 
         @experience_item = current_user.experience_items.new(experience_item_params)
         if @experience_item.save 
-            render 'api/users/show'
+            render :show 
         else
             render json: @experience_item.errors, status: 422
         end 
     end 
 
-    def edit 
-    end 
 
     def update 
+        @experience_item = ExperienceItem.find(params[:id]) 
+        if @experience_item.update(experience_item.params)
+            render :show 
+        else 
+            render json: @experience_item.errors, status: 422
+        end 
     end 
+
 
     def destroy 
         @experience_item = experience_item.find(params[:id]) 
@@ -29,8 +35,7 @@ class Api::ExperienceItemsController < ApplicationController
 
 
     private
-  
     def experience_item_params
-        params.require(:experience_item).permit(:title, :company, :location, :start_date)
+        params.require(:experience_item).permit(:title, :company, :location, :start_date, :end_date, :description)
     end
 end

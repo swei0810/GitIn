@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_220836) do
+ActiveRecord::Schema.define(version: 2019_08_02_152729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,16 +64,15 @@ ActiveRecord::Schema.define(version: 2019_08_01_220836) do
   create_table "experience_items", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
-    t.string "company", null: false
     t.string "location", null: false
     t.integer "start_date", null: false
     t.integer "end_date"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id", null: false
   end
 
-<<<<<<< HEAD
   create_table "interests", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "company_id", null: false
@@ -81,8 +80,6 @@ ActiveRecord::Schema.define(version: 2019_08_01_220836) do
     t.datetime "updated_at", null: false
   end
 
-=======
->>>>>>> ebf0fa0a46d7643947dbf96b59bea5c61dedaeab
   create_table "posts", force: :cascade do |t|
     t.integer "author_id", null: false
     t.text "body"

@@ -3,7 +3,6 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
           login!(@user)
-          # render "api/users/show"
           render :show 
         else
           render json: @user.errors.full_messages[0], status: 422
@@ -11,11 +10,7 @@ class Api::UsersController < ApplicationController
     end
 
 
-    def edit 
-    end 
-
-    
-    def update 
+    def update   #Do I need this 
     end 
     
   
@@ -27,7 +22,7 @@ class Api::UsersController < ApplicationController
     private
   
     def user_params
-      params.require(:user).permit(:email, :password)
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :location, :summary, :github_url, :headline)  #Do I take everything else? 
     end
   end
   
