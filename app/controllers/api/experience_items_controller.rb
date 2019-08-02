@@ -8,7 +8,9 @@ class Api::ExperienceItemsController < ApplicationController
 
 
     def create 
-        @experience_item = current_user.experience_items.new(experience_item_params)
+        # @experience_item = current_user.experience_items.new(experience_item_params)
+        #dont need experience_item_params
+        # @experience.company = Company.find_or_create_by(   )
         if @experience_item.save 
             render :show 
         else

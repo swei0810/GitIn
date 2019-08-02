@@ -9,6 +9,9 @@
 #  updated_at :datetime         not null
 #
 
+
+# author_type add_column for polymorphistic asosciation 
+
 class Post < ApplicationRecord 
     validates :author_id, presence: true 
     # has_many :likes 

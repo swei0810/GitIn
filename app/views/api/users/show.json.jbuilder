@@ -11,7 +11,7 @@ json.user do
 end 
 
 
-json.experience_items do 
+json.experienceItems do 
     @user.experience_items.each do |experience_item|
         json.set! experience_item.id do 
             json.extract! experience_item, :id, :user_id, :title, :company, :location, :start_date, :end_date, :description
@@ -20,7 +20,7 @@ json.experience_items do
 end 
 
 
-json.education_items do
+json.educationItems do
     @user.education_items.each do |education_item|
         json.set! education_item.id do 
             json.extract! @education_item, :id, :user_id, :school, :degree, :field, :start_yr, :end_yr, :activities

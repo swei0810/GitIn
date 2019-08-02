@@ -86,6 +86,134 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/education_item_actions.js":
+/*!****************************************************!*\
+  !*** ./frontend/actions/education_item_actions.js ***!
+  \****************************************************/
+/*! exports provided: RECEIVE_EDUCATION_ITEM, REMOVE_EDUCATION_ITEM, fetchEducationItem, createEducationItem, updateEducationeItem, deleteEducationItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EDUCATION_ITEM", function() { return RECEIVE_EDUCATION_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_EDUCATION_ITEM", function() { return REMOVE_EDUCATION_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchEducationItem", function() { return fetchEducationItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEducationItem", function() { return createEducationItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateEducationeItem", function() { return updateEducationeItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteEducationItem", function() { return deleteEducationItem; });
+/* harmony import */ var _util_education_item_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/education_item_api_util */ "./frontend/util/education_item_api_util.js");
+
+var RECEIVE_EDUCATION_ITEM = 'RECEIVE_EDUCATION_ITEM';
+var REMOVE_EDUCATION_ITEM = 'REMOVE_EDUCATION_ITEM';
+var fetchEducationItem = function fetchEducationItem(id) {
+  return function (dispatch) {
+    return _util_education_item_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchEducationItem"](id).then(function (educationItem) {
+      return dispatch(receiveEducationItem(educationItem));
+    });
+  };
+};
+var createEducationItem = function createEducationItem(educationItem) {
+  return function (dispatch) {
+    return _util_education_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createEducationItem"](educationItem).then(function (educationItem) {
+      return dispatch(receiveEducationItem(educationItem));
+    });
+  };
+};
+var updateEducationeItem = function updateEducationeItem(educationItem) {
+  return function (dispatch) {
+    return _util_education_item_api_util__WEBPACK_IMPORTED_MODULE_0__["updateEducationItem"](educationItem).then(function (educationItem) {
+      return dispatch(receiveEducationItem(educationItem));
+    });
+  };
+};
+var deleteEducationItem = function deleteEducationItem(educationItemId) {
+  return function (dispatch) {
+    return _util_education_item_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteEducationItem"](educationItemId).then(function (educationItem) {
+      return dispatch(removeEducationItem(educationItemId));
+    });
+  };
+};
+
+var receiveEducationItem = function receiveEducationItem(educationItem) {
+  return {
+    type: RECEIVE_EDUCATION_ITEM,
+    educationItem: educationItem
+  };
+};
+
+var removeEducationItem = function removeEducationItem(educationItemId) {
+  return {
+    type: REMOVE_EDUCATION_ITEM,
+    educationItemId: educationItemId
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/experience_item_actions.js":
+/*!*****************************************************!*\
+  !*** ./frontend/actions/experience_item_actions.js ***!
+  \*****************************************************/
+/*! exports provided: RECEIVE_EXPERIENCE_ITEM, REMOVE_EXPERIENCE_ITEM, fetchExperienceItem, createExperienceItem, updateExperienceItem, deleteExperienceItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EXPERIENCE_ITEM", function() { return RECEIVE_EXPERIENCE_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_EXPERIENCE_ITEM", function() { return REMOVE_EXPERIENCE_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchExperienceItem", function() { return fetchExperienceItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createExperienceItem", function() { return createExperienceItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateExperienceItem", function() { return updateExperienceItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteExperienceItem", function() { return deleteExperienceItem; });
+/* harmony import */ var _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/experience_item_api_util */ "./frontend/util/experience_item_api_util.js");
+
+var RECEIVE_EXPERIENCE_ITEM = 'RECEIVE_EXPERIENCE_ITEM';
+var REMOVE_EXPERIENCE_ITEM = 'REMOVE_EXPERIENCE_ITEM';
+var fetchExperienceItem = function fetchExperienceItem(id) {
+  return function (dispatch) {
+    return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchExperienceItem"](id).then(function (experienceItem) {
+      return dispatch(receiveExperienceItem(experienceItem));
+    });
+  };
+};
+var createExperienceItem = function createExperienceItem(experienceItem) {
+  return function (dispatch) {
+    return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createExperienceItem"](experienceItem).then(function (experienceItem) {
+      return dispatch(receiveExperienceItem(experienceItem));
+    });
+  };
+};
+var updateExperienceItem = function updateExperienceItem(experienceItem) {
+  return function (dispatch) {
+    return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["updateExperienceItem"](experienceItem).then(function (experienceItem) {
+      return dispatch(receiveExperienceItem(experienceItem));
+    });
+  };
+};
+var deleteExperienceItem = function deleteExperienceItem(experienceItemId) {
+  return function (dispatch) {
+    return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteExperienceItem"](experienceItemId).then(function (experienceItem) {
+      return dispatch(removeExperienceItem(experienceItemId));
+    });
+  };
+};
+
+var receiveExperienceItem = function receiveExperienceItem(experienceItem) {
+  return {
+    type: RECEIVE_EXPERIENCE_ITEM,
+    experienceItem: experienceItem
+  };
+};
+
+var removeExperienceItem = function removeExperienceItem(experienceItemId) {
+  return {
+    type: REMOVE_EXPERIENCE_ITEM,
+    experienceItemId: experienceItemId
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -158,6 +286,45 @@ var logout = function logout() {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function () {
       return dispatch(logoutCurrentUser());
     });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/user_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/user_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_USER, fetchUser, updateUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER", function() { return RECEIVE_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUser", function() { return updateUser; });
+/* harmony import */ var _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_api_util */ "./frontend/util/user_api_util.js");
+
+var RECEIVE_USER = 'RECEIVE_USER';
+var fetchUser = function fetchUser(id) {
+  return function (dispatch) {
+    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchUser"](id).then(function (user) {
+      return dispatch(receiveUser(user));
+    });
+  };
+};
+var updateUser = function updateUser(user) {
+  return function (dispatch) {
+    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__["updateUser"](user).then(function (user) {
+      return dispatch(receiveUser(user));
+    });
+  };
+};
+
+var receiveUser = function receiveUser(user) {
+  return {
+    type: RECEIVE_USER,
+    user: user
   };
 };
 
@@ -35419,6 +35586,49 @@ function valueEqual(a, b) {
 
 /***/ }),
 
+/***/ "./frontend/reducers/education_items_reducer.js":
+/*!******************************************************!*\
+  !*** ./frontend/reducers/education_items_reducer.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./frontend/node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_education_item_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/education_item_actions */ "./frontend/actions/education_item_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var educationItemsReducer = function educationItemsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_education_item_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_EDUCATION_ITEM"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.educationItem.id, action.educationItem));
+
+    case _actions_education_item_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_EDUCATION_ITEM"]:
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      delete newState[action.educationItemId];
+      return newState;
+
+    case RECEIVE_USER:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.educationItems);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (educationItemsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -35430,10 +35640,16 @@ function valueEqual(a, b) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./frontend/node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _experience_items_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experience_items_reducer */ "./frontend/reducers/experience_items_reducer.js");
+/* harmony import */ var _education_items_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./education_items_reducer */ "./frontend/reducers/education_items_reducer.js");
+
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  experienceItems: _experience_items_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  educationItem: _education_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -35455,6 +35671,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
+
+/***/ }),
+
+/***/ "./frontend/reducers/experience_items_reducer.js":
+/*!*******************************************************!*\
+  !*** ./frontend/reducers/experience_items_reducer.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./frontend/node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/experience_item_actions */ "./frontend/actions/experience_item_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+ //search action.payload 
+
+var experienceItemsReducer = function experienceItemsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_EXPERIENCE_ITEM"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.experienceItem.id, action.experienceItem));
+
+    case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_EXPERIENCE_ITEM"]:
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      delete newState[action.experienceItemId];
+      return newState;
+
+    case RECEIVE_USER:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.experienceItems);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (experienceItemsReducer);
 
 /***/ }),
 
@@ -35568,7 +35827,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./frontend/node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -35581,6 +35842,10 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_USER"]:
+      debugger;
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.user.id, action.user));
 
     default:
       return state;
@@ -35616,6 +35881,98 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/education_item_api_util.js":
+/*!**************************************************!*\
+  !*** ./frontend/util/education_item_api_util.js ***!
+  \**************************************************/
+/*! exports provided: fetchEducationItem, createEducationItem, updateEducationItem, deleteEducationItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchEducationItem", function() { return fetchEducationItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEducationItem", function() { return createEducationItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateEducationItem", function() { return updateEducationItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteEducationItem", function() { return deleteEducationItem; });
+var fetchEducationItem = function fetchEducationItem(id) {
+  $.ajax({
+    method: 'GET',
+    url: "api/education_items/".concat(id)
+  });
+};
+var createEducationItem = function createEducationItem(educationItem) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/education_items',
+    data: {
+      educationItem: educationItem
+    }
+  });
+};
+var updateEducationItem = function updateEducationItem(educationItem) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/education_items/edit/".concat(educationItem.id),
+    data: {
+      educationItem: educationItem
+    }
+  });
+};
+var deleteEducationItem = function deleteEducationItem(id) {
+  $.ajax({
+    method: 'DELETE',
+    url: "api/education_items/".concat(id)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/experience_item_api_util.js":
+/*!***************************************************!*\
+  !*** ./frontend/util/experience_item_api_util.js ***!
+  \***************************************************/
+/*! exports provided: fetchExperienceItem, createExperienceItem, updateExperienceItem, deleteExperienceItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchExperienceItem", function() { return fetchExperienceItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createExperienceItem", function() { return createExperienceItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateExperienceItem", function() { return updateExperienceItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteExperienceItem", function() { return deleteExperienceItem; });
+var fetchExperienceItem = function fetchExperienceItem(id) {
+  $.ajax({
+    method: 'GET',
+    url: "api/experience_items/".concat(id)
+  });
+};
+var createExperienceItem = function createExperienceItem(experienceItem) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/experience_items',
+    data: {
+      educationItem: educationItem
+    }
+  });
+};
+var updateExperienceItem = function updateExperienceItem(experienceItem) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/experience_items/edit/".concat(experienceItem.id),
+    data: {
+      educationItem: educationItem
+    }
+  });
+};
+var deleteExperienceItem = function deleteExperienceItem(id) {
+  $.ajax({
+    method: 'DELETE',
+    url: "api/experience_items/".concat(id)
+  });
+};
 
 /***/ }),
 
@@ -35715,6 +36072,35 @@ var logout = function logout() {
   return $.ajax({
     method: 'DELETE',
     url: '/api/session'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/user_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/user_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchUser, updateUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUser", function() { return updateUser; });
+var fetchUser = function fetchUser(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/users/".concat(id)
+  });
+};
+var updateUser = function updateUser(user) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/users/edit/".concat(user.id),
+    data: {
+      user: user
+    }
   });
 };
 
