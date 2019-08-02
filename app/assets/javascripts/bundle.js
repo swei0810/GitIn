@@ -839,7 +839,7 @@ var Splash = function Splash() {
     className: "splash-container-2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "welcome-2"
-  }, "Join your colleagues, classmates, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " and friends on LinkedIn."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Join your colleagues, classmates, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " and friends on GitIn."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/signup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "splash-button"

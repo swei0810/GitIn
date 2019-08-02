@@ -27,12 +27,17 @@ class User < ApplicationRecord
     #associations 
     has_many :experience_items
     has_many :education_items
-    has_many :companies,
-        through: :experience_items
-    has_many :posts
+    has_many :companies,  #you work for 
+        through: :experience_items, 
+        source: :company
+    has_many :posts,
+      primary_key: :id, 
+      foreign_key: :author_id, 
+      class_name: 'Post'
+    
     has_many :skills
-    has_many :interests
-    has_many :connections  #first degree connection 
+    has_many :interests   #companies you are interested in 
+    has_many :connections  
     # has_many :second_connections, 
     #     through: :connections, 
     #     source: :, 

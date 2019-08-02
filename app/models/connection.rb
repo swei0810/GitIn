@@ -15,9 +15,9 @@ class Connection < ApplicationRecord
     belongs_to :requester 
     belongs_to :requestee 
 
-    
-    has_many :second_connections 
-    has_many :third_connections, 
-        through: :second_connections 
+    has_many :connections # number of status that is approved, but how do i do this 
+    # has_many :second_connections 
+    # has_many :third_connections, 
+    #     through: :second_connections 
 
 end 

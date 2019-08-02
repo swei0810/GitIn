@@ -10,7 +10,11 @@
 #
 
 class Endorsement < ApplicationRecord 
-    belongs_to :user 
+    belongs_to :endorser, 
+        primary_key: :id, 
+        foreign_key: :user_id, 
+        class_name: 'User'
+        
     belongs_to :skill 
 
     

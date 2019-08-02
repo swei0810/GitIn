@@ -14,7 +14,7 @@ class Api::SessionsController < ApplicationController
         else
           render json: "Hmm, we don't recognize that email. Please try again.", status: 401
         end
-      end
+    end
     
       def destroy
         @user = current_user

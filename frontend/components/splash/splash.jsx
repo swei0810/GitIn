@@ -23,7 +23,7 @@ const Splash = () => {
             </div>
 
             <div className='splash-container-2'>
-                <p className='welcome-2'>Join your colleagues, classmates, <br/> and friends on LinkedIn.</p>
+                <p className='welcome-2'>Join your colleagues, classmates, <br/> and friends on GitIn.</p>
                 <Link to="/signup"><button className='splash-button'>Get started</button></Link>
                 <img className='splash-img-2' src={window.splash_img_2} />
             </div>

@@ -11,8 +11,14 @@
 
 class Post < ApplicationRecord 
     validates :author_id, presence: true 
-    has_many :likes 
-    has_many :comments 
+    # has_many :likes 
+
+    belongs_to :author #can be either a user or a company , how do you do this? 
+    
+    has_many :comments, 
+        primary_key: :id, 
+        foreign_key: :post_id, 
+        class_name: 'Comment'
 
 
 end 

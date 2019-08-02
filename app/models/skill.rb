@@ -12,12 +12,13 @@
 class Skill < ApplicationRecord 
     validates :user_id, :title, presence: true 
 
-    has_many :endorsments  #
+    belongs_to :user 
 
+    has_many :endorsments  
 
-    has_many :endorsers, #
-        primary_key: :id, 
-        foreign_key: :user_id, 
-        class_name: 'User'
+    has_many :endorsers, 
+        through: :endorsments, 
+        source: :endorser
+  
 
 end 

@@ -1,6 +1,13 @@
 class Api::SkillsController < ApplicationController
+    before_action :require_logged_in
+
+
+    def show
+        @skill = Skill.find(params[:id])   #do i need routes sfor this 
+    end
+
     def create 
-        @skill = ExperienceItem.new(skill_params)
+        @skill = current_user.skills.new(skill_params)
         if @skill.save 
             render 'api/users/show'
         else
@@ -15,6 +22,9 @@ class Api::SkillsController < ApplicationController
     end 
 
     def destroy 
+        @skill = skill.find(params[:id]) 
+        @skill.destroy 
+        render :show 
     end 
 
     private 
