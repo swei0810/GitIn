@@ -9,6 +9,10 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def index 
+      @users = User.all 
+      render :index #do I need this 
+    end 
 
     def update   #Do I need this 
     end 

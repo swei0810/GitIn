@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+// import { Link } from 'react-router-dom'; 
 
 
 class ExperienceItemShow extends React.Component {

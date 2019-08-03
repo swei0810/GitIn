@@ -1,7 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import ExperienceItemShowContainer from '../experience_items/experience_item_show_container';
+import CreateExperienceItemFormContainer from '../experience_items/create_experience_item_form_container'; 
+import EditExperienceItemFormContainer from '../experience_items/edit_experience_item_form_container'; 
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -10,11 +11,12 @@ function Modal({modal, closeModal}) {
   let component;
   switch (modal) {
     case 'edit experience':
-      component = <ExperienceItemShowContainer />;
+      component = <EditExperienceItemFormContainer />;
       break;
-    // case 'signup':
-    //   component = <SignupFormContainer />;
-    //   break;
+    case 'create experience': 
+      component = <CreateExperienceItemFormContainer />;
+      break; 
+    //more cases for other modals 
     default:
       return null;
   }
@@ -26,6 +28,7 @@ function Modal({modal, closeModal}) {
     </div>
   );
 }
+
 
 const mapStateToProps = state => {
   return {

@@ -1,6 +1,9 @@
 class Api::ExperienceItemsController < ApplicationController
     before_action :require_logged_in
 
+    def index 
+        @experience_items = ExperienceItem.All 
+    end 
 
     def show
         @experience_item = ExperienceItem.find(params[:id]) 

@@ -5,6 +5,8 @@ import {
     REMOVE_EDUCATION_ITEM
 } from '../actions/education_item_actions';
 
+import { RECEIVE_USER } from '../actions/user_actions'; 
+
 
 const educationItemsReducer = (state={}, action) => {
     Object.freeze(state); 
