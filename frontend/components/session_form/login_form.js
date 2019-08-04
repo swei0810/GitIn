@@ -19,6 +19,7 @@ class LoginForm extends React.Component {
       email: '',
       password: '', 
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateSubmit = this.validateSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
@@ -49,11 +50,9 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit() {
-    debugger
     const user = { email: this.state.email, password: this.state.password };
-    //need to pass up the id here!
-    debugger
-    this.props.processForm(user).then(() => this.props.history.push('/users/6'));  //have to change this 
+    //need to pass up the id here! hhow????
+    this.props.processForm(user).then(() => this.props.history.push('/profiles'));  //have to change this 
   }
 
   handleDemo(){

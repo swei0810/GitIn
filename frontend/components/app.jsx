@@ -34,7 +34,8 @@ const App = () => (
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <Route exact path="/" component={SplashContainer} />
-      <Route path="/users/:userId" component={Profile}/>
+      {/* <Route path="/users/:userId" component={Profile}/> */}
+      <Route exect path='/profiles' component={Profile} />
 
 
 

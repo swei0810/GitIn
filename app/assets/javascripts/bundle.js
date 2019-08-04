@@ -154,12 +154,12 @@ var removeEducationItem = function removeEducationItem(educationItemId) {
 /*!*****************************************************!*\
   !*** ./frontend/actions/experience_item_actions.js ***!
   \*****************************************************/
-/*! exports provided: RECEIVE_ALL_EXPERIENCE_ITEM, RECEIVE_EXPERIENCE_ITEM, REMOVE_EXPERIENCE_ITEM, fetchAllExperienceItems, fetchExperienceItem, createExperienceItem, updateExperienceItem, deleteExperienceItem */
+/*! exports provided: RECEIVE_ALL_EXPERIENCE_ITEMS, RECEIVE_EXPERIENCE_ITEM, REMOVE_EXPERIENCE_ITEM, fetchAllExperienceItems, fetchExperienceItem, createExperienceItem, updateExperienceItem, deleteExperienceItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_EXPERIENCE_ITEM", function() { return RECEIVE_ALL_EXPERIENCE_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_EXPERIENCE_ITEMS", function() { return RECEIVE_ALL_EXPERIENCE_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EXPERIENCE_ITEM", function() { return RECEIVE_EXPERIENCE_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_EXPERIENCE_ITEM", function() { return REMOVE_EXPERIENCE_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllExperienceItems", function() { return fetchAllExperienceItems; });
@@ -169,13 +169,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteExperienceItem", function() { return deleteExperienceItem; });
 /* harmony import */ var _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/experience_item_api_util */ "./frontend/util/experience_item_api_util.js");
 
-var RECEIVE_ALL_EXPERIENCE_ITEM = 'RECEIVE_ALL_EXPERIENCE_ITEM';
+var RECEIVE_ALL_EXPERIENCE_ITEMS = 'RECEIVE_ALL_EXPERIENCE_ITEMS';
 var RECEIVE_EXPERIENCE_ITEM = 'RECEIVE_EXPERIENCE_ITEM';
 var REMOVE_EXPERIENCE_ITEM = 'REMOVE_EXPERIENCE_ITEM';
 var fetchAllExperienceItems = function fetchAllExperienceItems() {
   return function (dispatch) {
     return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllExperienceItems"]().then(function (experienceItems) {
-      return dispatch(receiveAllExperienceItem(experienceItems));
+      return dispatch(receiveAllExperienceItems(experienceItems));
     });
   };
 };
@@ -208,9 +208,9 @@ var deleteExperienceItem = function deleteExperienceItem(experienceItemId) {
   };
 };
 
-var receiveAllExperienceItem = function receiveAllExperienceItem(experienceItems) {
+var receiveAllExperienceItems = function receiveAllExperienceItems(experienceItems) {
   return {
-    type: RECEIVE_ALL_EXPERIENCE_ITEM,
+    type: RECEIVE_ALL_EXPERIENCE_ITEMS,
     experienceItems: experienceItems
   };
 };
@@ -341,17 +341,27 @@ var logout = function logout() {
 /*!******************************************!*\
   !*** ./frontend/actions/user_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_USER, fetchUser, updateUser */
+/*! exports provided: RECEIVE_ALL_USERS, RECEIVE_USER, fetchAllUsers, fetchUser, updateUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER", function() { return RECEIVE_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUser", function() { return updateUser; });
 /* harmony import */ var _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_api_util */ "./frontend/util/user_api_util.js");
 
+var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 var RECEIVE_USER = 'RECEIVE_USER';
+var fetchAllUsers = function fetchAllUsers() {
+  return function (dispatch) {
+    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllUsers"]().then(function (users) {
+      return dispatch(receiveAllUsers(users));
+    });
+  };
+};
 var fetchUser = function fetchUser(id) {
   return function (dispatch) {
     return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchUser"](id).then(function (user) {
@@ -371,6 +381,13 @@ var receiveUser = function receiveUser(user) {
   return {
     type: RECEIVE_USER,
     user: user
+  };
+};
+
+var receiveAllUsers = function receiveAllUsers(users) {
+  return {
+    type: RECEIVE_ALL_USERS,
+    users: users
   };
 };
 
@@ -421,7 +438,8 @@ var App = function App() {
     path: "/",
     component: _splash_splash__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-    path: "/users/:userId",
+    exect: true,
+    path: "/profiles",
     component: _user_profile__WEBPACK_IMPORTED_MODULE_7__["default"]
   })));
 };
@@ -714,6 +732,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _experience_item_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./experience_item_show */ "./frontend/components/experience_items/experience_item_show.js");
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modal/modal */ "./frontend/components/modal/modal.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./frontend/node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/experience_item_actions */ "./frontend/actions/experience_item_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -737,43 +758,74 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  debugger;
+  return {
+    experienceItems: state.entities.experienceItems
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllExperienceItems: function fetchAllExperienceItems() {
+      return dispatch(Object(_actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_5__["fetchAllExperienceItems"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__["openModal"])(modal));
+    }
+  };
+};
+
 var ExperienceItemIndex =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(ExperienceItemIndex, _React$Component);
 
-  function ExperienceItemIndex() {
+  function ExperienceItemIndex(props) {
     _classCallCheck(this, ExperienceItemIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ExperienceItemIndex).apply(this, arguments));
+    debugger;
+    return _possibleConstructorReturn(this, _getPrototypeOf(ExperienceItemIndex).call(this, props));
   }
 
   _createClass(ExperienceItemIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      // debugger
       this.props.fetchAllExperienceItems();
     }
   }, {
     key: "render",
     value: function render() {
-      var experienceItems = this.props.experienceItems.map(function (experienceItem) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_item_show__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          expeirenceItem: experienceItem
-        }) //////////
-        ;
-      });
+      var _this = this;
+
+      // const {experienceItems} = this.props
+      // let experienceItemsDetail; 
+      // if (experienceItems) {
+      //      experienceItemsDetail = experienceItems.map( experienceItem => {
+      //       return (
+      //           <ExperienceItemShow 
+      //               expeirenceItem = {experienceItem}/> //////////
+      //       );
+      //   });
+      // }
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return openModal('create experience');
+          return _this.props.openModal('create experience');
         }
-      }, "Add Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, experienceItems));
+      }, "Add Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
     }
   }]);
 
   return ExperienceItemIndex;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // export default withRouter(ExperienceItemIndex);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(ExperienceItemIndex));
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(ExperienceItemIndex));
 
 /***/ }),
 
@@ -995,7 +1047,7 @@ function Modal(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    modal: state.ui.modal
+    modal: state.entities.modal
   };
 };
 
@@ -1139,15 +1191,13 @@ function (_React$Component) {
     value: function handleSubmit() {
       var _this3 = this;
 
-      debugger;
       var user = {
         email: this.state.email,
         password: this.state.password
-      }; //need to pass up the id here!
+      }; //need to pass up the id here! hhow????
 
-      debugger;
       this.props.processForm(user).then(function () {
-        return _this3.props.history.push('/users/6');
+        return _this3.props.history.push('/profiles');
       }); //have to change this 
     }
   }, {
@@ -1252,12 +1302,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
-  debugger; // const userId = parseInt(match.params.userId);
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var user = state.entities.users[ownProps.match.params.userId]; // const user = state.users[ownProps.match.params.id];
+  // const userId = parseInt(match.params.userId);
 
-  debugger;
   return {
-    // userId: userId, 
+    user: user,
     errors: state.errors.session,
     formType: 'Sign in',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -36259,6 +36309,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _experience_items_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experience_items_reducer */ "./frontend/reducers/experience_items_reducer.js");
 /* harmony import */ var _education_items_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./education_items_reducer */ "./frontend/reducers/education_items_reducer.js");
+/* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+
 
 
 
@@ -36266,7 +36318,8 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   experienceItems: _experience_items_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  educationItem: _education_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  educationItems: _education_items_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -36316,7 +36369,7 @@ var experienceItemsReducer = function experienceItemsReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_EXPERIENCE_ITEM"]:
+    case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_EXPERIENCE_ITEMS"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, action.experienceItems);
 
     case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_EXPERIENCE_ITEM"]:
@@ -36336,6 +36389,36 @@ var experienceItemsReducer = function experienceItemsReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (experienceItemsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/modal_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/modal_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return modalReducer; });
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+function modalReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
+      return action.modal;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
+      return null;
+
+    default:
+      return state;
+  }
+}
 
 /***/ }),
 
@@ -36462,6 +36545,9 @@ var usersReducer = function usersReducer() {
   Object.freeze(state);
 
   switch (action.type) {
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ALL_USERS"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, action.users);
+
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
@@ -36710,13 +36796,20 @@ var logout = function logout() {
 /*!****************************************!*\
   !*** ./frontend/util/user_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchUser, updateUser */
+/*! exports provided: fetchAllUsers, fetchUser, updateUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUser", function() { return updateUser; });
+var fetchAllUsers = function fetchAllUsers() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/users'
+  });
+};
 var fetchUser = function fetchUser(id) {
   return $.ajax({
     method: 'GET',

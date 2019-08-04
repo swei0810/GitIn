@@ -1,17 +1,13 @@
 import * as APIUtil from '../util/experience_item_api_util';
 
-export const RECEIVE_ALL_EXPERIENCE_ITEM = 'RECEIVE_ALL_EXPERIENCE_ITEM';
+export const RECEIVE_ALL_EXPERIENCE_ITEMS = 'RECEIVE_ALL_EXPERIENCE_ITEMS';
 export const RECEIVE_EXPERIENCE_ITEM = 'RECEIVE_EXPERIENCE_ITEM'; 
 export const REMOVE_EXPERIENCE_ITEM = 'REMOVE_EXPERIENCE_ITEM'; 
 
-
-
-export const fetchAllExperienceItems = () => dispatch => {
-    return APIUtil.fetchAllExperienceItems()
-        .then(experienceItems => {
-            return dispatch(receiveAllExperienceItem(experienceItems));
-        });
-};
+export const fetchAllExperienceItems = () => dispatch => (
+    APIUtil.fetchAllExperienceItems().then(experienceItems => dispatch(receiveAllExperienceItems(experienceItems)))
+);
+  
 
 export const fetchExperienceItem = id => dispatch => {
     return APIUtil.fetchExperienceItem(id)
@@ -42,8 +38,8 @@ export const deleteExperienceItem = experienceItemId => dispatch => {
 };
 
 
-const receiveAllExperienceItem = (experienceItems) => ({
-    type: RECEIVE_ALL_EXPERIENCE_ITEM, 
+const receiveAllExperienceItems = (experienceItems) => ({
+    type: RECEIVE_ALL_EXPERIENCE_ITEMS, 
     experienceItems
 })
 

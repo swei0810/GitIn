@@ -5,7 +5,7 @@ json.user do
     json.set! @user.id do 
         json.extract! @user, :id, :email, :first_name, :last_name, :location, :summary, :github_url
         json.experienceIds @user.experience_items.pluck(:id)
-        json.educationIds @user.education_items.pluck(:id)  #did not like education_items_ids syntactic suger for same thing as above 
+        json.educationIds @user.education_items.pluck(:id)  
         json.skillIds @user.skills.pluck(:id)
     end 
 end 

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { login, receiveErrors, clearErrors } from '../../actions/session_actions';
 import LoginForm from './login_form';
 
-const mapStateToProps = (state) => {
-  debugger
+const mapStateToProps = (state, ownProps) => {
+  const user = state.entities.users[ownProps.match.params.userId];
+  // const user = state.users[ownProps.match.params.id];
   // const userId = parseInt(match.params.userId);
-  debugger
   return {
-    // userId: userId, 
+    user, 
     errors: state.errors.session,
     formType: 'Sign in',
     navLink: <Link to="/signup">Join now</Link>,

@@ -2,7 +2,7 @@ class Api::ExperienceItemsController < ApplicationController
     before_action :require_logged_in
 
     def index 
-        @experience_items = ExperienceItem.All 
+        @experience_items = ExperienceItem.all 
     end 
 
     def show
