@@ -6,13 +6,12 @@ import { connect } from 'react-redux';
 import { fetchExperienceItem } from '../../actions/experience_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
-// const mapStateToProps = (state, ownProps) => {
-//     debugger 
-//     return {
-//         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
-//         experienceItem:  Object.values(state.entities.users.undefined.experienceItem)
-//     }
-// };
+const mapStateToProps = (state, ownProps) => {
+    return {
+        // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
+        experienceItem:  state.entities.experienceItems[ownProps.experienceId]
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     fetchExperienceItem: id => dispatch(fetchExperienceItem(id)), 
@@ -27,19 +26,21 @@ const mapDispatchToProps = dispatch => ({
 
 class ExperienceItemShow extends React.Component {
     componentDidMount() {
-        this.props.experienceItem;
-        // this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
+        this.props.fetchExperienceItem(this.props.experienceId);
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.experienceItem.id != this.props.match.params.experienceItemId) {
-    //         this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (prevProps.experienceId!= this.props.experienceId) {
+            this.props.fetchExperienceItem(this.props.experienceId);
+        }
+    }
 
 
     render() {
         const {experienceItem} = this.props; 
+        if (!experienceItem) {
+            return null; 
+        }
         return (
             <div > 
                 {/* <div> 
@@ -54,7 +55,7 @@ class ExperienceItemShow extends React.Component {
                         <div className='item-title'>
                             <Modal />
                             <div className='item-title'>{experienceItem.title}</div>
-                            <i class="fas fa-pencil-alt" onClick={() => this.props.openModal('edit experience')}></i>
+                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit experience')}></i>
                         </div>
                         <div className='item-sub'>Company name goes here</div>
                         <div className='item-sub-2'>Date goes here</div>
@@ -75,4 +76,4 @@ class ExperienceItemShow extends React.Component {
 }
 
 // export default ExperienceItemShow
-export default connect(null, mapDispatchToProps)(ExperienceItemShow); 
+export default connect(mapStateToProps, mapDispatchToProps)(ExperienceItemShow); 

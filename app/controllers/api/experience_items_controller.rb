@@ -11,9 +11,10 @@ class Api::ExperienceItemsController < ApplicationController
 
 
     def create 
-        # @experience_item = current_user.experience_items.new(experience_item_params)
+        @experience_item = current_user.experience_items.new(experience_item_params)
         #dont need experience_item_params
-        # @experience.company = Company.find_or_create_by(   )
+        @experience_item.company= Company.find_or_create_by(name: params[:experienceItem][:company]);
+        debugger
         if @experience_item.save 
             render :show 
         else
@@ -41,6 +42,6 @@ class Api::ExperienceItemsController < ApplicationController
 
     private
     def experience_item_params
-        params.require(:experience_item).permit(:title, :company, :location, :start_date, :end_date, :description)
+        params.require(:experience_item).permit(:title, :location, :start_date, :end_date, :description)
     end
 end

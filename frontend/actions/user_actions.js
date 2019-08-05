@@ -15,9 +15,9 @@ export const updateUser = user => dispatch => (
     APIUtil.updateUser(user).then(user => (dispatch(receiveUser(user))))
 )
 
-const receiveUser = user => ({
+const receiveUser = payload => ({
     type: RECEIVE_USER, 
-    user  
+    payload  
 })
 
 const receiveAllUsers = (users) => ({

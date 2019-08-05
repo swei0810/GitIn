@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import { fetchEducationItem } from '../../actions/education_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
-// const mapStateToProps = (state, ownProps) => {
-//     debugger 
-//     return {
-//         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
-//         experienceItem:  Object.values(state.entities.users.undefined.experienceItem)
-//     }
-// };
+const mapStateToProps = (state, ownProps) => {
+    return {
+        // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
+        educationItem:  state.entities.educationItems[ownProps.educationId]
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     fetchEducationItem: id => dispatch(fetchEducationItem(id)), 
@@ -25,8 +24,7 @@ const mapDispatchToProps = dispatch => ({
 
 class EducationItemShow extends React.Component {
     componentDidMount() {
-        this.props.educationItem;
-        // this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
+        this.props.fetchEducationItem(this.props.educationId);
     }
 
     // componentDidUpdate(prevProps) {
@@ -38,6 +36,9 @@ class EducationItemShow extends React.Component {
 
     render() {
         const {educationItem} = this.props; 
+        if (!educationItem) {
+            return null; 
+        }
         return (
             <div>
             <div className='item'>
@@ -48,8 +49,8 @@ class EducationItemShow extends React.Component {
                     <div className='item-info'>
                         <div className='item-title'> 
                             <Modal />
-                            <div classname='item-title'>{educationItem.school}</div>
-                            <i class="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education')}></i>
+                            <div className='item-title'>{educationItem.school}</div>
+                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education')}></i>
                         </div> 
                         <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
                         <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>
@@ -66,4 +67,4 @@ class EducationItemShow extends React.Component {
 }
 
 // export default ExperienceItemShow
-export default connect(null, mapDispatchToProps)(EducationItemShow); 
+export default connect(mapStateToProps, mapDispatchToProps)(EducationItemShow); 

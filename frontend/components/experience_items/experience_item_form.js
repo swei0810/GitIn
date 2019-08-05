@@ -18,7 +18,7 @@ class ExperienceItemForm extends React.Component {
     //renderErrors
 
     handleSubmit(e) {
-        e.preventDeafult(); 
+        e.preventDefault(); 
         this.props.processForm(this.state).then(() => this.props.history.push('/'));
     }
 
@@ -50,8 +50,8 @@ class ExperienceItemForm extends React.Component {
                         <input
                             className='modal-input'
                             type='text'
-                            // value={this.state.company}
-                            // onChange={this.update('company')}
+                            value={this.state.company}
+                            onChange={this.update('company')}
                             placeholder='Ex: Microsoft'/>
                     </label> 
                     <br/>
@@ -80,7 +80,8 @@ class ExperienceItemForm extends React.Component {
                         <textarea 
                             rows="4" cols="99"
                             onChange={this.update('description')}
-                        >{this.state.description}</textarea>
+                            value={this.state.description}
+                        />
                         {/* <input
                             className='modal-input-description'
 

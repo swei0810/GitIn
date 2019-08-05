@@ -46,6 +46,12 @@ class User < ApplicationRecord
     #     source: :, 
 
 
+    has_one_attached :photo 
+
+
+
+
+
     def total_connections 
         #count the number of total connections a user has 
         #In views, can call @user.total_connections 

@@ -9,6 +9,9 @@
 
 User.delete_all
 Company.delete_all 
+ExperienceItem.delete_all 
+EducationItem.delete_all 
+
 
 demo = User.create!(email: 'demo@gmail.com' , 
                    password: 'hunter12', 

@@ -6,6 +6,7 @@ import {
 } from '../actions/education_item_actions';
 
 import { RECEIVE_USER } from '../actions/user_actions'; 
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 
 const educationItemsReducer = (state={}, action) => {
@@ -18,7 +19,9 @@ const educationItemsReducer = (state={}, action) => {
             delete newState[action.educationItemId]; 
             return newState; 
         case RECEIVE_USER:
-            return merge({}, state, action.educationItems)  
+            return merge({}, state, action.payload.educationItems)  
+        case RECEIVE_CURRENT_USER: 
+            return merge({}, state, action.payload.educationItems)
         default: 
             return state; 
     }

@@ -12,6 +12,7 @@ class Api::EducationItemsController < ApplicationController
 
 
     def create 
+        # params[e]
         @education_item = current_user.education_items.new(education_item_params)
         if @education_item.save 
             render :show 

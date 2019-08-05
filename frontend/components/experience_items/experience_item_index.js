@@ -8,9 +8,9 @@ import {openModal} from '../../actions/modal_actions'
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return { 
-      experienceItems:  Object.values(state.entities.users.undefined.experienceItems) //HAVE TO CHANGE THE STATE
+      // experienceItems:  Object.values(state.entities.users.undefined.experienceItems) //HAVE TO CHANGE THE STATE
   }
 
 }; 
@@ -34,17 +34,10 @@ class ExperienceItemIndex extends React.Component {
   }
 
   render() {
-    const {experienceItems} = this.props
-    // debugger
-    // let experienceItemsDetail; 
-    // if (experienceItems) {
-    //      experienceItemsDetail = experienceItems.map( experienceItem => {
-    //       return (
-    //           <ExperienceItemShow 
-    //               expeirenceItem = {experienceItem}/> //////////
-    //       );
-    //   });
-    // }
+    const {experienceIds} = this.props; 
+    if (!experienceIds) {
+      return null; 
+    }
 
     return (
       <div>
@@ -52,11 +45,12 @@ class ExperienceItemIndex extends React.Component {
              <p className='section-header'>Experience</p>
             <Modal />  
             <div className='icon'>
-            <i  class="fas fa-plus" onClick={() => this.props.openModal('create experience')}></i>
+            <i  className="fas fa-plus" onClick={() => this.props.openModal('create experience')}></i>
             </div> 
           </div> 
         <ul>
-          {experienceItems.map(experienceItem => <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem}/>)}
+          {/* {experienceItems.map(experienceItem => <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem}/>)} */}
+          {experienceIds.map(id=> <ExperienceItemShow key={id} experienceId={id} />    )}
         </ul>
       </div>
     );

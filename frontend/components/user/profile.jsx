@@ -3,14 +3,14 @@ import React from "react"
 import { withRouter } from 'react-router-dom'; 
 import ExperienceItemIndex from "../experience_items/experience_item_index";
 import EducationItemIndex from '../education_items/education_item_index';
-import ProfileSummary from '../user/profile_summary';
-import ProfileAbout from '../user/profile-about';
-import ProfileNavbar from '../user/profile_nav';
+import ProfileSummary from './profile_summary';
+import ProfileAbout from './profile-about';
+import ProfileNavbar from './profile_nav';
 
 class Profile extends React.Component {
 
     componentDidMount() {
-
+        this.props.fetchUser(this.props.match.params.userId);
     }
 
     render() {
@@ -21,19 +21,19 @@ class Profile extends React.Component {
                 
 
                 <div className='profile-summary'> 
-                    <ProfileSummary />
+                    <ProfileSummary user={this.props.user} />
                 </div>
 
                 <div className='profile-about'> 
-                    <ProfileAbout />
+                    <ProfileAbout user={this.props.user} />
                 </div>
 
                 <div className='experience-item-container'>
-                    <ExperienceItemIndex />
+                    <ExperienceItemIndex experienceIds={this.props.user.experienceIds} />
                 </div> 
 
                 <div className='education-item-container'>
-                    <EducationItemIndex />
+                    <EducationItemIndex educationIds={this.props.user.educationIds} />
                 </div> 
             </div>
             </div>

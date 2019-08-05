@@ -5,10 +5,9 @@ import { updateExperienceItem, fetchExperienceItem } from '../../actions/experie
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger 
     //FIX THIS 
     const defaultexperienceItem = {title:'', company:'', location:'', start_date: null, end_date: null, description: '' }; 
-    const experienceItem = state.entities.experienceItems[ownProps.match.params.experienceItemId] || defaultexperienceItem; 
+    const experienceItem =state.entities.experienceItems[ownProps.experienceId] || defaultexperienceItem; 
     const formType = 'Edit experience'; 
     return {experienceItem, formType};
 }; 
@@ -25,6 +24,8 @@ const mapDispatchToProps = (dispatch) => {
 
 class EditExpeienceItemForm extends React.Component {
     componentDidMount() {
+        debugger
+        //fetching the experience item wrong 
         this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
     }
 

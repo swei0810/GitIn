@@ -57,3 +57,20 @@
     justify-content: space-between;
     flex-direction: row; 
   }
+
+
+  .select-yr, .select-yr-2, .start-yr, .end-yr {
+    width: 100%; 
+    height: 32px; 
+  }
+  
+  .select-yr-2{
+    margin-left: 10px;
+
+  }
+  .start-yr{
+    margin-right: 10px; 
+    
+  }
+
+

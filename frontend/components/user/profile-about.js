@@ -1,20 +1,16 @@
 
 import React from "react";
 import { connect } from 'react-redux'; 
+import { fetchUser }  from '../../actions/user_actions';
 
-const mapStateToProps = (state, ownProps) => {
-    
-    // const user = state.entities.users[ownProps.match.params.userId];
-    const user = state.entities.users.undefined
-    return {
-        user
-    }
-}
 
 class ProfileAbout extends React.Component {
     render() {
+        
         const {user} = this.props;
-        // debugger doesn't work?
+        if (!user.summary) {
+            return null; 
+        }
         return (
             <div > 
                 <p className='section-header'>About</p>
@@ -26,4 +22,4 @@ class ProfileAbout extends React.Component {
 }
 
 // export default ProfileAbout
-export default connect(mapStateToProps, null)(ProfileAbout); 
+export default ProfileAbout; 

@@ -11,7 +11,7 @@ import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state) => {
   return { 
-     educationItems: Object.values(state.entities.users.undefined.educationItems)
+    //  educationItems: Object.values(state.entities.users.undefined.educationItems) //THIS HAS TO CHANGE 
       // educationItems:  state.entities.users.undefined.educationItems //change THIS
   }
 
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetchAllEducationItems: () => dispatch(fetchAllEducationItems()),
+      // fetchAllEducationItems: () => dispatch(fetchAllEducationItems()),
       openModal: modal => dispatch(openModal(modal))
   };
 };
@@ -32,11 +32,14 @@ class EducationItemIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllEducationItems();
+    // this.props.fetchAllEducationItems();
   }
 
   render() {
-    const {educationItems} = this.props;
+    const {educationIds} = this.props;
+    if (!educationIds) {
+      return null; 
+    }
 
     return (
       <div>
@@ -44,11 +47,11 @@ class EducationItemIndex extends React.Component {
             <p className='section-header'>Education</p>
             <Modal /> 
             <div className='icon'>
-              <i class="fas fa-plus"  onClick={() => this.props.openModal('create education')} ></i>
+              <i className="fas fa-plus"  onClick={() => this.props.openModal('create education')} ></i>
             </div> 
           </div>
         <ul>
-           {educationItems.map(educationItem => <EducationItemShow key={educationItem.id} educationItem={educationItem} />)}
+           {educationIds.map(id => <EducationItemShow key={id} educationId={id} />)}
         </ul>
       </div>
     );

@@ -13,9 +13,9 @@ export const clearErrors = () => ({
 
 
 
-export const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = payload => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser
+  payload
 });
 
 export const logoutCurrentUser = () => ({

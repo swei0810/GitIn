@@ -18,7 +18,7 @@ export const createExperienceItem = (experienceItem) => (
     $.ajax({
         method: 'POST', 
         url: 'api/experience_items', 
-        data: {educationItem}
+        data: {experienceItem}
     })
 );
 
@@ -26,7 +26,7 @@ export const updateExperienceItem = (experienceItem) => (
     $.ajax({
         method: 'PATCH', 
         url: `api/experience_items/edit/${experienceItem.id}`, 
-        data: {educationItem}   
+        data: {experienceItem}   
     })
 );
 

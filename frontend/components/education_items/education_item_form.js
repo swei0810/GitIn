@@ -16,7 +16,7 @@ class EducationItemForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDeafult(); 
-        this.props.processForm(this.state).then(() => this.props.history.push('/'));
+        this.props.processForm(this.state).then(() => this.props.history.push('/')); //this has to change 
     }
 
     render () {
@@ -60,9 +60,9 @@ class EducationItemForm extends React.Component {
                     <br/>
                     <br/>
                     <div className='modal-yr'> 
-                        <div>
+                        <div className='select-yr'>
                         <label>Start Year <br/>
-                            <select> 
+                            <select className='start-yr'> 
                                 <option>2019</option>
                                 <option>1900</option>
                             </select> 
@@ -70,9 +70,9 @@ class EducationItemForm extends React.Component {
                         </div> 
 
                         {/* HOW DO I UPDATE THESE YEARS */}
-                        <div> 
+                        <div className='select-yr-2'> 
                         <label>End Year (or expected) <br/>
-                            <select> 
+                            <select className='end-yr'> 
                                 <option>2026</option>
                                 <option>1900</option>
                             </select> 
@@ -83,7 +83,7 @@ class EducationItemForm extends React.Component {
                     <br/>
                     <label>Activities and societies <br/>
                         <textarea 
-                                rows="4" cols="99"
+                                rows="8" cols="99"
                                 onChange={this.update('activities')}
                             >{this.state.activities}</textarea>
                         {/* <input
@@ -92,7 +92,7 @@ class EducationItemForm extends React.Component {
                             onChange={this.update('activities')}/> */}
                     </label> 
                     <br/> 
-                    Ex: Alpha Phi Omega, Marching Band, Volleyball
+                    <p className='ed-footer'> Ex: Alpha Phi Omega, Marching Band, Volleyball</p>
                     <br/> 
                     <br/>
 

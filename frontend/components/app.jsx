@@ -12,7 +12,7 @@ import GreetingContainer from './greeting/greeting_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import SplashContainer from './splash/splash';
-import Profile from './user/profile';
+import Profile from './user/profile_container'; 
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -35,7 +35,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <Route exact path="/" component={SplashContainer} />
       {/* <Route path="/users/:userId" component={Profile}/> */}
-      <Route exect path='/profiles' component={Profile} />
+      <Route exect path='/git/:userId' component={Profile} />
 
 
 
