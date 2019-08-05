@@ -41,6 +41,7 @@ class ExperienceItemShow extends React.Component {
         if (!experienceItem) {
             return null; 
         }
+
         return (
             <div > 
                 {/* <div> 
