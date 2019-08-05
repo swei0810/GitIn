@@ -66,6 +66,52 @@ class ExperienceItemForm extends React.Component {
                     </label> 
                     <br/>
                     <br/>
+                    <input type="checkbox" />I am currently working in this role
+                    <br/>
+                    <br/>
+
+                    <div className='modal-yr'> 
+
+                            <div className='select-yr'>
+                            <label>Start Date <br/>
+                                <select className='start-yr'> 
+                                        <option>January</option>
+                                        <option>December</option>
+                                </select> 
+                                <br/>
+
+                                <select className='start-yr'> 
+                                    <option>2019</option>
+                                    <option>1900</option>
+                                </select> 
+     
+
+
+                            </label> 
+                            </div> 
+
+                            <div className='select-yr-2'> 
+                            <label>End Date <br/>
+                                <select className='end-yr'> 
+                                        <option>January</option>
+                                        <option>December</option>
+                                </select> 
+                                <br/>
+                                
+
+                                <select className='end-yr'> 
+                                    <option>2026</option>
+                                    <option>1900</option>
+                                </select> 
+                            </label>
+                            </div> 
+                    </div> 
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
                     <label>Headline <br/>
                         <input
                             className='modal-input'

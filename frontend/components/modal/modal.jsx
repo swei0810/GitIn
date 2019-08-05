@@ -7,14 +7,34 @@ import CreateEducationItemFormContainer from '../education_items/create_educatio
 import EditEducationItemFormContainer from '../education_items/edit_education_item_form_container'; 
 
 
-function Modal({modal, closeModal}) {
+function Modal(props) {
+
+  const { closeModal } = props;
+  let modal; 
+  let educationItem;
+  let experienceItem;
+
+  if (props.modal && typeof props.modal === 'object') {
+    modal = props.modal.modal;
+
+    if (props.modal.experienceItem) {
+      experienceItem = props.modal.experienceItem;
+    } else if (props.modal.educationItem) {
+      educationItem = props.modal.educationItem;
+    }
+  } else {
+    modal = props.modal;
+  }
+
+
+
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
     case 'edit experience':
-      component = <EditExperienceItemFormContainer />;
+      component = <EditExperienceItemFormContainer experienceItem={experienceItem}/>;
       break;
     case 'create experience': 
       component = <CreateExperienceItemFormContainer />;
@@ -23,7 +43,7 @@ function Modal({modal, closeModal}) {
        component = <CreateEducationItemFormContainer />;
        break; 
     case 'edit education':
-       component = <EditEducationItemFormContainer />; 
+       component = <EditEducationItemFormContainer educationItem={educationItem} />; 
        break; 
 
     default:

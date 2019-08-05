@@ -14,6 +14,7 @@ class Profile extends React.Component {
     }
 
     render() {
+        debugger 
         return (
             <div> 
                 <ProfileNavbar />

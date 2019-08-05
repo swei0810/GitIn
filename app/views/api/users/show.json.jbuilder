@@ -2,7 +2,7 @@
 # json.partial! "api/users/user", user: @user
 
 json.user do
-        json.extract! @user, :id, :email, :first_name, :last_name, :location, :summary, :github_url
+        json.extract! @user, :id, :email, :first_name, :last_name, :location, :summary, :github_url, :headline
         json.experienceIds @user.experience_items.pluck(:id)
         json.educationIds @user.education_items.pluck(:id)  
         json.skillIds @user.skills.pluck(:id)

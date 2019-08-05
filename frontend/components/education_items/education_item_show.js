@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchEducationItem: id => dispatch(fetchEducationItem(id)), 
-    openModal: modal => dispatch(openModal(modal))
+    openModal: (modal,info) => dispatch(openModal(modal, info))
 
 })
 
@@ -50,7 +50,7 @@ class EducationItemShow extends React.Component {
                         <div className='item-title'> 
                             <Modal />
                             <div className='item-title'>{educationItem.school}</div>
-                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education')}></i>
+                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', educationItem)}></i>
                         </div> 
                         <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
                         <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>

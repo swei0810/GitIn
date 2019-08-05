@@ -1,6 +1,16 @@
 import React from 'react'; 
 import { withRouter } from 'react-router-dom'; 
 
+function date() {
+    var start = 1900;
+    var end = new Date().getFullYear();
+    var options = "";
+    for(var year = start ; year <=end; year++){
+    options += "<option>"+ year +"</option>";
+    }
+    return options 
+}
+
 class EducationItemForm extends React.Component {
     constructor(props) {
         super(props); 
@@ -19,7 +29,10 @@ class EducationItemForm extends React.Component {
         this.props.processForm(this.state).then(() => this.props.history.push('/')); //this has to change 
     }
 
+
+
     render () {
+        const year = date();
         return (
             <div> 
                 <div className='modal-header'> 
@@ -62,10 +75,15 @@ class EducationItemForm extends React.Component {
                     <div className='modal-yr'> 
                         <div className='select-yr'>
                         <label>Start Year <br/>
+                        
                             <select className='start-yr'> 
-                                <option>2019</option>
-                                <option>1900</option>
+                                {/* <option>2019</option>
+                                <option>1900</option> */}
+                                {year}
+
                             </select> 
+
+                            
                         </label>   
                         </div> 
 

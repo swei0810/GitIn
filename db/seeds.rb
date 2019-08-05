@@ -20,7 +20,7 @@ demo = User.create!(email: 'demo@gmail.com' ,
                    location: 'New York, NY', 
                    summary:'I am currently participating in a 12-week long software development bootcamp at App Academy to become a full-stack developer. I am thrilled to be participating in a highly-selective study abroad group in Geneva, Switzerland, for upcoming Spring. I will be taking classes at The Graduate Institute (IHEID) for International studies and French, while pursing a 14-week part-time internship in an IGO or INGO. As a Computer Science and International Relations double-major, I am particularly interested in ways we can use technology for social justice. My professional interests include software development, cyber security and entrepreneurship. I am actively looking for internships for Summer 2020 in software engineering. ', 
                    github_url:'', 
-                   headline:'')
+                   headline:'Computer Science & International Relations Student at Colgate University')
 
 app = Company.create!(name:'App Academy', 
                      field:'Computer Software', 
