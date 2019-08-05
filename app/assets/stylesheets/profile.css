@@ -1,0 +1,69 @@
+.profile {
+    display: flex; 
+    justify-content: space-between; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.experience-item-container, .profile-about {
+    border: 1px solid darkgrey;
+    display: flex; 
+    margin: 10px; 
+    width: 800px;
+
+}
+
+.education-item-container{
+    border: 1px solid darkgrey;
+    width: 800px;
+    display: flex; 
+    margin: 10px; 
+}
+
+.profile-background {
+    position: relative;
+    width: 100%;
+    padding-bottom: 25%;
+}
+
+.profile-image {
+    width: 170px;
+    height: 173px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 3px solid white;
+    /* position: absolute; */
+    /* top: 90px;
+    left: 35px; */
+}
+
+.profile-image-circle {
+    position: absolute; 
+    padding: 25px; 
+    top: 70px;
+}
+
+
+.profile-image-container {
+    width: 800px; 
+    height: 400px; 
+    background-color: white; 
+    border: 1px solid darkgrey;
+
+}
+
+.section-heading {
+    font-size: 2rem;
+    line-height: 1.4;
+    font-weight: 400;
+    color: rgba(0,0,0,.9);
+    text-align: left; 
+}
+
+
+.modal-input {
+    width: 400px; 
+    padding: 7px;
+    font-family: inherit;
+    font-size: inherit;
+}

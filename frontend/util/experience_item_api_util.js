@@ -30,9 +30,9 @@ export const updateExperienceItem = (experienceItem) => (
     })
 );
 
-export const deleteExperienceItem = (id) => {
+export const deleteExperienceItem = (id) => (
     $.ajax({
         method: 'DELETE', 
         url: `api/experience_items/${id}`   
     })
-};
+);

@@ -1,9 +1,17 @@
-export const fetchEducationItem = id => {
+export const fetchAllEducationItems = () => (
+    $.ajax({
+        method: 'GET', 
+        url: 'api/education_items'
+    })
+)
+
+
+export const fetchEducationItem = id => (
     $.ajax({
         method: 'GET', 
         url: `api/education_items/${id}`
     })
-;}
+);
 
 export const createEducationItem = (educationItem) => (
     $.ajax({
@@ -21,9 +29,9 @@ export const updateEducationItem = (educationItem) => (
     })
 );
 
-export const deleteEducationItem = (id) => {
+export const deleteEducationItem = (id) => (
     $.ajax({
         method: 'DELETE', 
         url: `api/education_items/${id}`   
     })
-};
+);

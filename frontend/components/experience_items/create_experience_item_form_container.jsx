@@ -6,7 +6,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const experienceItem = {title:'', company:'', location:'', start_date: null, end_date: null, description: '' }; 
-    const formType = 'Create Experience Item'; 
+    const formType = 'Add experience'; 
     return {experienceItem, formType}; 
 }; 
 

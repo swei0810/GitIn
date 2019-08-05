@@ -9,9 +9,8 @@ import {openModal} from '../../actions/modal_actions'
 
 
 const mapStateToProps = (state) => {
-  debugger 
   return { 
-      experienceItems:  state.entities.experienceItems
+      experienceItems:  Object.values(state.entities.users.undefined.experienceItems) //HAVE TO CHANGE THE STATE
   }
 
 }; 
@@ -27,17 +26,16 @@ const mapDispatchToProps = dispatch => {
 class ExperienceItemIndex extends React.Component {
 
   constructor(props) {
-    debugger
     super(props); 
   }
 
   componentDidMount() {
-    // debugger
     this.props.fetchAllExperienceItems();
   }
 
   render() {
-    // const {experienceItems} = this.props
+    const {experienceItems} = this.props
+    // debugger
     // let experienceItemsDetail; 
     // if (experienceItems) {
     //      experienceItemsDetail = experienceItems.map( experienceItem => {
@@ -48,15 +46,15 @@ class ExperienceItemIndex extends React.Component {
     //   });
     // }
 
-    debugger 
     return (
       <div>
           {/* is this right  */}
+          <p className='section-heading'>Experience</p>
          <Modal />  
          <button onClick={() => this.props.openModal('create experience')}>Add Experience</button>
-         {/* <button onClick={this.props.openModal('create experience')}>Add Experience </button> */}
+         {/* <i class="fas fa-pen"></i> */}
         <ul>
-          {/* {experienceItemsDetail} */}
+          {experienceItems.map(experienceItem => <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem}/>)}
         </ul>
       </div>
     );

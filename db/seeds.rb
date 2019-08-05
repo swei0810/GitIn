@@ -10,15 +10,51 @@
 User.delete_all
 Company.delete_all 
 
-demo = User.create!(email: 'demo@gmail.com' , password: 'hunter12')
-c1 = Company.create!(name:'App Academy', field:'Computer Software', description:'App Academy is a software development school that seeks to change what people expect from education', website_url:'http://www.appacademy.io', location:'New York, NY'  )
+demo = User.create!(email: 'demo@gmail.com' , 
+                   password: 'hunter12', 
+                   first_name: 'Si', 
+                   last_name:'Wei', 
+                   location: 'New York, NY', 
+                   summary:'I am currently participating in a 12-week long software development bootcamp at App Academy to become a full-stack developer. I am thrilled to be participating in a highly-selective study abroad group in Geneva, Switzerland, for upcoming Spring. I will be taking classes at The Graduate Institute (IHEID) for International studies and French, while pursing a 14-week part-time internship in an IGO or INGO. As a Computer Science and International Relations double-major, I am particularly interested in ways we can use technology for social justice. My professional interests include software development, cyber security and entrepreneurship. I am actively looking for internships for Summer 2020 in software engineering. ', 
+                   github_url:'', 
+                   headline:'')
+
+app = Company.create!(name:'App Academy', 
+                     field:'Computer Software', 
+                     description:'App Academy is a software development school that seeks to change what people expect from education', 
+                     website_url:'http://www.appacademy.io', 
+                     location:'New York, NY'  )
+gate = Company.create!(name: 'Colgate University', 
+                     field:'Higher Education', 
+                     description:'Liberal Arts College in upstate NY', 
+                     website_url: 'http://www.colgate.edu', 
+                     location: 'Hamilton, NY')
+
+
 demo.experience_items.create!(user_id: demo.id, 
                              title:'Software Engineering Bootcamp' , 
-                             company_id: c1.id, 
+                             company_id: app.id, 
                              location:'New York, NY', 
                              start_date: '06/10/2019', 
                              end_date: '08/30/2019', 
                              description: '12-week full-stack web development bootcamp with <3% acceptance rate' )
+
+demo.experience_items.create!(user_id: demo.id, 
+                             title:'Summer Research Assistant' , 
+                             company_id: gate.id, 
+                             location:'Hamilron, NY', 
+                             start_date: '06/09/2018', 
+                             end_date: '08/15/2018', 
+                             description: 'Assist in research project' )
+
+demo.education_items.create!(user_id: demo.id, 
+                             school: 'Millbrook School', 
+                             degree: 'High school', 
+                             field: 'N/A', 
+                             start_yr: 2014, 
+                             end_yr: 2017 , 
+                             activities: 'Cum Laude Society' )
+
 demo.education_items.create!(user_id: demo.id, 
                             school: 'Colgate University', 
                             degree: 'B.A', 
@@ -26,4 +62,3 @@ demo.education_items.create!(user_id: demo.id,
                             start_yr: 2017, 
                             end_yr: 2021 , 
                             activities: 'Varsity Cheerleading, Vice President of Women in Computer Science' )
-#seed firstname, lastname, etc Too

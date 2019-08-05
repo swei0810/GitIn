@@ -5,9 +5,11 @@ import { updateExperienceItem, fetchExperienceItem } from '../../actions/experie
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    debugger 
+    //FIX THIS 
     const defaultexperienceItem = {title:'', company:'', location:'', start_date: null, end_date: null, description: '' }; 
-    const experienceItem = state.experienceItems[ownProps.match.params.experienceItemId] || defaultexperienceItem; 
-    const formType = 'Update Experience Item'; 
+    const experienceItem = state.entities.experienceItems[ownProps.match.params.experienceItemId] || defaultexperienceItem; 
+    const formType = 'Edit experience'; 
     return {experienceItem, formType};
 }; 
 

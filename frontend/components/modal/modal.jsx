@@ -3,6 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreateExperienceItemFormContainer from '../experience_items/create_experience_item_form_container'; 
 import EditExperienceItemFormContainer from '../experience_items/edit_experience_item_form_container'; 
+import CreateEducationItemFormContainer from '../education_items/create_education_item_form_container'; 
+import EditEducationItemFormContainer from '../education_items/edit_education_item_form_container'; 
+
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -16,7 +19,13 @@ function Modal({modal, closeModal}) {
     case 'create experience': 
       component = <CreateExperienceItemFormContainer />;
       break; 
-    //more cases for other modals 
+    case 'create education':
+       component = <CreateEducationItemFormContainer />;
+       break; 
+    case 'edit education':
+       component = <EditEducationItemFormContainer />; 
+       break; 
+
     default:
       return null;
   }

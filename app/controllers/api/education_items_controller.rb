@@ -1,9 +1,13 @@
 class Api::EducationItemsController < ApplicationController
     before_action :require_logged_in
 
+
+    def index 
+        @education_items = EducationItem.all
+    end 
     
     def show
-        @education_item = ExperienceItem.find(params[:id])  
+        @education_item = EducationItem.find(params[:id])  
     end
 
 
@@ -28,7 +32,7 @@ class Api::EducationItemsController < ApplicationController
 
 
     def destroy 
-        @education_item = ExperienceItem.find(params[:id]) 
+        @education_item = EducationItem.find(params[:id]) 
         @education_item.destroy 
         render :show 
     end 
