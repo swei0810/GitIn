@@ -1,0 +1,20 @@
+.nav {
+    width: inherit; 
+    background-color:lightskyblue;
+    height: 50px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.nav-logo {
+    width: 30px; 
+    height: 32px; 
+}
+
+.nav-icon {
+    width: 30px; 
+    height: 32px; 
+
+}

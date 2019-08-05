@@ -42,10 +42,19 @@ demo.experience_items.create!(user_id: demo.id,
 demo.experience_items.create!(user_id: demo.id, 
                              title:'Summer Research Assistant' , 
                              company_id: gate.id, 
-                             location:'Hamilron, NY', 
+                             location:'Hamilton, NY', 
                              start_date: '06/09/2018', 
                              end_date: '08/15/2018', 
                              description: 'Assist in research project' )
+
+demo.education_items.create!(user_id: demo.id, 
+                            school: 'Colgate University', 
+                            degree: 'B.A', 
+                            field: 'Computer Science and International Relations', 
+                            start_yr: 2017, 
+                            end_yr: 2021 , 
+                            activities: 'Varsity Cheerleading(Division 1), Community Leader, Academic Affairs Governance Board,  International Student Email Ambassador, The Waffle Cookies, SAT Math coach, Colgate Women In Business, Women in Computer Science(Vice President), Gamma Phi Beta Sorority (Diversity Chairwoman)' 
+                            )
 
 demo.education_items.create!(user_id: demo.id, 
                              school: 'Millbrook School', 
@@ -53,12 +62,7 @@ demo.education_items.create!(user_id: demo.id,
                              field: 'N/A', 
                              start_yr: 2014, 
                              end_yr: 2017 , 
-                             activities: 'Cum Laude Society' )
+                             activities: 'Cum Laude Society,Dorm Leader,International Student Ambassador, Student Tutor, Independent Science Research, Dance Captain, Assistant Choreographer' 
+                             )
 
-demo.education_items.create!(user_id: demo.id, 
-                            school: 'Colgate University', 
-                            degree: 'B.A', 
-                            field: 'Computer Science', 
-                            start_yr: 2017, 
-                            end_yr: 2021 , 
-                            activities: 'Varsity Cheerleading, Vice President of Women in Computer Science' )
+

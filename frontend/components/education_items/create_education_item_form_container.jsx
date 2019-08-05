@@ -6,7 +6,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const educationItem = {school:'', degree:'', field:'', start_yr: null, end_yr: null, activities: '' }; 
-    const formType = 'Create Education Item'; 
+    const formType = 'Add Education'; 
     return {educationItem, formType}; 
 }; 
 

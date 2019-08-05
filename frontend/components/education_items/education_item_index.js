@@ -40,12 +40,15 @@ class EducationItemIndex extends React.Component {
 
     return (
       <div>
-          {/* is this right  */}
-          <p className='section-heading'>Education</p>
-         <Modal />  
-         <button onClick={() => this.props.openModal('create education')}>Add Education</button>
+          <div className='section-heading'>
+            <p className='section-header'>Education</p>
+            <Modal /> 
+            <div className='icon'>
+              <i class="fas fa-plus"  onClick={() => this.props.openModal('create education')} ></i>
+            </div> 
+          </div>
         <ul>
-        {educationItems.map(educationItem => <EducationItemShow key={educationItem.id} educationItem={educationItem} />)}
+           {educationItems.map(educationItem => <EducationItemShow key={educationItem.id} educationItem={educationItem} />)}
         </ul>
       </div>
     );

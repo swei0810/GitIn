@@ -40,13 +40,24 @@ class EducationItemShow extends React.Component {
         const {educationItem} = this.props; 
         return (
             <div>
-                <Modal />
-               <button onClick={() => this.props.openModal('edit education')}>Edit Education</button>
-                <h2>{educationItem.school}</h2>
-                <h4>{educationItem.degree}</h4>
-                <h5>{educationItem.start_yr} ~ {educationItem.end_yr} </h5>
-                <p>{educationItem.activities}</p> 
+            <div className='item'>
+                {/* change this when i have actual img */}
+                    <div> 
+                    <img className='item-img' src={window.gate}/> 
+                    </div> 
+                    <div className='item-info'>
+                        <div className='item-title'> 
+                            <Modal />
+                            <div classname='item-title'>{educationItem.school}</div>
+                            <i class="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education')}></i>
+                        </div> 
+                        <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
+                        <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>
+                        <div className='item-sub-2'>Activities and societies: {educationItem.activities}</div> 
+                        <br/>
+                    </div> 
             </div> 
+            </div>
         )
     }
 

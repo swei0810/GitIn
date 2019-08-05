@@ -48,11 +48,13 @@ class ExperienceItemIndex extends React.Component {
 
     return (
       <div>
-          {/* is this right  */}
-          <p className='section-heading'>Experience</p>
-         <Modal />  
-         <button onClick={() => this.props.openModal('create experience')}>Add Experience</button>
-         {/* <i class="fas fa-pen"></i> */}
+          <div className='section-heading'>
+             <p className='section-header'>Experience</p>
+            <Modal />  
+            <div className='icon'>
+            <i  class="fas fa-plus" onClick={() => this.props.openModal('create experience')}></i>
+            </div> 
+          </div> 
         <ul>
           {experienceItems.map(experienceItem => <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem}/>)}
         </ul>

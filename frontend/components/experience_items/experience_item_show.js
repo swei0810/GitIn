@@ -41,15 +41,32 @@ class ExperienceItemShow extends React.Component {
     render() {
         const {experienceItem} = this.props; 
         return (
-            <div>
-                <Modal />
-               <button onClick={() => this.props.openModal('edit experience')}>Edit Experience</button>
-                <h2>{experienceItem.title}</h2>
-                {/* <h3>{experienceItem.company}</h3> */}
-                {/* add more here */}
-                <h4>{experienceItem.location}</h4>
-                <p>{experienceItem.description}</p> 
-            </div> 
+            <div > 
+                {/* <div> 
+                <img className='experience-img' src={window.gate}/> 
+                </div>  */}
+                <div className='item'>
+                    <div> 
+                    <img className='item-img' src={window.gate}/> 
+                    </div> 
+
+                    <div className='item-info'>
+                        <div className='item-title'>
+                            <Modal />
+                            <div className='item-title'>{experienceItem.title}</div>
+                            <i class="fas fa-pencil-alt" onClick={() => this.props.openModal('edit experience')}></i>
+                        </div>
+                        <div className='item-sub'>Company name goes here</div>
+                        <div className='item-sub-2'>Date goes here</div>
+                        <div className='item-sub-2'>{experienceItem.location}</div>
+                        <br/>
+                        <div>{experienceItem.description}</div>
+                        <br/>
+
+                    </div> 
+
+                </div> 
+            </div>
         )
     }
 

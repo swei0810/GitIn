@@ -22,38 +22,82 @@ class EducationItemForm extends React.Component {
     render () {
         return (
             <div> 
-                <h2>{this.props.formType}</h2> 
-                <form onSubmit={this.handleSubmit}> 
+                <div className='modal-header'> 
+                    <h2>{this.props.formType}</h2> 
                     <div onClick={this.props.closeModal} className="close-x">X</div>
-                    <label>School
+                </div> 
+                <form onSubmit={this.handleSubmit}> 
+                    <label>School <br/>
                         <input
+                           className='modal-input'
                             type='text'
                             value={this.state.school}
-                            onChange={this.update('school')}/>
+                            onChange={this.update('school')}
+                            placeholder='Ex: Boston University'/>
                     </label> 
                     <br/>
-                    <label>Degree
+                    <br/>
+
+                    <label>Degree <br/>
                         <input
+                           className='modal-input'                        
                             type='text'
                             value={this.state.degree}
-                            onChange={this.update('degree')}/>
+                            onChange={this.update('degree')}
+                            placeholder="Ex: Bachelor's"/>
                     </label> 
                     <br/>
-                    <label>Field of Study 
+                    <br/>
+
+                    <label>Field of Study <br/>
                         <input
+                           className='modal-input'
                             type='text'
                             value={this.state.field}
-                            onChange={this.update('field')}/>
+                            onChange={this.update('field')}
+                            placeholder="Ex: Buisness"/>
                     </label> 
                     <br/>
-                    <label>Activities
-                        <input
+                    <br/>
+                    <div className='modal-yr'> 
+                        <div>
+                        <label>Start Year <br/>
+                            <select> 
+                                <option>2019</option>
+                                <option>1900</option>
+                            </select> 
+                        </label>   
+                        </div> 
+
+                        {/* HOW DO I UPDATE THESE YEARS */}
+                        <div> 
+                        <label>End Year (or expected) <br/>
+                            <select> 
+                                <option>2026</option>
+                                <option>1900</option>
+                            </select> 
+                        </label> 
+                        </div> 
+                    </div> 
+                    <br/>
+                    <br/>
+                    <label>Activities and societies <br/>
+                        <textarea 
+                                rows="4" cols="99"
+                                onChange={this.update('activities')}
+                            >{this.state.activities}</textarea>
+                        {/* <input
                             type='text'
                             value={this.state.activities}
-                            onChange={this.update('activities')}/>
+                            onChange={this.update('activities')}/> */}
                     </label> 
-                    {/* add start_yr and end_yr */}
-                    <input type='submit' value={this.props.formType} /> 
+                    <br/> 
+                    Ex: Alpha Phi Omega, Marching Band, Volleyball
+                    <br/> 
+                    <br/>
+
+
+                    <input className='modal-submit' type='submit' value='Save' /> 
                 </form>
 
 

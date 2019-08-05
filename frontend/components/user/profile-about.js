@@ -17,7 +17,7 @@ class ProfileAbout extends React.Component {
         // debugger doesn't work?
         return (
             <div > 
-                <p className='section-heading'>About</p>
+                <p className='section-header'>About</p>
                 <h4>{user.summary}</h4>
             </div>
 

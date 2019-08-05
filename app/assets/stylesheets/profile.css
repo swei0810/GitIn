@@ -28,10 +28,13 @@
 
 .profile-image {
     width: 170px;
-    height: 173px;
+    height: 180px;
     border-radius: 50%;
     box-sizing: border-box;
     border: 3px solid white;
+    top: 100px;
+    position: absolute; 
+
     /* position: absolute; */
     /* top: 90px;
     left: 35px; */
@@ -52,18 +55,69 @@
 
 }
 
-.section-heading {
-    font-size: 2rem;
+.section-header {
+    font-size: 20px;
     line-height: 1.4;
     font-weight: 400;
     color: rgba(0,0,0,.9);
     text-align: left; 
+    padding-left: 40px;
 }
 
 
-.modal-input {
-    width: 400px; 
-    padding: 7px;
-    font-family: inherit;
-    font-size: inherit;
+
+
+.item {
+    width: 780px; 
+    /* border-bottom: 1px solid darkgrey; */
+    display: flex; 
+    margin-bottom: 20px;
+
+}
+.item-title  {
+    display: flex; 
+    justify-content: space-between;
+    width: 660px;
+}
+
+.section-heading {
+    display: flex; 
+    justify-content: space-between;
+    width: 780px;
+}
+
+.icon{
+    margin-top:28px; 
+    cursor: pointer; 
+
+}
+
+
+
+.item-info{
+    width: 87.3%; 
+    align-items: flex-start; 
+    border-bottom: 1px solid darkgrey;
+
+}
+
+.item-img{
+    margin-right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 5px;
+}
+
+.item-title {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.item-sub {
+    font-size: 15px;
+}
+
+.item-sub-2{
+    font-size: 15px;
+    color: grey;
 }

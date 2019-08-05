@@ -5,6 +5,7 @@ import ExperienceItemIndex from "../experience_items/experience_item_index";
 import EducationItemIndex from '../education_items/education_item_index';
 import ProfileSummary from '../user/profile_summary';
 import ProfileAbout from '../user/profile-about';
+import ProfileNavbar from '../user/profile_nav';
 
 class Profile extends React.Component {
 
@@ -14,7 +15,11 @@ class Profile extends React.Component {
 
     render() {
         return (
+            <div> 
+                <ProfileNavbar />
             <div className='profile'>
+                
+
                 <div className='profile-summary'> 
                     <ProfileSummary />
                 </div>
@@ -31,6 +36,8 @@ class Profile extends React.Component {
                     <EducationItemIndex />
                 </div> 
             </div>
+            </div>
+
         )
     }
 }

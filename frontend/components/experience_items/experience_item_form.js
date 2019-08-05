@@ -27,8 +27,11 @@ class ExperienceItemForm extends React.Component {
     render () {
         return (
             <div> 
-                <h2>{this.props.formType}</h2> 
-                <div onClick={this.props.closeModal} className="close-x"> X </div>
+                <div className='modal-header'> 
+                    <h2>{this.props.formType}</h2> 
+                    <div onClick={this.props.closeModal} className="close-x"> X </div>
+                </div> 
+
                 <form onSubmit={this.handleSubmit}> 
                     {/* <div onClick={this.props.closeModal} className="close-x"> X </div> */}
                     <label>Title <br/>
@@ -41,13 +44,18 @@ class ExperienceItemForm extends React.Component {
 
                     </label> 
                     <br/>
-                    {/* <label>Company
+                    <br/>
+
+                    <label>Company <br/>
                         <input
+                            className='modal-input'
                             type='text'
-                            value={this.state.company}
-                            onChange={this.update('company')}
+                            // value={this.state.company}
+                            // onChange={this.update('company')}
                             placeholder='Ex: Microsoft'/>
-                    </label>  */}
+                    </label> 
+                    <br/>
+                    <br/>
                     <label>Location <br/>
                         <input
                             className='modal-input'
@@ -57,16 +65,33 @@ class ExperienceItemForm extends React.Component {
                             placeholder='Ex: London, United Kingdom'/>
                     </label> 
                     <br/>
-                    <label>Description <br/>
+                    <br/>
+                    <label>Headline <br/>
                         <input
                             className='modal-input'
+                            type='text'
+                            // value={this.state.location}
+                            // onChange={this.update('location')}
+                         />
+                    </label> 
+                    <br/>
+                    <br/>
+                    <label>Description <br/>
+                        <textarea 
+                            rows="4" cols="99"
+                            onChange={this.update('description')}
+                        >{this.state.description}</textarea>
+                        {/* <input
+                            className='modal-input-description'
 
                             type='text'
                             value={this.state.description}
-                            onChange={this.update('description')}/>
+                            onChange={this.update('description')}/> */}
                     </label> 
                     <br/>
-                    <input type='submit' value='Save' /> 
+                    <br/>
+
+                    <input className='modal-submit' type='submit' value='Save' /> 
                 </form>
 
 

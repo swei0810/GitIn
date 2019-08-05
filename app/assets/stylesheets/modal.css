@@ -4,10 +4,11 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 10;
   }
   
+
   .modal-child {
     position: absolute;
     top: 50%;
@@ -16,7 +17,43 @@
     font-size: 12px; 
     background-color: white; 
     border: 2px solid black; 
-    width: 600px; 
-    height: 700px 
+    width: inherit; 
+    height: inherit;
+    padding: 24px;
 
+  }
+
+  .modal-header{
+    display: flex; 
+    justify-content: space-between;
+  }
+
+
+  .modal-input {
+    width: 600px; 
+    padding: 7px;
+    font-family: inherit;
+    font-size: inherit;
+    margin-top:3px; 
+}
+
+  .modal-submit {
+    background-color: #0073b1;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: right;
+    padding: 4px; 
+    position: relative;
+    left: 575px;
+    font-size: 15px;
+    border-radius: 5px;
+
+  }
+
+  .modal-yr {
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: row; 
   }
