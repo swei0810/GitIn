@@ -272,12 +272,14 @@ var openModal = function openModal(modal) {
     var educationItem = props.educationItem;
     return {
       type: OPEN_MODAL,
+      modal: modal,
       educationItem: educationItem
     };
   } else if (props.experienceItem) {
     var experienceItem = props.experienceItem;
     return {
       type: OPEN_MODAL,
+      modal: modal,
       experienceItem: experienceItem
     };
   } else {
@@ -626,12 +628,13 @@ function (_React$Component) {
     //     }
     // }
     value: function render() {
-      debugger;
       var _this$props = this.props,
           processForm = _this$props.processForm,
           formType = _this$props.formType,
-          educationItem = _this$props.educationItem;
+          educationItem = _this$props.educationItem,
+          closeModal = _this$props.closeModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        closeModal: closeModal,
         processForm: processForm,
         formType: formType,
         educationItem: educationItem
@@ -681,18 +684,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-function date() {
-  var start = 1900;
-  var end = new Date().getFullYear();
-  var options = "";
-
-  for (var year = start; year <= end; year++) {
-    options += "<option>" + year + "</option>";
-  }
-
-  return options;
-}
-
 var EducationItemForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -729,9 +720,30 @@ function (_React$Component) {
       }); //this has to change 
     }
   }, {
+    key: "getDropList",
+    value: function getDropList() {
+      var year = new Date().getFullYear();
+      return Array.from(new Array(120), function (v, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          value: year - i
+        }, year - i);
+      });
+    }
+  }, {
+    key: "getDropListEnd",
+    value: function getDropListEnd() {
+      var year = new Date().getFullYear() + 7;
+      return Array.from(new Array(127), function (v, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          value: year - i
+        }, year - i);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var year = date();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -763,15 +775,16 @@ function (_React$Component) {
         className: "select-yr"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Year ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr"
-      }, year))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "End Year (or expected) ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "end-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2026"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "1900"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Activities and societies ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, this.getDropListEnd())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Activities and societies ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         rows: "8",
         cols: "99",
+        value: this.state.activities,
         onChange: this.update('activities')
-      }, this.state.activities)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "ed-footer"
       }, " Ex: Alpha Phi Omega, Marching Band, Volleyball"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-submit",
@@ -1002,7 +1015,9 @@ function (_React$Component) {
       }, educationItem.school), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt",
         onClick: function onClick() {
-          return _this.props.openModal('edit education', educationItem);
+          return _this.props.openModal('edit education', {
+            educationItem: educationItem
+          });
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"
@@ -1112,7 +1127,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   //FIX THIS 
-  var defaultexperienceItem = {
+  var defaultExperienceItem = {
     title: '',
     company: '',
     location: '',
@@ -1120,7 +1135,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     end_date: null,
     description: ''
   };
-  var experienceItem = state.entities.experienceItems[ownProps.experienceId] || defaultexperienceItem;
+  var experienceItem = ownProps.experienceItem || defaultExperienceItem;
   debugger;
   var formType = 'Edit experience';
   return {
@@ -1170,8 +1185,10 @@ function (_React$Component) {
       var _this$props = this.props,
           processForm = _this$props.processForm,
           formType = _this$props.formType,
-          experienceItem = _this$props.experienceItem;
+          experienceItem = _this$props.experienceItem,
+          closeModal = _this$props.closeModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        closeModal: closeModal,
         processForm: processForm,
         formType: formType,
         experienceItem: experienceItem
@@ -1256,10 +1273,21 @@ function (_React$Component) {
       this.props.processForm(this.state).then(function () {
         return _this3.props.history.push('/');
       });
-    } //have to change the type for dates 
-
+    }
+  }, {
+    key: "getDropList",
+    value: function getDropList() {
+      var year = new Date().getFullYear();
+      return Array.from(new Array(60), function (v, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          value: year - i
+        }, year - i);
+      });
+    }
   }, {
     key: "render",
+    //have to change the type for dates 
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-header"
@@ -1294,15 +1322,15 @@ function (_React$Component) {
         className: "select-yr"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "1900")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "End Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "end-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "end-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2026"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "1900"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, this.getDropList())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text" // value={this.state.location}
         // onChange={this.update('location')}
@@ -1548,7 +1576,9 @@ function (_React$Component) {
       }, experienceItem.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt",
         onClick: function onClick() {
-          return _this.props.openModal('edit experience', experienceItem);
+          return _this.props.openModal('edit experience', {
+            experienceItem: experienceItem
+          });
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"

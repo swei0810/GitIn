@@ -8,6 +8,7 @@ export const openModal = (modal, props={}) => {
     const educationItem = props.educationItem; 
     return {
       type: OPEN_MODAL, 
+      modal,
       educationItem 
     };
 
@@ -15,6 +16,7 @@ export const openModal = (modal, props={}) => {
     const experienceItem = props.experienceItem; 
     return {
       type: OPEN_MODAL, 
+      modal,
       experienceItem
     }
   } else {

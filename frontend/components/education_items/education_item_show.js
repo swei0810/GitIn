@@ -23,6 +23,9 @@ const mapDispatchToProps = dispatch => ({
 
 
 class EducationItemShow extends React.Component {
+
+
+
     componentDidMount() {
         this.props.fetchEducationItem(this.props.educationId);
     }
@@ -50,7 +53,7 @@ class EducationItemShow extends React.Component {
                         <div className='item-title'> 
                             <Modal />
                             <div className='item-title'>{educationItem.school}</div>
-                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', educationItem)}></i>
+                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', {educationItem: educationItem})}></i>
                         </div> 
                         <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
                         <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>

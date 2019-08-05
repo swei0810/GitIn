@@ -1,15 +1,7 @@
 import React from 'react'; 
 import { withRouter } from 'react-router-dom'; 
 
-function date() {
-    var start = 1900;
-    var end = new Date().getFullYear();
-    var options = "";
-    for(var year = start ; year <=end; year++){
-    options += "<option>"+ year +"</option>";
-    }
-    return options 
-}
+
 
 class EducationItemForm extends React.Component {
     constructor(props) {
@@ -29,10 +21,26 @@ class EducationItemForm extends React.Component {
         this.props.processForm(this.state).then(() => this.props.history.push('/')); //this has to change 
     }
 
+    getDropList () {
+        const year = new Date().getFullYear();
+      return (
+          Array.from( new Array(120), (v,i) =>
+            <option key={i} value={year-i}>{year-i}</option>
+        )
+      );
+    };
+
+    getDropListEnd () {
+        const year = new Date().getFullYear() + 7;
+      return (
+          Array.from( new Array(127), (v,i) =>
+            <option key={i} value={year-i}>{year-i}</option>
+        )
+      );
+    };
 
 
     render () {
-        const year = date();
         return (
             <div> 
                 <div className='modal-header'> 
@@ -77,10 +85,7 @@ class EducationItemForm extends React.Component {
                         <label>Start Year <br/>
                         
                             <select className='start-yr'> 
-                                {/* <option>2019</option>
-                                <option>1900</option> */}
-                                {year}
-
+                                {this.getDropList()}
                             </select> 
 
                             
@@ -91,8 +96,7 @@ class EducationItemForm extends React.Component {
                         <div className='select-yr-2'> 
                         <label>End Year (or expected) <br/>
                             <select className='end-yr'> 
-                                <option>2026</option>
-                                <option>1900</option>
+                                {this.getDropListEnd()}
                             </select> 
                         </label> 
                         </div> 
@@ -102,12 +106,9 @@ class EducationItemForm extends React.Component {
                     <label>Activities and societies <br/>
                         <textarea 
                                 rows="8" cols="99"
+                                value={this.state.activities}
                                 onChange={this.update('activities')}
-                            >{this.state.activities}</textarea>
-                        {/* <input
-                            type='text'
-                            value={this.state.activities}
-                            onChange={this.update('activities')}/> */}
+                            />
                     </label> 
                     <br/> 
                     <p className='ed-footer'> Ex: Alpha Phi Omega, Marching Band, Volleyball</p>

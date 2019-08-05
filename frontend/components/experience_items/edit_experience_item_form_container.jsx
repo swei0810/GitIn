@@ -6,8 +6,8 @@ import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     //FIX THIS 
-    const defaultexperienceItem = {title:'', company:'', location:'', start_date: null, end_date: null, description: '' }; 
-    const experienceItem =state.entities.experienceItems[ownProps.experienceId] || defaultexperienceItem; 
+    const defaultExperienceItem = {title:'', company:'', location:'', start_date: null, end_date: null, description: '' }; 
+    const experienceItem =ownProps.experienceItem || defaultExperienceItem; 
     debugger
     const formType = 'Edit experience'; 
     return {experienceItem, formType};
@@ -37,9 +37,10 @@ class EditExpeienceItemForm extends React.Component {
     // }
 
     render() {
-        const {processForm, formType, experienceItem} = this.props; 
+        const {processForm, formType, experienceItem, closeModal} = this.props; 
         return (
             <ExperienceItemForm 
+                closeModal={closeModal}
                 processForm= {processForm}
                 formType={formType}
                 experienceItem={experienceItem}  />

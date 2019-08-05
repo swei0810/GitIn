@@ -34,10 +34,10 @@ class EditEducationItemForm extends React.Component {
     // }
 
     render() {
-        debugger 
-        const {processForm, formType, educationItem} = this.props; 
+        const {processForm, formType, educationItem, closeModal} = this.props; 
         return (
             <EducationItemForm 
+               closeModal={closeModal}
                 processForm= {processForm}
                 formType={formType}
                 educationItem={educationItem}  />

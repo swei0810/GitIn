@@ -22,6 +22,15 @@ class ExperienceItemForm extends React.Component {
         this.props.processForm(this.state).then(() => this.props.history.push('/'));
     }
 
+    getDropList () {
+        const year = new Date().getFullYear();
+      return (
+          Array.from( new Array(60), (v,i) =>
+            <option key={i} value={year-i}>{year-i}</option>
+        )
+      );
+    };
+
     //have to change the type for dates 
 
     render () {
@@ -76,13 +85,22 @@ class ExperienceItemForm extends React.Component {
                             <label>Start Date <br/>
                                 <select className='start-yr'> 
                                         <option>January</option>
+                                        <option>February</option>
+                                        <option>March</option>
+                                        <option>April</option>
+                                        <option>May</option>
+                                        <option>June</option>
+                                        <option>July</option>
+                                        <option>August</option>
+                                        <option>September</option>
+                                        <option>October</option>
+                                        <option>November</option>
                                         <option>December</option>
                                 </select> 
                                 <br/>
 
                                 <select className='start-yr'> 
-                                    <option>2019</option>
-                                    <option>1900</option>
+                                    {this.getDropList()}
                                 </select> 
      
 
@@ -93,15 +111,25 @@ class ExperienceItemForm extends React.Component {
                             <div className='select-yr-2'> 
                             <label>End Date <br/>
                                 <select className='end-yr'> 
-                                        <option>January</option>
+                                <option>January</option>
+                                        <option>February</option>
+                                        <option>March</option>
+                                        <option>April</option>
+                                        <option>May</option>
+                                        <option>June</option>
+                                        <option>July</option>
+                                        <option>August</option>
+                                        <option>September</option>
+                                        <option>October</option>
+                                        <option>November</option>
                                         <option>December</option>
                                 </select> 
                                 <br/>
                                 
 
                                 <select className='end-yr'> 
-                                    <option>2026</option>
-                                    <option>1900</option>
+                                    {this.getDropList()}
+
                                 </select> 
                             </label>
                             </div> 
