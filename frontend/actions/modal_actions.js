@@ -17,6 +17,14 @@ export const openModal = (modal, props={}) => {
       modal,
       experienceItem
     }
+  } else if (props.user){
+    const user = props.user; 
+    return {
+      type: OPEN_MODAL, 
+      modal, 
+      user
+    }
+
   } else {
     return {
       type: OPEN_MODAL,

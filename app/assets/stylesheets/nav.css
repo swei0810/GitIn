@@ -6,16 +6,55 @@
     flex-direction: row; 
     justify-content: space-between;
     margin-bottom: 25px;
-    background-image: linear-gradient(-90deg, rgb(64, 192, 224), white);
+    background-image: linear-gradient(-90deg, rgb(6, 141, 182), white);
 }
 
 .nav-logo {
     width: 30px; 
     height: 32px; 
+    padding-left: 100px;
+    padding-top: 8px;
 }
 
+
 .nav-icon {
-    width: 30px; 
-    height: 32px; 
+    font-size: 11px; 
+    color: white; 
+    text-align: center;
+
+}
+
+.nav i {
+    color: white; 
+    font-size: 20px;
+    padding-top: 12px;
+}
+
+.nav-right {
+    width: 40%; 
+    padding-right: 112px; 
+    display: flex; 
+    justify-content: space-between;
+}
+
+
+
+.profile-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1px solid white;
+    top: -55px;
+    position: absolute;
+    z-index: 1;
+    left:0px;
+}
+
+
+.nav-icon-p {
+    font-size: 11px; 
+    color: white; 
+    padding-top:6px;
 
 }

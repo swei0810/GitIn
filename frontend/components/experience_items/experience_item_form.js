@@ -7,6 +7,7 @@ class ExperienceItemForm extends React.Component {
         super(props); 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.state = this.props.experienceItem; 
+        this.state.startMonth = ''; //and year 
     }
 
     update(field) {
@@ -19,10 +20,12 @@ class ExperienceItemForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault(); 
+//construct the date 
+        // this.state.start_date use Set State.then 
+
         this.props.processForm(this.state);
-        debugger
         this.props.closeModal();
-        this.props.history.push(`/git/${this.state.user_id}`);
+        // this.props.history.push(`/git/${this.state.user_id}`);
         // this.props.processForm(this.state).then(() => this.props.history.push('/'));
     }
 
@@ -63,7 +66,7 @@ class ExperienceItemForm extends React.Component {
                         <input
                             className='modal-input'
                             type='text'
-                            value={this.state.company}
+                            value={this.state.company.name}
                             onChange={this.update('company')}
                             placeholder='Ex: Microsoft'/>
                     </label> 

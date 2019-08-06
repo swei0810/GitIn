@@ -13,27 +13,44 @@ class Profile extends React.Component {
         this.props.fetchUser(this.props.match.params.userId);
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.userId  != this.props.match.params.userId) {
+            this.props.fetchUser(this.props.match.params.userId);
+        }
+
+    }
+
     render() {
+        
+        if (!this.props.user) {
+            return null;
+        }
+
+        let isCurrentUser = true; 
+        if(this.props.user.id != this.props.currentUserId) {
+            isCurrentUser = false; 
+        }
+
         return (
             <div> 
-                <ProfileNavbar />
+                <ProfileNavbar user={this.props.user} isCurrentUser={isCurrentUser}/>
             <div className='profile'>
                 
 
                 <div className='profile-summary'> 
-                    <ProfileSummary user={this.props.user} />
+                    <ProfileSummary user={this.props.user} isCurrentUser={isCurrentUser}/>
                 </div>
 
                 <div className='profile-about'> 
-                    <ProfileAbout user={this.props.user} />
+                    <ProfileAbout user={this.props.user} isCurrentUser={isCurrentUser}/>
                 </div>
 
                 <div className='experience-item-container'>
-                    <ExperienceItemIndex experienceIds={this.props.user.experienceIds} />
+                    <ExperienceItemIndex experienceIds={this.props.user.experienceIds} isCurrentUser={isCurrentUser}/>
                 </div> 
 
                 <div className='education-item-container'>
-                    <EducationItemIndex educationIds={this.props.user.educationIds} />
+                    <EducationItemIndex educationIds={this.props.user.educationIds} isCurrentUser={isCurrentUser}/>
                 </div> 
             </div>
             </div>

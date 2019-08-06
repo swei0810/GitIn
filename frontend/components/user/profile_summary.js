@@ -1,5 +1,15 @@
 
 import React from "react";
+import Modal from '../modal/modal';
+import { connect } from 'react-redux'; 
+import {openModal} from '../../actions/modal_actions'
+
+const mapDispatchToProps = dispatch => {
+    return {
+        openModal: (modal,info) => dispatch(openModal(modal, info))
+    };
+  };
+  
 
 class ProfileSummary extends React.Component {
 
@@ -10,20 +20,51 @@ class ProfileSummary extends React.Component {
             return null; 
         }
 
+        let editIcon = '';
+         if (this.props.isCurrentUser) {
+             editIcon = (<div className='icon-edit'>
+             <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
+             </div>);
+         }
+
         return (
         <div className="profile-summary-container">
+         {/* <Modal />  
+                        <div className='icon'>
+                        <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
+                        </div>  */}
+
             <div className='profile-image-container'> 
+         {/* PHOTO */}
             <img className='profile-background' src={window.profile_background}/>
             <div className="profile-image-circle">
-                <img className="profile-image" src={window.profile_img}/>
+                <img className="profile-image" src={user.photoUrl}/>
             </div>
             </div>
 
                 <div className='summary'> 
-                    <p className='user-name'>{user.first_name} {user.last_name}</p>
+                    <div className='section-heading'> 
+                        <p className='user-name'>{user.first_name} {user.last_name}</p>
+                        {/* <Modal />  
+                        <div className='icon'>
+                        <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
+                        </div>  */}
+                            {/* <div className='icon-edit'>
+                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
+                            </div> */}
+                            <Modal />
+                            {editIcon}
+                    </div>
+
                     <div className='section-header'>{user.headline}</div>
                     <div className='summary-location' >{user.location} </div>
                 </div>
+
+                {/* <div className='summary-photo'>
+                    <img className="profile-image" src={user.photoUrl}/>
+                    <img className="profile-image" src={user.photoUrl}/>
+
+                </div>  */}
            
 
         </div>
@@ -31,4 +72,4 @@ class ProfileSummary extends React.Component {
     }
 }
 
-export default ProfileSummary
+export default connect(null, mapDispatchToProps)(ProfileSummary)

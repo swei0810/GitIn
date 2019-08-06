@@ -168,3 +168,13 @@
     padding-bottom: 30px; 
 
 }
+
+.icon i, .icon-edit i {
+    font-size:20px; 
+    color: rgb(64, 192, 224); 
+}
+
+
+.item-description{
+    width: 90%;
+}

@@ -10,9 +10,10 @@ import {openModal} from '../../actions/modal_actions'
 
 
 const mapStateToProps = (state) => {
+  debugger
   return { 
     //  educationItems: Object.values(state.entities.users.undefined.educationItems) //THIS HAS TO CHANGE 
-      // educationItems:  state.entities.users.undefined.educationItems //change THIS
+      educationItems:  state.entities.educationItems //change THIS
   }
 
 }; 
@@ -35,10 +36,18 @@ class EducationItemIndex extends React.Component {
     // this.props.fetchAllEducationItems();
   }
 
+
   render() {
     const {educationIds} = this.props;
     if (!educationIds) {
       return null; 
+    }
+
+    let addIcon = ''; 
+    if (this.props.isCurrentUser) {
+      addIcon = (<div className='icon'>
+      <i className="fas fa-plus"  onClick={() => this.props.openModal('create education')} ></i>
+     </div>);
     }
 
     return (
@@ -46,12 +55,10 @@ class EducationItemIndex extends React.Component {
           <div className='section-heading'>
             <p className='section-header'>Education</p>
             <Modal /> 
-            <div className='icon'>
-              <i className="fas fa-plus"  onClick={() => this.props.openModal('create education')} ></i>
-            </div> 
+            {addIcon}
           </div>
         <ul>
-           {educationIds.map(id => <EducationItemShow key={id} educationId={id} />)}
+           {educationIds.map(id => <EducationItemShow key={id} educationId={id} isCurrentUser={this.props.isCurrentUser}/>)}
         </ul>
       </div>
     );

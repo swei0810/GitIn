@@ -60,8 +60,37 @@ harvard = Company.create!(name:'Harvard University',
 c5 = open("https://gitin-seeds.s3.amazonaws.com/harvard.png")
 harvard.photo.attach(io: c5, filename: 'harvard.png')
 
+brook = Company.create!(name:'MillBrook School', 
+                     field:'High School', 
+                     description:'Non Sibi Sed Cunctis', 
+                     website_url:'https://millbrook.edu', 
+                     location:'Millbrook, NY'  )
+c6 = open("https://gitin-seeds.s3.amazonaws.com/millbrook.png")
+brook.photo.attach(io: c6, filename: 'brook.png')
 
+boulder = Company.create!(name:'University of Colorado Boulder', 
+                     field:'Higher Education', 
+                     description:'Be Boulder', 
+                     website_url:'https://www.colorado.edu/', 
+                     location:'Boulder, Colorado'  )
+c7 = open("https://gitin-seeds.s3.amazonaws.com/ucb.png")
+boulder.photo.attach(io: c7, filename: 'boulder.png')
 
+rei = Company.create!(name:'REI', 
+                     field:'Retail', 
+                     description:'We believe a life outdoors, is a life well lived.', 
+                     website_url:'https://www.rei.com/', 
+                     location:'kent, WA'  )
+c8 = open("https://gitin-seeds.s3.amazonaws.com/rei.png")
+rei.photo.attach(io: c8, filename: 'rei.png')
+
+penguin = Company.create!(name:'Penguin Random House', 
+                     field:'Publishing', 
+                     description:'Penguin Random House is the world’s largest trade book publisher. ', 
+                     website_url:'https://www.penguinrandomhouse.com/', 
+                     location:'New York, NY'  )
+c9 = open("https://gitin-seeds.s3.amazonaws.com/penguin.png")
+penguin.photo.attach(io: c9, filename: 'penguin.png')
 
 
 
@@ -94,7 +123,7 @@ demo.experience_items.create!(user_id: demo.id,
                              description: 'Assist in research project' )
 
 demo.education_items.create!(user_id: demo.id, 
-                            school: 'Colgate University', 
+                            school_id: gate.id, 
                             degree: 'B.A', 
                             field: 'Computer Science and International Relations', 
                             start_yr: "2017", 
@@ -103,7 +132,7 @@ demo.education_items.create!(user_id: demo.id,
                             )
 
 demo.education_items.create!(user_id: demo.id, 
-                             school: 'Millbrook School', 
+                             school_id: brook.id, 
                              degree: 'High school', 
                              field: 'N/A', 
                              start_yr: "2014", 
@@ -130,7 +159,7 @@ zuck.experience_items.create!(user_id: zuck.id,
                              description: "Facebook's corporate mission is to give people the power to build community and bring the world closer together." )
 
 zuck.education_items.create!(user_id: zuck.id, 
-                             school: 'Harvard University', 
+                             school_id: harvard.id, 
                              degree: 'N/A', 
                              field: 'Psychology & Computer Science', 
                              start_yr: "2002", 
@@ -162,20 +191,61 @@ hk.experience_items.create!(user_id: hk.id,
                              description: "Assisted 28 freshmen with their transition to college. Responsible for organizing educational and community building programs for residents." )
 
 hk.education_items.create!(user_id: hk.id, 
-                             school: 'George Mason University', 
+                             school_id: gm.id, 
                              degree: 'Bachelor of Science', 
                              field: 'Computer Science', 
                              start_yr: "2015", 
                              end_yr: "2019" , 
                              activities: 'I have excelled on my individual and team programming assignments creating new data mining programs using large public datasets, building customer and service provider integrations in an Android environment, and designing an Alexa task list tool. Besides the technologies already listed, my coursework has included: autonomous robotics, data structures and algorithms, object-oriented programming, and software testing.' 
                              )
-u3= open("https://gitin-seeds.s3.amazonaws.com/gm.png")
+u3= open("https://gitin-seeds.s3.amazonaws.com/hamza.png")
 hk.photo.attach(io: u3, filename: 'profile3.png')
 
 
 
 
+jw = User.create!(email: 'jessica@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Jessica', 
+                             last_name:'White', 
+                             location: 'Brooklyn, NY', 
+                             summary:'As a marketing manager at the Viking, Penguin, Penguin Classics & Riverhead imprints of Penguin Random House, Jessica enjoys helping authors and audiences find one another. In her spare time, she performs and teaches dances of the American Jazz Era.', 
+                             github_url:'', 
+                             headline:'Dancer, Marketer, and Developer-in-the-Making')                            
 
+jw.experience_items.create!(user_id: jw.id, 
+                             title:'Assistant Marketing Manager' , 
+                             company_id: penguin.id, 
+                             location:'Fairfax, va', 
+                             start_date: 'November 2017', 
+                             end_date: 'May 2019', 
+                             description: "• Assisted in the development of title marketing campaigns for Viking and Riverhead imprints
+                             • Tracked sales information and coordinates reactive marketing and advertising efforts for each title
+                             • Developed and amplified authors’ online presence, including social media strategy and website design
+                             • Contributed to the @vikingbooks and @riverheadbooks social media platforms (Facebook, Twitter, Instagram and YouTube)" )
+
+jw.experience_items.create!(user_id: jw.id, 
+                             title:'Visual Presentation & Sales Specialist' , 
+                             company_id: rei.id, 
+                             location:'Colorado, Boulder', 
+                             start_date: 'May 2010', 
+                             end_date: 'December 2015', 
+                             description: "• Analyzed sales performance, use performance results to help with prioritization of product/floor shifts and brand focus
+                             • Provided consistent updates on sales driving strategies, product/brand initiatives and requests, store issues and opportunities
+                             • Provided training to sales specialists on visual marketing and product flow
+                             • Ensured development and execution of merchandise presentation standards and product flows
+                             • Identified customer needs and effectively communicated technical product knowledge" )                             
+
+jw.education_items.create!(user_id: jw.id, 
+                             school_id: boulder.id, 
+                             degree: 'Bachelor of Arts', 
+                             field: 'International Affairs & Psychology', 
+                             start_yr: "2005", 
+                             end_yr: "2010" , 
+                             activities: 'Magna Cum Laude, Fencing Club, President(2006-2009)' 
+                             )
+u4= open("https://gitin-seeds.s3.amazonaws.com/jessica.png")
+jw.photo.attach(io: u4, filename: 'profile4.png')
 
 
 

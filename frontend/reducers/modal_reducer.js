@@ -7,7 +7,9 @@ export default function modalReducer(state = null, action) {
         return { modal: action.modal, experienceItem: action.experienceItem };
       }else if (action.educationItem) {
         return { modal: action.modal, educationItem: action.educationItem };
-      }else {
+      } else if (action.user){
+        return {modal: action.modal, user:action.user}
+      } else {
         return {
           modal: action.modal
         };

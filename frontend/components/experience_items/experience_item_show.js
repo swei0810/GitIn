@@ -7,6 +7,7 @@ import { fetchExperienceItem } from '../../actions/experience_item_actions';
 import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state, ownProps) => {
+
     return {
         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
         experienceItem:  state.entities.experienceItems[ownProps.experienceId]
@@ -25,15 +26,15 @@ const mapDispatchToProps = dispatch => ({
 
 
 class ExperienceItemShow extends React.Component {
-    componentDidMount() {
-        this.props.fetchExperienceItem(this.props.experienceId);
-    }
+    // componentDidMount() {
+    //     this.props.fetchExperienceItem(this.props.experienceId);
+    // }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.experienceId!= this.props.experienceId) {
-            this.props.fetchExperienceItem(this.props.experienceId);
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.experienceId!= this.props.experienceId) {
+    //         this.props.fetchExperienceItem(this.props.experienceId);
+    //     }
+    // }
 
 
     render() {
@@ -41,7 +42,13 @@ class ExperienceItemShow extends React.Component {
         if (!experienceItem) {
             return null; 
         }
-        
+
+        let editIcon = ''; 
+        if (this.props.isCurrentUser) {
+            editIcon = (<div className='icon-edit'>
+            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit experience', {experienceItem: experienceItem})}></i>
+            </div>);
+        }
 
         return (
             <div > 
@@ -50,22 +57,20 @@ class ExperienceItemShow extends React.Component {
                 </div>  */}
                 <div className='item'>
                     <div> 
-                    <img className='item-img' src={window.gate}/> 
+                    <img className='item-img' src={experienceItem.photoUrl}/> 
                     </div> 
 
                     <div className='item-info'>
                         <div className='item-title'>
                             <Modal />
                             <div className='item-title'>{experienceItem.title}</div>
-                            <div className='icon-edit'>
-                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit experience', {experienceItem: experienceItem})}></i>
-                            </div>
+                            {editIcon}
                         </div>
-                        <div className='item-sub'>Company name goes here</div>
+                        <div className='item-sub'>{experienceItem.company.name}</div>
                         <div className='item-sub-2'>{experienceItem.start_date} - {experienceItem.end_date}</div>
                         <div className='item-sub-2'>{experienceItem.location}</div>
                         <br/>
-                        <div>{experienceItem.description}</div>
+                        <div className='item-description'>{experienceItem.description}</div>
                         <br/>
 
                     </div> 

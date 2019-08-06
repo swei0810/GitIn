@@ -9,15 +9,16 @@ import {openModal} from '../../actions/modal_actions'
 
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   return { 
-      // experienceItems:  Object.values(state.entities.users.undefined.experienceItems) //HAVE TO CHANGE THE STATE
+      experienceItems:  state.entities.experienceItems
   }
 
 }; 
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetchAllExperienceItems: () => dispatch(fetchAllExperienceItems()),
+      // fetchAllExperienceItems: () => dispatch(fetchAllExperienceItems()),
       openModal: modal => dispatch(openModal(modal))
   };
 };
@@ -29,9 +30,9 @@ class ExperienceItemIndex extends React.Component {
     super(props); 
   }
 
-  componentDidMount() {
-    this.props.fetchAllExperienceItems();
-  }
+  // componentDidMount() {
+  //   this.props.fetchAllExperienceItems();
+  // }
 
   render() {
     const {experienceIds} = this.props; 
@@ -39,18 +40,24 @@ class ExperienceItemIndex extends React.Component {
       return null; 
     }
 
+    let addIcon = ''; 
+    if (this.props.isCurrentUser) {
+      addIcon = (<div className='icon'>
+      <i  className="fas fa-plus" onClick={() => this.props.openModal('create experience')}></i>
+      </div>);
+    }
+
+
     return (
       <div>
           <div className='section-heading'>
              <p className='section-header'>Experience</p>
             <Modal />  
-            <div className='icon'>
-            <i  className="fas fa-plus" onClick={() => this.props.openModal('create experience')}></i>
-            </div> 
+            {addIcon}
           </div> 
         <ul>
           {/* {experienceItems.map(experienceItem => <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem}/>)} */}
-          {experienceIds.map(id=> <ExperienceItemShow key={id} experienceId={id} />    )}
+          {experienceIds.map(id=> <ExperienceItemShow key={id} experienceId={id} isCurrentUser={this.props.isCurrentUser}/>    )}
         </ul>
       </div>
     );

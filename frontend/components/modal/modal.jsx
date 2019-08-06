@@ -5,6 +5,9 @@ import CreateExperienceItemFormContainer from '../experience_items/create_experi
 import EditExperienceItemFormContainer from '../experience_items/edit_experience_item_form_container'; 
 import CreateEducationItemFormContainer from '../education_items/create_education_item_form_container'; 
 import EditEducationItemFormContainer from '../education_items/edit_education_item_form_container'; 
+import EditSummaryContainer from '../user/edit_summary_container';
+import EditIntroContainer from '../user/edit_intro_container';
+
 
 
 function Modal(props) {
@@ -13,6 +16,7 @@ function Modal(props) {
   let modal; 
   let educationItem;
   let experienceItem;
+  let user;
 
   if (props.modal && typeof props.modal === 'object') {
     modal = props.modal.modal;
@@ -21,6 +25,8 @@ function Modal(props) {
       experienceItem = props.modal.experienceItem;
     } else if (props.modal.educationItem) {
       educationItem = props.modal.educationItem;
+    } else if (props.modal.user){
+      user = props.modal.user; 
     }
   } else {
     modal = props.modal;
@@ -45,6 +51,12 @@ function Modal(props) {
     case 'edit education':
        component = <EditEducationItemFormContainer educationItem={educationItem} />; 
        break; 
+    case 'edit summary':
+        component = <EditSummaryContainer user={user} />; 
+        break;
+    case 'edit intro':
+        component = <EditIntroContainer user={user} />;
+        break;
 
     default:
       return null;

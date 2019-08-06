@@ -46,7 +46,7 @@ class User < ApplicationRecord
     #     source: :, 
 
 
-    has_one_attached :photo 
+    has_one_attached :photo
 
 
 

@@ -47,20 +47,28 @@ class EducationItemShow extends React.Component {
         if (!educationItem) {
             return null; 
         }
+
+
+        let editIcon = ''
+        if (this.props.isCurrentUser) {
+            editIcon = (<div className='icon-edit'>
+            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', {educationItem: educationItem})}></i>
+            </div>)
+        }
+        
         return (
             <div>
             <div className='item'>
                 {/* change this when i have actual img */}
                     <div> 
-                    <img className='item-img' src={window.gate}/> 
+                    <img className='item-img' src={educationItem.photoUrl}/> 
                     </div> 
+
                     <div className='item-info'>
                         <div className='item-title'> 
                             <Modal />
-                            <div className='item-title'>{educationItem.school}</div>
-                            <div className='icon-edit'>
-                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', {educationItem: educationItem})}></i>
-                            </div>
+                            <div className='item-title'>{educationItem.school.name}</div>
+                            {editIcon}
                         </div> 
                         <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
                         <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>

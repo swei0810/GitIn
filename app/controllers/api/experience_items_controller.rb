@@ -1,11 +1,12 @@
 class Api::ExperienceItemsController < ApplicationController
-    before_action :require_logged_in
+    before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index 
         @experience_items = ExperienceItem.all 
     end 
 
     def show
+    
         @experience_item = ExperienceItem.find(params[:id]) 
     end
 
@@ -18,11 +19,9 @@ class Api::ExperienceItemsController < ApplicationController
                                                              end_date: params[:experienceItem][:end_date], 
                                                              description:  params[:experienceItem][:description])
         #dont need experience_item_params
-        debugger
         company = Company.find_or_create_by(name: params[:experienceItem][:company]);
-        debugger
         @experience_item[:company_id] = company.id; 
-        debugger
+        # @experience_item.company = company;
         if @experience_item.save 
             render :show 
         else

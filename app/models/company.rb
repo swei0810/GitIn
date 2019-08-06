@@ -25,6 +25,9 @@ class Company < ApplicationRecord
 
     has_many :followers
 
+    has_many :experience_items
+    has_many :education_items
+
     has_one_attached :photo 
 
 end 

@@ -10,9 +10,9 @@ class EducationItemForm extends React.Component {
         this.state = this.props.educationItem; 
     }
 
-    componentDidUpdate() {
+    // componentDidUpdate() {
         
-    }
+    // }
 
     update(field) {
         return (e) => {
@@ -23,7 +23,6 @@ class EducationItemForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.processForm(this.state);
-        debugger
         this.props.closeModal();
         this.props.history.push(`/git/${this.state.user_id}`);
         
@@ -66,7 +65,7 @@ class EducationItemForm extends React.Component {
                         <input
                            className='modal-input'
                             type='text'
-                            value={this.state.school}
+                            value={this.state.school.name}
                             onChange={this.update('school')}
                             placeholder='Ex: Boston University'/>
                     </label> 

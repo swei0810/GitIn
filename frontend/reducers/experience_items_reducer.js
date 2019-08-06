@@ -10,13 +10,14 @@ import {
 import { RECEIVE_USER } from '../actions/user_actions'; 
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
-//search action.payload 
 const experienceItemsReducer = (state={}, action) => {
+    debugger
     Object.freeze(state); 
     switch (action.type) {
         case RECEIVE_ALL_EXPERIENCE_ITEMS: 
             return merge({}, action.experienceItems)
         case RECEIVE_EXPERIENCE_ITEM: 
+            debugger
             return merge({}, state, {[action.experienceItem.id]: action.experienceItem});
         case REMOVE_EXPERIENCE_ITEM:
             let newState = merge({}, state); 

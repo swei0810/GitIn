@@ -1,5 +1,5 @@
 class Api::EducationItemsController < ApplicationController
-    before_action :require_logged_in
+    before_action :require_logged_in, only: [:create, :update, :destroy]
 
 
     def index 
@@ -12,7 +12,16 @@ class Api::EducationItemsController < ApplicationController
 
 
     def create 
-        @education_item = current_user.education_items.new(education_items_params)
+        @education_item = current_user.education_items.new(degree: params[:educationItem][:degree], 
+                                                             field:  params[:educationItem][:field], 
+                                                             start_yr: params[:educationItem][:start_yr], 
+                                                             end_yr: params[:educationItem][:end_yr], 
+                                                             activities:  params[:educationItem][:activities])
+
+
+        company = Company.find_or_create_by(name: params[:educationItem][:school]);
+        @education_item[:school_id] = company.id; 
+
         if @education_item.save 
             render :show 
         else
