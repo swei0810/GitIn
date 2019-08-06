@@ -1,11 +1,12 @@
 .nav {
     width: inherit; 
-    background-color:lightskyblue;
+    /* background-color:lightskyblue; */
     height: 50px; 
     display: flex; 
     flex-direction: row; 
     justify-content: space-between;
     margin-bottom: 25px;
+    background-image: linear-gradient(-90deg, rgb(64, 192, 224), white);
 }
 
 .nav-logo {

@@ -6,8 +6,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const defaultEducationItem = {school:'', degree:'', field:'', start_yr: null, end_yr: null, activities: '' }; 
-    debugger 
-    const educationItem = ownProps.educationItem || defaultEducationItem; //////
+    const educationItem = ownProps.educationItem || defaultEducationItem; 
     const formType = 'Edit education'; 
     return {educationItem, formType};
 }; 
@@ -23,15 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 
 
 class EditEducationItemForm extends React.Component {
-    // componentDidMount() {
-    //     this.props.fetchEducationItem(this.props.match.params.educationItemId);
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.educationItem.id != this.props.match.params.educationItemId) {
-    //         this.props.fetchEducationItem(this.props.match.params.educationItemId);
-    //     }
-    // }
 
     render() {
         const {processForm, formType, educationItem, closeModal} = this.props; 

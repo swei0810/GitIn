@@ -7,8 +7,8 @@
 #  school     :string           not null
 #  degree     :string
 #  field      :string
-#  start_yr   :integer
-#  end_yr     :integer
+#  start_yr   :string
+#  end_yr     :string
 #  activities :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

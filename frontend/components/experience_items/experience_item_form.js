@@ -19,7 +19,11 @@ class ExperienceItemForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.processForm(this.state).then(() => this.props.history.push('/'));
+        this.props.processForm(this.state);
+        debugger
+        this.props.closeModal();
+        this.props.history.push(`/git/${this.state.user_id}`);
+        // this.props.processForm(this.state).then(() => this.props.history.push('/'));
     }
 
     getDropList () {
@@ -83,7 +87,9 @@ class ExperienceItemForm extends React.Component {
 
                             <div className='select-yr'>
                             <label>Start Date <br/>
-                                <select className='start-yr'> 
+                                <select className='start-yr'
+                                    onChange={this.update('start_date')}> 
+                                        <option selected>Month</option> 
                                         <option>January</option>
                                         <option>February</option>
                                         <option>March</option>
@@ -100,6 +106,8 @@ class ExperienceItemForm extends React.Component {
                                 <br/>
 
                                 <select className='start-yr'> 
+                                    <option selected>Year</option> 
+
                                     {this.getDropList()}
                                 </select> 
      
@@ -110,24 +118,28 @@ class ExperienceItemForm extends React.Component {
 
                             <div className='select-yr-2'> 
                             <label>End Date <br/>
-                                <select className='end-yr'> 
+                                <select className='end-yr'
+                                    onChange={this.update('end_date')}> 
+                                <option selected>Month</option> 
                                 <option>January</option>
-                                        <option>February</option>
-                                        <option>March</option>
-                                        <option>April</option>
-                                        <option>May</option>
-                                        <option>June</option>
-                                        <option>July</option>
-                                        <option>August</option>
-                                        <option>September</option>
-                                        <option>October</option>
-                                        <option>November</option>
-                                        <option>December</option>
+                                <option>March</option>
+                                <option>February</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                                <option>December</option>
                                 </select> 
                                 <br/>
                                 
 
                                 <select className='end-yr'> 
+                                    <option selected>Year</option> 
+
                                     {this.getDropList()}
 
                                 </select> 

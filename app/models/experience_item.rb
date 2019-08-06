@@ -6,8 +6,8 @@
 #  user_id     :integer          not null
 #  title       :string           not null
 #  location    :string           not null
-#  start_date  :integer          not null
-#  end_date    :integer
+#  start_date  :string           not null
+#  end_date    :string
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

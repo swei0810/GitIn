@@ -12,8 +12,7 @@ class Api::EducationItemsController < ApplicationController
 
 
     def create 
-        # params[e]
-        @education_item = current_user.education_items.new(education_item_params)
+        @education_item = current_user.education_items.new(education_items_params)
         if @education_item.save 
             render :show 
         else
@@ -24,7 +23,7 @@ class Api::EducationItemsController < ApplicationController
 
     def update 
         @education_item = EducationItem.find(params[:id]) 
-        if @education_item.update(education_item.params)
+        if @education_item.update(education_items_params)
             render :show 
         else 
             render json: @education_item.errors, status: 422
@@ -41,7 +40,7 @@ class Api::EducationItemsController < ApplicationController
 
     private 
     def education_items_params 
-        params.require(:education_item).permit(:school, :degree, :field, :start_yr, :end_yr, :activities)
+        params.require(:educationItem).permit(:school, :degree, :field, :start_yr, :end_yr, :activities)
     end 
 
 end

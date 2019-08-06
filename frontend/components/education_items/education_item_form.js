@@ -10,6 +10,10 @@ class EducationItemForm extends React.Component {
         this.state = this.props.educationItem; 
     }
 
+    componentDidUpdate() {
+        
+    }
+
     update(field) {
         return (e) => {
             this.setState({[field]: e.target.value});
@@ -17,8 +21,18 @@ class EducationItemForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDeafult(); 
-        this.props.processForm(this.state).then(() => this.props.history.push('/')); //this has to change 
+        e.preventDefault(); 
+        this.props.processForm(this.state);
+        debugger
+        this.props.closeModal();
+        this.props.history.push(`/git/${this.state.user_id}`);
+        
+        // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
+        // this.props.processForm(this.state);
+
+
+
+
     }
 
     getDropList () {
@@ -84,8 +98,10 @@ class EducationItemForm extends React.Component {
                         <div className='select-yr'>
                         <label>Start Year <br/>
                         
-                            <select className='start-yr'> 
-                                {this.getDropList()}
+                            <select className='start-yr'
+                                onChange={this.update('start_yr')}> 
+                                 <option selected>Year</option> 
+                                 {this.getDropList()}
                             </select> 
 
                             
@@ -95,7 +111,9 @@ class EducationItemForm extends React.Component {
                         {/* HOW DO I UPDATE THESE YEARS */}
                         <div className='select-yr-2'> 
                         <label>End Year (or expected) <br/>
-                            <select className='end-yr'> 
+                            <select className='end-yr'
+                                onChange={this.update('end_yr')}> 
+                                <option selected>Year</option> 
                                 {this.getDropListEnd()}
                             </select> 
                         </label> 

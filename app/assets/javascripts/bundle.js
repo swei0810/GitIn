@@ -265,10 +265,8 @@ var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE_MODAL';
 var openModal = function openModal(modal) {
   var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  debugger;
 
   if (props.educationItem) {
-    debugger;
     var educationItem = props.educationItem;
     return {
       type: OPEN_MODAL,
@@ -582,9 +580,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     end_yr: null,
     activities: ''
   };
-  debugger;
-  var educationItem = ownProps.educationItem || defaultEducationItem; //////
-
+  var educationItem = ownProps.educationItem || defaultEducationItem;
   var formType = 'Edit education';
   return {
     educationItem: educationItem,
@@ -619,14 +615,6 @@ function (_React$Component) {
 
   _createClass(EditEducationItemForm, [{
     key: "render",
-    // componentDidMount() {
-    //     this.props.fetchEducationItem(this.props.match.params.educationItemId);
-    // }
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.educationItem.id != this.props.match.params.educationItemId) {
-    //         this.props.fetchEducationItem(this.props.match.params.educationItemId);
-    //     }
-    // }
     value: function render() {
       var _this$props = this.props,
           processForm = _this$props.processForm,
@@ -701,6 +689,9 @@ function (_React$Component) {
   }
 
   _createClass(EducationItemForm, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {}
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -712,12 +703,12 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
-
-      e.preventDeafult();
-      this.props.processForm(this.state).then(function () {
-        return _this3.props.history.push('/');
-      }); //this has to change 
+      e.preventDefault();
+      this.props.processForm(this.state);
+      debugger;
+      this.props.closeModal();
+      this.props.history.push("/git/".concat(this.state.user_id)); // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
+      // this.props.processForm(this.state);
     }
   }, {
     key: "getDropList",
@@ -774,12 +765,18 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Year ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "start-yr"
-      }, this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "start-yr",
+        onChange: this.update('start_yr')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "Year"), this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "End Year (or expected) ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "end-yr"
-      }, this.getDropListEnd())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Activities and societies ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "end-yr",
+        onChange: this.update('end_yr')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "Year"), this.getDropListEnd())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Activities and societies ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         rows: "8",
         cols: "99",
         value: this.state.activities,
@@ -991,6 +988,13 @@ function (_React$Component) {
     // }
 
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.educationId != this.props.educationId) {
+        this.props.fetchEducationItem(this.props.educationId);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -1012,14 +1016,16 @@ function (_React$Component) {
         className: "item-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
-      }, educationItem.school), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, educationItem.school), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-edit"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt",
         onClick: function onClick() {
           return _this.props.openModal('edit education', {
             educationItem: educationItem
           });
         }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"
       }, educationItem.degree, ", ", educationItem.field), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub-2"
@@ -1126,7 +1132,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  //FIX THIS 
   var defaultExperienceItem = {
     title: '',
     company: '',
@@ -1136,7 +1141,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     description: ''
   };
   var experienceItem = ownProps.experienceItem || defaultExperienceItem;
-  debugger;
   var formType = 'Edit experience';
   return {
     experienceItem: experienceItem,
@@ -1171,16 +1175,6 @@ function (_React$Component) {
 
   _createClass(EditExpeienceItemForm, [{
     key: "render",
-    // componentDidMount() {
-    //     debugger
-    //     //fetching the experience item wrong 
-    //     this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
-    // }
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.experienceItem.id != this.props.match.params.experienceItemId) {
-    //         this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
-    //     }
-    // }
     value: function render() {
       var _this$props = this.props,
           processForm = _this$props.processForm,
@@ -1267,12 +1261,11 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
-
       e.preventDefault();
-      this.props.processForm(this.state).then(function () {
-        return _this3.props.history.push('/');
-      });
+      this.props.processForm(this.state);
+      debugger;
+      this.props.closeModal();
+      this.props.history.push("/git/".concat(this.state.user_id)); // this.props.processForm(this.state).then(() => this.props.history.push('/'));
     }
   }, {
     key: "getDropList",
@@ -1321,16 +1314,26 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "start-yr",
+        onChange: this.update('start_date')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "start-yr"
-      }, this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "Year"), this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "End Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "end-yr",
+        onChange: this.update('end_date')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "end-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "end-yr"
-      }, this.getDropList())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "Year"), this.getDropList())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text" // value={this.state.location}
         // onChange={this.update('location')}
@@ -1573,18 +1576,20 @@ function (_React$Component) {
         className: "item-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
-      }, experienceItem.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, experienceItem.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-edit"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt",
         onClick: function onClick() {
           return _this.props.openModal('edit experience', {
             experienceItem: experienceItem
           });
         }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"
       }, "Company name goes here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub-2"
-      }, "Date goes here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, experienceItem.start_date, " - ", experienceItem.end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub-2"
       }, experienceItem.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, experienceItem.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
     }
@@ -1924,7 +1929,7 @@ function (_React$Component) {
       }; //need to pass up the id?
 
       this.props.processForm(user).then(function () {
-        return _this3.props.history.push('/');
+        return _this3.props.history.push('/feed');
       }); //have to change this 
     }
   }, {
@@ -1938,7 +1943,7 @@ function (_React$Component) {
       }; //demo does not have id stored here  ///////////////////////
 
       this.props.processForm(demo).then(function () {
-        return _this4.props.history.push("/profiles");
+        return _this4.props.history.push('/feed');
       }); ///hard coded 
     }
   }, {
@@ -2478,7 +2483,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_nav__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2528,7 +2532,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   var user = state.entities.users[ownProps.match.params.userId];
   return {
     user: user
@@ -2664,7 +2667,6 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var user = this.props.user;
-      debugger;
 
       if (!user) {
         return null;
@@ -37670,7 +37672,7 @@ var createEducationItem = function createEducationItem(educationItem) {
 var updateEducationItem = function updateEducationItem(educationItem) {
   return $.ajax({
     method: 'PATCH',
-    url: "api/education_items/edit/".concat(educationItem.id),
+    url: "api/education_items/".concat(educationItem.id),
     data: {
       educationItem: educationItem
     }
@@ -37723,7 +37725,7 @@ var createExperienceItem = function createExperienceItem(experienceItem) {
 var updateExperienceItem = function updateExperienceItem(experienceItem) {
   return $.ajax({
     method: 'PATCH',
-    url: "api/experience_items/edit/".concat(experienceItem.id),
+    url: "api/experience_items/".concat(experienceItem.id),
     data: {
       experienceItem: experienceItem
     }

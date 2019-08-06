@@ -52,13 +52,13 @@ class LoginForm extends React.Component {
   handleSubmit() {
     const user = { email: this.state.email, password: this.state.password };
     //need to pass up the id?
-    this.props.processForm(user).then(() => this.props.history.push('/'));  //have to change this 
+    this.props.processForm(user).then(() => this.props.history.push('/feed'));  //have to change this 
   }
 
   handleDemo(){
     const demo = {email: 'demo@gmail.com', password: 'hunter12'};
     //demo does not have id stored here  ///////////////////////
-    this.props.processForm(demo).then(() => this.props.history.push(`/profiles`)); ///hard coded 
+    this.props.processForm(demo).then(() => this.props.history.push('/feed')); ///hard coded 
   }
 
   render() {

@@ -25,7 +25,7 @@ export const createExperienceItem = (experienceItem) => (
 export const updateExperienceItem = (experienceItem) => (
     $.ajax({
         method: 'PATCH', 
-        url: `api/experience_items/edit/${experienceItem.id}`, 
+        url: `api/experience_items/${experienceItem.id}`, 
         data: {experienceItem}   
     })
 );

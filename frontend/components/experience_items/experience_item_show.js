@@ -57,10 +57,12 @@ class ExperienceItemShow extends React.Component {
                         <div className='item-title'>
                             <Modal />
                             <div className='item-title'>{experienceItem.title}</div>
+                            <div className='icon-edit'>
                             <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit experience', {experienceItem: experienceItem})}></i>
+                            </div>
                         </div>
                         <div className='item-sub'>Company name goes here</div>
-                        <div className='item-sub-2'>Date goes here</div>
+                        <div className='item-sub-2'>{experienceItem.start_date} - {experienceItem.end_date}</div>
                         <div className='item-sub-2'>{experienceItem.location}</div>
                         <br/>
                         <div>{experienceItem.description}</div>

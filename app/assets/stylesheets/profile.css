@@ -91,9 +91,11 @@
 .icon{
     margin-top:28px; 
     cursor: pointer; 
-
 }
 
+.icon-edit {
+    cursor: pointer; 
+}
 
 
 .item-info{

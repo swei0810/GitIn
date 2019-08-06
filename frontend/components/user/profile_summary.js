@@ -6,7 +6,6 @@ class ProfileSummary extends React.Component {
 
     render() {
         const {user} = this.props;
-        debugger
         if (!user) {
             return null; 
         }

@@ -36,6 +36,11 @@ class EducationItemShow extends React.Component {
     //     }
     // }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.educationId!= this.props.educationId) {
+            this.props.fetchEducationItem(this.props.educationId);
+        }
+    }
 
     render() {
         const {educationItem} = this.props; 
@@ -53,7 +58,9 @@ class EducationItemShow extends React.Component {
                         <div className='item-title'> 
                             <Modal />
                             <div className='item-title'>{educationItem.school}</div>
+                            <div className='icon-edit'>
                             <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', {educationItem: educationItem})}></i>
+                            </div>
                         </div> 
                         <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
                         <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>

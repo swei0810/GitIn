@@ -24,7 +24,7 @@ export const createEducationItem = (educationItem) => (
 export const updateEducationItem = (educationItem) => (
     $.ajax({
         method: 'PATCH', 
-        url: `api/education_items/edit/${educationItem.id}`, 
+        url: `api/education_items/${educationItem.id}`, 
         data: {educationItem}   
     })
 );
