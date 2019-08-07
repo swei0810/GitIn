@@ -30,10 +30,7 @@ class User < ApplicationRecord
     has_many :companies,  #you work for 
         through: :experience_items, 
         source: :company
-    has_many :posts,
-      primary_key: :id, 
-      foreign_key: :author_id, 
-      class_name: 'Post'
+    has_many :posts, as: :author
     
     has_many :skills
     has_many :interests   #companies you are interested in 

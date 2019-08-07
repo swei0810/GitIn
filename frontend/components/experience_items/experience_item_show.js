@@ -7,6 +7,7 @@ import { fetchExperienceItem } from '../../actions/experience_item_actions';
 import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
 
     return {
         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
@@ -76,6 +77,7 @@ class ExperienceItemShow extends React.Component {
     }
 
     render() {
+        debugger
         const {experienceItem} = this.props; 
         if (!experienceItem) {
             return null; 

@@ -30,6 +30,8 @@ class Profile extends React.Component {
             isCurrentUser = false; 
         }
 
+        debugger
+
         return (
             <div> 
                 <ProfileNavbar users={this.props.users} currentUserId={this.props.currentUserId}/>

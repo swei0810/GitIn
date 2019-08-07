@@ -5,6 +5,7 @@ class Api::PostsController < ApplicationController
       render :index
     end 
 
+
     def create 
       @post = Post.new(post_params)
       # @post.author = 
@@ -15,12 +16,11 @@ class Api::PostsController < ApplicationController
       end 
     end 
 
-    def edit 
-    end 
 
     def update 
     end 
 
+    
     def destroy 
       @post = post.find(params[:id]) 
       @post.destroy 
@@ -29,7 +29,7 @@ class Api::PostsController < ApplicationController
 
     private
     def post_params
-      params.require(:post).permit(:author_id, :body)
+      params.require(:post).permit(:author_id, :author_type, :body)
     end
 
 end

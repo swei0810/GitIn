@@ -5,6 +5,7 @@ import { fetchEducationItem } from '../../actions/education_item_actions';
 import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     return {
         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
         educationItem:  state.entities.educationItems[ownProps.educationId]

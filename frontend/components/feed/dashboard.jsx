@@ -40,8 +40,9 @@ class Dashboard extends React.Component {
                         mini profile goes here
                     </div>
 
-                    <div className='posts'>
-                        posts go here 
+                    <div className='posts-container'>
+                        <div className='post-create'>creating a post</div> 
+                        <div className='post-index'>Post Index</div>
                     </div>
                     
                     <div className='tips' >

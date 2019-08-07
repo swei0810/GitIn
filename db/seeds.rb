@@ -92,7 +92,29 @@ penguin = Company.create!(name:'Penguin Random House',
 c9 = open("https://gitin-seeds.s3.amazonaws.com/penguin.png")
 penguin.photo.attach(io: c9, filename: 'penguin.png')
 
+kx = Company.create!(name:'Kx- a division of First Derivatives plc', 
+                     field:'Computer Software', 
+                     description:'The kdb+ database is used for complex analytics on very large streaming datasets from IoT to financial services.', 
+                     website_url:'https://kx.com/', 
+                     location:'New York, NY'  )
+c10 = open("https://gitin-seeds.s3.amazonaws.com/kx.png")
+kx.photo.attach(io: c10, filename: 'kx.png')
 
+upenn = Company.create!(name:'University of Pennsylvania', 
+                     field:'Higher Education', 
+                     description:'The University of Pennsylvania is one of the oldest universities in America and, as a member of the Ivy League, one of the most prestigious institutions of higher learning in all the world.', 
+                     website_url:'https://www.upenn.edu/', 
+                     location:'Philadelphia, PA'  )
+c11 = open("https://gitin-seeds.s3.amazonaws.com/upenn.png")
+upenn.photo.attach(io: c11, filename: 'upenn.png')
+
+mg = Company.create!(name:'MaGrann Associates', 
+                     field:'Construction', 
+                     description:'Making Buildings Better for Over 35 Years', 
+                     website_url:'https://www.magrann.com/', 
+                     location:'Mount Laurel, NJ'  )
+c12 = open("https://gitin-seeds.s3.amazonaws.com/mg.png")
+mg.photo.attach(io: c12, filename: 'mg.png')
 
 #USER 
 demo = User.create!(email: 'demo@gmail.com' , 
@@ -251,3 +273,57 @@ jw.photo.attach(io: u4, filename: 'profile4.png')
 
 
 
+
+ec = User.create!(email: 'eli@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Eli', 
+                             last_name:'Cohen', 
+                             location: 'Greater New York City Area', 
+                             summary:' ', 
+                             github_url:'', 
+                             headline:'Data Scientist at Kx - a division of First Derivatives plc')                            
+
+ec.experience_items.create!(user_id: ec.id, 
+                             title:'Data Scientist' , 
+                             company_id: kx.id, 
+                             location:'Greater New York City Area', 
+                             start_date: 'November 2018', 
+                             end_date: 'May 2019', 
+                             description: " " )
+
+ec.experience_items.create!(user_id: ec.id, 
+                             title:'Teaching Assistant, Grader' , 
+                             company_id: upenn.id, 
+                             location:'Philadelphia, PA', 
+                             start_date: 'August 2017', 
+                             end_date: 'December 2017', 
+                             description: "MEAM 302 Fluid Mechanics" )                      
+
+ec.experience_items.create!(user_id: ec.id, 
+                             title:'Technocal Consulting Intern' , 
+                             company_id: mg.id, 
+                             location:'Mt. Laurel, NJ', 
+                             start_date: 'May 2017', 
+                             end_date: 'August 2017', 
+                             description: "" ) 
+
+ec.experience_items.create!(user_id: ec.id, 
+                             title:'Machine Shop Assistant' , 
+                             company_id: upenn.id, 
+                             location:'Philadelphia, PA', 
+                             start_date: 'June 2016', 
+                             end_date: 'May 2017', 
+                             description: "Precision Machining Laboratory" )     
+                             
+                             
+ec.education_items.create!(user_id: ec.id, 
+                             school_id: upenn.id, 
+                             degree: 'Bachelor of Science in Engineering', 
+                             field: 'Mechanical Engineering and Applied Mechanics (Major), Mathematics (Minor)', 
+                             start_yr: "2014", 
+                             end_yr: "2018" , 
+                             activities: "Magna Cum Laude, Engineers Without Borders (International Trip Leader), University of Pennsylvania Men's Club Soccer (Persident, Captain), Hexagon Senior Honor Society (Tangent), Phi Fraternity (Secretary, Rush Chair)"
+                             )
+
+u5= open("https://gitin-seeds.s3.amazonaws.com/deafult-male.png")
+ec.photo.attach(io: u5, filename: 'default-male.png')

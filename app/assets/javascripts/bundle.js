@@ -724,8 +724,8 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.processForm(this.state);
-      this.props.closeModal();
-      this.props.history.push("/git/".concat(this.state.user_id)); // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
+      this.props.closeModal(); // this.props.history.push(`/git/${this.state.user_id}`);
+      // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
       // this.props.processForm(this.state);
     }
   }, {
@@ -992,6 +992,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
     educationItem: state.entities.educationItems[ownProps.educationId]
@@ -1322,21 +1323,22 @@ function (_React$Component) {
     value: function formatDate(e) {
       var _this3 = this;
 
+      debugger;
       e.preventDefault();
       var startDate = this.state.startMonth + ' ' + this.state.startYear;
       var endDate = this.state.endMonth + ' ' + this.state.endYear;
+      debugger;
       this.setState({
         start_date: startDate,
         end_date: endDate
       }, function () {
-        debugger;
-
         _this3.handleSubmit();
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
+      debugger;
       this.props.processForm(this.state);
       this.props.closeModal();
     }
@@ -1608,6 +1610,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
     experienceItem: state.entities.experienceItems[ownProps.experienceId]
@@ -1682,6 +1685,7 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
+      debugger;
       var experienceItem = this.props.experienceItem;
 
       if (!experienceItem) {
@@ -1809,8 +1813,12 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-profile"
       }, "mini profile goes here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "posts"
-      }, "posts go here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "posts-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-create"
+      }, "creating a post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-index"
+      }, "Post Index")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tips"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "tips-img",
@@ -3086,6 +3094,7 @@ function (_React$Component) {
         isCurrentUser = false;
       }
 
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_nav__WEBPACK_IMPORTED_MODULE_6__["default"], {
         users: this.props.users,
         currentUserId: this.props.currentUserId

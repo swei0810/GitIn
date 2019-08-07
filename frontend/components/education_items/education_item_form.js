@@ -25,7 +25,7 @@ class EducationItemForm extends React.Component {
         e.preventDefault(); 
         this.props.processForm(this.state);
         this.props.closeModal();
-        this.props.history.push(`/git/${this.state.user_id}`);
+        // this.props.history.push(`/git/${this.state.user_id}`);
         
         // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
         // this.props.processForm(this.state);

@@ -23,14 +23,17 @@ class ExperienceItemForm extends React.Component {
     }
 
     formatDate(e) {
+        debugger
         e.preventDefault();
         const startDate = this.state.startMonth + ' ' + this.state.startYear;
         const endDate = this.state.endMonth + ' ' + this.state.endYear;
-        this.setState({start_date: startDate, end_date:endDate}, ()=>{debugger 
+        debugger
+        this.setState({start_date: startDate, end_date:endDate}, ()=>{
             this.handleSubmit()});
     }
 
     handleSubmit() {
+        debugger
         this.props.processForm(this.state);
         this.props.closeModal();
     }
@@ -58,6 +61,7 @@ class ExperienceItemForm extends React.Component {
             deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
 
         }
+        
         return (
             <div> 
                 <div className='modal-header'> 
