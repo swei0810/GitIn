@@ -205,9 +205,7 @@ var fetchExperienceItem = function fetchExperienceItem(id) {
 };
 var createExperienceItem = function createExperienceItem(experienceItem) {
   return function (dispatch) {
-    debugger;
     return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createExperienceItem"](experienceItem).then(function (experienceItem) {
-      debugger;
       return dispatch(receiveExperienceItem(experienceItem));
     });
   };
@@ -235,7 +233,6 @@ var receiveAllExperienceItems = function receiveAllExperienceItems(experienceIte
 };
 
 var receiveExperienceItem = function receiveExperienceItem(experienceItem) {
-  debugger;
   return {
     type: RECEIVE_EXPERIENCE_ITEM,
     experienceItem: experienceItem
@@ -607,6 +604,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     processForm: function processForm(educationItem) {
       return dispatch(Object(_actions_education_item_actions__WEBPACK_IMPORTED_MODULE_3__["updateEducationItem"])(educationItem));
     },
+    deleteForm: function deleteForm(id) {
+      return dispatch(Object(_actions_education_item_actions__WEBPACK_IMPORTED_MODULE_3__["deleteEducationItem"])(id));
+    },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
@@ -631,12 +631,14 @@ function (_React$Component) {
           processForm = _this$props.processForm,
           formType = _this$props.formType,
           educationItem = _this$props.educationItem,
-          closeModal = _this$props.closeModal;
+          closeModal = _this$props.closeModal,
+          deleteForm = _this$props.deleteForm;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: closeModal,
         processForm: processForm,
         formType: formType,
-        educationItem: educationItem
+        educationItem: educationItem,
+        deleteForm: deleteForm
       });
     }
   }]);
@@ -695,6 +697,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EducationItemForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.state = _this.props.educationItem;
     return _this;
   } // componentDidUpdate() {
@@ -718,6 +721,13 @@ function (_React$Component) {
       this.props.closeModal();
       this.props.history.push("/git/".concat(this.state.user_id)); // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
       // this.props.processForm(this.state);
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault();
+      this.props.deleteForm(this.state.id);
+      this.props.closeModal();
     }
   }, {
     key: "getDropList",
@@ -744,6 +754,15 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var deleteButton;
+
+      if (this.props.formType.includes('Edit')) {
+        deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "delete-button",
+          onClick: this.handleDelete
+        }, "Delete");
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -796,7 +815,7 @@ function (_React$Component) {
         className: "modal-submit",
         type: "submit",
         value: "Save"
-      })));
+      })), deleteButton);
     }
   }]);
 
@@ -851,7 +870,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  debugger;
   return {
     //  educationItems: Object.values(state.entities.users.undefined.educationItems) //THIS HAS TO CHANGE 
     educationItems: state.entities.educationItems //change THIS
@@ -1181,6 +1199,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     processForm: function processForm(experienceItem) {
       return dispatch(Object(_actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_3__["updateExperienceItem"])(experienceItem));
     },
+    deleteForm: function deleteForm(id) {
+      return dispatch(Object(_actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_3__["deleteExperienceItem"])(id));
+    },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
@@ -1205,12 +1226,14 @@ function (_React$Component) {
           processForm = _this$props.processForm,
           formType = _this$props.formType,
           experienceItem = _this$props.experienceItem,
-          closeModal = _this$props.closeModal;
+          closeModal = _this$props.closeModal,
+          deleteForm = _this$props.deleteForm;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: closeModal,
         processForm: processForm,
         formType: formType,
-        experienceItem: experienceItem
+        experienceItem: experienceItem,
+        deleteForm: deleteForm
       });
     }
   }]);
@@ -1269,9 +1292,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ExperienceItemForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.formatDate = _this.formatDate.bind(_assertThisInitialized(_this));
     _this.state = _this.props.experienceItem;
-    _this.state.startMonth = ''; //and year 
-
+    _this.state.startMonth = '';
+    _this.state.startYear = '';
+    _this.state.endMonth = '';
+    _this.state.endYear = '';
     return _this;
   }
 
@@ -1283,17 +1310,36 @@ function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
-    } //renderErrors
+    }
+  }, {
+    key: "formatDate",
+    value: function formatDate(e) {
+      var _this3 = this;
 
+      e.preventDefault();
+      var startDate = this.state.startMonth + ' ' + this.state.startYear;
+      var endDate = this.state.endMonth + ' ' + this.state.endYear;
+      this.setState({
+        start_date: startDate,
+        end_date: endDate
+      }, function () {
+        debugger;
+
+        _this3.handleSubmit();
+      });
+    }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault(); //construct the date 
-      // this.state.start_date use Set State.then 
-
+    value: function handleSubmit() {
       this.props.processForm(this.state);
-      this.props.closeModal(); // this.props.history.push(`/git/${this.state.user_id}`);
-      // this.props.processForm(this.state).then(() => this.props.history.push('/'));
+      this.props.closeModal();
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault();
+      this.props.deleteForm(this.state.id);
+      this.props.closeModal();
     }
   }, {
     key: "getDropList",
@@ -1308,15 +1354,23 @@ function (_React$Component) {
     }
   }, {
     key: "render",
-    //have to change the type for dates 
     value: function render() {
+      var deleteButton;
+
+      if (this.props.formType.includes('Edit')) {
+        deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "delete-button",
+          onClick: this.handleDelete
+        }, "Delete");
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
       }, " X ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.formatDate
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Title ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
@@ -1343,22 +1397,24 @@ function (_React$Component) {
         className: "select-yr"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr",
-        onChange: this.update('start_date')
+        onChange: this.update('startMonth')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
       }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "start-yr"
+        className: "start-yr",
+        onChange: this.update('startYear')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
       }, "Year"), this.getDropList()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "End Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "end-yr",
-        onChange: this.update('end_date')
+        onChange: this.update('endMonth')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
       }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "end-yr"
+        className: "end-yr",
+        onChange: this.update('endYear')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
       }, "Year"), this.getDropList())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1375,7 +1431,7 @@ function (_React$Component) {
         className: "modal-submit",
         type: "submit",
         value: "Save"
-      })));
+      })), deleteButton);
     }
   }]);
 
@@ -1430,7 +1486,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     experienceItems: state.entities.experienceItems
   };
@@ -2480,8 +2535,7 @@ function (_React$Component) {
     _classCallCheck(this, EditIntro);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EditIntro).call(this, props));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.state = this.props.user; 
-
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2499,7 +2553,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateUser(this.state.id);
-      this.props.closeModal(); // this.props.history.push(`/git/${this.state.user_id}`);
+      this.props.closeModal();
     }
   }, {
     key: "render",
@@ -2511,16 +2565,42 @@ function (_React$Component) {
         className: "close-x"
       }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modal-name"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modal-first-name"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "modal-input",
+        className: "modal-input-name",
         type: "text",
         value: this.props.user.first_name,
         onChange: this.update('first_name')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modal-last-name"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Last name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "modal-input-name",
+        type: "text",
+        value: this.props.user.last_name,
+        onChange: this.update('last_name')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "modal-input",
+        type: "text",
+        value: this.props.user.headline,
+        onChange: this.update('headline')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "modal-input",
+        type: "text",
+        value: this.props.user.location,
+        onChange: this.update('location')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Github Url ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "modal-input",
+        type: "text",
+        value: this.props.user.github_url,
+        onChange: this.update('github_url')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-submit",
         type: "submit",
         value: "Save"
-      })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
     }
   }]);
 
@@ -2632,16 +2712,16 @@ function (_React$Component) {
         className: "close-x"
       }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " Summary ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " Summary ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         rows: "8",
         cols: "99",
         value: this.props.user.summary,
         onChange: this.update('summary')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-submit",
         type: "submit",
         value: "Save"
-      })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
     }
   }]);
 
@@ -2833,8 +2913,8 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_nav__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        user: this.props.user,
-        isCurrentUser: isCurrentUser
+        users: this.props.users,
+        currentUserId: this.props.currentUserId
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2888,9 +2968,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var users = state.entities.users;
   var user = state.entities.users[ownProps.match.params.userId];
   var currentUserId = state.session.id;
   return {
+    users: users,
     user: user,
     currentUserId: currentUserId
   };
@@ -2919,6 +3001,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./frontend/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2938,6 +3021,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var currentUser = ownProps.users[ownProps.currentUserId];
+  return {
+    currentUser: currentUser
+  };
+};
 
 var ProfileNav =
 /*#__PURE__*/
@@ -2988,7 +3079,7 @@ function (_React$Component) {
         className: "profile-image-circle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-icon",
-        src: this.props.user.photoUrl
+        src: this.props.currentUser.photoUrl
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \xA0 Me")));
     }
   }]);
@@ -2996,7 +3087,7 @@ function (_React$Component) {
   return ProfileNav;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProfileNav);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, null)(ProfileNav)); // export default ProfileNav
 
 /***/ }),
 
@@ -37802,7 +37893,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var experienceItemsReducer = function experienceItemsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  debugger;
   Object.freeze(state);
 
   switch (action.type) {
@@ -37810,7 +37900,6 @@ var experienceItemsReducer = function experienceItemsReducer() {
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, action.experienceItems);
 
     case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_EXPERIENCE_ITEM"]:
-      debugger;
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.experienceItem.id, action.experienceItem));
 
     case _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_EXPERIENCE_ITEM"]:

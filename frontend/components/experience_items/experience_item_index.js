@@ -9,7 +9,6 @@ import {openModal} from '../../actions/modal_actions'
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return { 
       experienceItems:  state.entities.experienceItems
   }

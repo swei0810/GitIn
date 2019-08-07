@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
 import ExperienceItemForm from './experience_item_form'; 
-import { updateExperienceItem, fetchExperienceItem } from '../../actions/experience_item_actions'; 
+import { updateExperienceItem, fetchExperienceItem, deleteExperienceItem } from '../../actions/experience_item_actions'; 
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchExperienceItem: id => dispatch(fetchExperienceItem(id)), 
         processForm: experienceItem => dispatch(updateExperienceItem(experienceItem)), 
+        deleteForm: id => dispatch(deleteExperienceItem(id)),
         closeModal: () => dispatch(closeModal())
     }; 
 }; 
@@ -24,13 +25,14 @@ const mapDispatchToProps = (dispatch) => {
 class EditExpeienceItemForm extends React.Component {
 
     render() {
-        const {processForm, formType, experienceItem, closeModal} = this.props; 
+        const {processForm, formType, experienceItem, closeModal, deleteForm} = this.props; 
         return (
             <ExperienceItemForm 
                 closeModal={closeModal}
                 processForm= {processForm}
                 formType={formType}
-                experienceItem={experienceItem}  />
+                experienceItem={experienceItem}
+                deleteForm = {deleteForm}  />
         )
     }
 }

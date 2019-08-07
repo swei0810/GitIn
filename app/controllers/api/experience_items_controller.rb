@@ -41,7 +41,7 @@ class Api::ExperienceItemsController < ApplicationController
 
 
     def destroy 
-        @experience_item = experience_item.find(params[:id]) 
+        @experience_item = ExperienceItem.find(params[:id]) 
         @experience_item.destroy 
         render :show 
     end 

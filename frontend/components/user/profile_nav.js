@@ -1,5 +1,14 @@
 
 import React from "react";
+import { connect } from 'react-redux';
+
+
+const mapStateToProps = (state, ownProps) => {
+    const currentUser = ownProps.users[ownProps.currentUserId];
+    return {
+        currentUser
+    }
+}
 
 class ProfileNav extends React.Component {
 
@@ -23,7 +32,8 @@ class ProfileNav extends React.Component {
                 
                 <div className='nav-icon-p'> 
                  <div className="profile-image-circle">
-                <img className="profile-icon" src={this.props.user.photoUrl}/>
+                <img className="profile-icon" src={this.props.currentUser.photoUrl}/>
+
                 </div>
                 <br/><br/> &nbsp; Me</div> 
               
@@ -35,4 +45,5 @@ class ProfileNav extends React.Component {
     }
 }
 
-export default ProfileNav
+export default connect(mapStateToProps, null)(ProfileNav)
+// export default ProfileNav

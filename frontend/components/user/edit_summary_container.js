@@ -48,7 +48,7 @@ class EditSummary extends React.Component {
                 </div>
 
                 <form onSubmit={this.handleSubmit}>
-                    <label> Summary <br/> 
+                    <label> Summary <br/> <br/> 
                         <textarea 
                                     rows="8" cols="99"
                                     value={this.props.user.summary}
@@ -56,8 +56,10 @@ class EditSummary extends React.Component {
                                 />
                     </label> 
                     <br/> 
-                    <br/>
                     <input className='modal-submit' type='submit' value='Save' /> 
+                    <br/> 
+                    <br/> 
+                    <br/> 
 
                 </form>
             </div> 

@@ -4,7 +4,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     z-index: 10;
   }
   
@@ -26,6 +26,8 @@
   .modal-header{
     display: flex; 
     justify-content: space-between;
+    border-bottom: 1px solid grey;
+    margin-bottom: 25px;
   }
 
 
@@ -44,26 +46,70 @@
     cursor: pointer;
     display: inline-flex;
     justify-content: right;
-    padding: 4px; 
+    padding: 5px; 
     position: relative;
     left: 575px;
-    font-size: 15px;
-    border-radius: 5px;
+    font-size: 18px;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold; 
+    font-weight: bold;
+    top: 32px;
+    left: 550px;
 
   }
 
-  .modal-yr {
+  .delete-button {
+    /* background-color: #0073b1; */
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: right;
+    padding: 5px; 
+    position: relative;
+    left: 0px;
+    font-size: 18px;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+    color: rgba(0,0,0,.6);
+    font-weight: bold; 
+  }
+
+  .modal-yr, .modal-name {
     display: flex; 
     justify-content: space-between;
     flex-direction: row; 
+
   }
+
+
+  .modal-input-name {
+    width: 290px; 
+    padding: 7px;
+    font-family: inherit;
+    font-size: inherit;
+    margin-top:3px; 
+}
 
 
   .select-yr, .select-yr-2, .start-yr, .end-yr {
     width: 100%; 
     height: 32px; 
   }
+
+  .modal-first-name, .modal-last-name {
+    width: 50%; 
+    height: 20px; 
+  }
   
+
+  .modal-name {
+    padding-bottom: 42px;
+  }
   .select-yr-2{
     margin-left: 10px;
 

@@ -20,8 +20,7 @@ class Profile extends React.Component {
 
     }
 
-    render() {
-        
+    render() {        
         if (!this.props.user) {
             return null;
         }
@@ -33,7 +32,8 @@ class Profile extends React.Component {
 
         return (
             <div> 
-                <ProfileNavbar user={this.props.user} isCurrentUser={isCurrentUser}/>
+                <ProfileNavbar users={this.props.users} currentUserId={this.props.currentUserId}/>
+
             <div className='profile'>
                 
 

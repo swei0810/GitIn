@@ -17,10 +17,8 @@ export const fetchExperienceItem = id => dispatch => {
 }
 
 export const createExperienceItem = experienceItem => dispatch => {
-    debugger 
     return APIUtil.createExperienceItem(experienceItem)
         .then(experienceItem => {
-            debugger
              return dispatch(receiveExperienceItem(experienceItem));
     });
 };
@@ -46,7 +44,6 @@ const receiveAllExperienceItems = (experienceItems) => ({
 })
 
 const receiveExperienceItem = experienceItem => {
-    debugger
     return {
         type: RECEIVE_EXPERIENCE_ITEM, 
         experienceItem, 

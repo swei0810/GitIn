@@ -10,7 +10,6 @@ import {openModal} from '../../actions/modal_actions'
 
 
 const mapStateToProps = (state) => {
-  debugger
   return { 
     //  educationItems: Object.values(state.entities.users.undefined.educationItems) //THIS HAS TO CHANGE 
       educationItems:  state.entities.educationItems //change THIS

@@ -7,6 +7,7 @@ class EducationItemForm extends React.Component {
     constructor(props) {
         super(props); 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.handleDelete = this.handleDelete.bind(this); 
         this.state = this.props.educationItem; 
     }
 
@@ -28,9 +29,12 @@ class EducationItemForm extends React.Component {
         
         // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
         // this.props.processForm(this.state);
+    }
 
-
-
+    handleDelete(e){
+        e.preventDefault(); 
+        this.props.deleteForm(this.state.id);
+        this.props.closeModal();
 
     }
 
@@ -54,6 +58,12 @@ class EducationItemForm extends React.Component {
 
 
     render () {
+        let deleteButton; 
+
+        if (this.props.formType.includes('Edit')) {
+            deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
+
+        }
         return (
             <div> 
                 <div className='modal-header'> 
@@ -135,6 +145,8 @@ class EducationItemForm extends React.Component {
 
                     <input className='modal-submit' type='submit' value='Save' /> 
                 </form>
+                {deleteButton}
+
 
 
             </div>

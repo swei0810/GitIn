@@ -6,8 +6,14 @@ class ExperienceItemForm extends React.Component {
     constructor(props) {
         super(props); 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.handleDelete = this.handleDelete.bind(this); 
+        this.formatDate = this.formatDate.bind(this);
+
         this.state = this.props.experienceItem; 
-        this.state.startMonth = ''; //and year 
+        this.state.startMonth = ''; 
+        this.state.startYear = '';
+        this.state.endMonth = '';
+        this.state.endYear ='';
     }
 
     update(field) {
@@ -16,17 +22,24 @@ class ExperienceItemForm extends React.Component {
         };
     }
 
-    //renderErrors
+    formatDate(e) {
+        e.preventDefault();
+        const startDate = this.state.startMonth + ' ' + this.state.startYear;
+        const endDate = this.state.endMonth + ' ' + this.state.endYear;
+        this.setState({start_date: startDate, end_date:endDate}, ()=>{debugger 
+            this.handleSubmit()});
+    }
 
-    handleSubmit(e) {
-        e.preventDefault(); 
-//construct the date 
-        // this.state.start_date use Set State.then 
-
+    handleSubmit() {
         this.props.processForm(this.state);
         this.props.closeModal();
-        // this.props.history.push(`/git/${this.state.user_id}`);
-        // this.props.processForm(this.state).then(() => this.props.history.push('/'));
+    }
+
+    handleDelete(e){
+        e.preventDefault(); 
+        this.props.deleteForm(this.state.id);
+        this.props.closeModal();
+
     }
 
     getDropList () {
@@ -38,9 +51,13 @@ class ExperienceItemForm extends React.Component {
       );
     };
 
-    //have to change the type for dates 
-
     render () {
+        let deleteButton; 
+
+        if (this.props.formType.includes('Edit')) {
+            deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
+
+        }
         return (
             <div> 
                 <div className='modal-header'> 
@@ -48,8 +65,7 @@ class ExperienceItemForm extends React.Component {
                     <div onClick={this.props.closeModal} className="close-x"> X </div>
                 </div> 
 
-                <form onSubmit={this.handleSubmit}> 
-                    {/* <div onClick={this.props.closeModal} className="close-x"> X </div> */}
+                <form onSubmit={this.formatDate}> 
                     <label>Title <br/>
                         <input
                             className='modal-input'
@@ -91,7 +107,7 @@ class ExperienceItemForm extends React.Component {
                             <div className='select-yr'>
                             <label>Start Date <br/>
                                 <select className='start-yr'
-                                    onChange={this.update('start_date')}> 
+                                    onChange={this.update('startMonth')}> 
                                         <option selected>Month</option> 
                                         <option>January</option>
                                         <option>February</option>
@@ -108,7 +124,8 @@ class ExperienceItemForm extends React.Component {
                                 </select> 
                                 <br/>
 
-                                <select className='start-yr'> 
+                                <select className='start-yr'
+                                    onChange={this.update('startYear')}> 
                                     <option selected>Year</option> 
 
                                     {this.getDropList()}
@@ -122,7 +139,7 @@ class ExperienceItemForm extends React.Component {
                             <div className='select-yr-2'> 
                             <label>End Date <br/>
                                 <select className='end-yr'
-                                    onChange={this.update('end_date')}> 
+                                    onChange={this.update('endMonth')}> 
                                 <option selected>Month</option> 
                                 <option>January</option>
                                 <option>March</option>
@@ -140,7 +157,8 @@ class ExperienceItemForm extends React.Component {
                                 <br/>
                                 
 
-                                <select className='end-yr'> 
+                                <select className='end-yr'
+                                        onChange={this.update('endYear')}> 
                                     <option selected>Year</option> 
 
                                     {this.getDropList()}
@@ -171,18 +189,13 @@ class ExperienceItemForm extends React.Component {
                             onChange={this.update('description')}
                             value={this.state.description}
                         />
-                        {/* <input
-                            className='modal-input-description'
-
-                            type='text'
-                            value={this.state.description}
-                            onChange={this.update('description')}/> */}
                     </label> 
                     <br/>
                     <br/>
 
                     <input className='modal-submit' type='submit' value='Save' /> 
                 </form>
+                {deleteButton}
 
 
             </div>
