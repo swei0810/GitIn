@@ -1,3 +1,8 @@
+html {
+    background-color: rgba(235, 247, 247, 0.589);
+}
+
+
 .profile {
     display: flex; 
     justify-content: space-between; 
@@ -6,18 +11,25 @@
 }
 
 .experience-item-container, .profile-about {
-    border: 1px solid darkgrey;
     display: flex; 
     margin: 10px; 
     width: 800px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    border-radius: 2px;
+    background-color: white; 
 
 }
 
+
+
 .education-item-container{
-    border: 1px solid darkgrey;
+    /* border: 1px solid darkgrey; */
     width: 800px;
     display: flex; 
     margin: 10px; 
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    border-radius: 2px;
+    background-color: white; 
 }
 
 .profile-background {
@@ -51,9 +63,10 @@
     width: 800px; 
     height: 400px; 
     background-color: white; 
-    border: 1px solid darkgrey;
     display:flex; 
     flex-direction: column;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    border-radius: 2px;
 
 }
 
@@ -93,6 +106,13 @@
     cursor: pointer; 
 }
 
+.github-icon {
+    font-size: 40px; 
+    color: rgb(64, 192, 224);
+    z-index:1;
+    padding-top: 20px;
+    padding-left: 120px;
+}
 .icon-edit {
     cursor: pointer; 
 }

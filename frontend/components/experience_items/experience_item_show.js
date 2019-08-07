@@ -36,6 +36,44 @@ class ExperienceItemShow extends React.Component {
     //     }
     // }
 
+    calculateDuration() {
+
+        const start = this.props.experienceItem.start_date; 
+        const end = this.props.experienceItem.end_date;
+
+        const startYr = start.slice(start.length-4);
+        const endYr = end.slice(end.length-4);
+
+
+        const ds = Date.parse(start.slice(0,start.length-5) + "1, 2012");
+        const de = Date.parse(end.slice(0,end.length-5) + "1, 2012");
+
+        const startM =  new Date(ds).getMonth() + 1; 
+        const endM = new Date(de).getMonth() + 1;
+
+        const yr = parseInt(endYr)-parseInt(startYr); 
+  
+        let dur=''; 
+
+        if (yr!=0 && !Number.isNaN(yr)) {
+            dur += yr + ' yr  '
+        }; 
+
+
+
+        let mos; 
+        if (endM < startM) {
+            mos = endM - startM + 12 
+        } else {
+            mos = endM - startM 
+        }
+
+        if (mos!=0 && !Number.isNaN(mos)) {
+            dur += mos + ' mos'
+        }
+
+        return dur; 
+    }
 
     render() {
         const {experienceItem} = this.props; 
@@ -50,7 +88,15 @@ class ExperienceItemShow extends React.Component {
             </div>);
         }
 
+        const duration = this.calculateDuration();
+
         return (
+
+
+
+
+
+
             <div > 
                 {/* <div> 
                 <img className='experience-img' src={window.gate}/> 
@@ -67,7 +113,7 @@ class ExperienceItemShow extends React.Component {
                             {editIcon}
                         </div>
                         <div className='item-sub'>{experienceItem.company.name}</div>
-                        <div className='item-sub-2'>{experienceItem.start_date} - {experienceItem.end_date}</div>
+                        <div className='item-sub-2'>{experienceItem.start_date} - {experienceItem.end_date} &nbsp;· &nbsp; {duration}</div>
                         <div className='item-sub-2'>{experienceItem.location}</div>
                         <br/>
                         <div className='item-description'>{experienceItem.description}</div>

@@ -196,6 +196,8 @@ class ExperienceItemForm extends React.Component {
                     <input className='modal-submit' type='submit' value='Save' /> 
                 </form>
                 {deleteButton}
+                <br/>
+                <br/>
 
 
             </div>

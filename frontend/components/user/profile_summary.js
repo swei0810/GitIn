@@ -45,7 +45,11 @@ class ProfileSummary extends React.Component {
                 <div className='summary'> 
                     <div className='section-heading'> 
                         <p className='user-name'>{user.first_name} {user.last_name}</p>
+                        <div className='github-icon'>
+                        <i className="fab fa-github"></i>
+                        </div> 
                         {/* <Modal />  
+                        
                         <div className='icon'>
                         <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
                         </div>  */}

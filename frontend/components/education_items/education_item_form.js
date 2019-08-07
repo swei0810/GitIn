@@ -147,7 +147,8 @@ class EducationItemForm extends React.Component {
                 </form>
                 {deleteButton}
 
-
+                <br/>
+                <br/>
 
             </div>
         )

@@ -1,0 +1,39 @@
+.mini-profile { 
+    width: 20%; 
+    height: 100px; 
+    background-color: white; 
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    border-radius: 2px;
+}
+
+.feed-container {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+
+.posts {
+    width: 45%;
+    height: 400px; 
+    background-color: white; 
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    border-radius: 2px;
+
+
+}
+
+.tips {
+    width: 27.5%; 
+    height: 100%;
+
+    
+}
+
+.tips-img {
+    width: 100%; 
+    box-shadow: 0 0 0 1px rgba(188, 245, 255, 0.795);
+    border-radius: 2px;
+}
