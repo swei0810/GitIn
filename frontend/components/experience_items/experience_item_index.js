@@ -3,14 +3,14 @@ import ExperienceItemShow from './experience_item_show';
 import Modal from '../modal/modal';
 import { withRouter } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
-import {fetchAllExperienceItems} from '../../actions/experience_item_actions'; 
+import { fetchUserExperienceItems} from '../../actions/experience_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
 
 
 const mapStateToProps = (state, ownProps) => {
   return { 
-      experienceItems:  state.entities.experienceItems
+      experienceItems:  Object.values(state.entities.experienceItems)
   }
 
 }; 
@@ -18,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
       // fetchAllExperienceItems: () => dispatch(fetchAllExperienceItems()),
-      openModal: modal => dispatch(openModal(modal))
+      openModal: modal => dispatch(openModal(modal)), 
+      fetchUserExperienceItems: (userId) => dispatch(fetchUserExperienceItems(userId))
   };
 };
 
@@ -29,13 +30,13 @@ class ExperienceItemIndex extends React.Component {
     super(props); 
   }
 
-  // componentDidMount() {
-  //   this.props.fetchAllExperienceItems();
-  // }
+  componentDidMount() {
+    this.props.fetchUserExperienceItems(this.props.userId);
+  }
 
   render() {
-    const {experienceIds} = this.props; 
-    if (!experienceIds) {
+    const {experienceItems} = this.props; 
+    if (!experienceItems) {
       return null; 
     }
 
@@ -56,7 +57,7 @@ class ExperienceItemIndex extends React.Component {
           </div> 
         <ul>
           {/* {experienceItems.map(experienceItem => <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem}/>)} */}
-          {experienceIds.map(id=> <ExperienceItemShow key={id} experienceId={id} isCurrentUser={this.props.isCurrentUser}/>    )}
+          {experienceItems.map(experienceItem=> <ExperienceItemShow key={experienceItem.id} experienceItem={experienceItem} isCurrentUser={this.props.isCurrentUser}/>    )}
         </ul>
       </div>
     );

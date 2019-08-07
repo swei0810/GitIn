@@ -4,16 +4,16 @@
 #
 #  id          :bigint           not null, primary key
 #  name        :string           not null
-#  field       :string           not null
-#  description :text             not null
-#  website_url :text             not null
-#  location    :string           not null
+#  field       :string
+#  description :text
+#  website_url :text
+#  location    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Company < ApplicationRecord 
-    validates :name, :field, :description, :website_url, :location,  presence: true 
+    validates :name,  presence: true 
     has_many :posts, as: :author
 
     #how do you do this 

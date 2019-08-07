@@ -35,3 +35,11 @@ export const deleteEducationItem = (id) => (
         url: `api/education_items/${id}`   
     })
 );
+
+export const fetchUserEducationItems = (userId) => (
+    $.ajax({
+        method: 'GET', 
+        url: 'api/education_items', 
+        data: {userId}
+    })
+)

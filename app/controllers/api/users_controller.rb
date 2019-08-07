@@ -14,7 +14,17 @@ class Api::UsersController < ApplicationController
       render :index #do I need this 
     end 
 
+
+
     def update   #Do I need this 
+      @user = User.find(params[:id])
+        debugger
+        if @user.update(user_params)
+          render :show 
+        else 
+          render json: @user.errors, status: 422
+        end 
+
     end 
     
   

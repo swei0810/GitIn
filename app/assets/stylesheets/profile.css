@@ -199,3 +199,7 @@ html {
 .item-description{
     width: 90%;
 }
+
+.education-errors {
+    color: red; 
+}

@@ -6,7 +6,6 @@ import ProfileNavbar from '../user/profile_nav';
 class Dashboard extends React.Component {
 
     // componentDidMount() {
-    //     debugger
     //     this.props.fetchUser(this.props.match.params.userId);
     // }
 

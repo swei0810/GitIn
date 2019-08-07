@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()), 
-        updateUser: id => dispatch(updateUser(id))
+        updateUser: user => dispatch(updateUser(user))
 
     };
 }
@@ -23,7 +23,7 @@ class EditSummary extends React.Component {
     constructor(props) {
         super(props); 
         this.handleSubmit = this.handleSubmit.bind(this); 
-        // this.state = this.props.user; 
+        this.state = this.props.user; 
     }
 
     update(field) {
@@ -34,7 +34,7 @@ class EditSummary extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.updateUser(this.state.id);
+        this.props.updateUser(this.state);
         this.props.closeModal();
         // this.props.history.push(`/git/${this.state.user_id}`);
     } 
@@ -51,7 +51,7 @@ class EditSummary extends React.Component {
                     <label> Summary <br/> <br/> 
                         <textarea 
                                     rows="8" cols="99"
-                                    value={this.props.user.summary}
+                                    value={this.state.summary}
                                     onChange={this.update('summary')}
                                 />
                     </label> 

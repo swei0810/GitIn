@@ -1,11 +1,13 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
 import { updateUser } from '../../actions/user_actions'
+
 import {closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const user = ownProps.user;
     const formType = 'Edit intro'; 
+    // const errors = errors.
     return {user, formType};
 }; 
 
@@ -13,7 +15,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()), 
-        updateUser: id => dispatch(updateUser(id))
+        updateUser: user => dispatch(updateUser(user)), 
+        // receiveErrors: (error) => dispatch(receiveErrors(error)), 
+        // clearErrors: () => dispatch(clearErrors())
 
     };
 }
@@ -23,6 +27,12 @@ class EditIntro extends React.Component {
     constructor(props) {
         super(props); 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.state = this.props.user; 
+        // this.validSubmit = this.validSubmit.bind(this); 
+    }
+
+    componentWillUnmount() {
+        // this.props.clearErrors();
     }
 
     update(field) {
@@ -33,9 +43,17 @@ class EditIntro extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.updateUser(this.state.id);
+        this.props.updateUser(this.state);
         this.props.closeModal();
     } 
+
+
+
+
+
+
+
+
 
     render () {
 
@@ -50,9 +68,10 @@ class EditIntro extends React.Component {
                     <div className='modal-name'> 
                          <div className='modal-first-name'> 
                         <label>First name <br/>
-                                <input className='modal-input-name'
+                                <input 
+                                    className='modal-input-name'
                                     type='text'
-                                    value={this.props.user.first_name}
+                                    value={this.state.first_name}
                                     onChange={this.update('first_name')}/>
                         </label> 
                             <br/>
@@ -64,7 +83,7 @@ class EditIntro extends React.Component {
                         <label>Last name <br/>
                                 <input className='modal-input-name'
                                     type='text'
-                                    value={this.props.user.last_name}
+                                    value={this.state.last_name}
                                     onChange={this.update('last_name')}/>
                         </label> 
                             <br/>
@@ -77,7 +96,7 @@ class EditIntro extends React.Component {
                             <input
                                 className='modal-input'
                                 type='text'
-                                value={this.props.user.headline}
+                                value={this.state.headline}
                                 onChange={this.update('headline')}/>
                     </label> 
                         <br/>
@@ -87,7 +106,7 @@ class EditIntro extends React.Component {
                             <input
                                 className='modal-input'
                                 type='text'
-                                value={this.props.user.location}
+                                value={this.state.location}
                                 onChange={this.update('location')}/>
                     </label> 
                         <br/>
@@ -97,7 +116,7 @@ class EditIntro extends React.Component {
                             <input
                                 className='modal-input'
                                 type='text'
-                                value={this.props.user.github_url}
+                                value={this.state.github_url}
                                 onChange={this.update('github_url')}/>
                     </label> 
                         <br/>

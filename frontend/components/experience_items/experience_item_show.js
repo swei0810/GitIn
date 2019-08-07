@@ -6,14 +6,7 @@ import { connect } from 'react-redux';
 import { fetchExperienceItem } from '../../actions/experience_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
-const mapStateToProps = (state, ownProps) => {
-    debugger
 
-    return {
-        // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
-        experienceItem:  state.entities.experienceItems[ownProps.experienceId]
-    }
-};
 
 const mapDispatchToProps = dispatch => ({
     fetchExperienceItem: id => dispatch(fetchExperienceItem(id)), 
@@ -77,7 +70,6 @@ class ExperienceItemShow extends React.Component {
     }
 
     render() {
-        debugger
         const {experienceItem} = this.props; 
         if (!experienceItem) {
             return null; 
@@ -133,4 +125,4 @@ class ExperienceItemShow extends React.Component {
 }
 
 // export default ExperienceItemShow
-export default connect(mapStateToProps, mapDispatchToProps)(ExperienceItemShow); 
+export default connect(null, mapDispatchToProps)(ExperienceItemShow); 

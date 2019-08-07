@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import { fetchEducationItem } from '../../actions/education_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
-const mapStateToProps = (state, ownProps) => {
-    debugger
-    return {
-        // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
-        educationItem:  state.entities.educationItems[ownProps.educationId]
-    }
-};
+// const mapStateToProps = (state, ownProps) => {
+//     return {
+//         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
+//         educationItem:  state.entities.educationItems[ownProps.educationId]
+//     }
+// };
 
 const mapDispatchToProps = dispatch => ({
     fetchEducationItem: id => dispatch(fetchEducationItem(id)), 
@@ -27,9 +26,9 @@ class EducationItemShow extends React.Component {
 
 
 
-    componentDidMount() {
-        this.props.fetchEducationItem(this.props.educationId);
-    }
+    // componentDidMount() {
+    //     this.props.fetchEducationItem(this.props.educationId);
+    // }
 
     // componentDidUpdate(prevProps) {
     //     if (prevProps.experienceItem.id != this.props.match.params.experienceItemId) {
@@ -37,11 +36,11 @@ class EducationItemShow extends React.Component {
     //     }
     // }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.educationId!= this.props.educationId) {
-            this.props.fetchEducationItem(this.props.educationId);
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.educationId!= this.props.educationId) {
+    //         this.props.fetchEducationItem(this.props.educationId);
+    //     }
+    // }
 
     render() {
         const {educationItem} = this.props; 
@@ -86,4 +85,4 @@ class EducationItemShow extends React.Component {
 }
 
 // export default ExperienceItemShow
-export default connect(mapStateToProps, mapDispatchToProps)(EducationItemShow); 
+export default connect(null, mapDispatchToProps)(EducationItemShow); 

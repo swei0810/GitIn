@@ -30,7 +30,6 @@ class Profile extends React.Component {
             isCurrentUser = false; 
         }
 
-        debugger
 
         return (
             <div> 
@@ -48,11 +47,11 @@ class Profile extends React.Component {
                 </div>
 
                 <div className='experience-item-container'>
-                    <ExperienceItemIndex experienceIds={this.props.user.experienceIds} isCurrentUser={isCurrentUser}/>
+                    <ExperienceItemIndex userId={this.props.user.id} isCurrentUser={isCurrentUser}/>
                 </div> 
 
                 <div className='education-item-container'>
-                    <EducationItemIndex educationIds={this.props.user.educationIds} isCurrentUser={isCurrentUser}/>
+                    <EducationItemIndex userId={this.props.user.id} isCurrentUser={isCurrentUser}/>
                 </div> 
             </div>
             </div>

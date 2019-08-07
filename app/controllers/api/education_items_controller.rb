@@ -3,7 +3,7 @@ class Api::EducationItemsController < ApplicationController
 
 
     def index 
-        @education_items = EducationItem.all
+        @education_items = User.find(params[:userId]).education_items
     end 
     
     def show
@@ -18,24 +18,40 @@ class Api::EducationItemsController < ApplicationController
                                                              end_yr: params[:educationItem][:end_yr], 
                                                              activities:  params[:educationItem][:activities])
 
-
+        debugger 
         company = Company.find_or_create_by(name: params[:educationItem][:school]);
         @education_item[:school_id] = company.id; 
 
         if @education_item.save 
             render :show 
         else
-            render json: @education_item.errors, status: 422
+            render json: @education_item.errors.full_messages, status: 422
         end 
     end
 
 
     def update 
+
         @education_item = EducationItem.find(params[:id]) 
-        if @education_item.update(education_items_params)
+        debugger
+
+        
+
+        #update , create company, save 
+        if @education_item.update(degree: params[:educationItem][:degree], 
+            field:  params[:educationItem][:field], 
+            start_yr: params[:educationItem][:start_yr], 
+            end_yr: params[:educationItem][:end_yr], 
+            activities:  params[:educationItem][:activities])
+
+            debugger
+            company = Company.find_or_create_by(name: params[:educationItem][:school]);
+            @education_item[:school_id] = company.id; 
+            @education_item.save
             render :show 
+
         else 
-            render json: @education_item.errors, status: 422
+            render json: @education_item.errors.full_messages, status: 422
         end 
     end 
 

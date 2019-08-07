@@ -9,11 +9,28 @@ class EducationItemForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.handleDelete = this.handleDelete.bind(this); 
         this.state = this.props.educationItem; 
+        this.validateSubmit = this.validateSubmit.bind(this);
+        debugger 
+
     }
 
-    // componentDidUpdate() {
-        
-    // }
+    componentWillUnmount() {
+        debugger 
+        this.props.clearProfileErrors(); 
+      }
+    
+
+    validateSubmit(e) {
+        debugger
+        e.preventDefault(); 
+        if (this.state.school==''){
+            debugger
+            this.props.receiveProfileErrors('Please enter a school name');
+        } else {
+            this.handleSubmit();
+        }
+
+    }
 
     update(field) {
         return (e) => {
@@ -21,10 +38,10 @@ class EducationItemForm extends React.Component {
         };
     }
 
-    handleSubmit(e) {
-        e.preventDefault(); 
-        this.props.processForm(this.state);
-        this.props.closeModal();
+    handleSubmit() {
+        debugger
+        this.props.processForm(this.state).then(()=> this.props.closeModal());
+        // this.props.closeModal();
         // this.props.history.push(`/git/${this.state.user_id}`);
         
         // this.props.processForm(this.state).then(() => this.props.history.push(`/git/${this.state.user_id}`)); //this has to change 
@@ -62,15 +79,21 @@ class EducationItemForm extends React.Component {
 
         if (this.props.formType.includes('Edit')) {
             deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
-
         }
+
+        // debugger
+        let schoolError; 
+        if (this.props.errors){
+            schoolError = this.props.errors; 
+        }
+
         return (
             <div> 
                 <div className='modal-header'> 
                     <h2>{this.props.formType}</h2> 
                     <div onClick={this.props.closeModal} className="close-x">X</div>
                 </div> 
-                <form onSubmit={this.handleSubmit}> 
+                <form onSubmit={this.validateSubmit}> 
                     <label>School <br/>
                         <input
                            className='modal-input'
@@ -79,6 +102,7 @@ class EducationItemForm extends React.Component {
                             onChange={this.update('school')}
                             placeholder='Ex: Boston University'/>
                     </label> 
+                    <div className='education-errors'> {schoolError} </div>
                     <br/>
                     <br/>
 

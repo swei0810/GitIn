@@ -4,7 +4,7 @@ import EducationItemShow from './education_item_show';
 import Modal from '../modal/modal';
 // import { withRouter } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
-import {fetchAllEducationItems} from '../../actions/education_item_actions'; 
+import {fetchUserEducationItems} from '../../actions/education_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
 
@@ -12,7 +12,7 @@ import {openModal} from '../../actions/modal_actions'
 const mapStateToProps = (state) => {
   return { 
     //  educationItems: Object.values(state.entities.users.undefined.educationItems) //THIS HAS TO CHANGE 
-      educationItems:  state.entities.educationItems //change THIS
+      educationItems: Object.values(state.entities.educationItems) //change THIS
   }
 
 }; 
@@ -20,7 +20,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
       // fetchAllEducationItems: () => dispatch(fetchAllEducationItems()),
-      openModal: modal => dispatch(openModal(modal))
+      openModal: modal => dispatch(openModal(modal)), 
+      fetchUserEducationItems: (userId) => dispatch(fetchUserEducationItems(userId))
   };
 };
 
@@ -32,13 +33,13 @@ class EducationItemIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchAllEducationItems();
+    this.props.fetchUserEducationItems(this.props.userId)
   }
 
 
   render() {
-    const {educationIds} = this.props;
-    if (!educationIds) {
+    const {educationItems} = this.props;
+    if (!educationItems) {
       return null; 
     }
 
@@ -57,7 +58,7 @@ class EducationItemIndex extends React.Component {
             {addIcon}
           </div>
         <ul>
-           {educationIds.map(id => <EducationItemShow key={id} educationId={id} isCurrentUser={this.props.isCurrentUser}/>)}
+           {educationItems.map(educationItem=> <EducationItemShow key={educationItem.id} educationItem={educationItem} isCurrentUser={this.props.isCurrentUser}/>)}
         </ul>
       </div>
     );

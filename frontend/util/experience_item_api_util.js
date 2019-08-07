@@ -36,3 +36,11 @@ export const deleteExperienceItem = (id) => (
         url: `api/experience_items/${id}`   
     })
 );
+
+export const fetchUserExperienceItems = (userId) => (
+    $.ajax({
+        method: 'GET',
+        url:'api/experience_items',
+        data: {userId}
+    })
+)

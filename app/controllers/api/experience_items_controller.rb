@@ -2,7 +2,8 @@ class Api::ExperienceItemsController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index 
-        @experience_items = ExperienceItem.all 
+
+        @experience_items = User.find(params[:userId]).experience_items
     end 
 
     def show
