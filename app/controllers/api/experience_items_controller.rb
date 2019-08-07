@@ -33,7 +33,18 @@ class Api::ExperienceItemsController < ApplicationController
 
     def update 
         @experience_item = ExperienceItem.find(params[:id]) 
-        if @experience_item.update(experience_item_params)
+
+
+
+        if @experience_item.update(title: params[:experienceItem][:title], 
+                                  location:  params[:experienceItem][:location], 
+                                  start_date: params[:experienceItem][:start_date], 
+                                  end_date: params[:experienceItem][:end_date], 
+                                  description:  params[:experienceItem][:description])
+                                  
+            company = Company.find_or_create_by(name: params[:experienceItem][:company]);
+            @experience_item[:company_id] = company.id; 
+            @experience_item.save; 
             render :show 
         else 
             render json: @experience_item.errors, status: 422

@@ -18,7 +18,6 @@ class Api::EducationItemsController < ApplicationController
                                                              end_yr: params[:educationItem][:end_yr], 
                                                              activities:  params[:educationItem][:activities])
 
-        debugger 
         company = Company.find_or_create_by(name: params[:educationItem][:school]);
         @education_item[:school_id] = company.id; 
 
@@ -33,7 +32,6 @@ class Api::EducationItemsController < ApplicationController
     def update 
 
         @education_item = EducationItem.find(params[:id]) 
-        debugger
 
         
 
@@ -44,7 +42,6 @@ class Api::EducationItemsController < ApplicationController
             end_yr: params[:educationItem][:end_yr], 
             activities:  params[:educationItem][:activities])
 
-            debugger
             company = Company.find_or_create_by(name: params[:educationItem][:school]);
             @education_item[:school_id] = company.id; 
             @education_item.save
