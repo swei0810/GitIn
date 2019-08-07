@@ -250,18 +250,34 @@ var fetchExperienceItem = function fetchExperienceItem(id) {
       return dispatch(receiveExperienceItem(experienceItem));
     });
   };
-};
+}; // export const createExperienceItem = experienceItem => dispatch => {
+//     return APIUtil.createExperienceItem(experienceItem)
+//         .then(experienceItem => {
+//              return dispatch(receiveExperienceItem(experienceItem));
+//     });
+// };
+
 var createExperienceItem = function createExperienceItem(experienceItem) {
   return function (dispatch) {
     return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["createExperienceItem"](experienceItem).then(function (experienceItem) {
       return dispatch(receiveExperienceItem(experienceItem));
+    }, function (err) {
+      return dispatch(Object(_user_actions__WEBPACK_IMPORTED_MODULE_1__["receiveProfileErrors"])(err.responseJSON));
     });
   };
-};
+}; // export const updateExperienceItem = experienceItem => dispatch => {
+//     return APIUtil.updateExperienceItem(experienceItem)
+//         .then(experienceItem => {
+//             return dispatch(receiveExperienceItem(experienceItem));
+//         });
+// };
+
 var updateExperienceItem = function updateExperienceItem(experienceItem) {
   return function (dispatch) {
     return _util_experience_item_api_util__WEBPACK_IMPORTED_MODULE_0__["updateExperienceItem"](experienceItem).then(function (experienceItem) {
-      return dispatch(receiveExperienceItem(experienceItem));
+      return dispatch(receiveExperienceItem(experienceItem)), function (err) {
+        return dispatch(Object(_user_actions__WEBPACK_IMPORTED_MODULE_1__["receiveProfileErrors"])(err.responseJSON));
+      };
     });
   };
 };
@@ -350,6 +366,7 @@ var openModal = function openModal(modal) {
   }
 };
 var closeModal = function closeModal() {
+  debugger;
   return {
     type: CLOSE_MODAL
   };
@@ -487,6 +504,8 @@ var updateUser = function updateUser(user) {
   return function (dispatch) {
     return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__["updateUser"](user).then(function (user) {
       return dispatch(receiveUser(user));
+    }, function (err) {
+      return dispatch(receiveProfileErrors(err.responseJSON));
     });
   };
 };
@@ -526,7 +545,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _splash_splash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./splash/splash */ "./frontend/components/splash/splash.jsx");
 /* harmony import */ var _user_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user/profile_container */ "./frontend/components/user/profile_container.js");
 /* harmony import */ var _feed_dashboard_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./feed/dashboard_container */ "./frontend/components/feed/dashboard_container.jsx");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 
 
 
@@ -539,14 +559,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_10__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_10__["AuthRoute"], {
     exact: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -731,6 +752,8 @@ function (_React$Component) {
           educationItem = _this$props.educationItem,
           closeModal = _this$props.closeModal,
           deleteForm = _this$props.deleteForm,
+          errors = _this$props.errors,
+          receiveProfileErrors = _this$props.receiveProfileErrors,
           clearProfileErrors = _this$props.clearProfileErrors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: closeModal,
@@ -738,7 +761,9 @@ function (_React$Component) {
         formType: formType,
         educationItem: educationItem,
         deleteForm: deleteForm,
-        clearProfileErrors: clearProfileErrors
+        receiveProfileErrors: receiveProfileErrors,
+        clearProfileErrors: clearProfileErrors,
+        errors: errors
       });
     }
   }]);
@@ -805,8 +830,8 @@ function (_React$Component) {
   }
 
   _createClass(EducationItemForm, [{
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       debugger;
       this.props.clearProfileErrors();
     }
@@ -884,13 +909,14 @@ function (_React$Component) {
           className: "delete-button",
           onClick: this.handleDelete
         }, "Delete");
-      } // debugger
+      }
 
-
+      debugger;
       var schoolError;
 
-      if (this.props.errors) {
-        schoolError = this.props.errors;
+      if (this.props.errors != []) {
+        debugger;
+        schoolError = this.props.errors[0];
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -900,7 +926,7 @@ function (_React$Component) {
         className: "close-x"
       }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.validateSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "School ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "School * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.school.name,
@@ -1065,7 +1091,7 @@ function (_React$Component) {
         className: "section-heading"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "section-header"
-      }, "Education"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), addIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, educationItems.map(function (educationItem) {
+      }, "Education"), addIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, educationItems.map(function (educationItem) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_item_show__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: educationItem.id,
           educationItem: educationItem,
@@ -1196,7 +1222,7 @@ function (_React$Component) {
         className: "item-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
       }, educationItem.school.name), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"
@@ -1229,6 +1255,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _experience_item_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./experience_item_form */ "./frontend/components/experience_items/experience_item_form.js");
 /* harmony import */ var _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/experience_item_actions */ "./frontend/actions/experience_item_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 
@@ -1246,7 +1274,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var formType = 'Add experience';
   return {
     experienceItem: experienceItem,
-    formType: formType
+    formType: formType,
+    errors: state.errors.profile
   };
 };
 
@@ -1257,6 +1286,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+    },
+    receiveProfileErrors: function receiveProfileErrors(error) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["receiveProfileErrors"])(error));
+    },
+    clearProfileErrors: function clearProfileErrors() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["clearProfileErrors"])());
     }
   };
 };
@@ -1280,6 +1315,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _experience_item_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experience_item_form */ "./frontend/components/experience_items/experience_item_form.js");
 /* harmony import */ var _actions_experience_item_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/experience_item_actions */ "./frontend/actions/experience_item_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1304,6 +1340,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var defaultExperienceItem = {
     title: '',
@@ -1317,7 +1354,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var formType = 'Edit experience';
   return {
     experienceItem: experienceItem,
-    formType: formType
+    formType: formType,
+    errors: state.errors.profile
   };
 };
 
@@ -1334,6 +1372,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+    },
+    receiveProfileErrors: function receiveProfileErrors(error) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_5__["receiveProfileErrors"])(error));
+    },
+    clearProfileErrors: function clearProfileErrors() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_5__["clearProfileErrors"])());
     }
   };
 };
@@ -1354,16 +1398,22 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           processForm = _this$props.processForm,
+          errors = _this$props.errors,
           formType = _this$props.formType,
           experienceItem = _this$props.experienceItem,
           closeModal = _this$props.closeModal,
-          deleteForm = _this$props.deleteForm;
+          deleteForm = _this$props.deleteForm,
+          receiveProfileErrors = _this$props.receiveProfileErrors,
+          clearProfileErrors = _this$props.clearProfileErrors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: closeModal,
         processForm: processForm,
         formType: formType,
         experienceItem: experienceItem,
-        deleteForm: deleteForm
+        deleteForm: deleteForm,
+        clearProfileErrors: clearProfileErrors,
+        receiveProfileErrors: receiveProfileErrors,
+        errors: errors
       });
     }
   }]);
@@ -1424,15 +1474,24 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.formatDate = _this.formatDate.bind(_assertThisInitialized(_this));
+    _this.validateSubmit = _this.validateSubmit.bind(_assertThisInitialized(_this));
     _this.state = _this.props.experienceItem;
     _this.state.startMonth = '';
     _this.state.startYear = '';
     _this.state.endMonth = '';
     _this.state.endYear = '';
+    _this.state.start_date = '';
+    _this.state.end_date = '';
     return _this;
   }
 
   _createClass(ExperienceItemForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      debugger;
+      this.props.clearProfileErrors();
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -1440,6 +1499,42 @@ function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
+    } //onSubmit calls formatDate, formatDate should call validateSubmit, validateSubmit calls handleSubmit 
+
+  }, {
+    key: "validateSubmit",
+    value: function validateSubmit() {
+      var newErrors;
+      debugger;
+
+      if (this.state.title == '') {
+        debugger;
+        this.props.receiveProfileErrors('title');
+        newErrors = true;
+      }
+
+      if (this.state.location == '') {
+        debugger;
+        this.props.receiveProfileErrors('location');
+        newErrors = true;
+      }
+
+      if (this.state.start_date == ' ') {
+        debugger;
+        this.props.receiveProfileErrors('start');
+        newErrors = true;
+      }
+
+      if (this.state.company == '') {
+        debugger;
+        this.props.receiveProfileErrors('company');
+        newErrors = true;
+      }
+
+      if (!newErrors) {
+        debugger;
+        this.handleSubmit();
+      }
     }
   }, {
     key: "formatDate",
@@ -1447,20 +1542,28 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+      debugger;
       var startDate = this.state.startMonth + ' ' + this.state.startYear;
       var endDate = this.state.endMonth + ' ' + this.state.endYear;
+      debugger;
       this.setState({
         start_date: startDate,
         end_date: endDate
       }, function () {
-        _this3.handleSubmit();
+        debugger;
+
+        _this3.validateSubmit();
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      this.props.processForm(this.state);
-      this.props.closeModal();
+      var _this4 = this;
+
+      debugger;
+      this.props.processForm(this.state).then(function () {
+        return _this4.props.closeModal();
+      });
     }
   }, {
     key: "handleDelete",
@@ -1492,6 +1595,32 @@ function (_React$Component) {
         }, "Delete");
       }
 
+      var titleError;
+      var locationError;
+      var startDateError;
+      var companyNameError;
+
+      if (this.props.errors) {
+        debugger;
+
+        if (this.props.errors.includes('title')) {
+          titleError = 'Please enter your title';
+        }
+
+        if (this.props.errors.includes('location')) {
+          locationError = 'Please enter a location';
+        }
+
+        if (this.props.errors.includes('start')) {
+          startDateError = 'Please enter a start date';
+        }
+
+        if (this.props.errors.includes('company')) {
+          companyNameError = 'Please enter a company name';
+        }
+      }
+
+      ;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1499,36 +1628,42 @@ function (_React$Component) {
         className: "close-x"
       }, " X ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.formatDate
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Title ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Title * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.title,
         onChange: this.update('title'),
         placeholder: "Ex: Manager"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", titleError, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.company.name,
         onChange: this.update('company'),
         placeholder: "Ex: Microsoft"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", companyNameError, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.location,
         onChange: this.update('location'),
         placeholder: "Ex: London, United Kingdom"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", locationError, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox"
       }), "I am currently working in this role", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-yr"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-yr"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Date ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Start Date * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr",
         onChange: this.update('startMonth')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
-      }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "start-yr",
         onChange: this.update('startYear')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -1540,17 +1675,14 @@ function (_React$Component) {
         onChange: this.update('endMonth')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
-      }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "March"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "February"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "April"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "May"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "June"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "July"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "August"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "September"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "October"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "November"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "December")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "end-yr",
         onChange: this.update('endYear')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         selected: true
-      }, "Year"), this.getDropList())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "modal-input",
-        type: "text" // value={this.state.location}
-        // onChange={this.update('location')}
-
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, "Year"), this.getDropList())))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", startDateError, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         rows: "4",
         cols: "99",
         onChange: this.update('description'),
@@ -1675,7 +1807,7 @@ function (_React$Component) {
         className: "section-heading"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "section-header"
-      }, "Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), addIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, experienceItems.map(function (experienceItem) {
+      }, "Experience"), addIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, experienceItems.map(function (experienceItem) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_item_show__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: experienceItem.id,
           experienceItem: experienceItem,
@@ -1833,7 +1965,7 @@ function (_React$Component) {
         className: "item-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
       }, experienceItem.title), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"
@@ -2801,13 +2933,14 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = ownProps.user;
-  var formType = 'Edit intro'; // const errors = errors.
-
+  var formType = 'Edit intro';
   return {
     user: user,
-    formType: formType
+    formType: formType,
+    errors: state.errors.profile
   };
 };
 
@@ -2818,9 +2951,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateUser: function updateUser(user) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["updateUser"])(user));
-    } // receiveErrors: (error) => dispatch(receiveErrors(error)), 
-    // clearErrors: () => dispatch(clearErrors())
-
+    },
+    receiveProfileErrors: function receiveProfileErrors(error) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveProfileErrors"])(error));
+    },
+    clearProfileErrors: function clearProfileErrors() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["clearProfileErrors"])());
+    }
   };
 };
 
@@ -2836,14 +2973,16 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EditIntro).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.state = _this.props.user; // this.validSubmit = this.validSubmit.bind(this); 
-
+    _this.state = _this.props.user;
+    _this.validateSubmit = _this.validateSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(EditIntro, [{
     key: "componentWillUnmount",
-    value: function componentWillUnmount() {// this.props.clearErrors();
+    value: function componentWillUnmount() {
+      debugger;
+      this.props.clearProfileErrors();
     }
   }, {
     key: "update",
@@ -2856,48 +2995,119 @@ function (_React$Component) {
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit(e) {
+    value: function handleSubmit() {
+      var _this3 = this;
+
+      debugger; // e.preventDefault(); 
+
+      this.props.updateUser(this.state).then(function () {
+        return _this3.props.closeModal();
+      });
+    }
+  }, {
+    key: "validateSubmit",
+    value: function validateSubmit(e) {
+      debugger;
       e.preventDefault();
-      this.props.updateUser(this.state);
-      this.props.closeModal();
+      var newErrors;
+
+      if (this.state.first_name == '') {
+        this.props.receiveProfileErrors('first');
+        newErrors = true;
+      }
+
+      if (this.state.last_name == '') {
+        this.props.receiveProfileErrors('last');
+        newErrors = true;
+      }
+
+      if (this.state.headline == '') {
+        this.props.receiveProfileErrors('headline');
+        newErrors = true;
+      }
+
+      if (this.state.location == '') {
+        this.props.receiveProfileErrors('location');
+        newErrors = true;
+      } // if(!this.props.errors && !newErrors) {
+      //     debugger
+      //     this.handleSubmit();
+      // }
+
+
+      if (!newErrors) {
+        debugger;
+        this.handleSubmit();
+      }
     }
   }, {
     key: "render",
     value: function render() {
+      var firstNameError;
+      var lastNameError;
+      var headlineError;
+      var locationError;
+
+      if (this.props.errors) {
+        if (this.props.errors.includes('first')) {
+          firstNameError = 'Please enter your first name';
+        }
+
+        if (this.props.errors.includes('last')) {
+          lastNameError = 'Please enter your last name';
+        }
+
+        if (this.props.errors.includes('headline')) {
+          headlineError = 'Please enter a headline';
+        }
+
+        if (this.props.errors.includes('location')) {
+          locationError = 'Please enter a location';
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
       }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.validateSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-name"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-first-name"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input-name",
         type: "text",
         value: this.state.first_name,
         onChange: this.update('first_name')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", firstNameError, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-last-name"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Last name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Last name * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input-name",
         type: "text",
         value: this.state.last_name,
         onChange: this.update('last_name')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", lastNameError, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Headline * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.headline,
         onChange: this.update('headline')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", headlineError, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location * ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.location,
         onChange: this.update('location')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Github Url ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "education-errors"
+      }, " ", locationError, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Github Url ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "modal-input",
         type: "text",
         value: this.state.github_url,
@@ -3124,7 +3334,7 @@ function (_React$Component) {
         className: "section-heading"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "section-header"
-      }, "About"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "About"), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-summary"
       }, user.summary));
     }
@@ -3501,7 +3711,7 @@ function (_React$Component) {
         className: "github-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-github"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-header"
       }, user.headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "summary-location"
@@ -38194,19 +38404,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./frontend/node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROFILE_ERRORS"]:
-      return action.errors;
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PROFILE_ERRORS"]:
+      debugger;
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()([], state);
+      newState.push(action.errors); // action.errors; 
 
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_PROFILE_ERRORS"]:
-      return null;
+      return newState;
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__["CLEAR_PROFILE_ERRORS"]:
+      debugger;
+      return [];
 
     default:
       return state;

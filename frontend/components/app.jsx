@@ -15,11 +15,15 @@ import SplashContainer from './splash/splash';
 import Profile from './user/profile_container'; 
 // import PostContainer from './feed/post_container';
 import DashBoard from './feed/dashboard_container';
+import Modal from './modal/modal';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
+
   <div className = 'splash'>
+       <Modal/>
+
     <header>
         {/* <Link to="/" className="header-link"> */}
           {/* <h1 className="header-link">GitIn</h1> */}

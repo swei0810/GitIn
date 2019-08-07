@@ -14,7 +14,7 @@ class EducationItemForm extends React.Component {
 
     }
 
-    componentWillUnmount() {
+    componentDidMount() {
         debugger 
         this.props.clearProfileErrors(); 
       }
@@ -81,10 +81,12 @@ class EducationItemForm extends React.Component {
             deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
         }
 
-        // debugger
+        debugger
         let schoolError; 
-        if (this.props.errors){
-            schoolError = this.props.errors; 
+
+        if (this.props.errors !=[]){
+            debugger
+            schoolError = this.props.errors[0]; 
         }
 
         return (
@@ -94,7 +96,7 @@ class EducationItemForm extends React.Component {
                     <div onClick={this.props.closeModal} className="close-x">X</div>
                 </div> 
                 <form onSubmit={this.validateSubmit}> 
-                    <label>School <br/>
+                    <label>School * <br/>
                         <input
                            className='modal-input'
                             type='text'

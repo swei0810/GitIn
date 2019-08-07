@@ -25,23 +25,36 @@ export const fetchExperienceItem = id => dispatch => {
         }); 
 }
 
-export const createExperienceItem = experienceItem => dispatch => {
-    return APIUtil.createExperienceItem(experienceItem)
-        .then(experienceItem => {
-             return dispatch(receiveExperienceItem(experienceItem));
-    });
-};
+// export const createExperienceItem = experienceItem => dispatch => {
+//     return APIUtil.createExperienceItem(experienceItem)
+//         .then(experienceItem => {
+//              return dispatch(receiveExperienceItem(experienceItem));
+//     });
+// };
+
+export const createExperienceItem = experienceItem => dispatch => (
+    APIUtil.createExperienceItem(experienceItem)
+        .then(experienceItem => (dispatch(receiveExperienceItem(experienceItem))), 
+        err => dispatch(receiveProfileErrors(err.responseJSON)))
+);
 
 
 
 
+// export const updateExperienceItem = experienceItem => dispatch => {
+//     return APIUtil.updateExperienceItem(experienceItem)
+//         .then(experienceItem => {
+//             return dispatch(receiveExperienceItem(experienceItem));
+//         });
+// };
 
-export const updateExperienceItem = experienceItem => dispatch => {
-    return APIUtil.updateExperienceItem(experienceItem)
-        .then(experienceItem => {
-            return dispatch(receiveExperienceItem(experienceItem));
-        });
-};
+
+export const updateExperienceItem = experienceItem => dispatch => (
+    APIUtil.updateExperienceItem(experienceItem)
+        .then(experienceItem=>(dispatch(receiveExperienceItem(experienceItem)), 
+        err => (dispatch(receiveProfileErrors(err.responseJSON)))))
+)
+
 
 export const deleteExperienceItem = experienceItemId => dispatch => {
     return APIUtil.deleteExperienceItem(experienceItemId)

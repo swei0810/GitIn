@@ -1,14 +1,14 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
 import { updateUser } from '../../actions/user_actions'
+import {receiveProfileErrors, clearProfileErrors} from '../../actions/user_actions';
 
 import {closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const user = ownProps.user;
     const formType = 'Edit intro'; 
-    // const errors = errors.
-    return {user, formType};
+    return {user, formType,  errors: state.errors.profile,};
 }; 
 
 
@@ -16,9 +16,8 @@ const mapDispatchToProps = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()), 
         updateUser: user => dispatch(updateUser(user)), 
-        // receiveErrors: (error) => dispatch(receiveErrors(error)), 
-        // clearErrors: () => dispatch(clearErrors())
-
+        receiveProfileErrors: (error) => dispatch(receiveProfileErrors(error)), 
+        clearProfileErrors: () => dispatch(clearProfileErrors())
     };
 }
 
@@ -28,12 +27,13 @@ class EditIntro extends React.Component {
         super(props); 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.state = this.props.user; 
-        // this.validSubmit = this.validSubmit.bind(this); 
+        this.validateSubmit = this.validateSubmit.bind(this); 
     }
 
     componentWillUnmount() {
-        // this.props.clearErrors();
-    }
+        debugger 
+        this.props.clearProfileErrors(); 
+      }
 
     update(field) {
         return (e) => {
@@ -41,12 +41,51 @@ class EditIntro extends React.Component {
         };
     }
 
-    handleSubmit(e) {
-        e.preventDefault(); 
-        this.props.updateUser(this.state);
-        this.props.closeModal();
+    handleSubmit() {
+        debugger
+        // e.preventDefault(); 
+        this.props.updateUser(this.state).then(()=> this.props.closeModal());
+
     } 
 
+    validateSubmit(e) {
+        debugger
+
+        e.preventDefault();
+        let newErrors; 
+
+        if (this.state.first_name == ''){
+            this.props.receiveProfileErrors('first');
+            newErrors = true; 
+
+        }
+        if (this.state.last_name == '') {
+            this.props.receiveProfileErrors('last');
+            newErrors = true; 
+
+        }
+        if (this.state.headline == '') {
+            this.props.receiveProfileErrors('headline');
+            newErrors = true; 
+
+        }
+        if (this.state.location == '') {
+            this.props.receiveProfileErrors('location');
+            newErrors = true; 
+
+        }
+
+        // if(!this.props.errors && !newErrors) {
+        //     debugger
+        //     this.handleSubmit();
+        // }
+
+        if (!newErrors){
+            debugger
+            this.handleSubmit(); 
+        } 
+    
+    }
 
 
 
@@ -56,6 +95,29 @@ class EditIntro extends React.Component {
 
 
     render () {
+        let firstNameError; 
+        let lastNameError;
+        let headlineError; 
+        let locationError; 
+        if (this.props.errors) {
+            if (this.props.errors.includes('first')){
+                firstNameError = 'Please enter your first name';
+            }
+            if (this.props.errors.includes('last')){
+                lastNameError = 'Please enter your last name';
+            }
+            if (this.props.errors.includes('headline')){
+                headlineError = 'Please enter a headline';
+
+            }
+            if (this.props.errors.includes('location')){
+                locationError = 'Please enter a location';
+            }
+        }
+
+
+
+
 
         return (
             <div> 
@@ -64,51 +126,60 @@ class EditIntro extends React.Component {
                     <div onClick={this.props.closeModal} className="close-x">X</div>
                 </div>
 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.validateSubmit}>
                     <div className='modal-name'> 
                          <div className='modal-first-name'> 
-                        <label>First name <br/>
+                        <label>First name * <br/>
                                 <input 
                                     className='modal-input-name'
                                     type='text'
                                     value={this.state.first_name}
                                     onChange={this.update('first_name')}/>
                         </label> 
-                            <br/>
-                            <br/>
+                        <div className='education-errors'> {firstNameError} </div>
+
+                
+
                         </div>
+                            <br/>
+                            <br/>
 
                         <div className='modal-last-name'> 
  
-                        <label>Last name <br/>
+                        <label>Last name * <br/>
                                 <input className='modal-input-name'
                                     type='text'
                                     value={this.state.last_name}
                                     onChange={this.update('last_name')}/>
                         </label> 
-                            <br/>
-                            <br/>
+                        <div className='education-errors'> {lastNameError} </div>
 
                         </div>
                     </div> 
+                    <br/>
+                    <br/>
 
-                    <label>Headline <br/>
+                    <label>Headline * <br/>
                             <input
                                 className='modal-input'
                                 type='text'
                                 value={this.state.headline}
                                 onChange={this.update('headline')}/>
                     </label> 
+                    <div className='education-errors'> {headlineError} </div>
+
                         <br/>
                         <br/>
 
-                    <label>Location <br/>
+                    <label>Location * <br/>
                             <input
                                 className='modal-input'
                                 type='text'
                                 value={this.state.location}
                                 onChange={this.update('location')}/>
                     </label> 
+                    <div className='education-errors'> {locationError} </div>
+
                         <br/>
                         <br/>
 

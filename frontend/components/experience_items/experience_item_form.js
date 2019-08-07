@@ -8,13 +8,21 @@ class ExperienceItemForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.handleDelete = this.handleDelete.bind(this); 
         this.formatDate = this.formatDate.bind(this);
+        this.validateSubmit = this.validateSubmit.bind(this);
 
         this.state = this.props.experienceItem; 
         this.state.startMonth = ''; 
         this.state.startYear = '';
         this.state.endMonth = '';
         this.state.endYear ='';
+        this.state.start_date = '';
+        this.state.end_date = '';
     }
+
+    componentWillUnmount() {
+        debugger 
+        this.props.clearProfileErrors(); 
+      }
 
     update(field) {
         return (e) => {
@@ -22,17 +30,55 @@ class ExperienceItemForm extends React.Component {
         };
     }
 
+    //onSubmit calls formatDate, formatDate should call validateSubmit, validateSubmit calls handleSubmit 
+    validateSubmit() {
+        let newErrors; 
+        debugger 
+        if (this.state.title =='') {
+            debugger
+            this.props.receiveProfileErrors('title');
+            newErrors = true; 
+        }
+        if (this.state.location =='') {
+            debugger
+            this.props.receiveProfileErrors('location');
+            newErrors = true; 
+
+        } 
+        if (this.state.start_date==' ') {
+            debugger
+            this.props.receiveProfileErrors('start');
+            newErrors = true; 
+        } 
+        if (this.state.company =='') {
+            debugger
+            this.props.receiveProfileErrors('company')
+            newErrors = true; 
+
+        }
+
+        if(!newErrors) {
+            debugger
+            this.handleSubmit();
+        }
+    }
+
     formatDate(e) {
         e.preventDefault();
+        debugger
         const startDate = this.state.startMonth + ' ' + this.state.startYear;
         const endDate = this.state.endMonth + ' ' + this.state.endYear;
-        this.setState({start_date: startDate, end_date:endDate}, ()=>{
-            this.handleSubmit()});
+        debugger
+        this.setState({start_date:startDate, end_date:endDate}, ()=>{
+            debugger
+            this.validateSubmit()});
     }
 
     handleSubmit() {
-        this.props.processForm(this.state);
-        this.props.closeModal();
+        debugger
+        
+        this.props.processForm(this.state).then(()=> this.props.closeModal());
+
     }
 
     handleDelete(e){
@@ -58,6 +104,27 @@ class ExperienceItemForm extends React.Component {
             deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
 
         }
+
+        let titleError; 
+        let locationError; 
+        let startDateError; 
+        let companyNameError; 
+        if (this.props.errors) {
+            debugger
+ 
+            if (this.props.errors.includes('title')) {
+                titleError = 'Please enter your title';
+            }
+            if (this.props.errors.includes('location')){
+                locationError = 'Please enter a location';
+            }
+            if(this.props.errors.includes('start')){
+                startDateError ='Please enter a start date';
+            }
+            if (this.props.errors.includes('company')){
+                companyNameError = 'Please enter a company name';
+            }
+        };
         
         return (
             <div> 
@@ -67,7 +134,7 @@ class ExperienceItemForm extends React.Component {
                 </div> 
 
                 <form onSubmit={this.formatDate}> 
-                    <label>Title <br/>
+                    <label>Title * <br/>
                         <input
                             className='modal-input'
                             type='text'
@@ -76,10 +143,12 @@ class ExperienceItemForm extends React.Component {
                             placeholder='Ex: Manager'/>
 
                     </label> 
+                    <div className='education-errors'> {titleError} </div>
+
                     <br/>
                     <br/>
 
-                    <label>Company <br/>
+                    <label>Company * <br/>
                         <input
                             className='modal-input'
                             type='text'
@@ -87,9 +156,11 @@ class ExperienceItemForm extends React.Component {
                             onChange={this.update('company')}
                             placeholder='Ex: Microsoft'/>
                     </label> 
+                    <div className='education-errors'> {companyNameError} </div>
+
                     <br/>
                     <br/>
-                    <label>Location <br/>
+                    <label>Location * <br/>
                         <input
                             className='modal-input'
                             type='text'
@@ -97,6 +168,8 @@ class ExperienceItemForm extends React.Component {
                             onChange={this.update('location')}
                             placeholder='Ex: London, United Kingdom'/>
                     </label> 
+                    <div className='education-errors'> {locationError} </div>
+
                     <br/>
                     <br/>
                     <input type="checkbox" />I am currently working in this role
@@ -106,7 +179,7 @@ class ExperienceItemForm extends React.Component {
                     <div className='modal-yr'> 
 
                             <div className='select-yr'>
-                            <label>Start Date <br/>
+                            <label>Start Date * <br/>
                                 <select className='start-yr'
                                     onChange={this.update('startMonth')}> 
                                         <option selected>Month</option> 
@@ -124,6 +197,8 @@ class ExperienceItemForm extends React.Component {
                                         <option>December</option>
                                 </select> 
                                 <br/>
+                                <br/>
+
 
                                 <select className='start-yr'
                                     onChange={this.update('startYear')}> 
@@ -131,11 +206,11 @@ class ExperienceItemForm extends React.Component {
 
                                     {this.getDropList()}
                                 </select> 
-     
-
+                                {/* <div className='education-errors'> {startDateError} </div> */}
 
                             </label> 
                             </div> 
+
 
                             <div className='select-yr-2'> 
                             <label>End Date <br/>
@@ -156,6 +231,8 @@ class ExperienceItemForm extends React.Component {
                                 <option>December</option>
                                 </select> 
                                 <br/>
+                                <br/>
+
                                 
 
                                 <select className='end-yr'
@@ -167,21 +244,25 @@ class ExperienceItemForm extends React.Component {
                                 </select> 
                             </label>
                             </div> 
+
                     </div> 
 
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
 
-                    <label>Headline <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div className='education-errors'> {startDateError} </div>
+
+
+                    {/* <label>Headline <br/>
                         <input
                             className='modal-input'
                             type='text'
                             // value={this.state.location}
                             // onChange={this.update('location')}
                          />
-                    </label> 
+                    </label>  */}
                     <br/>
                     <br/>
                     <label>Description <br/>

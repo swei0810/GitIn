@@ -54,7 +54,7 @@ class EducationItemIndex extends React.Component {
       <div>
           <div className='section-heading'>
             <p className='section-header'>Education</p>
-            <Modal /> 
+            {/* <Modal />  */}
             {addIcon}
           </div>
         <ul>

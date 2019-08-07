@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
 class EditEducationItemForm extends React.Component {
 
     render() {
-        const {processForm, formType, educationItem, closeModal, deleteForm, clearProfileErrors} = this.props; 
+        const {processForm, formType, educationItem, closeModal, deleteForm, errors, receiveProfileErrors, clearProfileErrors} = this.props; 
         return (
             <EducationItemForm 
                closeModal={closeModal}
@@ -41,7 +41,9 @@ class EditEducationItemForm extends React.Component {
                 formType={formType}
                 educationItem={educationItem} 
                 deleteForm={deleteForm}
-                clearProfileErrors = {clearProfileErrors} />
+                receiveProfileErrors = {receiveProfileErrors}
+                clearProfileErrors = {clearProfileErrors}
+                errors = {errors} />
         )
     }
 }

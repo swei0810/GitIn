@@ -52,7 +52,7 @@ class ExperienceItemIndex extends React.Component {
       <div>
           <div className='section-heading'>
              <p className='section-header'>Experience</p>
-            <Modal />  
+            {/* <Modal />   */}
             {addIcon}
           </div> 
         <ul>

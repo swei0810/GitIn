@@ -56,7 +56,7 @@ class ProfileSummary extends React.Component {
                             {/* <div className='icon-edit'>
                             <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
                             </div> */}
-                            <Modal />
+                            {/* <Modal /> */}
                             {editIcon}
                     </div>
 

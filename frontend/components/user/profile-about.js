@@ -31,7 +31,7 @@ class ProfileAbout extends React.Component {
             <div > 
                 <div className='section-heading'> 
                 <p className='section-header'>About</p>
-                <Modal />  
+                {/* <Modal />   */}
                 {editIcon}
 
 

@@ -66,7 +66,7 @@ class EducationItemShow extends React.Component {
 
                     <div className='item-info'>
                         <div className='item-title'> 
-                            <Modal />
+                            {/* <Modal /> */}
                             <div className='item-title'>{educationItem.school.name}</div>
                             {editIcon}
                         </div> 

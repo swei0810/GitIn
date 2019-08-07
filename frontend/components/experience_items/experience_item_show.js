@@ -102,7 +102,7 @@ class ExperienceItemShow extends React.Component {
 
                     <div className='item-info'>
                         <div className='item-title'>
-                            <Modal />
+                            {/* <Modal /> */}
                             <div className='item-title'>{experienceItem.title}</div>
                             {editIcon}
                         </div>

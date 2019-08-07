@@ -26,8 +26,10 @@ export const fetchUser = id => dispatch => (
 );
 
 export const updateUser = user => dispatch => (
-    APIUtil.updateUser(user).then(user => (dispatch(receiveUser(user))))
+    APIUtil.updateUser(user).then(user => (dispatch(receiveUser(user)))
+    , err => dispatch(receiveProfileErrors(err.responseJSON)))
 )
+
 
 const receiveUser = payload => ({
     type: RECEIVE_USER, 
