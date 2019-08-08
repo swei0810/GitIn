@@ -2138,7 +2138,31 @@ function (_React$Component) {
         className: "posts-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-create"
-      }, "creating a post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-create-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-create"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-edit"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-text"
+      }, "\xA0 Start a post")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-camera"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-video"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-file-alt"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "article"
+      }, "Write an article on GitIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_feed_post_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         posts: this.props.posts

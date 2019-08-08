@@ -63,7 +63,24 @@ class Dashboard extends React.Component {
 
 
                     <div className='posts-container'>
-                        <div className='post-create'>creating a post</div> 
+                        <div className='post-create'>
+                            <div className='post-create-container'>
+                               <div className='icon-create'>
+                                  <div className='icon-post'><i className="far fa-edit"></i></div> 
+                                  <div className='icon-text'>&nbsp; Start a post</div>
+                                </div> 
+                                <div className='icon-post'><i class="fas fa-camera"></i></div>
+                                <div className='icon-post'><i class="fas fa-video"></i></div>
+                                <div className='icon-post'><i class="fas fa-file-alt"></i></div>
+                            </div>
+                           <div className='article'>Write an article on GitIn</div>
+
+                        </div> 
+
+
+
+
+
                         <div className='post-index'>
                             <PostIndex posts={this.props.posts}/>
                         </div>

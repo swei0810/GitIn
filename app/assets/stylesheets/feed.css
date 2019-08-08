@@ -70,7 +70,7 @@
 
 .post-create {
     width: 100%; 
-    height: 8%; 
+    height: 130px; 
     background-color: white; 
     box-shadow: 0 0 0 1px rgba(0,0,0,.15);
     border-radius: 2px;
@@ -118,4 +118,35 @@
     color: rgb(64, 192, 224);
     margin-right: 10%; 
 
+}
+
+.icon-post {
+    font-size: 25px;
+    color: rgb(64, 192, 224);
+
+}
+
+.icon-text{
+    font-weight: bolder;
+    color: grey;
+    padding-top: 4.5%;
+}
+
+.post-create-container {
+    display: flex; 
+    justify-content: space-between;
+    padding: 5%; 
+
+    border-bottom: 1px solid grey;
+}
+
+.icon-create {
+    display: flex; 
+}
+
+.article{
+    padding-left: 5%; 
+    padding-top: 3%;
+    color: rgb(64, 192, 224);
+    text-decoration: underline;
 }
