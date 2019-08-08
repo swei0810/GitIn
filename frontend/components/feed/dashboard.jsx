@@ -53,7 +53,7 @@ class Dashboard extends React.Component {
                         <div className='mini-img'>{profilePhoto}</div>
                         <div className='mini-name'>{this.props.currentUser.first_name + ' '+this.props.currentUser.last_name}</div>
                         <div className='mini-title'>{this.props.currentUser.headline}</div>
-                        <div className='mini-git'><i className="fab fa-github-square"></i></div>
+                        <div className='mini-git'><i className="fab fa-github-square" onClick={e => alert("No github url yet")}></i></div>
                         </div> 
                         <div className='mini-bottom'>
                             <div className='mini-num-container'>
@@ -80,11 +80,11 @@ class Dashboard extends React.Component {
                                   <div className='icon-post' ><i className="far fa-edit"></i></div> 
                                   <div className='icon-text'>&nbsp; Start a post</div>
                                 </div> 
-                                <div className='icon-post'><i className="fas fa-camera"></i></div>
-                                <div className='icon-post'><i className="fas fa-video"></i></div>
-                                <div className='icon-post'><i className="fas fa-file-alt"></i></div>
+                                <div className='icon-post'><i className="fas fa-camera" onClick={e => alert("click on start a post to attach img")} ></i></div>
+                                <div className='icon-post'><i className="fas fa-video" onClick={e => alert("not implemented yet")} ></i></div>
+                                <div className='icon-post'><i className="fas fa-file-alt" onClick={e => alert("not implemented yet")}></i></div>
                             </div>
-                           <div className='article'>Write an article on GitIn</div>
+                           <div className='article' onClick={e => alert("not implemented yet")}>Write an article on GitIn</div>
 
                         </div> 
 

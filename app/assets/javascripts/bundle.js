@@ -2158,7 +2158,10 @@ function (_React$Component) {
       }, this.props.currentUser.headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-git"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fab fa-github-square"
+        className: "fab fa-github-square",
+        onClick: function onClick(e) {
+          return alert("No github url yet");
+        }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-bottom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2195,17 +2198,29 @@ function (_React$Component) {
       }, "\xA0 Start a post")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "icon-post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-camera"
+        className: "fas fa-camera",
+        onClick: function onClick(e) {
+          return alert("click on start a post to attach img");
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "icon-post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-video"
+        className: "fas fa-video",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "icon-post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-file-alt"
+        className: "fas fa-file-alt",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "article"
+        className: "article",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
       }, "Write an article on GitIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_feed_post_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -4171,15 +4186,24 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "My network"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-briefcase"
+        className: "fas fa-briefcase",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Jobs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-comment-alt"
+        className: "fas fa-comment-alt",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Messaging"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-bell"
+        className: "fas fa-bell",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-icon-p"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
