@@ -16,6 +16,9 @@ Post.delete_all
 
 
 #we work
+#EY
+#Apple
+#samsung
 
 
 #COMPANY
@@ -251,9 +254,9 @@ jw.experience_items.create!(user_id: jw.id,
                              location:'Fairfax, va', 
                              start_date: 'November 2017', 
                              end_date: 'May 2019', 
-                             description: "• Assisted in the development of title marketing campaigns for Viking and Riverhead imprints
-                             • Tracked sales information and coordinates reactive marketing and advertising efforts for each title
-                             • Developed and amplified authors’ online presence, including social media strategy and website design
+                             description: "• Assisted in the development of title marketing campaigns for Viking and Riverhead imprints \n
+                             • Tracked sales information and coordinates reactive marketing and advertising efforts for each title \n
+                             • Developed and amplified authors’ online presence, including social media strategy and website design \n
                              • Contributed to the @vikingbooks and @riverheadbooks social media platforms (Facebook, Twitter, Instagram and YouTube)" )
 
 jw.experience_items.create!(user_id: jw.id, 
@@ -262,10 +265,10 @@ jw.experience_items.create!(user_id: jw.id,
                              location:'Colorado, Boulder', 
                              start_date: 'May 2010', 
                              end_date: 'December 2015', 
-                             description: "• Analyzed sales performance, use performance results to help with prioritization of product/floor shifts and brand focus
-                             • Provided consistent updates on sales driving strategies, product/brand initiatives and requests, store issues and opportunities
-                             • Provided training to sales specialists on visual marketing and product flow
-                             • Ensured development and execution of merchandise presentation standards and product flows
+                             description: "• Analyzed sales performance, use performance results to help with prioritization of product/floor shifts and brand focus \n
+                             • Provided consistent updates on sales driving strategies, product/brand initiatives and requests, store issues and opportunities \n
+                             • Provided training to sales specialists on visual marketing and product flow \n
+                             • Ensured development and execution of merchandise presentation standards and product flows \n
                              • Identified customer needs and effectively communicated technical product knowledge" )                             
 
 jw.education_items.create!(user_id: jw.id, 
@@ -344,9 +347,9 @@ ec.photo.attach(io: u5, filename: 'default-male.png')
 #Posts 
 app_post = Post.create!(author_id: app.id, 
                         author_type: 'Company', 
-                        body: "Once again, App Academy ranks #1 on SwitchUp's Best Coding Bootcamps! 
+                        body: "Once again, App Academy ranks #1 on SwitchUp's Best Coding Bootcamps! \n
 
-                        Fun Fact: We've have held the #1 US Coding bootcamp ranking on SwitchUp since the inception of their rankings four years ago. 
+                        Fun Fact: We've have held the #1 US Coding bootcamp ranking on SwitchUp since the inception of their rankings four years ago. \n
                         
                         If you're interested in learning more about App Academy and how you can hire our #1 trained software engineers, free of charge, send a message to us!")
 p1 = open("https://gitin-seeds.s3.amazonaws.com/app-post.png")
@@ -363,9 +366,9 @@ si_post.photo.attach(io: p2, filename: 'si-post.png')
 
 gate_post = Post.create!(author_id: gate.id, 
                          author_type: 'Company',
-                         body: "Our incredible alumni branch out into the world and make it a better place. 
+                         body: "Our incredible alumni branch out into the world and make it a better place. \n
 
-                         Our world-class faculty challenges the students to think. For 200 years we have helped students become thoughtful, critical thinkers and perceptive leaders. 
+                         Our world-class faculty challenges the students to think. For 200 years we have helped students become thoughtful, critical thinkers and perceptive leaders. \n
                          
                          We foster diversity of thought and action founded in a Liberal Arts Core Curriculum that has been recognized as one of the most elegant in the country. At the same time, our community contributes to a vibrant campus culture that complements and expands on the knowledge created in our classrooms and labs. There isn't a week where a Colgate alum isn't back on campus."
                          )
@@ -385,7 +388,7 @@ google_post = Post.create!(author_id: google.id,
                             author_type: 'Company', 
                             body: "Scenes from our most recent Google Sandbox event. The theme? Machine Learning Workshop. The day’s agenda included tech talks, coding exercises, a panel all about life at Google and more. Thank you to everyone who joined us!
 
-                            Google Sandbox is a program series designed for industry professionals to explore career opportunities while gaining deeper insight into Google's technology, business, and culture. We’d love to see you at the next one! Sign up for notifications about upcoming events near you → https://goo.gle/2ScS7YK"
+                            \n Google Sandbox is a program series designed for industry professionals to explore career opportunities while gaining deeper insight into Google's technology, business, and culture. We’d love to see you at the next one! Sign up for notifications about upcoming events near you → https://goo.gle/2ScS7YK"
                             )
 p5 = open("https://gitin-seeds.s3.amazonaws.com/google-post.png")
 google_post.photo.attach(io: p5, filename:'google-post.png')

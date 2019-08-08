@@ -15,30 +15,46 @@ class PostItem extends React.Component {
         }
 
         let authorName;
+        let photoClass;
+        let authorTitle;
         if (post.author_type == 'Company') {
-            debugger
-            authorName=post.author.name;
+            authorName = <div className='author-name'>{post.author.name}</div>;
+            photoClass='company-photo'
         }else if (post.author_type =='User'){
-            authorName = post.author.first_name + ' '+ post.author.last_name
+            authorName = <div className='author-name'>{post.author.first_name + ' '+ post.author.last_name}</div>;
+            photoClass='user-photo'
+            authorTitle = <div className='author-title'>{post.author.headline}</div>
+
         }
 
         return (
             <div> 
 
                 <div className='post-container'>
+                    <div className='post-extra'>
+                        <div className='post-more'><i className="fas fa-angle-double-down" onClick={e => alert("not implemented yet")}></i></div>
+                    </div>
                     <div className='post-author'>
-                        {authorName}
-                        <img className='author-photo' src={post.author.photoUrl}/> 
+                        <img className={photoClass} src={post.authorPhotoUrl}/> 
+
+                        <div className='post-author-info'>
+                            {authorName}
+                            {authorTitle}
+                        </div>
 
                     </div>
+
                     <p className='post-body'>
                         {post.body}
                     </p>
                     {/* <div>  */}
                         <img className='post-photo' src={post.photoUrl}/> 
                     {/* </div> */}
-
+                    <div className='num-comments'> Number of comments go here </div>
+                    {/* <br/> */}
                     <div className='post-buttons'>
+                        <div className='post-like' onClick={e => alert("not implemented yet")}><i className="far fa-thumbs-up"></i>Like &nbsp; &nbsp; </div>
+                        <div className='post-comment' onClick={e => alert("not implemented yet")}><i className="far fa-comment-alt"></i> Comment &nbsp;</div>
 
                     </div>
                 </div>   

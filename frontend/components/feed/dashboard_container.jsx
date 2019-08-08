@@ -9,12 +9,15 @@ const mapStateToProps = (state, ownProps) => {
     const posts = state.entities.posts;
     const users = state.entities.users; 
     const user = state.entities.users[ownProps.match.params.userId];
+    const currentUser = state.entities.users[state.session.id];
     const currentUserId = state.session.id;
+    // REFACTOR
     return {
         users,
         user,
         currentUserId, 
-        posts
+        posts,
+        currentUser
     }
 }
 

@@ -18,4 +18,93 @@
     width: 100%; 
     height: 300px; 
     padding-top: 20px; 
+    padding-bottom: 10px; 
+}
+
+.company-photo{
+        margin-right: 10px;
+        width: 48px;
+        height: 48px;
+        border-radius: 5px;
+
+}
+
+.user-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right:10px;
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+.post-author {
+    display: flex; 
+    flex-direction: row; 
+    padding-left: 5%; 
+    padding-top: 3%; 
+
+}
+
+.author-name {
+    font-weight: bolder; 
+}
+
+.post-extra {
+    height: 35px; 
+    border-bottom: 1px solid rgba(0,0,0,.15);
+
+}
+
+.post-more {
+    font-size: 30px; 
+    color: rgb(64, 192, 224);
+    text-align: right;
+    padding-right: 10px; 
+
+}
+
+.post-buttons {
+    display: flex; 
+    flex-direction: row; 
+    padding-left: 5%;
+    padding-right: 5%;
+
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 15px; 
+    color: rgb(64, 192, 224);
+    font-weight: bolder;
+}
+
+.num-comments {
+    padding-left: 5%;
+    padding-bottom: 3%;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    color: grey; 
+    font-size: 14px; 
+}
+
+i {
+    cursor: pointer;
+}
+
+.post-like, .post-comment {
+    cursor: pointer;
+}
+
+.post-like:hover, .post-comment:hover {
+    background-color: rgba(163, 163, 163, 0.459);
+
+}
+
+
+.author-title {
+    font-size: 12px; 
+    color: grey; 
+}
+
+.post-author-info {
+    display: flex; 
+    flex-direction: column; 
 }

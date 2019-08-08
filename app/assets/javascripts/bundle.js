@@ -2076,24 +2076,25 @@ function (_React$Component) {
   }
 
   _createClass(Dashboard, [{
-    key: "render",
-    // componentDidMount() {
-    //     this.props.fetchUser(this.props.match.params.userId);
-    // }
-    // componentDidUpdate(prevProps) {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchUser(this.props.currentUserId);
+    } // componentDidUpdate(prevProps) {
     //     if(prevProps.match.params.userId  != this.props.match.params.userId) {
     //         this.props.fetchUser(this.props.match.params.userId);
     //     }
     // }
+
+  }, {
+    key: "render",
     value: function render() {
-      if (!this.props.users) {
-        return null;
-      } // let isCurrentUser = true; 
+      // if (!this.props.users) {
+      //     return null;
+      // }
+      // let isCurrentUser = true; 
       // if(this.props.user.id != this.props.currentUserId) {
       //     isCurrentUser = false; 
       // }
-
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_profile_nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
         users: this.props.users,
         currentUserId: this.props.currentUserId
@@ -2101,7 +2102,39 @@ function (_React$Component) {
         className: "feed-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-profile"
-      }, "mini profile goes here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "mini-background",
+        src: window.profile_background
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-profile-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-img"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "mini-profile-photo",
+        src: this.props.currentUser.photoUrl
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-name"
+      }, this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-title"
+      }, this.props.currentUser.headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-git"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fab fa-github-square"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-num-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-num-text"
+      }, "Number of Connections"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-num"
+      }, "0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-num-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-num-text"
+      }, "Number of Interests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mini-num"
+      }, "0")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "posts-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-create"
@@ -2151,12 +2184,15 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var posts = state.entities.posts;
   var users = state.entities.users;
   var user = state.entities.users[ownProps.match.params.userId];
-  var currentUserId = state.session.id;
+  var currentUser = state.entities.users[state.session.id];
+  var currentUserId = state.session.id; // REFACTOR
+
   return {
     users: users,
     user: user,
     currentUserId: currentUserId,
-    posts: posts
+    posts: posts,
+    currentUser: currentUser
   };
 };
 
@@ -2331,29 +2367,66 @@ function (_React$Component) {
       }
 
       var authorName;
+      var photoClass;
+      var authorTitle;
 
       if (post.author_type == 'Company') {
-        debugger;
-        authorName = post.author.name;
+        authorName = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "author-name"
+        }, post.author.name);
+        photoClass = 'company-photo';
       } else if (post.author_type == 'User') {
-        authorName = post.author.first_name + ' ' + post.author.last_name;
+        authorName = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "author-name"
+        }, post.author.first_name + ' ' + post.author.last_name);
+        photoClass = 'user-photo';
+        authorTitle = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "author-title"
+        }, post.author.headline);
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-extra"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-more"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-double-down",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-author"
-      }, authorName, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "author-photo",
-        src: post.author.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: photoClass,
+        src: post.authorPhotoUrl
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-author-info"
+      }, authorName, authorTitle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "post-body"
       }, post.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "post-photo",
         src: post.photoUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "num-comments"
+      }, " Number of comments go here "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-buttons"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-like",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-thumbs-up"
+      }), "Like \xA0 \xA0 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-comment",
+        onClick: function onClick(e) {
+          return alert("not implemented yet");
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-comment-alt"
+      }), " Comment \xA0"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
     }
   }]);
 
