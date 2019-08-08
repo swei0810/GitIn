@@ -3,7 +3,6 @@ import React from "react"
 import { withRouter } from 'react-router-dom'; 
 import ProfileNavbar from '../user/profile_nav';
 import PostIndex from '../feed/post_index';
-import {openModal} from '../../actions/modal_actions'
 
 
 class Dashboard extends React.Component {
@@ -62,18 +61,18 @@ class Dashboard extends React.Component {
 
 
 
-
+{/* openModal pass currentUser */}
 
                     <div className='posts-container'>
                         <div className='post-create'>
                             <div className='post-create-container'>
-                               <div className='icon-create'>
-                                  <div className='icon-post'><i className="far fa-edit"></i></div> 
+                               <div className='icon-create' onClick={() => this.props.openModal('create post', {educationItem: this.props.currentUser})}>
+                                  <div className='icon-post' ><i className="far fa-edit"></i></div> 
                                   <div className='icon-text'>&nbsp; Start a post</div>
                                 </div> 
-                                <div className='icon-post'><i class="fas fa-camera"></i></div>
-                                <div className='icon-post'><i class="fas fa-video"></i></div>
-                                <div className='icon-post'><i class="fas fa-file-alt"></i></div>
+                                <div className='icon-post'><i className="fas fa-camera"></i></div>
+                                <div className='icon-post'><i className="fas fa-video"></i></div>
+                                <div className='icon-post'><i className="fas fa-file-alt"></i></div>
                             </div>
                            <div className='article'>Write an article on GitIn</div>
 

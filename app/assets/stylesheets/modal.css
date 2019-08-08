@@ -128,3 +128,21 @@
 .icon-edit {
   z-index: 1;
 }
+
+.post-modal-submit {
+  background-color: #0073b1;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: right;
+  padding: 5px;
+  position: relative;
+  font-size: 18px;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+  font-weight: bold;
+
+}

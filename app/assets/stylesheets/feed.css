@@ -130,6 +130,7 @@
     font-weight: bolder;
     color: grey;
     padding-top: 4.5%;
+    cursor: pointer;
 }
 
 .post-create-container {
@@ -149,4 +150,10 @@
     padding-top: 3%;
     color: rgb(64, 192, 224);
     text-decoration: underline;
+}
+
+
+.create-post-form {
+    width: 200px; 
+    height:200px; 
 }

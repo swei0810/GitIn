@@ -7,6 +7,7 @@ import CreateEducationItemFormContainer from '../education_items/create_educatio
 import EditEducationItemFormContainer from '../education_items/edit_education_item_form_container'; 
 import EditSummaryContainer from '../user/edit_summary_container';
 import EditIntroContainer from '../user/edit_intro_container';
+import CreatePostFormContainer from '../posts/create_post_form'
 
 
 
@@ -56,6 +57,9 @@ function Modal(props) {
         break;
     case 'edit intro':
         component = <EditIntroContainer user={user} />;
+        break;
+    case 'create post':
+        component = <CreatePostFormContainer user={user} />;
         break;
 
     default:
