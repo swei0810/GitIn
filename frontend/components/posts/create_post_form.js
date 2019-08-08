@@ -4,8 +4,13 @@ import { createPost } from '../../actions/post_action';
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    debugger 
     const post = {body: ''};
-    const user = ownProps.user;
+    // state.users is current user 
+    const user = state.entities.users; 
+    //ownProps.user is undefined 
+    // const user = ownProps.user;
+    debugger
     return {
         post, 
         user,
@@ -35,8 +40,11 @@ class createPostForm extends React.Component {
     }
 
     handleSubmit(e) {
+        debugger
+
         e.preventDefault(); 
         this.props.createPost(this.state).then(()=> this.props.closeModal());
+        //createPost should also take a authorId, type  
 
     } 
 
@@ -44,16 +52,30 @@ class createPostForm extends React.Component {
     render() {
         return (
             <div>
-                 <div onClick={this.props.closeModal} className="close-x">X</div>
+                <div className='create-post-header'>
+                    <div onClick={this.props.closeModal} className="close-post-x">X</div>
+                </div>
 
                 <form onSubmit={this.handleSubmit}>
-                    <input 
+                    <input className='post-input'
                         className = 'create-post-form'
                         type='text'
                         value={this.state.body}
                         onChange={this.update('body')}
                         placeholder='What do you want to talk about?'/>
+                    <br/>
+                    <br/>
+
+                    <div className='create-post-bottom'>
+                        <div className='post-form-icons'> 
+                            <div className='icon-post-form'><i className="fas fa-camera"></i></div>
+                            <div className='icon-post-form'><i className="fas fa-video"></i></div>
+                            <div className='icon-post-form'><i className="fas fa-file-alt"></i></div>
+                        </div>
+                 
                     <input className='post-modal-submit' type='submit' value='Post' /> 
+                    </div> 
+
                 </form>
             </div>
         )

@@ -2327,7 +2327,7 @@ function (_React$Component) {
         return null;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, posts.map(function (post) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, posts.reverse().map(function (post) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_post_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: post.id,
           post: post
@@ -2667,11 +2667,19 @@ function Modal(props) {
       return null;
   }
 
+  var modalClass;
+
+  if (modal == 'create post') {
+    modalClass = 'modal-child-post';
+  } else {
+    modalClass = 'modal-child';
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-background",
     onClick: closeModal
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-child",
+    className: modalClass,
     onClick: function onClick(e) {
       return e.stopPropagation();
     }
@@ -2736,10 +2744,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   var post = {
     body: ''
-  };
-  var user = ownProps.user;
+  }; // state.users is current user 
+
+  var user = state.entities.users; //ownProps.user is undefined 
+  // const user = ownProps.user;
+
+  debugger;
   return {
     post: post,
     user: user
@@ -2788,30 +2801,47 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
+      debugger;
       e.preventDefault();
       this.props.createPost(this.state).then(function () {
         return _this3.props.closeModal();
-      });
+      }); //createPost should also take a authorId, type  
     }
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-post-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
-        className: "close-x"
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "close-post-x"
+      }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "create-post-form",
-        type: "text",
-        value: this.state.body,
-        onChange: this.update('body'),
-        placeholder: "What do you want to talk about?"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
+        className: "post-input"
+      }, _defineProperty(_React$createElement, "className", "create-post-form"), _defineProperty(_React$createElement, "type", "text"), _defineProperty(_React$createElement, "value", this.state.body), _defineProperty(_React$createElement, "onChange", this.update('body')), _defineProperty(_React$createElement, "placeholder", "What do you want to talk about?"), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-post-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-form-icons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-camera"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-video"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-post-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-file-alt"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "post-modal-submit",
         type: "submit",
         value: "Post"
-      })));
+      }))));
     }
   }]);
 

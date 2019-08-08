@@ -65,9 +65,18 @@ function Modal(props) {
     default:
       return null;
   }
+
+
+  let modalClass;
+  if (modal == 'create post'){
+    modalClass = 'modal-child-post';
+
+  } else {
+    modalClass ='modal-child';
+  }
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className={modalClass} onClick={e => e.stopPropagation()}>
         { component }
       </div>
     </div>

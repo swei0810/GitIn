@@ -18,9 +18,22 @@
     background-color: white; 
     border: 2px solid black; 
     width: inherit; 
-    height: inherit;
+    /* height: 400px; */
     padding: 24px;
 
+  }
+
+  .modal-child-post{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px; 
+    background-color: white; 
+    /* border: 2px solid black;  */
+    padding-bottom: 24px; 
+    width: inherit; 
+    height: inherit;
   }
 
   .modal-header{
@@ -135,14 +148,34 @@
   text-align: center;
   cursor: pointer;
   display: inline-flex;
-  justify-content: right;
+  /* justify-content: right; */
   padding: 5px;
   position: relative;
   font-size: 18px;
   border-radius: 3px;
   padding-left: 10px;
   padding-right: 10px;
-  font-weight: bold;
+  /* margin-left: 415px; */
   font-weight: bold;
 
+}
+
+
+.create-post-bottom {
+  display: flex; 
+  justify-content: space-between;
+  padding-left:25px; 
+  padding-right: 25px; 
+}
+
+.post-form-icons {
+  display: flex; 
+  width: 40%;
+  justify-content: space-between;
+
+  
+}
+.icon-post-form {
+  font-size: 30px; 
+  color: #0073b1;
 }
