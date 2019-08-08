@@ -10,13 +10,11 @@ export default (state = [], action) => {
 
     switch (action.type) {
         case RECEIVE_PROFILE_ERRORS:
-            debugger
             const newState = merge([], state); 
             newState.push(action.errors)
             // action.errors; 
             return newState;
         case CLEAR_PROFILE_ERRORS:
-            debugger
             return []; 
         default: 
             return state;

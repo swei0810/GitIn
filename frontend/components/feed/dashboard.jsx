@@ -2,6 +2,7 @@
 import React from "react"
 import { withRouter } from 'react-router-dom'; 
 import ProfileNavbar from '../user/profile_nav';
+import PostIndex from '../feed/post_index';
 
 class Dashboard extends React.Component {
 
@@ -41,7 +42,9 @@ class Dashboard extends React.Component {
 
                     <div className='posts-container'>
                         <div className='post-create'>creating a post</div> 
-                        <div className='post-index'>Post Index</div>
+                        <div className='post-index'>
+                            <PostIndex posts={this.props.posts}/>
+                        </div>
                     </div>
                     
                     <div className='tips' >

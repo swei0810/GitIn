@@ -34,7 +34,6 @@ export const openModal = (modal, props={}) => {
 };
 
 export const closeModal = () => {
-  debugger
   return {
     type: CLOSE_MODAL
   };

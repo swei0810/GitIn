@@ -5,7 +5,12 @@ export const fetchAllPosts = () => {
     })
 }
 
-
+export const fetchPost = (id) => {
+    return $.ajax({
+        method: 'GET', 
+        url: `api/posts/${id}`
+    })
+}
 
 //should be nested under user?   if so change the route 
 export const createPost = (post) => {

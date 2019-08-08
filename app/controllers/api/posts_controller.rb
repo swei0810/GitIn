@@ -1,14 +1,22 @@
 class Api::PostsController < ApplicationController
 
     def index 
+      debugger
       @posts = Post.all
       render :index
     end 
 
 
     def create 
+      debugger
       @post = Post.new(post_params)
-      # @post.author = 
+      if params[:author_type] == 'company'
+        debugger
+        @post.author = Company.find(params[:author_id])
+      elsif params[:author_type] == 'user'
+        @post.author = User.find(params[:author_id])
+      end 
+
       if @post.save 
         render :show
       else 
