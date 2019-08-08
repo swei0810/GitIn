@@ -4,13 +4,11 @@ import { createPost } from '../../actions/post_action';
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger 
     const post = {body: ''};
     // state.users is current user 
     const user = state.entities.users; 
     //ownProps.user is undefined 
     // const user = ownProps.user;
-    debugger
     return {
         post, 
         user,
@@ -40,7 +38,6 @@ class createPostForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
 
         e.preventDefault(); 
         this.props.createPost(this.state).then(()=> this.props.closeModal());

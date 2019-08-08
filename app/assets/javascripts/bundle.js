@@ -1257,12 +1257,23 @@ function (_React$Component) {
         }));
       }
 
+      var companyPhoto = '';
+
+      if (educationItem.photoUrl) {
+        companyPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "item-img",
+          src: educationItem.photoUrl
+        });
+      } else {
+        companyPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "item-img",
+          src: window.default_comp
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "item-img",
-        src: educationItem.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, companyPhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
@@ -1999,13 +2010,24 @@ function (_React$Component) {
         }));
       }
 
+      var companyPhoto = '';
+
+      if (experienceItem.photoUrl) {
+        companyPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "item-img",
+          src: experienceItem.photoUrl
+        });
+      } else {
+        companyPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "item-img",
+          src: window.default_comp
+        });
+      }
+
       var duration = this.calculateDuration();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "item-img",
-        src: experienceItem.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, companyPhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-title"
@@ -2101,6 +2123,20 @@ function (_React$Component) {
       // if(this.props.user.id != this.props.currentUserId) {
       //     isCurrentUser = false; 
       // }
+      var profilePhoto = '';
+
+      if (this.props.currentUser.photoUrl) {
+        profilePhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "mini-profile-photo",
+          src: this.props.currentUser.photoUrl
+        });
+      } else {
+        profilePhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "mini-profile-photo",
+          src: window.default_prof
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_profile_nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
         users: this.props.users,
         currentUserId: this.props.currentUserId
@@ -2115,10 +2151,7 @@ function (_React$Component) {
         className: "mini-profile-bottom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-img"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "mini-profile-photo",
-        src: this.props.currentUser.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, profilePhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-name"
       }, this.props.currentUser.first_name + ' ' + this.props.currentUser.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mini-title"
@@ -2406,6 +2439,15 @@ function (_React$Component) {
         return null;
       }
 
+      var postPhoto = '';
+
+      if (post.photoUrl) {
+        postPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "post-photo",
+          src: post.photoUrl
+        });
+      }
+
       var authorName;
       var photoClass;
       var authorTitle;
@@ -2425,6 +2467,20 @@ function (_React$Component) {
         }, post.author.headline);
       }
 
+      var authorPhoto = '';
+
+      if (this.props.post.photoUrl) {
+        authorPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: photoClass,
+          src: post.authorPhotoUrl
+        });
+      } else {
+        authorPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: photoClass,
+          src: window.default_prof
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2438,17 +2494,11 @@ function (_React$Component) {
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-author"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: photoClass,
-        src: post.authorPhotoUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, authorPhoto, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-author-info"
       }, authorName, authorTitle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "post-body"
-      }, post.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "post-photo",
-        src: post.photoUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, post.body), postPhoto, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "num-comments"
       }, " Number of comments go here "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-buttons"
@@ -2744,7 +2794,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   var post = {
     body: ''
   }; // state.users is current user 
@@ -2752,7 +2801,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var user = state.entities.users; //ownProps.user is undefined 
   // const user = ownProps.user;
 
-  debugger;
   return {
     post: post,
     user: user
@@ -2801,7 +2849,6 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      debugger;
       e.preventDefault();
       this.props.createPost(this.state).then(function () {
         return _this3.props.closeModal();
@@ -4069,6 +4116,20 @@ function (_React$Component) {
   _createClass(ProfileNav, [{
     key: "render",
     value: function render() {
+      var profilePhoto = '';
+
+      if (this.props.currentUser.photoUrl) {
+        profilePhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-icon",
+          src: this.props.currentUser.photoUrl
+        });
+      } else {
+        profilePhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-icon",
+          src: window.default_prof
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4102,10 +4163,7 @@ function (_React$Component) {
         className: "nav-icon-p"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-image-circle"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "profile-icon",
-        src: this.props.currentUser.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \xA0 Me")));
+      }, profilePhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \xA0 Me")));
     }
   }]);
 
@@ -4198,6 +4256,20 @@ function (_React$Component) {
         }));
       }
 
+      var profilePhoto = '';
+
+      if (this.props.user.photoUrl) {
+        profilePhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-image",
+          src: this.props.user.photoUrl
+        });
+      } else {
+        profilePhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-image",
+          src: window.default_prof
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-summary-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4207,10 +4279,7 @@ function (_React$Component) {
         src: window.profile_background
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-image-circle"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "profile-image",
-        src: user.photoUrl
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, profilePhoto)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "summary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-heading"

@@ -13,11 +13,9 @@ class Api::PostsController < ApplicationController
 
 
     def create 
-      debugger
       @post = Post.new(post_params)
       @post.author_type = 'User'
       @post.author_id = current_user.id
-      debugger
       # if params[:author_type] == 'company'
       #   @post.author = Company.find(params[:author_id])
       # elsif params[:author_type] == 'user'

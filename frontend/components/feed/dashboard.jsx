@@ -27,6 +27,16 @@ class Dashboard extends React.Component {
         //     isCurrentUser = false; 
         // }
 
+
+        let profilePhoto = '';
+        if (this.props.currentUser.photoUrl) {
+            profilePhoto = (<img className='mini-profile-photo' src={this.props.currentUser.photoUrl}/>);
+        }else {
+            profilePhoto = (<img className='mini-profile-photo' src={window.default_prof}/>);
+        }
+
+        
+
         return (
             <div> 
                 <div> 
@@ -40,7 +50,7 @@ class Dashboard extends React.Component {
                     <div className='mini-profile'> 
                         <img className='mini-background' src={window.profile_background}/>
                         <div className='mini-profile-bottom'>
-                        <div className='mini-img'><img className='mini-profile-photo' src={this.props.currentUser.photoUrl}/></div>
+                        <div className='mini-img'>{profilePhoto}</div>
                         <div className='mini-name'>{this.props.currentUser.first_name + ' '+this.props.currentUser.last_name}</div>
                         <div className='mini-title'>{this.props.currentUser.headline}</div>
                         <div className='mini-git'><i className="fab fa-github-square"></i></div>

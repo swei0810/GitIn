@@ -338,8 +338,8 @@ ec.education_items.create!(user_id: ec.id,
                              activities: "Magna Cum Laude, Engineers Without Borders (International Trip Leader), University of Pennsylvania Men's Club Soccer (Persident, Captain), Hexagon Senior Honor Society (Tangent), Phi Fraternity (Secretary, Rush Chair)"
                              )
 
-u5= open("https://gitin-seeds.s3.amazonaws.com/deafult-male.png")
-ec.photo.attach(io: u5, filename: 'default-male.png')
+# u5= open("https://gitin-seeds.s3.amazonaws.com/deafult-male.png")
+# ec.photo.attach(io: u5, filename: 'default-male.png')
 
 
 

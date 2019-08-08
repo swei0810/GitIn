@@ -14,6 +14,11 @@ class PostItem extends React.Component {
             return null; 
         }
 
+        let postPhoto=''; 
+        if (post.photoUrl){
+            postPhoto = (<img className='post-photo' src={post.photoUrl}/>);
+        }
+
         let authorName;
         let photoClass;
         let authorTitle;
@@ -27,6 +32,13 @@ class PostItem extends React.Component {
 
         }
 
+        let authorPhoto = '';
+        if (this.props.post.photoUrl) {
+            authorPhoto = (<img className={photoClass} src={post.authorPhotoUrl}/>);
+        }else {
+            authorPhoto = (<img className={photoClass} src={window.default_prof}/>);
+        }
+
         return (
             <div> 
 
@@ -35,7 +47,9 @@ class PostItem extends React.Component {
                         <div className='post-more'><i className="fas fa-angle-double-down" onClick={e => alert("not implemented yet")}></i></div>
                     </div>
                     <div className='post-author'>
-                        <img className={photoClass} src={post.authorPhotoUrl}/> 
+                        {/* <img className={photoClass} src={post.authorPhotoUrl}/>  */}
+                        {authorPhoto}
+
 
                         <div className='post-author-info'>
                             {authorName}
@@ -48,7 +62,8 @@ class PostItem extends React.Component {
                         {post.body}
                     </p>
                     {/* <div>  */}
-                        <img className='post-photo' src={post.photoUrl}/> 
+                        {/* <img className='post-photo' src={post.photoUrl}/>  */}
+                        {postPhoto}
                     {/* </div> */}
                     <div className='num-comments'> Number of comments go here </div>
                     {/* <br/> */}

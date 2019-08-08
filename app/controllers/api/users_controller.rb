@@ -1,6 +1,9 @@
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
+        # if !@user.photo.attached? 
+        #     @user.photo = window.default_prof
+        # end 
         if @user.save
           login!(@user)
           render :show 
@@ -28,6 +31,7 @@ class Api::UsersController < ApplicationController
     
   
     def show 
+
       @user = User.find(params[:id])
       render :show
     end 
