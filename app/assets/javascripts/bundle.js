@@ -601,7 +601,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user/profile_container */ "./frontend/components/user/profile_container.js");
 /* harmony import */ var _feed_dashboard_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./feed/dashboard_container */ "./frontend/components/feed/dashboard_container.jsx");
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _network_network__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./network/network */ "./frontend/components/network/network.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 
 
 
@@ -615,14 +616,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_10__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_11__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_10__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_11__["AuthRoute"], {
     exact: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -638,6 +640,10 @@ var App = function App() {
     exact: true,
     path: "/feed",
     component: _feed_dashboard_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/network",
+    component: _network_network__WEBPACK_IMPORTED_MODULE_10__["default"]
   })));
 };
 
@@ -2764,6 +2770,114 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/network/network.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/network/network.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./frontend/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
+/* harmony import */ var _user_mini_profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_mini_profile */ "./frontend/components/network/user_mini_profile.jsx");
+/* harmony import */ var _user_mini_profile__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_user_mini_profile__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+ // const mapStateToProps = (state, ownProps) => {
+//     debugger
+//     return {
+//         users: Object.values(ownProps.users)
+//     }
+// }
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  debugger;
+  return {
+    fetchAllUsers: function fetchAllUsers() {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllUsers"])());
+    }
+  };
+};
+
+var Network =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Network, _React$Component);
+
+  function Network() {
+    _classCallCheck(this, Network);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Network).apply(this, arguments));
+  }
+
+  _createClass(Network, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      debugger;
+      this.props.fetchAllUsers();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      debugger;
+      var users = this.props.users;
+
+      if (!users) {
+        return null;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "all-posts"
+      }, users.map(function (user) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_mini_profile__WEBPACK_IMPORTED_MODULE_2___default.a, {
+          key: user.id,
+          user: user
+        });
+      })));
+    }
+  }]);
+
+  return Network;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(Network));
+
+/***/ }),
+
+/***/ "./frontend/components/network/user_mini_profile.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/network/user_mini_profile.jsx ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// like post item
+
+/***/ }),
+
 /***/ "./frontend/components/posts/create_post_form.js":
 /*!*******************************************************!*\
   !*** ./frontend/components/posts/create_post_form.js ***!
@@ -4191,7 +4305,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-home"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/connection"
+        to: "/network"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -4231,11 +4345,11 @@ function (_React$Component) {
         to: "/git/".concat(this.props.currentUser.id)
       }, "View Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/"
-      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: function onClick() {
           return _this.props.logout();
         }
-      }, "Sign Out")))))));
+      }, "Sign Out"), " "))))));
     }
   }]);
 

@@ -16,6 +16,7 @@ import Profile from './user/profile_container';
 // import PostContainer from './feed/post_container';
 import DashBoard from './feed/dashboard_container';
 import Modal from './modal/modal';
+import Network from './network/network';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -42,6 +43,7 @@ const App = () => (
       <Route exact path="/" component={SplashContainer} />
       <Route exact path='/git/:userId' component={Profile} />
       <Route exact path='/feed' component={DashBoard} />
+      <Route exact path='/network' component={Network} />
 
 
 
