@@ -2780,9 +2780,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -2828,9 +2828,10 @@ function (_React$Component) {
 
     _classCallCheck(this, createPostForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(createPostForm).call(this, props));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.state = _this.props.post; // this.validateSubmit = this.validateSubmit.bind(this); 
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(createPostForm).call(this, props)); // this.handleSubmit = this.handleSubmit.bind(this); 
+
+    _this.state = _this.props.post;
+    _this.state.photoFile = null; // this.validateSubmit = this.validateSubmit.bind(this); 
 
     return _this;
   }
@@ -2850,9 +2851,33 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      this.props.createPost(this.state).then(function () {
+      var formData = new FormData();
+      formData.append('post[body]', this.state.body);
+      formData.append('post[photo]', this.state.photoFile); // $.ajax({
+      //     url: 'api/posts', 
+      //     method: 'POST', 
+      //     data: formData, 
+      //     contentType: false, 
+      //     processDate: false
+      // });
+
+      this.props.createPost(formData).then(function () {
         return _this3.props.closeModal();
-      }); //createPost should also take a authorId, type  
+      });
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(e) {
+      this.setState({
+        body: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      this.setState({
+        photoFile: e.currentTarget.files[0]
+      });
     }
   }, {
     key: "render",
@@ -2865,26 +2890,22 @@ function (_React$Component) {
         onClick: this.props.closeModal,
         className: "close-post-x"
       }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.handleSubmit.bind(this)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
         className: "post-input"
-      }, _defineProperty(_React$createElement, "className", "create-post-form"), _defineProperty(_React$createElement, "type", "text"), _defineProperty(_React$createElement, "value", this.state.body), _defineProperty(_React$createElement, "onChange", this.update('body')), _defineProperty(_React$createElement, "placeholder", "What do you want to talk about?"), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, _defineProperty(_React$createElement, "className", "create-post-form"), _defineProperty(_React$createElement, "type", "text"), _defineProperty(_React$createElement, "value", this.state.body), _defineProperty(_React$createElement, "onChange", this.handleInput.bind(this)), _defineProperty(_React$createElement, "placeholder", "What do you want to talk about?"), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-post-bottom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-form-icons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "icon-post-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-camera"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "icon-post-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-video"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "icon-post-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-file-alt"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-submit-file"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "icon-post-form",
+        type: "file",
+        onChange: this.handleFile.bind(this)
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "post-modal-submit",
         type: "submit",
         value: "Post"
@@ -39478,13 +39499,13 @@ var fetchPost = function fetchPost(id) {
   });
 }; //should be nested under user?   if so change the route 
 
-var createPost = function createPost(post) {
+var createPost = function createPost(formData) {
   return $.ajax({
     method: "POST",
     url: "api/posts",
-    data: {
-      post: post
-    }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 var updatePost = function updatePost(post) {

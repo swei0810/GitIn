@@ -170,7 +170,7 @@
 
 .post-form-icons {
   display: flex; 
-  width: 40%;
+  width: 60%;
   justify-content: space-between;
 
   
@@ -179,3 +179,4 @@
   font-size: 30px; 
   color: #0073b1;
 }
+
