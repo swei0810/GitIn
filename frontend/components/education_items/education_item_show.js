@@ -55,13 +55,21 @@ class EducationItemShow extends React.Component {
             <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit education', {educationItem: educationItem})}></i>
             </div>)
         }
+
+        let companyPhoto = '';
+        if (educationItem.photoUrl) {
+            companyPhoto =(<img className='item-img' src={educationItem.photoUrl}/> );
+        }else {
+            companyPhoto = (<img className='item-img' src={window.default_comp}/>);
+        }
         
         return (
             <div>
             <div className='item'>
                 {/* change this when i have actual img */}
                     <div> 
-                    <img className='item-img' src={educationItem.photoUrl}/> 
+                        {companyPhoto}
+                    {/* <img className='item-img' src={educationItem.photoUrl}/>  */}
                     </div> 
 
                     <div className='item-info'>

@@ -10,21 +10,17 @@ class EducationItemForm extends React.Component {
         this.handleDelete = this.handleDelete.bind(this); 
         this.state = this.props.educationItem; 
         this.validateSubmit = this.validateSubmit.bind(this);
-        debugger 
 
     }
 
     componentDidMount() {
-        debugger 
         this.props.clearProfileErrors(); 
       }
     
 
     validateSubmit(e) {
-        debugger
         e.preventDefault(); 
         if (this.state.school==''){
-            debugger
             this.props.receiveProfileErrors('Please enter a school name');
         } else {
             this.handleSubmit();
@@ -39,7 +35,6 @@ class EducationItemForm extends React.Component {
     }
 
     handleSubmit() {
-        debugger
         this.props.processForm(this.state).then(()=> this.props.closeModal());
         // this.props.closeModal();
         // this.props.history.push(`/git/${this.state.user_id}`);
@@ -81,11 +76,9 @@ class EducationItemForm extends React.Component {
             deleteButton = (<button className="delete-button" onClick={this.handleDelete}>Delete</button>)
         }
 
-        debugger
         let schoolError; 
 
         if (this.props.errors !=[]){
-            debugger
             schoolError = this.props.errors[0]; 
         }
 

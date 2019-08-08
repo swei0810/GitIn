@@ -5,10 +5,23 @@ class Api::PostsController < ApplicationController
       render :index
     end 
 
+    def show 
+      @post = post.find(params[:id]) 
+      render :show
+
+    end 
+
 
     def create 
       @post = Post.new(post_params)
-      # @post.author = 
+      @post.author_type = 'User'
+      @post.author_id = current_user.id
+      # if params[:author_type] == 'company'
+      #   @post.author = Company.find(params[:author_id])
+      # elsif params[:author_type] == 'user'
+      #   @post.author = User.find(params[:author_id])
+      # end 
+
       if @post.save 
         render :show
       else 
@@ -29,7 +42,9 @@ class Api::PostsController < ApplicationController
 
     private
     def post_params
-      params.require(:post).permit(:author_id, :author_type, :body)
+      # params.require(:post).permit(:author_id, :author_type, :body)
+      params.require(:post).permit(:body)
+
     end
 
 end

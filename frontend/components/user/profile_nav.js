@@ -15,6 +15,13 @@ class ProfileNav extends React.Component {
 
     render() {
 
+        let profilePhoto = '';
+        if (this.props.currentUser.photoUrl) {
+            profilePhoto =(<img className="profile-icon" src={this.props.currentUser.photoUrl}/>);
+        }else {
+            profilePhoto = (<img className='profile-icon' src={window.default_prof}/>);
+        }
+
         return (
         <div className="nav">
                 <div className='nav-logo'><img className='logo-img' src={window.logo} /></div>
@@ -32,7 +39,8 @@ class ProfileNav extends React.Component {
                 
                 <div className='nav-icon-p'> 
                  <div className="profile-image-circle">
-                <img className="profile-icon" src={this.props.currentUser.photoUrl}/>
+                {/* <img className="profile-icon" src={this.props.currentUser.photoUrl}/> */}
+                    {profilePhoto}
 
                 </div>
                 <br/><br/> &nbsp; Me</div> 

@@ -27,6 +27,14 @@ class ProfileSummary extends React.Component {
              </div>);
          }
 
+
+         let profilePhoto = '';
+         if (this.props.user.photoUrl) {
+             profilePhoto = (<img className="profile-image" src={this.props.user.photoUrl}/>);
+         }else {
+             profilePhoto = (<img className='profile-image' src={window.default_prof}/>);
+         }
+
         return (
         <div className="profile-summary-container">
          {/* <Modal />  
@@ -38,7 +46,8 @@ class ProfileSummary extends React.Component {
          {/* PHOTO */}
             <img className='profile-background' src={window.profile_background}/>
             <div className="profile-image-circle">
-                <img className="profile-image" src={user.photoUrl}/>
+                {profilePhoto}
+                {/* <img className="profile-image" src={user.photoUrl}/> */}
             </div>
             </div>
 

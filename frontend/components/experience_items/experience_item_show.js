@@ -82,6 +82,13 @@ class ExperienceItemShow extends React.Component {
             </div>);
         }
 
+        let companyPhoto = '';
+        if (experienceItem.photoUrl) {
+            companyPhoto =(<img className='item-img' src={experienceItem.photoUrl}/> );
+        }else {
+            companyPhoto = (<img className='item-img' src={window.default_comp}/>);
+        }
+
         const duration = this.calculateDuration();
 
         return (
@@ -97,7 +104,8 @@ class ExperienceItemShow extends React.Component {
                 </div>  */}
                 <div className='item'>
                     <div> 
-                    <img className='item-img' src={experienceItem.photoUrl}/> 
+                    {/* <img className='item-img' src={experienceItem.photoUrl}/>  */}
+                    {companyPhoto}
                     </div> 
 
                     <div className='item-info'>

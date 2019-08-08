@@ -7,6 +7,7 @@ import CreateEducationItemFormContainer from '../education_items/create_educatio
 import EditEducationItemFormContainer from '../education_items/edit_education_item_form_container'; 
 import EditSummaryContainer from '../user/edit_summary_container';
 import EditIntroContainer from '../user/edit_intro_container';
+import CreatePostFormContainer from '../posts/create_post_form'
 
 
 
@@ -57,13 +58,25 @@ function Modal(props) {
     case 'edit intro':
         component = <EditIntroContainer user={user} />;
         break;
+    case 'create post':
+        component = <CreatePostFormContainer user={user} />;
+        break;
 
     default:
       return null;
   }
+
+
+  let modalClass;
+  if (modal == 'create post'){
+    modalClass = 'modal-child-post';
+
+  } else {
+    modalClass ='modal-child';
+  }
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className={modalClass} onClick={e => e.stopPropagation()}>
         { component }
       </div>
     </div>

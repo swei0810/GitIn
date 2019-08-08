@@ -31,7 +31,6 @@ class EditIntro extends React.Component {
     }
 
     componentWillUnmount() {
-        debugger 
         this.props.clearProfileErrors(); 
       }
 
@@ -42,14 +41,12 @@ class EditIntro extends React.Component {
     }
 
     handleSubmit() {
-        debugger
         // e.preventDefault(); 
         this.props.updateUser(this.state).then(()=> this.props.closeModal());
 
     } 
 
     validateSubmit(e) {
-        debugger
 
         e.preventDefault();
         let newErrors; 
@@ -75,13 +72,9 @@ class EditIntro extends React.Component {
 
         }
 
-        // if(!this.props.errors && !newErrors) {
-        //     debugger
-        //     this.handleSubmit();
-        // }
+ 
 
         if (!newErrors){
-            debugger
             this.handleSubmit(); 
         } 
     

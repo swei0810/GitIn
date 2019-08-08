@@ -6,7 +6,9 @@ json.user do
         json.experienceIds @user.experience_items.pluck(:id)
         json.educationIds @user.education_items.pluck(:id)  
         json.skillIds @user.skills.pluck(:id)
-        json.photoUrl url_for(@user.photo)
+        if @user.photo.attached?
+            json.photoUrl url_for(@user.photo)
+        end 
 end 
 
 
