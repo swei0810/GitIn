@@ -49,12 +49,12 @@ class SignupForm extends React.Component {
   }
   handleSubmit() {
     const user ={email: this.state.email, password: this.state.password};
-    this.props.processForm(user).then(() => this.props.history.push('/'));
+    this.props.processForm(user).then(() => this.props.history.push('/feed'));
   }
 
   handleDemo(){
     const demo = {email: 'demo@gmail.com', password: 'hunter12'};
-    this.props.demoLogin(demo).then(() => this.props.history.push('/'));
+    this.props.demoLogin(demo).then(() => this.props.history.push('/feed'));
   }
 
 

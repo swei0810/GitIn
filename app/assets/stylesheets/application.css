@@ -119,7 +119,10 @@ header{
    text-decoration: none;
 
 }
+a{
+  text-decoration: none;
 
+}
 
 .splash-button{ 
   text-align: center; 
