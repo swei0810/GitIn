@@ -2,7 +2,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const currentUser = ownProps.users[ownProps.currentUserId];
@@ -10,6 +10,10 @@ const mapStateToProps = (state, ownProps) => {
         currentUser
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logout())
+});
 
 class ProfileNav extends React.Component {
 
@@ -38,14 +42,25 @@ class ProfileNav extends React.Component {
 
                 
                
-                <Link to={`/git/${this.props.currentUser.id}`}>
+                {/* <Link to={`/git/${this.props.currentUser.id}`}> */}
                         <div className='nav-icon-p'> 
                         <div className="profile-image-circle">
                         {/* <img className="profile-icon" src={this.props.currentUser.photoUrl}/> */}
                             {profilePhoto}
                         </div>
-                        <br/><br/> &nbsp; Me</div> 
-                </Link>
+
+                        <div className='dropdown'> Me &nbsp;<i className='fa fa-caret-down'></i> 
+                            <div className='dropdown-content'>
+                                <Link to={`/git/${this.props.currentUser.id}`}>View Profile</Link>
+                                <Link to='/'> <div onClick={()=>this.props.logout()}>Sign Out</div></Link>
+                                
+                            </div>
+                        
+                        </div>
+
+
+                         </div> 
+                {/* </Link> */}
 
               
 
@@ -56,5 +71,5 @@ class ProfileNav extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, null)(ProfileNav)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileNav)
 // export default ProfileNav

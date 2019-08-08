@@ -15,14 +15,15 @@ const Greeting = ({ currentUser, logout }) => {
     </div>
     
   );
-  const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.email}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
-    </hgroup>
-  );
+  // const personalGreeting = () => (
+  //   <hgroup className="header-group">
+  //     <h2 className="header-name">Hi, {currentUser.email}!</h2>
+  //     <button className="header-button" onClick={logout}>Log Out</button>
+  //   </hgroup>
+  // );
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return sessionLinks();
+  // return currentUser ? personalGreeting() : sessionLinks();
 };
 
 

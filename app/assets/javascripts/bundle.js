@@ -2573,20 +2573,15 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "signin-button"
     }, "Sign in")));
-  };
+  }; // const personalGreeting = () => (
+  //   <hgroup className="header-group">
+  //     <h2 className="header-name">Hi, {currentUser.email}!</h2>
+  //     <button className="header-button" onClick={logout}>Log Out</button>
+  //   </hgroup>
+  // );
 
-  var personalGreeting = function personalGreeting() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
-      className: "header-group"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-      className: "header-name"
-    }, "Hi, ", currentUser.email, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "header-button",
-      onClick: logout
-    }, "Log Out"));
-  };
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return sessionLinks(); // return currentUser ? personalGreeting() : sessionLinks();
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Greeting);
@@ -4111,6 +4106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./frontend/node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4133,10 +4129,19 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var currentUser = ownProps.users[ownProps.currentUserId];
   return {
     currentUser: currentUser
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
+    }
   };
 };
 
@@ -4154,6 +4159,8 @@ function (_React$Component) {
   _createClass(ProfileNav, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       var profilePhoto = '';
 
       if (this.props.currentUser.photoUrl) {
@@ -4210,20 +4217,32 @@ function (_React$Component) {
         onClick: function onClick(e) {
           return alert("not implemented yet");
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/git/".concat(this.props.currentUser.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-icon-p"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-image-circle"
-      }, profilePhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \xA0 Me"))));
+      }, profilePhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown"
+      }, " Me \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-caret-down"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/git/".concat(this.props.currentUser.id)
+      }, "View Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: function onClick() {
+          return _this.props.logout();
+        }
+      }, "Sign Out")))))));
     }
   }]);
 
   return ProfileNav;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, null)(ProfileNav)); // export default ProfileNav
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(ProfileNav)); // export default ProfileNav
 
 /***/ }),
 
