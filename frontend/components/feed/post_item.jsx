@@ -33,7 +33,7 @@ class PostItem extends React.Component {
         }
 
         let authorPhoto = '';
-        if (this.props.post.photoUrl) {
+        if (this.props.post.authorPhotoUrl) {
             authorPhoto = (<img className={photoClass} src={post.authorPhotoUrl}/>);
         }else {
             authorPhoto = (<img className={photoClass} src={window.default_prof}/>);

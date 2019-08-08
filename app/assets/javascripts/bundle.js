@@ -2469,7 +2469,7 @@ function (_React$Component) {
 
       var authorPhoto = '';
 
-      if (this.props.post.photoUrl) {
+      if (this.props.post.authorPhotoUrl) {
         authorPhoto = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: photoClass,
           src: post.authorPhotoUrl
