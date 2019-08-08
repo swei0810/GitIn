@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchUser }  from '../../actions/user_actions';
 import Dashboard from './dashboard'; 
 import { fetchAllPosts } from '../../actions/post_action';
+import {openModal} from '../../actions/modal_actions'
+
 
 const mapStateToProps = (state, ownProps) => {    
     const posts = state.entities.posts;
@@ -23,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchUser: (id) => dispatch(fetchUser(id)), 
-    fetchAllPosts: () => dispatch(fetchAllPosts())
+    fetchAllPosts: () => dispatch(fetchAllPosts()),
+    openModal: (modal)=> dispatch(openModal(modal))
 });
 
 

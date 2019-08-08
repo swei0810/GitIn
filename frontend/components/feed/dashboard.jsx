@@ -3,6 +3,8 @@ import React from "react"
 import { withRouter } from 'react-router-dom'; 
 import ProfileNavbar from '../user/profile_nav';
 import PostIndex from '../feed/post_index';
+import {openModal} from '../../actions/modal_actions'
+
 
 class Dashboard extends React.Component {
     componentDidMount(){

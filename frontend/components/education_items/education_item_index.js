@@ -1,8 +1,5 @@
 import React from 'react';
-// import ExperienceItemShow from './experience_item_show';
 import EducationItemShow from './education_item_show';
-import Modal from '../modal/modal';
-// import { withRouter } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
 import {fetchUserEducationItems} from '../../actions/education_item_actions'; 
 import {openModal} from '../../actions/modal_actions'

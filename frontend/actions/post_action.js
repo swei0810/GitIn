@@ -22,3 +22,6 @@ export const fetchPost = (id) => dispatch => (
     APIUtil.fetchPost(id).then(post => dispatch(receivePost(post)))
 )
 
+export const createPost = (post) => dispatch => (
+    APIUtil.createPost(post).then(post => dispatch(receivePost(post)))
+)

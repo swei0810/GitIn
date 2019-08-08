@@ -377,7 +377,7 @@ var closeModal = function closeModal() {
 /*!*****************************************!*\
   !*** ./frontend/actions/post_action.js ***!
   \*****************************************/
-/*! exports provided: RECEIVE_ALL_POSTS, RECEIVE_POST, receiveAllPosts, receivePost, fetchAllPosts, fetchPost */
+/*! exports provided: RECEIVE_ALL_POSTS, RECEIVE_POST, receiveAllPosts, receivePost, fetchAllPosts, fetchPost, createPost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -388,6 +388,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePost", function() { return receivePost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPosts", function() { return fetchAllPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPost", function() { return fetchPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony import */ var _util_post_api_utl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/post_api_utl */ "./frontend/util/post_api_utl.js");
 
 var RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
@@ -414,6 +415,13 @@ var fetchAllPosts = function fetchAllPosts() {
 var fetchPost = function fetchPost(id) {
   return function (dispatch) {
     return _util_post_api_utl__WEBPACK_IMPORTED_MODULE_0__["fetchPost"](id).then(function (post) {
+      return dispatch(receivePost(post));
+    });
+  };
+};
+var createPost = function createPost(post) {
+  return function (dispatch) {
+    return _util_post_api_utl__WEBPACK_IMPORTED_MODULE_0__["createPost"](post).then(function (post) {
       return dispatch(receivePost(post));
     });
   };
@@ -1036,10 +1044,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./frontend/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _education_item_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./education_item_show */ "./frontend/components/education_items/education_item_show.js");
-/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modal/modal */ "./frontend/components/modal/modal.jsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_education_item_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/education_item_actions */ "./frontend/actions/education_item_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./frontend/node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_education_item_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/education_item_actions */ "./frontend/actions/education_item_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1058,10 +1065,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // import ExperienceItemShow from './experience_item_show';
 
-
- // import { withRouter } from 'react-router-dom'; 
 
 
 
@@ -1079,10 +1083,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     // fetchAllEducationItems: () => dispatch(fetchAllEducationItems()),
     openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])(modal));
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
     },
     fetchUserEducationItems: function fetchUserEducationItems(userId) {
-      return dispatch(Object(_actions_education_item_actions__WEBPACK_IMPORTED_MODULE_4__["fetchUserEducationItems"])(userId));
+      return dispatch(Object(_actions_education_item_actions__WEBPACK_IMPORTED_MODULE_3__["fetchUserEducationItems"])(userId));
     }
   };
 };
@@ -1144,7 +1148,7 @@ function (_React$Component) {
   return EducationItemIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(EducationItemIndex));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(EducationItemIndex));
 
 /***/ }),
 
@@ -2041,6 +2045,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./frontend/node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _user_profile_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/profile_nav */ "./frontend/components/user/profile_nav.js");
 /* harmony import */ var _feed_post_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../feed/post_index */ "./frontend/components/feed/post_index.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2058,6 +2063,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2198,6 +2204,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
 /* harmony import */ var _dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dashboard */ "./frontend/components/feed/dashboard.jsx");
 /* harmony import */ var _actions_post_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/post_action */ "./frontend/actions/post_action.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -2227,6 +2235,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchAllPosts: function fetchAllPosts() {
       return dispatch(Object(_actions_post_action__WEBPACK_IMPORTED_MODULE_4__["fetchAllPosts"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])(modal));
     }
   };
 };
