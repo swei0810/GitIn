@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+GitIn: A LinkedIn clone specifically for software engineers 
+Live site: https://gitin.herokuapp.com/#/
 
-Things you may want to cover:
+## Technologies used
 
-* Ruby version
 
-* System dependencies
+## Features 
+* User Auth 
+* Profile 
+* Connections 
+* Companies currently hiring 
+* Posts
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Code snippets 
