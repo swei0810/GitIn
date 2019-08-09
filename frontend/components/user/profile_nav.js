@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    const currentUser = ownProps.users[ownProps.currentUserId];
+    const currentUser = state.entities.users[ownProps.currentUserId]
     return {
         currentUser
     }
@@ -19,7 +19,6 @@ class ProfileNav extends React.Component {
 
 
     render() {
-
         let profilePhoto = '';
         if (this.props.currentUser.photoUrl) {
             profilePhoto =(<img className="profile-icon" src={this.props.currentUser.photoUrl}/>);

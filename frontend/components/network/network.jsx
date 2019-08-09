@@ -2,30 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux'; 
 import UserMiniProfile from './user_mini_profile';
 import { fetchAllUsers } from '../../actions/user_actions';
+import { withRouter } from 'react-router-dom'; 
+import ProfileNavbar from '../user/profile_nav';
 
 
-// const mapStateToProps = (state, ownProps) => {
-//     debugger
-//     return {
-//         users: Object.values(ownProps.users)
-//     }
-// }
 
-const mapDispatchToProps = dispatch => {
-    debugger
-    return {
-        fetchAllUsers: () => dispatch(fetchAllUsers())
-    }
-}
+
+
 
 class Network extends React.Component {
     componentDidMount() {
-        debugger
         this.props.fetchAllUsers();
+
     }
 
     render() {
-        debugger
         const {users} = this.props; 
         if (!users){
             return null;
@@ -33,14 +24,19 @@ class Network extends React.Component {
 
 
         return (
-            <div> 
-                <ul className='all-posts'>
-                    {users.map(user => <UserMiniProfile key={user.id} user={user}/>)}
-                </ul>
+            <div>
+
+                <ProfileNavbar users={users} currentUserId={this.props.currentUserId}/>
+
+
+            <div className='profiles'> 
+                    {users.map(user =>  <UserMiniProfile key={user.id} user={user}/>)}
             </div>
+            </div> 
+
         )
 
     }
 }
 
-export default connect(null, mapDispatchToProps)(Network)
+export default withRouter(Network)

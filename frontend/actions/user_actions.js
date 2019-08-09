@@ -36,7 +36,10 @@ const receiveUser = payload => ({
     payload  
 })
 
-const receiveAllUsers = (users) => ({
-    type: RECEIVE_ALL_USERS, 
-    users, 
-})
+const receiveAllUsers = (users) => {
+    return {
+        type: RECEIVE_ALL_USERS, 
+        users, 
+    }
+
+}
