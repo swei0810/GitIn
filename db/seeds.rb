@@ -60,7 +60,7 @@ harvard = Company.create!(name:'Harvard University',
 c5 = open("https://gitin-seeds.s3.amazonaws.com/harvard.png")
 harvard.photo.attach(io: c5, filename: 'harvard.png')
 
-brook = Company.create!(name:'MillBrook School', 
+brook = Company.create!(name:'Millbrook School', 
                      field:'High School', 
                      description:'Non Sibi Sed Cunctis', 
                      website_url:'https://millbrook.edu', 
@@ -182,6 +182,14 @@ uwis = Company.create!(name:'University of Wisconsin-Milwaukee')
 c27 = open("https://gitin-seeds.s3.amazonaws.com/uw.png")
 uwis.photo.attach(io: c27, filename: 'uwis.png')
 
+tia = Company.create!(name:'Thought Into Action Entrepreneurship at Colgate')
+c28 = open("https://gitin-seeds.s3.amazonaws.com/tia.png")
+tia.photo.attach(io: c28, filename: 'tia.png')
+
+waffle = Company.create!(name:'The Waffle Cookie')
+c29 = open("https://gitin-seeds.s3.amazonaws.com/waffle.png")
+waffle.photo.attach(io: c29, filename: 'waffle.png')
+
 #USER 
 demo = User.create!(email: 'demo@gmail.com' , 
                    password: 'hunter12', 
@@ -200,7 +208,7 @@ demo.experience_items.create!(user_id: demo.id,
                              location:'New York, NY', 
                              start_date: 'June 2019', 
                              end_date: 'August 2019', 
-                             description: '12-week full-stack web development bootcamp with <3% acceptance rate' )
+                             description: '12-week full-stack web development bootcamp with <3% acceptance rate. Covered technologies include: Ruby on Rails, SQL, Javascript, HTML/CSS' )
 
 demo.experience_items.create!(user_id: demo.id, 
                              title:'Summer Research Assistant' , 
@@ -208,7 +216,31 @@ demo.experience_items.create!(user_id: demo.id,
                              location:'Hamilton, NY', 
                              start_date: 'June 2018', 
                              end_date: 'August 2018', 
-                             description: 'Assist in research project' )
+                             description: '• Selected as one of two students to assist in a long-term research project on local water quality
+                             • Performed various laboratory tests, field work and computer work using MATLAB and Microsoft Excel in order to
+                             further support faculty research to be published in Spring 2019' )
+
+
+
+
+ demo.experience_items.create!(user_id: demo.id, 
+                             title:'Entrepreneur' , 
+                             company_id: tia.id, 
+                             location:'Hamilton, NY', 
+                             start_date: 'September 2018', 
+                             end_date: 'March 2019', 
+                             description: '• Develop a start-up non-profit organization that provides financial support for college application process through
+                             performing in-depth market research and delivering a 60 second pitch every session
+                             • Participate in rigorous workshops on entrepreneurship with various alumni and mentors' )
+
+demo.experience_items.create!(user_id: demo.id, 
+                             title:'Entrepreneur' , 
+                             company_id: waffle.id, 
+                             location:'Hamilton, NY', 
+                             start_date: 'October 2017', 
+                             end_date: 'May 2018', 
+                             description: '' )
+
 
 demo.education_items.create!(user_id: demo.id, 
                             school_id: gate.id, 
