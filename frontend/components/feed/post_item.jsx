@@ -65,7 +65,8 @@ class PostItem extends React.Component {
                         {/* <img className='post-photo' src={post.photoUrl}/>  */}
                         {postPhoto}
                     {/* </div> */}
-                    <div className='num-comments'> Number of comments go here </div>
+                    <div className='num-comments'> 10 comments </div>
+                    {/* HARDCODED NUM COMMENTS */}
                     {/* <br/> */}
                     <div className='post-buttons'>
                         <div className='post-like' onClick={e => alert("not implemented yet")}><i className="far fa-thumbs-up"></i>Like &nbsp; &nbsp; </div>

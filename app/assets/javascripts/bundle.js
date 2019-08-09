@@ -698,7 +698,7 @@ var App = function App() {
     exact: true,
     path: "/git/:userId",
     component: _user_profile_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__["ProtectedRoute"], {
     exact: true,
     path: "/companies",
     component: _companies_company_index_container__WEBPACK_IMPORTED_MODULE_11__["default"]
@@ -2831,7 +2831,7 @@ function (_React$Component) {
         className: "post-body"
       }, post.body), postPhoto, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "num-comments"
-      }, " Number of comments go here "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, " 10 comments "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-like",

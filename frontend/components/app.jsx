@@ -46,7 +46,7 @@ const App = () => (
       <ProtectedRoute exact path='/feed' component={DashBoard} />
       <ProtectedRoute exact path='/network' component={Network} />
       <Route exact path='/git/:userId' component={Profile} />
-      <Route exact path='/companies' component={Company} />
+      <ProtectedRoute exact path='/companies' component={Company} />
 
       
 
