@@ -26,6 +26,7 @@ class Network extends React.Component {
 
                 <ProfileNavbar users={users} currentUserId={this.props.currentUserId}/>
 
+                <div className ='companies-header'>People who you may know </div>
 
             <div className='profiles'> 
                     {users.map(user =>  <UserMiniProfile key={user.id} user={user}/>)}

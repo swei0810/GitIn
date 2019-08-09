@@ -23,7 +23,7 @@ class CompanyIndex extends React.Component {
                 <ProfileNavbar users={users} currentUserId={this.props.currentUserId}/>
                 <br/>
 
-                <div className ='companies-header'>Companies who are ready to hire you </div>
+                <div className ='companies-header'>Companies trending in your network </div>
                 <br/>
                 <br/>
 

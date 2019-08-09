@@ -23,6 +23,7 @@
     color: lightblue;
     font-size: 40px;
     font-weight: bold; 
+    padding:10px; 
 }
 .company-name {
     font-weight: bold; 
