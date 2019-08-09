@@ -8,15 +8,15 @@ GitIn is a clone of professional social-media platform LinkedIn. Users can creat
 * [My LinkedIn](www.linkedin.com/in/si-wei0810)
 
 ## Technologies used
-Host: Heroku, Amazon Web Services (AWS)
+* Host: Heroku, Amazon Web Services (AWS)
 
-Backend: Ruby on Rails
+* Backend: Ruby on Rails
 
-Database: PostgreSQL
+* Database: PostgreSQL
 
-Frontend: React + Redux, jBuilder
+* Frontend: React + Redux, jBuilder
 
-Style: CSS
+* Style: CSS, HTML
 
 ## Features 
 * User Auth 
