@@ -21,7 +21,12 @@ class CompanyIndex extends React.Component {
             <div>
 
                 <ProfileNavbar users={users} currentUserId={this.props.currentUserId}/>
-                
+                <br/>
+
+                <div className ='companies-header'>Check who is hiring! </div>
+                <br/>
+                <br/>
+
                 <div className='companies'>
                     {companies.map(company=> <CompanyItem key={company.id} company={company} />)}
                 </div>

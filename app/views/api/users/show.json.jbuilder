@@ -12,13 +12,13 @@ json.user do
 end 
 
 
-@sorted_experience_items = @user.experience_items.to_a.sort! {|a,b| Date.parse(a.end_date) <=> Date.parse(b.end_date)}
+# @sorted_experience_items = @user.experience_items.to_a.sort! {|a,b| Date.parse(a.end_date) <=> Date.parse(b.end_date)}
 
 
 
 json.experienceItems do 
     # @user.experience_items.each do |experience_item|
-    @sorted_experience_items.reverse.each do |experience_item|
+    @user.experience_items.each do |experience_item|
         json.set! experience_item.id do 
             json.extract! experience_item, :id, :user_id, :title, :company, :location, :start_date, :end_date, :description
             if experience_item.company.photo.attached? 

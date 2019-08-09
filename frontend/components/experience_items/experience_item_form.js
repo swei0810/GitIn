@@ -65,7 +65,6 @@ class ExperienceItemForm extends React.Component {
 
     formatDate(e) {
         e.preventDefault();
-        debugger
         const startDate = this.state.startMonth + ' ' + this.state.startYear;
         const endDate = this.state.endMonth + ' ' + this.state.endYear;
         debugger
@@ -125,6 +124,7 @@ class ExperienceItemForm extends React.Component {
                 companyNameError = 'Please enter a company name';
             }
         };
+        
         
         return (
             <div> 
@@ -234,7 +234,6 @@ class ExperienceItemForm extends React.Component {
                                 <br/>
 
                                 
-
                                 <select className='end-yr'
                                         onChange={this.update('endYear')}> 
                                     <option selected>Year</option> 

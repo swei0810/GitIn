@@ -10,11 +10,15 @@ html {
     align-items: center; 
 }
 
+.section-head {
+    display: flex;
+}
+
 .experience-item-container, .profile-about {
     display: flex; 
     margin: 10px; 
     width: 800px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
     border-radius: 2px;
     background-color: white; 
 
@@ -27,7 +31,7 @@ html {
     width: 800px;
     display: flex; 
     margin: 10px; 
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
     border-radius: 2px;
     background-color: white; 
 }
@@ -46,6 +50,8 @@ html {
     border: 3px solid white;
     top: 100px;
     position: absolute; 
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
+
 
     /* position: absolute; */
     /* top: 90px;
@@ -56,6 +62,7 @@ html {
     position: absolute; 
     padding: 25px; 
     top: 70px;
+
 }
 
 
@@ -65,7 +72,7 @@ html {
     background-color: white; 
     display:flex; 
     flex-direction: column;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
     border-radius: 2px;
 
 }
@@ -122,7 +129,7 @@ html {
 .item-info{
     width: 87.3%; 
     align-items: flex-start; 
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 1px solid lightgrey;
 
 }
 
@@ -161,10 +168,12 @@ html {
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 30px;
+    
 }
 
 .user-name {
     font-size: 25px; 
+    padding-top: 10px;
 }
 
 .summary{

@@ -9,6 +9,30 @@
 
 
 .company-item-img {
-    width: 40px; 
-    height: 40px; 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    /* align-content: center; */
+}
+
+
+.companies-header {
+    text-align: center;
+    color: lightblue;
+    font-size: 40px;
+    font-weight: bold; 
+}
+.company-name {
+    font-weight: bold; 
+    font-size: 20px;
+}
+
+.company {
+    display: flex; 
+    flex-direction: column;
+    margin: 40px; 
+    /* justify-content: center; */
+
 }

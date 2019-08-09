@@ -63,6 +63,26 @@ class EducationItemShow extends React.Component {
             companyPhoto = (<img className='item-img' src={window.default_comp}/>);
         }
         
+
+        let itemSub ='';
+        if (educationItem.degree && educationItem.field){
+            itemSub = educationItem.degree + ', ' +educationItem.field;
+        } else if (educationItem.degree) {
+            itemSub = educationItem.degree
+        }else if (educationItem.field){
+            itemSub = educationItem.field;
+        }
+
+        let duration ='';
+        if (educationItem.start_yr && educationItem.end_yr) {
+            duration = educationItem.start_yr + ' - ' + educationItem.end_yr;
+        }else if (educationItem.start_yr) {
+            duration = educationItem.start_yr;
+        } else if (educationItem.end_yr) {
+            duration = educationItem.end_yr;
+        }
+
+
         return (
             <div>
             <div className='item'>
@@ -78,8 +98,9 @@ class EducationItemShow extends React.Component {
                             <div className='item-title'>{educationItem.school.name}</div>
                             {editIcon}
                         </div> 
-                        <div className='item-sub'>{educationItem.degree}, {educationItem.field}</div>
-                        <div className='item-sub-2'>{educationItem.start_yr} - {educationItem.end_yr} </div>
+                        {/* {educationItem.degree}, {educationItem.field} */}
+                        <div className='item-sub'>{itemSub}</div>
+                        <div className='item-sub-2'>{duration} </div>
                         <div className='item-sub-2'>Activities and societies: {educationItem.activities}</div> 
                         <br/>
                     </div> 

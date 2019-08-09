@@ -14,11 +14,11 @@ class CompanyItem extends React.Component {
         const {company} = this.props;
 
         return (
-            <div>
+            <div className='company'>
 
             <img className='company-item-img' src={company.photoUrl}/>
-
-            <div>{company.name}</div>
+            <br/>
+            <div className='company-name'>{company.name}</div>
             </div>
         )
     }

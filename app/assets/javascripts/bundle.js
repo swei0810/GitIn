@@ -776,7 +776,9 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_profile_nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
         users: users,
         currentUserId: this.props.currentUserId
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "companies-header"
+      }, "Check who is hiring! "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "companies"
       }, companies.map(function (company) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_companies_company_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -905,10 +907,14 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var company = this.props.company;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "company-item-img",
         src: company.photoUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, company.name));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-name"
+      }, company.name));
     }
   }]);
 
@@ -1545,6 +1551,26 @@ function (_React$Component) {
         });
       }
 
+      var itemSub = '';
+
+      if (educationItem.degree && educationItem.field) {
+        itemSub = educationItem.degree + ', ' + educationItem.field;
+      } else if (educationItem.degree) {
+        itemSub = educationItem.degree;
+      } else if (educationItem.field) {
+        itemSub = educationItem.field;
+      }
+
+      var duration = '';
+
+      if (educationItem.start_yr && educationItem.end_yr) {
+        duration = educationItem.start_yr + ' - ' + educationItem.end_yr;
+      } else if (educationItem.start_yr) {
+        duration = educationItem.start_yr;
+      } else if (educationItem.end_yr) {
+        duration = educationItem.end_yr;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, companyPhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1555,9 +1581,9 @@ function (_React$Component) {
         className: "item-title"
       }, educationItem.school.name), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub"
-      }, educationItem.degree, ", ", educationItem.field), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, itemSub), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub-2"
-      }, educationItem.start_yr, " - ", educationItem.end_yr, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, duration, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-sub-2"
       }, "Activities and societies: ", educationItem.activities), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
     }
@@ -1871,7 +1897,6 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      debugger;
       var startDate = this.state.startMonth + ' ' + this.state.startYear;
       var endDate = this.state.endMonth + ' ' + this.state.endYear;
       debugger;
@@ -2229,7 +2254,19 @@ function (_React$Component) {
     // }
     value: function calculateDuration() {
       var start = this.props.experienceItem.start_date;
-      var end = this.props.experienceItem.end_date;
+      var end = this.props.experienceItem.end_date; // let end=''
+      // const end = this.props.experienceItem.end_date;
+      // debugger
+      //HARD CODE CURRENT DATE FOR NOW
+      // if (!this.props.experienceItem.end_date) {
+      //     end = 'August 2019';
+      // } else {
+      //     end = this.props.experienceItem.end_date;
+      // }
+      // if (!end) {
+      //     end = 'August 2019'
+      // }
+
       var startYr = start.slice(start.length - 4);
       var endYr = end.slice(end.length - 4);
       var ds = Date.parse(start.slice(0, start.length - 5) + "1, 2012");
@@ -2296,7 +2333,12 @@ function (_React$Component) {
           className: "item-img",
           src: window.default_comp
         });
-      }
+      } // let endDate = '';
+      // if (!experienceItem.end_date) {
+      //     debugger
+      //     endDate = 'Present';
+      // }
+
 
       var duration = this.calculateDuration();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4869,13 +4911,15 @@ function (_React$Component) {
         className: "summary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-head"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-name"
       }, user.first_name, " ", user.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "github-icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-github"
-      })), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), editIcon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-header"
       }, user.headline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "summary-location"

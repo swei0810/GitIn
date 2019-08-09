@@ -33,7 +33,22 @@ class ExperienceItemShow extends React.Component {
     calculateDuration() {
 
         const start = this.props.experienceItem.start_date; 
-        const end = this.props.experienceItem.end_date;
+        const end =  this.props.experienceItem.end_date;
+        // let end=''
+        // const end = this.props.experienceItem.end_date;
+        // debugger
+
+        //HARD CODE CURRENT DATE FOR NOW
+        // if (!this.props.experienceItem.end_date) {
+        //     end = 'August 2019';
+        // } else {
+        //     end = this.props.experienceItem.end_date;
+        // }
+
+        // if (!end) {
+        //     end = 'August 2019'
+        // }
+        
 
         const startYr = start.slice(start.length-4);
         const endYr = end.slice(end.length-4);
@@ -88,6 +103,12 @@ class ExperienceItemShow extends React.Component {
         }else {
             companyPhoto = (<img className='item-img' src={window.default_comp}/>);
         }
+
+        // let endDate = '';
+        // if (!experienceItem.end_date) {
+        //     debugger
+        //     endDate = 'Present';
+        // }
 
         const duration = this.calculateDuration();
 
