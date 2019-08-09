@@ -778,7 +778,7 @@ function (_React$Component) {
         currentUserId: this.props.currentUserId
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "companies-header"
-      }, "Check who is hiring! "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Companies who are ready to hire you "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "companies"
       }, companies.map(function (company) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_companies_company_item__WEBPACK_IMPORTED_MODULE_3__["default"], {

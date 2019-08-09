@@ -673,3 +673,42 @@ gate_post2 = Post.create!(author_id: gate.id,
                           )
 p6 = open("https://gitin-seeds.s3.amazonaws.com/gate-post-2.png")
 gate_post2.photo.attach(io: p6, filename:'gate-post2.png')
+
+
+
+airbnb_post = Post.create!(author_id: airbnb.id, 
+                          author_type: 'Company', 
+                          body: "As a Data Scientist at #airbnb, Mihajlo Grbovic reveals how he got started in Machine Learning and how he uses it to help guests plan their perfect trip! "
+                        )
+p7 = open("https://gitin-seeds.s3.amazonaws.com/airbnb_post.png")
+airbnb_post.photo.attach(io: p7, filename:'airbnb_post.png')
+
+
+
+hk_post = Post.create!(author_id: hk.id, 
+                          author_type: 'User', 
+                          body: "Check out my app, TradeX, a RobinHood clone!"
+                          )
+p8 = open("https://gitin-seeds.s3.amazonaws.com/hamza_post.png")
+hk_post.photo.attach(io: p8, filename:'hk-post.png')
+
+
+linkedin_post = Post.create!(author_id: linkedin.id, 
+                          author_type: 'Company', 
+                          body: "We all approach work in different ways, including the words we use. Here's an in-depth look at how language impacts our world of work: "
+                          )
+p9 = open("https://gitin-seeds.s3.amazonaws.com/linkedin_post.png")
+linkedin_post.photo.attach(io: p9, filename:'linkedin-post.png')
+
+spotify_post = Post.create!(author_id: spotify.id, 
+                          author_type: 'Company', 
+                          body: "Spotify is seeking a Data Scientist, Advanced Marketing Analytics to build advanced marketing analytics solutions. You’ll play a key role in expanding Spotify’s marketing measurement abilities. The role reports into the Marketing Analytics team lead and there will be significant cross-functional collaboration. In addition, you’ll have the opportunity to leverage Spotify’s world-class user data infrastructure and collaborate with a global community of 100+ data analysts."
+                          )
+p10 = open("https://gitin-seeds.s3.amazonaws.com/spotify_post.png")
+spotify_post.photo.attach(io: p10, filename:'spotify_post.png')
+
+
+si_post2 = Post.create!(author_id: demo.id, 
+                          author_type: 'User', 
+                          body: "Currently looking for a Software Engineering Internship for Summer 2020. Please let me know if you have an opening!"
+                          )
