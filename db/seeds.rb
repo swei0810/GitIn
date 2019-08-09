@@ -15,10 +15,6 @@ EducationItem.delete_all
 Post.delete_all
 
 
-#we work
-#EY
-#Apple
-#samsung
 
 
 #COMPANY
@@ -128,6 +124,63 @@ google = Company.create!(name:'Google',
 c13 = open("https://gitin-seeds.s3.amazonaws.com/google.png")
 google.photo.attach(io: c13, filename: 'google.png')
 
+
+linkedin = Company.create!(name:'LinkedIn')
+c14 = open("https://gitin-seeds.s3.amazonaws.com/linkedin.png")
+linkedin.photo.attach(io: c14, filename: 'linkedin.png')
+
+
+spotify = Company.create!(name:'Spotify')
+c15 = open("https://gitin-seeds.s3.amazonaws.com/spotify.png")
+spotify.photo.attach(io: c15, filename: 'spotify.png')
+
+microsoft = Company.create!(name:'Microsoft')
+c16 = open("https://gitin-seeds.s3.amazonaws.com/microsoft.png")
+microsoft.photo.attach(io: c16, filename: 'microsoft.png')
+
+airbnb = Company.create!(name:'AirBnB')
+c17 = open("https://gitin-seeds.s3.amazonaws.com/airbnb.png")
+airbnb.photo.attach(io: c17, filename: 'airbnb.png')
+
+instagram = Company.create!(name:'Instagram')
+c18 = open("https://gitin-seeds.s3.amazonaws.com/insta.png")
+instagram.photo.attach(io: c18, filename: 'instagram.png')
+
+starbucks = Company.create!(name:'Starbucks')
+c19 = open("https://gitin-seeds.s3.amazonaws.com/0+(4).png")
+starbucks.photo.attach(io: c19, filename: 'starbucks.png')
+
+stanford = Company.create!(name:'Stanford University')
+c20 = open("https://gitin-seeds.s3.amazonaws.com/0+(3).png")
+stanford.photo.attach(io: c20, filename: 'stanford.png')
+
+uchicago = Company.create!(name:'University of Chicago')
+c21 = open("https://gitin-seeds.s3.amazonaws.com/0+(2).png")
+uchicago.photo.attach(io: c21, filename: 'uchicago.png')
+
+donorschoose = Company.create!(name:'DonorsChoose')
+c22 = open("https://gitin-seeds.s3.amazonaws.com/0+(1).png")
+donorschoose.photo.attach(io: c22, filename: 'donorschoose.png')
+
+everfi = Company.create!(name:'Everfi')
+c23 = open("https://gitin-seeds.s3.amazonaws.com/0.png")
+everfi.photo.attach(io: c23, filename: 'everfi.png')
+
+intuit = Company.create!(name:'Intuit')
+c24 = open("https://gitin-seeds.s3.amazonaws.com/in.png")
+intuit.photo.attach(io: c24, filename: 'intuit.png')
+
+risd = Company.create!(name:'Rhode Island School of Design')
+c25 = open("https://gitin-seeds.s3.amazonaws.com/r.png")
+risd.photo.attach(io: c25, filename: 'risd.png')
+
+wharton = Company.create!(name:'The Wharton School')
+c26 = open("https://gitin-seeds.s3.amazonaws.com/w.png")
+wharton.photo.attach(io: c26, filename: 'wharton.png')
+
+uwis = Company.create!(name:'University of Wisconsin-Milwaukee')
+c27 = open("https://gitin-seeds.s3.amazonaws.com/uw.png")
+uwis.photo.attach(io: c27, filename: 'uwis.png')
 
 #USER 
 demo = User.create!(email: 'demo@gmail.com' , 
@@ -254,10 +307,7 @@ jw.experience_items.create!(user_id: jw.id,
                              location:'Fairfax, va', 
                              start_date: 'November 2017', 
                              end_date: 'May 2019', 
-                             description: "• Assisted in the development of title marketing campaigns for Viking and Riverhead imprints \n
-                             • Tracked sales information and coordinates reactive marketing and advertising efforts for each title \n
-                             • Developed and amplified authors’ online presence, including social media strategy and website design \n
-                             • Contributed to the @vikingbooks and @riverheadbooks social media platforms (Facebook, Twitter, Instagram and YouTube)" )
+                             description: "• Assisted in the development of title marketing campaigns for Viking and Riverhead imprints\n• Tracked sales information and coordinates reactive marketing and advertising efforts for each title\n• Developed and amplified authors’ online presence, including social media strategy and website design\n• Contributed to the @vikingbooks and @riverheadbooks social media platforms (Facebook, Twitter, Instagram and YouTube)" )
 
 jw.experience_items.create!(user_id: jw.id, 
                              title:'Visual Presentation & Sales Specialist' , 
@@ -338,8 +388,231 @@ ec.education_items.create!(user_id: ec.id,
                              activities: "Magna Cum Laude, Engineers Without Borders (International Trip Leader), University of Pennsylvania Men's Club Soccer (Persident, Captain), Hexagon Senior Honor Society (Tangent), Phi Fraternity (Secretary, Rush Chair)"
                              )
 
-# u5= open("https://gitin-seeds.s3.amazonaws.com/deafult-male.png")
-# ec.photo.attach(io: u5, filename: 'default-male.png')
+
+
+
+
+de = User.create!(email: 'daniel@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Daniel', 
+                             last_name:'Ek', 
+                             location: 'Greater New York City Area', 
+                             summary:'Daniel Ek (born 21 February 1983) is a Swedish billionaire entrepreneur and technologist. Ek is best known as the co-founder and CEO of the music streaming service Spotify', 
+                             github_url:'', 
+                             headline:'CEO and Founder at Spotify'
+                             )                            
+
+de.experience_items.create!(user_id: de.id, 
+                             title:'Chairman & CEO' , 
+                             company_id: spotify.id, 
+                             location:'Stockholm, Stockholm County', 
+                             start_date: 'April 2006', 
+                             end_date: '', 
+                             description: "" )
+u5= open("https://gitin-seeds.s3.amazonaws.com/de.png")
+de.photo.attach(io: u5, filename: 'profile5.png')
+
+
+
+
+
+#kevin
+ks = User.create!(email: 'kevin@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Kevin', 
+                             last_name:'Systrom', 
+                             location: 'San Francisco, CA', 
+                             summary:'Under Systrom as CEO, Instagram became a fast growing app, with 800 million monthly users as of September 2017', 
+                             github_url:'', 
+                             headline:'Instagram co-founder, former CEO'
+                             )                            
+
+ks.experience_items.create!(user_id: ks.id, 
+                             title:'CEO' , 
+                             company_id: instagram.id, 
+                             location:'San Francisco Bay Area', 
+                             start_date: 'January 2010', 
+                             end_date: 'October 2018', 
+                             description: "" )
+
+ks.experience_items.create!(user_id: ks.id, 
+                             title:'Corporate Development Associate' , 
+                             company_id: google.id, 
+                             location:'San Francisco Bay Area', 
+                             start_date: 'March 2008', 
+                             end_date: 'January 2009', 
+                             description: "" )
+
+                             
+ks.education_items.create!(user_id: ks.id, 
+                             school_id: stanford.id, 
+                             degree: 'BS', 
+                             field: 'Management Science and Engineering', 
+                             start_yr: "2002", 
+                             end_yr: "2006" , 
+                             activities: 'Sigma Nu, Graduated with Distinction and Phi Beta Kappa honors. Graduated first in department of Management Science and Engineering majors.' 
+                             )
+u6= open("https://gitin-seeds.s3.amazonaws.com/ks.png")
+ks.photo.attach(io: u6, filename: 'profile6.png')
+
+
+
+#satya
+
+sn = User.create!(email: 'satya@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Satya', 
+                             last_name:'Nadella', 
+                             location: 'Redmond, Washington', 
+                             summary:'As CEO of Microsoft, I define my mission and that of my company as empowering every person and every organization on the planet to achieve more. ', 
+                             github_url:'', 
+                             headline:'CEO at Microsoft'                             
+                             )                            
+
+sn.experience_items.create!(user_id: sn.id, 
+                             title:'CEO' , 
+                             company_id: microsoft.id, 
+                             location:'Great Seattle Area', 
+                             start_date: 'February 2014', 
+                             end_date: '', 
+                             description: "" )
+
+sn.experience_items.create!(user_id: sn.id, 
+                             title:'Member Board of Trustees' , 
+                             company_id: uchicago.id, 
+                             location:'Chicago, Illinois', 
+                             start_date: 'September 2014', 
+                             end_date: '', 
+                             description: "" )
+
+sn.experience_items.create!(user_id: sn.id, 
+                             title:'Board Member' , 
+                             company_id: starbucks.id, 
+                             location:'Great Seattle Area', 
+                             start_date: 'January 2017', 
+                             end_date: '', 
+                             description: "" )
+
+                          
+sn.education_items.create!(user_id: sn.id, 
+                             school_id: uwis.id, 
+                             degree: "Master's Degree", 
+                             field: 'Computer Science', 
+                             start_yr: "", 
+                             end_yr: "" , 
+                             activities: '' 
+                             )
+u7= open("https://gitin-seeds.s3.amazonaws.com/sn.png")
+sn.photo.attach(io: u7, filename: 'profile7.png')
+
+
+#jeff
+
+jeff = User.create!(email: 'jeff@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Jeff', 
+                             last_name:'Weiner', 
+                             location: 'San Francisco Bay Area', 
+                             summary:"Internet executive with over 20 years of experience, including general management of mid to large size organizations, corporate development, product development, business operations, and strategy. 
+
+                             Currently CEO at LinkedIn, the web's largest and most powerful network of professionals. 
+                             
+                             Prior to LinkedIn, was an Executive in Residence at Accel Partners and Greylock Partners. Primarily focused on advising the leadership teams of the firm's existing consumer technology portfolio companies while also working closely with the firm’s partners to evaluate new investment opportunities.
+                             
+                             Previously served in key leadership roles at Yahoo! for over seven years, most recently as the Executive Vice President of Yahoo!'s Network Division managing Yahoo's consumer web product portfolio, including Yahoo's Front Page, Mail, Search, and Media products.
+                             
+                             Specialties: general management, corporate development, product development, business operations, strategy, product marketing, non-profit governance ", 
+                             github_url:'', 
+                             headline:'CEO at LinkedIn'
+                             )                            
+
+jeff.experience_items.create!(user_id: jeff.id, 
+                             title:'CEO' , 
+                             company_id: linkedin.id, 
+                             location:'San Francisco Bay Area', 
+                             start_date: 'December 2008', 
+                             end_date: '', 
+                             description: "Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has grown its membership base from 33M to more than 630M, increased its revenue from $78M to over $6.4B and expanded the team from 338 employees to over 14,000." )
+
+jeff.experience_items.create!(user_id: jeff.id, 
+                             title:'Member, Board of Directors' , 
+                             company_id: intuit.id, 
+                             location:'Mountain View, CA', 
+                             start_date: 'April 2012', 
+                             end_date: '', 
+                             description: "With revenue of $4B+ and approximately 8,000 employees, Intuit is a leading provider of innovative business and financial management solutions for small and medium-sized businesses, consumers, accounting professionals and financial institutions." )
+
+jeff.experience_items.create!(user_id: jeff.id, 
+                             title:'Member, Board of Directors' , 
+                             company_id: donorschoose.id, 
+                             location:'New York, NY', 
+                             start_date: 'January 2007', 
+                             end_date: '', 
+                             description: "One of the web's leading philanthropic marketplaces, designed to enable teachers to upload classroom projects in need of funding, and for anyone to select and fund a project. " )   
+                             
+jeff.experience_items.create!(user_id: jeff.id, 
+                             title:'Member Board of Directors' , 
+                             company_id: everfi.id, 
+                             location:'Washington D.C. Metro Area', 
+                             start_date: 'September 2017', 
+                             end_date: '', 
+                             description: "Partnered with this innovative educational coursework and platform provider to develop and distribute The Compassion Project, an initiative designed to ensure compassion is taught in every primary school in the U.S." )   
+                             
+                             
+jeff.education_items.create!(user_id: jeff.id, 
+                             school_id: wharton.id, 
+                             degree: 'Bachelor of Science', 
+                             field: 'Economics', 
+                             start_yr: "1988", 
+                             end_yr: "1992" , 
+                             activities: '' 
+                             )
+u8= open("https://gitin-seeds.s3.amazonaws.com/jeff.png")
+jeff.photo.attach(io: u8, filename: 'profile8.png')
+
+
+
+
+
+bc = User.create!(email: 'brian@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Brian', 
+                             last_name:'Chesky', 
+                             location: 'San Francisco Bay Area', 
+                             summary:'I am one of the founders and CEO of Airbnb. ', 
+                             github_url:'', 
+                             headline:'Co-founder, CEO @ Airbnb'
+                             )                            
+
+bc.experience_items.create!(user_id: bc.id, 
+                             title:'Co-founder & CEO' , 
+                             company_id: airbnb.id, 
+                             location:'San Francisco, CA', 
+                             start_date: 'October 2007', 
+                             end_date: '', 
+                             description: "www.airbnb.com" )
+
+bc.education_items.create!(user_id: bc.id, 
+                             school_id: risd.id, 
+                             degree: 'Bachelor of Fine Arts', 
+                             field: 'Industrial Design', 
+                             start_yr: "1999", 
+                             end_yr: "2004" , 
+                             activities: '' 
+                             )
+u9= open("https://gitin-seeds.s3.amazonaws.com/bc.png")
+bc.photo.attach(io: u9, filename: 'profile5.png')
+
+
+
+
+
+
+
+
+
+
+
 
 
 
