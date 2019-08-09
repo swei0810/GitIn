@@ -1,40 +1,34 @@
 import React from 'react'; 
-import UserMiniProfile from './user_mini_profile';
 import { withRouter } from 'react-router-dom'; 
 import ProfileNavbar from '../user/profile_nav';
+import CompanyItem from '../companies/company_item';
 
-
-
-
-
-
-class Network extends React.Component {
+class CompanyIndex extends React.Component {
     componentDidMount() {
         this.props.fetchAllUsers();
-
+        this.props.fetchAllCompanies();
     }
 
     render() {
+        const {companies} =this.props;
         const {users} = this.props; 
         if (!users){
             return null;
         }
 
-
         return (
+            
             <div>
 
                 <ProfileNavbar users={users} currentUserId={this.props.currentUserId}/>
-
-
-            <div className='profiles'> 
-                    {users.map(user =>  <UserMiniProfile key={user.id} user={user}/>)}
+                
+                <div className='companies'>
+                    {companies.map(company=> <CompanyItem key={company.id} company={company} />)}
+                </div>
             </div>
-            </div> 
-
         )
-
     }
-}
 
-export default withRouter(Network)
+    
+}
+export default withRouter(CompanyIndex);

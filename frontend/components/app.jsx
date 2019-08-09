@@ -17,6 +17,7 @@ import Profile from './user/profile_container';
 import DashBoard from './feed/dashboard_container';
 import Modal from './modal/modal';
 import Network from './network/network_container';
+import Company from './companies/company_index_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -44,6 +45,10 @@ const App = () => (
       <Route exact path='/git/:userId' component={Profile} />
       <ProtectedRoute exact path='/feed' component={DashBoard} />
       <ProtectedRoute exact path='/network' component={Network} />
+      <Route exact path='/git/:userId' component={Profile} />
+      <Route exact path='/companies' component={Company} />
+
+      
 
 
 

@@ -34,7 +34,7 @@ class ProfileNav extends React.Component {
 
                 <Link to='/feed'><div className='nav-icon'><i className="fas fa-home"></i><br/>Home</div></Link>
                 <Link to='/network'><div className='nav-icon'><i className="fas fa-users"></i><br/>My network</div></Link>
-                <div className='nav-icon'><i className="fas fa-briefcase" onClick={e => alert("not implemented yet")} ></i><br/>Jobs</div>
+                <Link to='/companies'><div className='nav-icon'><i className="fas fa-briefcase"  ></i><br/>Jobs</div></Link>
                 <div className='nav-icon'><i className="fas fa-comment-alt" onClick={e => alert("not implemented yet")} ></i><br/>Messaging</div>
                 <div className='nav-icon'><i className="fas fa-bell" onClick={e => alert("not implemented yet")} ></i><br/>Notifications</div>
 

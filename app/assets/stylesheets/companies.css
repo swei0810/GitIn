@@ -1,0 +1,14 @@
+.companies {
+    display: flex;   
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+
+
+
+.company-item-img {
+    width: 40px; 
+    height: 40px; 
+}

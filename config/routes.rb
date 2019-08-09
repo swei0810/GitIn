@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create, :destroy, :update] do 
       resources :comments, only: [:create, :destroy, :update]
     end
+    resources :companies, only: [:index, :show]
     # resources :endorsements, only: [:create, :destroy]
     # resources :connections, only: [:create, :destroy]
     # resources :interests, only: [:create, :destroy]
