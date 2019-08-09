@@ -1,11 +1,18 @@
 # README
 
 ## Overview
-GitIn: A LinkedIn clone specifically for software engineers 
+GitIn is a clone of professional social-media platform LinkedIn. Users can create their profie, add summary, expereinces, educations and edit them as well. While users can only edit their own profile page, they are welcome to view anyone else's profile page. Feed has posts from people and companies a user follows, and the posts are sorted by most recent to least. On the feed page, users can create a post both with and without pictures. Users can also check all the companies where other users are working/worked. 
+
+
 Live site: https://gitin.herokuapp.com/#/
+Link to my actual LinkedIn page: www.linkedin.com/in/si-wei0810
 
 ## Technologies used
-
+Host: Heroku, Amazon Web Services (AWS)
+Backend: Ruby on Rails
+Database: PostgreSQL
+Frontend: React + Redux, jBuilder
+Style: CSS
 
 ## Features 
 * User Auth 
@@ -15,3 +22,9 @@ Live site: https://gitin.herokuapp.com/#/
 * Posts
 
 ## Code snippets 
+```
+code goes here 
+```
+
+
+## Features in progress
