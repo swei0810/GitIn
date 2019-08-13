@@ -42,28 +42,16 @@ json.educationItems do
 end  
 
 
-# if @user.photos.attached? 
-    # json.array! json.extract! @user.photo, :service_url
-    # json.photoUrl do 
-    #     json.array! @user.photos.each do |photo| 
-    #         url_for(photo)
-    #     end 
-    # end
-    
-# end 
+json.connections do 
+    @user.sent_connection_requests.each do |request|
+        json.set! request.id do 
+            json.extract! request, :id, :requester_id, :requestee_id, :status
+        end 
+    end 
 
-
-# json.photoUrl do 
-#     json.array! @user.photo, :service_url 
-# end 
-
-
-# json.skills do 
-#     @user.skills.each do |skill|
-#         json.set! skill.id do 
-
-#         end
-#     end 
-# end 
-
-### education/exp/skill reducers should listen to receiveUser action 
+    @user.received_connection_requests do |request|
+        json.set! request.id do 
+            json.extract! request, :id, :requester_id, :requestee_id, :status
+        end 
+    end 
+end 

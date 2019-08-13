@@ -34,7 +34,30 @@ class User < ApplicationRecord
     
     has_many :skills
     has_many :interests   #companies you are interested in 
-    has_many :connections  
+
+
+
+    #For connections
+    has_many :sent_connection_requests,
+      foreign_key: :requester_id,
+      class_name: :Connection
+
+    has_many :received_connection_requests,
+      foreign_key: :requestee_id,
+      class_name: :Connection
+
+    has_many :requested_connections,
+      through: :sent_connection_requests,
+      source: :requestee
+
+    has_many :received_connections,
+      through: :received_connection_requests,
+      source: :requester
+
+
+
+
+    # has_many :connections  
     # has_many :second_connections, 
     #     through: :connections, 
     #     source: :, 

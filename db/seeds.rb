@@ -744,3 +744,11 @@ si_post2 = Post.create!(author_id: demo.id,
                           author_type: 'User', 
                           body: "Currently looking for a Software Engineering Internship for Summer 2020. Please let me know if you have an opening!"
                           )
+
+
+
+
+# connections 
+connection1 = Connection.new(requester_id: demo.id, requestee_id: hk.id, status: 'accepted')
+connection2 = Connection.new(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
+connection3 = Connection.new(requester_id: demo.id, requestee_id: jw.id, status: 'pending')
