@@ -1,7 +1,10 @@
 class Api::ConnectionsController < ApplicationController
     before_action :require_logged_in
 
-
+    def index 
+        @connections = Connection.all 
+        render :index
+    end 
 
     def create 
         @connection = Connection.new(connection_params)
