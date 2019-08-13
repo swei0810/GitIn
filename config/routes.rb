@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resources :companies, only: [:index, :show]
     # resources :endorsements, only: [:create, :destroy]
-    resources :connections, only: [:create, :destroy, :update]
+    resources :connections, only: [:create, :destroy, :update, :index]
     # resources :interests, only: [:create, :destroy]
     #companies 
   end 

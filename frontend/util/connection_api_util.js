@@ -1,3 +1,10 @@
+export const fetchConnection = () => {
+    return $.ajax ({
+        type: 'GET', 
+        url: 'api/connections'
+    })
+}
+
 export const createConnection = connection => {
     return $.ajax({
         type: 'POST', 

@@ -2,6 +2,7 @@
 import React from "react";
 import { connect } from 'react-redux'; 
 import { fetchUser }  from '../../actions/user_actions';
+import {receiveConnection} from '../../actions/connection_actions';
 import Profile from './profile'; 
 
 const mapStateToProps = (state, ownProps) => {    
@@ -16,7 +17,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchUser: (id) => dispatch(fetchUser(id))
+    fetchUser: (id) => dispatch(fetchUser(id)), 
+    // receiveConnection: (connection) => dispatch(receiveConnection(connection))
+    
 });
 
 

@@ -6,11 +6,11 @@ import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 
-const connectionsReducer = (state = {}, action) => {
+const connectionsReducer = (state = {sent: {}, received: {}}, action) => {
     Object.freeze(state); 
     switch (action.type) {
         case RECEIVE_CONNECTION: 
-            return merge({}, state, {[action.connection.id]: action.connection})
+            return merge({}, state, action.connection)
         case REMOVE_CONNECTION:
             let newState = merge({}, state); 
             delete newState[action.connectionId]; 

@@ -7,7 +7,7 @@ export const REMOVE_CONNECTION = 'REMOVE_CONNECTION';
 
 
 
-//fetch 
+
 
 export const receiveConnection = (connection) => ({
     type: RECEIVE_CONNECTION, 
@@ -35,3 +35,11 @@ export const deleteConnection = (connectionId) => dispatch => (
     APIUtil.deleteConnection(connectionId).then(connection => dispatch(deleteConnection(connectionId)))
 )
 
+
+export const fetchConnection = () => dispatch => {
+    return (
+        APIUtil.fetchConnection().then(connection => { 
+             return dispatch(receiveConnection(connection))})
+
+    )
+}

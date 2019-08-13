@@ -749,6 +749,6 @@ si_post2 = Post.create!(author_id: demo.id,
 
 
 # connections 
-connection1 = Connection.new(requester_id: demo.id, requestee_id: hk.id, status: 'accepted')
-connection2 = Connection.new(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
-connection3 = Connection.new(requester_id: demo.id, requestee_id: jw.id, status: 'pending')
+connection1 = Connection.create!(requester_id: hk.id, requestee_id: demo.id, status: 'accepted')
+connection2 = Connection.create!(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
+connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, status: 'pending')

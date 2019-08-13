@@ -42,16 +42,4 @@ json.educationItems do
 end  
 
 
-json.connections do 
-    @user.sent_connection_requests.each do |request|
-        json.set! request.id do 
-            json.extract! request, :id, :requester_id, :requestee_id, :status
-        end 
-    end 
 
-    @user.received_connection_requests do |request|
-        json.set! request.id do 
-            json.extract! request, :id, :requester_id, :requestee_id, :status
-        end 
-    end 
-end 

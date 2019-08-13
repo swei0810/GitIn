@@ -11,8 +11,12 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class UserMiniProfile extends React.Component {
+    componentDidMount() {
+        this.props.fetchUser(this.props.match.params.userId)
+    }
 
     render() {
+        debugger
         const {user} =this.props;
         let profilePhoto = '';
         if (user.photoUrl) {
