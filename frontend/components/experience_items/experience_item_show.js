@@ -36,7 +36,6 @@ class ExperienceItemShow extends React.Component {
         const end =  this.props.experienceItem.end_date;
         // let end=''
         // const end = this.props.experienceItem.end_date;
-        // debugger
 
         //HARD CODE CURRENT DATE FOR NOW
         // if (!this.props.experienceItem.end_date) {
@@ -106,7 +105,6 @@ class ExperienceItemShow extends React.Component {
 
         // let endDate = '';
         // if (!experienceItem.end_date) {
-        //     debugger
         //     endDate = 'Present';
         // }
 

@@ -1,14 +1,19 @@
-export const createComment = (postId, comment) => {
+
+export const receiveAllComments = (postId) => {
     return $.ajax({
-        method: "POST",
-        url: `/api/posts/${postId}/comments`,
-        data: {comment}
+        method: "GET",
+        url: `/api/posts/${postId}/comments`
     })
 }
 
+export const createComment = (payload) => {
+    return $.ajax({
+        method: "POST",
+        url: `/api/posts/${payload.post_id}/comments`,
+        data: {comment: payload}
+    })
+}
 
-
-//routes? 
 export const updateComment = (postId, comment) => {
     return $.ajax({
         method: "PATCH",

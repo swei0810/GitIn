@@ -744,3 +744,8 @@ si_post2 = Post.create!(author_id: demo.id,
                           author_type: 'User', 
                           body: "Currently looking for a Software Engineering Internship for Summer 2020. Please let me know if you have an opening!"
                           )
+
+
+#Comments 
+comment1 = Comment.create!(user_id: demo.id, post_id: hk_post.id, body: "Your project looks awesome!")
+comment2 = Comment.create!(user_id: ec.id, post_id: hk_post.id, body: "Check out OpenStables as well.")

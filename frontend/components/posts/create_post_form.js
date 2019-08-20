@@ -73,6 +73,7 @@ class createPostForm extends React.Component {
                 </div>
 
                 <form onSubmit={this.handleSubmit.bind(this)}>
+                    {/* why is there two classNames here  */}
                     <input className='post-input'
                         className = 'create-post-form'
                         type='text'

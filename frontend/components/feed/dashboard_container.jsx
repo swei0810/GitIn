@@ -9,6 +9,7 @@ import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state, ownProps) => {    
     const posts = state.entities.posts;
+
     const users = state.entities.users; 
     const user = state.entities.users[ownProps.match.params.userId];
     const currentUser = state.entities.users[state.session.id];
