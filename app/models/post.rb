@@ -23,4 +23,10 @@ class Post < ApplicationRecord
 
     has_one_attached :photo
 
+
+    #implement this 
+    # def num_comments 
+
+    # end 
+
 end 

@@ -1,5 +1,5 @@
     # json.set! @post.id do 
-        json.extract! @post, :id, :body, :author_id, :author_type, :author, :comments
+        json.extract! @post, :id, :body, :author_id, :author_type, :author
         if @post.photo.attached? 
             json.photoUrl url_for(@post.photo)
         end 

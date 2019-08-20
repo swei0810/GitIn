@@ -3,11 +3,11 @@ import CommentItem from './comment_item';
 import { connect } from 'react-redux'; 
 
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        comments: Object.values(state.entities.comments)
-    }
-}
+// const mapStateToProps = (state, ownProps) => {
+//     return {
+//         comments: Object.values(state.entities.comments)
+//     }
+// }
 
 // const mapDispatchToProps = dispatch => {
 //     return {
@@ -24,18 +24,17 @@ class CommentIndex extends React.Component {
 
         
         const {comments} = this.props; 
-        const postComments = comments.filter(comment => comment.post_id === this.props.postId)
+        // const postComments = comments.filter(comment => comment.post_id === this.props.postId)
  
 
         return (
             <div> 
-                {/* <ul className='all-posts'> */}
-                    {postComments.reverse().map(comment => <CommentItem key={comment.id} comment={comment}/>)}
-                {/* </ul> */}
+                    {/* <div className="number"> {postComments.length} </div> */}
+                    {comments.reverse().map(comment => <CommentItem key={comment.id} comment={comment}/>)}
             </div>
         )
 
     }
 }
 
-export default connect(mapStateToProps, null)(CommentIndex)
+export default connect(null, null)(CommentIndex)

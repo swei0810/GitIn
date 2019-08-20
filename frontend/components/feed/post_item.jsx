@@ -6,10 +6,12 @@ import CommentIndex from '../comments/comment_index';
 import CreateCommentForm from '../comments/create_comment_form'; 
 
 const mapStateToProps = (state, ownProps) => {
+    const comments = Object.values(state.entities.comments)
     //grab state.entities.comments
-    // return {
-    //     comments: Object.values(state.entities.comments)
-    // }
+
+    return {
+        comments: comments.filter(comment => comment.post_id === ownProps.post.id)
+    }
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -32,6 +34,8 @@ class PostItem extends React.Component {
         if (!post) {
             return null; 
         }
+
+        debugger
    
 
         let postPhoto=''; 
@@ -58,6 +62,7 @@ class PostItem extends React.Component {
         }else {
             authorPhoto = (<img className={photoClass} src={window.default_prof}/>);
         }
+     
 
         return (
             <div> 
@@ -85,7 +90,7 @@ class PostItem extends React.Component {
                         {/* <img className='post-photo' src={post.photoUrl}/>  */}
                         {postPhoto}
                     {/* </div> */}
-                    <div className='num-comments'> 10 comments </div>
+                    <div className='num-comments'> {this.props.comments.length} comments </div>
                     {/* HARDCODED NUM COMMENTS */}
                     {/* <br/> */}
                     <div className='post-buttons'>
@@ -108,4 +113,4 @@ class PostItem extends React.Component {
     }
 }
 
-export default connect(null, mapDispatchToProps)(PostItem);
+export default connect(mapStateToProps, mapDispatchToProps)(PostItem);
