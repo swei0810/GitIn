@@ -62,8 +62,20 @@ class PostItem extends React.Component {
         }else {
             authorPhoto = (<img className={photoClass} src={window.default_prof}/>);
         }
-     
 
+
+        let numComments = ''; 
+        const length = this.props.comments.length; 
+        if (length === 0 ) {
+            numComments = 'Be the first to comment on this'
+        } else if (length === 1) {
+            numComments = '1 comment'
+        } else {
+            numComments = length + ' comments'
+        }
+        
+     
+    
         return (
             <div> 
 
@@ -90,9 +102,7 @@ class PostItem extends React.Component {
                         {/* <img className='post-photo' src={post.photoUrl}/>  */}
                         {postPhoto}
                     {/* </div> */}
-                    <div className='num-comments'> {this.props.comments.length} comments </div>
-                    {/* HARDCODED NUM COMMENTS */}
-                    {/* <br/> */}
+                    <div className='num-comments'> {numComments} </div>
                     <div className='post-buttons'>
                         <div className='post-like' onClick={e => alert("not implemented yet")}><i className="far fa-thumbs-up"></i>Like &nbsp; &nbsp; </div>
                         {/* <div className='post-comment' onClick={()=> alert("not implemented yet")}><i className="far fa-comment-alt"></i> Comment &nbsp;</div> */}
