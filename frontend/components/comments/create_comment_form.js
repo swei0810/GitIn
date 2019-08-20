@@ -4,8 +4,10 @@ import {createComment} from '../../actions/comment_actions'
 
 const mapStateToProps = (state, ownProps) => {
     const comment = {body:'', post_id: ownProps.postId  }; 
+    const currentUser = state.entities.users[ownProps.currentUserId]; 
     return {
         comment, 
+        currentUser 
     }
 }
 
@@ -19,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 class createCommentForm extends React.Component {
     constructor(props) {
         super(props); 
-        this.state = this.props.comment 
+        this.state = this.props.comment; 
     }
 
     update(field) {
@@ -41,7 +43,9 @@ class createCommentForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='comment-form-container'>
+                <img className='comment-user-photo' src={this.props.currentUser.photoUrl}/>
+
                 <div className='create-comment-form'>
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <input className='comment-input' 
@@ -49,7 +53,7 @@ class createCommentForm extends React.Component {
                                 value={this.state.body}
                                 onChange={this.handleInput.bind(this)}
                                 placeholder="Add a comment ..."/>
-                        <input className='comment-submit' type='submit'/>
+                        <input className='comment-submit' type='submit' value='post'/>
                     </form>
                 </div>
 

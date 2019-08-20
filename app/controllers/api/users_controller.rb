@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
     private
   
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :location, :summary, :github_url, :headline)  #Do I take everything else? 
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :location, :summary, :github_url, :headline)  
     end
   end
   

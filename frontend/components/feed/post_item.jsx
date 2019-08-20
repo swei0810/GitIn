@@ -95,7 +95,8 @@ class PostItem extends React.Component {
 
                     </div>
                     <div className='comment-index'>
-                            <CreateCommentForm postId={this.props.post.id} />
+                            <CreateCommentForm postId={this.props.post.id} currentUserId={currentUser.id} />
+                            <br/>
                             <CommentIndex comments={this.props.comments} postId={this.props.post.id}/>
                     </div>
                     

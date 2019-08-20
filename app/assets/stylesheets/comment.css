@@ -1,3 +1,85 @@
 .comment-index {
     display: none; 
 }
+
+.comment-form-container {
+    display: flex; 
+    margin-bottom: 10px; 
+}
+.create-comment-form {
+    width: 100%; 
+}
+
+.comment-input {
+    width: 80%; 
+    height: 25px; 
+    border-radius: 10px; 
+}
+
+.comment-container {
+    display: flex; 
+    /* width: 100%;  */
+}
+
+.comment-submit {
+    background-color: #0073b1;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px; 
+    border-radius: 3px;
+    font-weight: bold; 
+    font-size: 15px; 
+    margin-left: 8px; 
+
+}
+
+
+.comment-user-photo {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    margin-right:10px;
+    margin-left: 18px; 
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+
+
+/* code inspiration from https://codingislove.com/css-speech-bubbles/ */
+.comment-bubble {
+    width: 370px;
+    display: flex; 
+    flex-direction: column; 
+    /* margin-left: 60px;  */
+    border-radius: 15px;
+    background-color: rgba(238, 236, 236, 0.89);
+    padding: 10px;  
+}
+
+
+/* ADD THIS  */
+/* .tail {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: relative;
+    border-left: 6px solid transparent;
+    border-right: 10px solid rgba(238, 236, 236, 0.89);
+    border-top: 15px solid rgba(238, 236, 236, 0.89);
+    border-bottom: 14px solid transparent;
+    left: 55px;
+    top: 30px;
+} */
+
+
+.comment-user-name {
+    font-weight: bolder; 
+}
+
+.comment-user-title {
+    font-size: 11px; 
+    color: grey; 
+    margin-bottom: 5px; 
+}
