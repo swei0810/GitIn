@@ -8,7 +8,7 @@ import EditEducationItemFormContainer from '../education_items/edit_education_it
 import EditSummaryContainer from '../user/edit_summary_container';
 import EditIntroContainer from '../user/edit_intro_container';
 import CreatePostFormContainer from '../posts/create_post_form'
-
+import CreateSkillFormContainer  from '../skills/create_skill_form'; 
 
 
 function Modal(props) {
@@ -49,6 +49,9 @@ function Modal(props) {
     case 'create education':
        component = <CreateEducationItemFormContainer />;
        break; 
+    case 'create skill':
+        component = <CreateSkillFormContainer />; 
+        break; 
     case 'edit education':
        component = <EditEducationItemFormContainer educationItem={educationItem} />; 
        break; 

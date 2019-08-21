@@ -31,7 +31,7 @@ class SkillsIndex extends React.Component {
         let addIcon = ''; 
         if (this.props.isCurrentUser) {
           addIcon = (<div className='icon'>
-          <i className="fas fa-plus"  onClick={() => alert("this.props.openModal('something')")} ></i>
+          <i className="fas fa-plus"  onClick={() => this.props.openModal('create skill')} ></i>
          </div>);
         }
 
