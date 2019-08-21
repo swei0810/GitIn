@@ -28,6 +28,7 @@ class Api::CommentsController < ApplicationController
     end 
 
     def destroy 
+      debugger
       @comment = current_user.comments.find(params[:id])
       if @comment.destroy 
         render :show

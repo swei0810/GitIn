@@ -34,8 +34,6 @@ class PostItem extends React.Component {
         if (!post) {
             return null; 
         }
-
-        debugger
    
 
         let postPhoto=''; 

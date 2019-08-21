@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = dispatch => ({
-    deleteComment: (commentId) => dispatch(deleteComment(commentId)), 
+    deleteComment: (comment) => dispatch(deleteComment(comment)), 
     fetchUser: (id) => dispatch(fetchUser(id))
 })
 
@@ -23,12 +23,20 @@ class CommentItem extends React.Component {
     render() {
         const {comment} = this.props; 
         const {user} = this.props;
+   
 
         if (!comment || !user) {
             return null; 
         }
-        //grad default photo if photo does not exist for user 
 
+        //you can delete your own comments 
+        let deleteIcon=''; 
+        if (user.id === currentUser.id) {
+            deleteIcon = ( <div className='icon-delete' onClick={()=>this.props.deleteComment(comment)}> <i className="far fa-trash-alt"></i></div>)
+        }
+
+
+        //default photo if photo does not exist for user 
         let profilePhoto = '';
         if (user.photoUrl) {
             profilePhoto = (<img className='comment-user-photo' src={user.photoUrl}/>);
@@ -43,8 +51,9 @@ class CommentItem extends React.Component {
                     <div className='tail'></div>
 
                     <div className='comment-bubble'>
-                        <div className='comment-user-name'>{user.first_name}&nbsp;{user.last_name}</div>
-                        <div className='comment-user-title'>{user.headline}</div>
+                        <div className='comment-title-head'><div className='comment-user-name'>{user.first_name}&nbsp;{user.last_name}</div>  {deleteIcon} </div>
+                        <div className='comment-user-title'>{user.headline}</div>  
+
                         <div>{comment.body}</div>
                     </div>
                     <br/>

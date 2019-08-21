@@ -83,3 +83,14 @@
     color: grey; 
     margin-bottom: 5px; 
 }
+
+.icon-delete {
+    font-size: 20px;
+    color: grey; 
+    cursor: pointer; 
+}
+
+.comment-title-head {
+    display: flex; 
+    justify-content: space-between;
+}
