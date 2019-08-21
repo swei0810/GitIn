@@ -20,7 +20,6 @@ class ExperienceItemForm extends React.Component {
     }
 
     componentWillUnmount() {
-        debugger 
         this.props.clearProfileErrors(); 
       }
 
@@ -33,32 +32,26 @@ class ExperienceItemForm extends React.Component {
     //onSubmit calls formatDate, formatDate should call validateSubmit, validateSubmit calls handleSubmit 
     validateSubmit() {
         let newErrors; 
-        debugger 
         if (this.state.title =='') {
-            debugger
             this.props.receiveProfileErrors('title');
             newErrors = true; 
         }
         if (this.state.location =='') {
-            debugger
             this.props.receiveProfileErrors('location');
             newErrors = true; 
 
         } 
         if (this.state.start_date==' ') {
-            debugger
             this.props.receiveProfileErrors('start');
             newErrors = true; 
         } 
         if (this.state.company =='') {
-            debugger
             this.props.receiveProfileErrors('company')
             newErrors = true; 
 
         }
 
         if(!newErrors) {
-            debugger
             this.handleSubmit();
         }
     }
@@ -67,14 +60,11 @@ class ExperienceItemForm extends React.Component {
         e.preventDefault();
         const startDate = this.state.startMonth + ' ' + this.state.startYear;
         const endDate = this.state.endMonth + ' ' + this.state.endYear;
-        debugger
         this.setState({start_date:startDate, end_date:endDate}, ()=>{
-            debugger
             this.validateSubmit()});
     }
 
     handleSubmit() {
-        debugger
         
         this.props.processForm(this.state).then(()=> this.props.closeModal());
 
@@ -109,7 +99,6 @@ class ExperienceItemForm extends React.Component {
         let startDateError; 
         let companyNameError; 
         if (this.props.errors) {
-            debugger
  
             if (this.props.errors.includes('title')) {
                 titleError = 'Please enter your title';

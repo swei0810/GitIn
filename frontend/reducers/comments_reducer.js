@@ -17,11 +17,9 @@ const commentsReducer = (state = {}, action) => {
         case RECEIVE_COMMENT:
             return merge({}, state, action.comment)
         case DELETE_COMMENT:
-
-            const newState = Object.assign({}, state)
-  
-            delete newState[action.commentId]
-            return newState
+            let newState = merge({}, state); 
+            delete newState[action.commentId.id]; //should fix this later
+            return newState; 
         case RECEIVE_ALL_POSTS: 
             return merge({}, state, action.posts.comments)
         default:

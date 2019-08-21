@@ -28,13 +28,14 @@ class Api::CommentsController < ApplicationController
     end 
 
     def destroy 
-      debugger
       @comment = current_user.comments.find(params[:id])
-      if @comment.destroy 
-        render :show
-      else 
-        render json: @comment.errors.full_messages, status: 422
-      end 
+      @comment.destroy 
+      render :show
+      # if @comment.destroy 
+      #   render :show
+      # else 
+      #   render json: @comment.errors.full_messages, status: 422
+      # end 
     end 
 
     private
