@@ -9,7 +9,7 @@ import EditSummaryContainer from '../user/edit_summary_container';
 import EditIntroContainer from '../user/edit_intro_container';
 import CreatePostFormContainer from '../posts/create_post_form'
 import CreateSkillFormContainer  from '../skills/create_skill_form'; 
-
+import EndorsementShowContainer from '../skills/endorsement_show'; 
 
 function Modal(props) {
 
@@ -18,6 +18,7 @@ function Modal(props) {
   let educationItem;
   let experienceItem;
   let user;
+  let skill; 
 
   if (props.modal && typeof props.modal === 'object') {
     modal = props.modal.modal;
@@ -28,6 +29,8 @@ function Modal(props) {
       educationItem = props.modal.educationItem;
     } else if (props.modal.user){
       user = props.modal.user; 
+    } else if (props.modal.skill) {
+      skill = props.modal.skill; 
     }
   } else {
     modal = props.modal;
@@ -64,6 +67,9 @@ function Modal(props) {
     case 'create post':
         component = <CreatePostFormContainer user={user} />;
         break;
+    case 'see endorsements':
+        component = <EndorsementShowContainer skill={skill}/>; 
+        break; 
 
     default:
       return null;

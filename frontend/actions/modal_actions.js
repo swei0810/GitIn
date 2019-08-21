@@ -25,6 +25,14 @@ export const openModal = (modal, props={}) => {
       user
     }
 
+  } else if (props.skill) {
+    const skill = props.skill; 
+    return {
+      type: OPEN_MODAL, 
+      modal, 
+      skill
+    }
+
   } else {
     return {
       type: OPEN_MODAL,

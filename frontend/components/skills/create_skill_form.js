@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-class createSkillForm extends React.Component {
+class CreateSkillForm extends React.Component {
     constructor(props){
         super(props); 
         this.state = this.props.skill; 
@@ -54,9 +54,8 @@ class createSkillForm extends React.Component {
                             onChange={this.update('title')}
                             placeholder='ex: Data Analysis'/>
                     </label>
-
-                    <br/> 
                     <br/>
+                    <p className='ed-footer'> You can add up to 50 skills</p>
                     <input className='modal-submit' type='submit' value='Add' />        
                 </form>
                 <br/> 
@@ -68,4 +67,4 @@ class createSkillForm extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(createSkillForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSkillForm);

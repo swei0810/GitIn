@@ -20,7 +20,7 @@ export const createSkill = skill => dispatch => (
 )
 
 export const deleteSkill = id => dispatch => (
-    APIUtil.deleteSkill(skill).then(skill => dispatch(removeSkill(skillId)))
+    APIUtil.deleteSkill(id).then((skill) => dispatch(removeSkill(id)))
 )
 
 const receiveSKill = skill => ({

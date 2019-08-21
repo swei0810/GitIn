@@ -16,7 +16,7 @@ class SkillItemShow extends React.Component {
 
         return (
             <div>
-                <div className='skill-button' onClick={()=>alert("see endorsements not implemented yet")}>{skill.title } &nbsp;· &nbsp; # </div>
+                <div className='skill-button' onClick={()=> this.props.openModal('see endorsements', {skill: skill})}>{skill.title } &nbsp;· &nbsp; # </div>
             </div>
         )
     }
