@@ -1,19 +1,4 @@
 
-export const fetchAllExperienceItems = () => (
-    $.ajax({
-        method: 'GET', 
-        url: 'api/experience_items'
-    })
-)
-
-
-export const fetchExperienceItem = id => (
-    $.ajax({
-        method: 'GET', 
-        url: `api/experience_items/${id}`
-    })
-);
-
 export const createExperienceItem = (experienceItem) => (
     $.ajax({
         method: 'POST', 

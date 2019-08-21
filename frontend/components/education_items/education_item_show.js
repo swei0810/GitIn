@@ -1,45 +1,14 @@
 import React from 'react'; 
 import { connect } from 'react-redux';
-import { fetchEducationItem } from '../../actions/education_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
-// const mapStateToProps = (state, ownProps) => {
-//     return {
-//         // experienceItem: state.entities.users.undefined.experienceItems[ownProps.match.params.experienceItemId]
-//         educationItem:  state.entities.educationItems[ownProps.educationId]
-//     }
-// };
 
 const mapDispatchToProps = dispatch => ({
-    fetchEducationItem: id => dispatch(fetchEducationItem(id)), 
     openModal: (modal,info) => dispatch(openModal(modal, info))
 
 })
 
-
-
-
-
-
 class EducationItemShow extends React.Component {
-
-
-
-    // componentDidMount() {
-    //     this.props.fetchEducationItem(this.props.educationId);
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.experienceItem.id != this.props.match.params.experienceItemId) {
-    //         this.props.fetchExperienceItem(this.props.match.params.experienceItemId);
-    //     }
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.educationId!= this.props.educationId) {
-    //         this.props.fetchEducationItem(this.props.educationId);
-    //     }
-    // }
 
     render() {
         const {educationItem} = this.props; 
@@ -85,19 +54,15 @@ class EducationItemShow extends React.Component {
         return (
             <div>
             <div className='item'>
-                {/* change this when i have actual img */}
                     <div> 
                         {companyPhoto}
-                    {/* <img className='item-img' src={educationItem.photoUrl}/>  */}
                     </div> 
 
                     <div className='item-info'>
                         <div className='item-title'> 
-                            {/* <Modal /> */}
                             <div className='item-title'>{educationItem.school.name}</div>
                             {editIcon}
                         </div> 
-                        {/* {educationItem.degree}, {educationItem.field} */}
                         <div className='item-sub'>{itemSub}</div>
                         <div className='item-sub-2'>{duration} </div>
                         <div className='item-sub-2'>Activities and societies: {educationItem.activities}</div> 
@@ -112,5 +77,4 @@ class EducationItemShow extends React.Component {
 
 }
 
-// export default ExperienceItemShow
 export default connect(null, mapDispatchToProps)(EducationItemShow); 

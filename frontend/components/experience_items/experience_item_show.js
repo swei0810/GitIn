@@ -1,15 +1,11 @@
 import React from 'react'; 
-// import { Link } from 'react-router-dom'; 
 import Modal from '../modal/modal';
 import { connect } from 'react-redux';
-// import ExperienceItemShow from './experience_item_show'; 
-import { fetchExperienceItem } from '../../actions/experience_item_actions'; 
 import {openModal} from '../../actions/modal_actions'
 
 
 
 const mapDispatchToProps = dispatch => ({
-    fetchExperienceItem: id => dispatch(fetchExperienceItem(id)), 
     openModal: (modal,info) => dispatch(openModal(modal, info))
 
 })
@@ -20,15 +16,6 @@ const mapDispatchToProps = dispatch => ({
 
 
 class ExperienceItemShow extends React.Component {
-    // componentDidMount() {
-    //     this.props.fetchExperienceItem(this.props.experienceId);
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.experienceId!= this.props.experienceId) {
-    //         this.props.fetchExperienceItem(this.props.experienceId);
-    //     }
-    // }
 
     calculateDuration() {
 

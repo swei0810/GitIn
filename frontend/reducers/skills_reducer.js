@@ -1,7 +1,6 @@
 import merge from 'lodash/merge'; 
 
 import {
-    RECEIVE_ALL_SKILLS, 
     RECEIVE_SKILL, 
     REMOVE_SKILL, 
     RECEIVE_USER_SKILLS
@@ -14,8 +13,6 @@ const skillsReducer = (state={}, action) => {
     Object.freeze(state); 
     switch(action.type) {
         case RECEIVE_USER_SKILLS: 
-            return merge({}, action.skills)
-        case RECEIVE_ALL_SKILLS:
             return merge({}, action.skills)
         case RECEIVE_SKILL:
             return merge({}, state, {[action.skill.id]: action.skill});

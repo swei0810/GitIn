@@ -1,9 +1,3 @@
-export const fetchAllSkills = () => (
-    $.ajax({
-        method: 'GET', 
-        url: 'api/skills'
-    })
-)
 
 
 export const fetchSkill = (id) => (

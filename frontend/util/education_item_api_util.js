@@ -1,17 +1,3 @@
-export const fetchAllEducationItems = () => (
-    $.ajax({
-        method: 'GET', 
-        url: 'api/education_items'
-    })
-)
-
-
-export const fetchEducationItem = id => (
-    $.ajax({
-        method: 'GET', 
-        url: `api/education_items/${id}`
-    })
-);
 
 export const createEducationItem = (educationItem) => (
     $.ajax({

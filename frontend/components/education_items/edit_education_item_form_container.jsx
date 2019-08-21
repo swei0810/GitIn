@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
 import EducationItemForm from './education_item_form'; 
-import { updateEducationItem, fetchEducationItem,deleteEducationItem } from '../../actions/education_item_actions'; 
+import { updateEducationItem,deleteEducationItem } from '../../actions/education_item_actions'; 
 import { closeModal } from '../../actions/modal_actions';
 import {receiveProfileErrors, clearProfileErrors} from '../../actions/user_actions';
 import { clearErrors } from '../../actions/session_actions';
@@ -20,7 +20,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchEducationItem: id => dispatch(fetchEducationItem(id)), 
         processForm: educationItem => dispatch(updateEducationItem(educationItem)), 
         deleteForm: id => dispatch(deleteEducationItem(id)),
         closeModal: () => dispatch(closeModal()), 

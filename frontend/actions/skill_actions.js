@@ -10,10 +10,6 @@ export const fetchUserSkills = (userId) => dispatch => (
     APIUtil.fetchUserSkills(userId).then(skills => dispatch(receiveUserSkills(skills)))
 )
 
-export const fetchAllSkills = () => dispatch => (
-    APIUtil.fetchAllSkills().then(skills => dispatch(receiveAllSkills(skills)))
-)
-
 
 export const fetchSkill = id => dispatch => (
     APIUtil.fetchSkill(id).then(skill => dispatch(receiveSKill(skill)))
@@ -26,12 +22,6 @@ export const createSkill = skill => dispatch => (
 export const deleteSkill = id => dispatch => (
     APIUtil.deleteSkill(skill).then(skill => dispatch(removeSkill(skillId)))
 )
-
-
-const receiveAllSkills = (skills) => ({
-    type: RECEIVE_ALL_SKILLS, 
-    skills
-})
 
 const receiveSKill = skill => ({
     type: RECEIVE_SKILL, 

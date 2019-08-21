@@ -17,7 +17,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      // fetchAllExperienceItems: () => dispatch(fetchAllExperienceItems()),
       openModal: modal => dispatch(openModal(modal)), 
       fetchUserExperienceItems: (userId) => dispatch(fetchUserExperienceItems(userId))
   };

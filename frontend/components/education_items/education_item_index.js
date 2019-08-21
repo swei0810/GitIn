@@ -8,15 +8,13 @@ import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = (state) => {
   return { 
-    //  educationItems: Object.values(state.entities.users.undefined.educationItems) //THIS HAS TO CHANGE 
-      educationItems: Object.values(state.entities.educationItems) //change THIS
+      educationItems: Object.values(state.entities.educationItems) 
   }
 
 }; 
 
 const mapDispatchToProps = dispatch => {
   return {
-      // fetchAllEducationItems: () => dispatch(fetchAllEducationItems()),
       openModal: modal => dispatch(openModal(modal)), 
       fetchUserEducationItems: (userId) => dispatch(fetchUserEducationItems(userId))
   };
@@ -51,7 +49,6 @@ class EducationItemIndex extends React.Component {
       <div>
           <div className='section-heading'>
             <p className='section-header'>Education</p>
-            {/* <Modal />  */}
             {addIcon}
           </div>
         <ul>
