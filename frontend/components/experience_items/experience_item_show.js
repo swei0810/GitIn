@@ -21,47 +21,46 @@ class ExperienceItemShow extends React.Component {
 
         const start = this.props.experienceItem.start_date; 
         const end =  this.props.experienceItem.end_date;
-        // let end=''
-        // const end = this.props.experienceItem.end_date;
+        const current = new Date(); 
 
-        //HARD CODE CURRENT DATE FOR NOW
-        // if (!this.props.experienceItem.end_date) {
-        //     end = 'August 2019';
-        // } else {
-        //     end = this.props.experienceItem.end_date;
-        // }
-
-        // if (!end) {
-        //     end = 'August 2019'
-        // }
-        
 
         const startYr = start.slice(start.length-4);
-        const endYr = end.slice(end.length-4);
+        let endYr = end.slice(end.length-4);
 
+        if (endYr===""){
+            endYr = current.getFullYear(); 
+        }
 
         const ds = Date.parse(start.slice(0,start.length-5) + "1, 2012");
         const de = Date.parse(end.slice(0,end.length-5) + "1, 2012");
 
         const startM =  new Date(ds).getMonth() + 1; 
-        const endM = new Date(de).getMonth() + 1;
+        let endM = new Date(de).getMonth() + 1;
 
-        const yr = parseInt(endYr)-parseInt(startYr); 
+
+        if (!endM) {
+            endM = current.getMonth() + 1; 
+        }
+
+        let yr = parseInt(endYr)-parseInt(startYr); 
   
         let dur=''; 
 
-        if (yr!=0 && !Number.isNaN(yr)) {
-            dur += yr + ' yr  '
-        }; 
-
+       
 
 
         let mos; 
         if (endM < startM) {
-            mos = endM - startM + 12 
+            mos = endM - startM + 13
+            yr -= 1 
         } else {
-            mos = endM - startM 
+            mos = endM - startM +1
         }
+
+
+        if (yr!=0 && !Number.isNaN(yr)) {
+            dur += yr + ' yr  '
+        }; 
 
         if (mos!=0 && !Number.isNaN(mos)) {
             dur += mos + ' mos'
@@ -90,10 +89,12 @@ class ExperienceItemShow extends React.Component {
             companyPhoto = (<img className='item-img' src={window.default_comp}/>);
         }
 
-        // let endDate = '';
-        // if (!experienceItem.end_date) {
-        //     endDate = 'Present';
-        // }
+        let endDate = '';
+        if (experienceItem.end_date === '') {
+            endDate = 'Present';
+        } else {
+            endDate = experienceItem.end_date; 
+        }
 
         const duration = this.calculateDuration();
 
@@ -110,7 +111,7 @@ class ExperienceItemShow extends React.Component {
                             {editIcon}
                         </div>
                         <div className='item-sub'>{experienceItem.company.name}</div>
-                        <div className='item-sub-2'>{experienceItem.start_date} - {experienceItem.end_date} &nbsp;· &nbsp; {duration}</div>
+                        <div className='item-sub-2'>{experienceItem.start_date} - {endDate} &nbsp;· &nbsp; {duration}</div>
                         <div className='item-sub-2'>{experienceItem.location}</div>
                         <br/>
                         <div className='item-description'>{experienceItem.description}</div>
