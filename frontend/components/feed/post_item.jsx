@@ -7,8 +7,6 @@ import CreateCommentForm from '../comments/create_comment_form';
 
 const mapStateToProps = (state, ownProps) => {
     const comments = Object.values(state.entities.comments)
-    //grab state.entities.comments
-
     return {
         comments: comments.filter(comment => comment.post_id === ownProps.post.id)
     }
@@ -16,18 +14,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchPost: id => dispatch(fetchPost(id)),
-    // fetchAllComments: () => dispatch(fetchAllComments())
 })
 
 class PostItem extends React.Component {
-    // componentDidMount() {
-    //     this.props.fetchAllComments();
-    // }
-
-    // constructor(props){
-    //     super(props); 
-    //     const postComments = this.state.comments.filter(comment => comment.post_id === this.props.post.id);
-    // }
 
     render() {
         const {post} = this.props; 
@@ -82,7 +71,6 @@ class PostItem extends React.Component {
                         <div className='post-more'><i className="fas fa-angle-double-down" onClick={e => alert("not implemented yet")}></i></div>
                     </div>
                     <div className='post-author'>
-                        {/* <img className={photoClass} src={post.authorPhotoUrl}/>  */}
                         {authorPhoto}
 
 
@@ -96,16 +84,12 @@ class PostItem extends React.Component {
                     <p className='post-body'>
                         {post.body}
                     </p>
-                    {/* <div>  */}
-                        {/* <img className='post-photo' src={post.photoUrl}/>  */}
                         {postPhoto}
-                    {/* </div> */}
                     <div className='num-comments'> {numComments} </div>
                     <div className='post-buttons'>
-                        <div className='post-like' onClick={e => alert("not implemented yet")}><i className="far fa-thumbs-up"></i>Like &nbsp; &nbsp; </div>
-                        {/* <div className='post-comment' onClick={()=> alert("not implemented yet")}><i className="far fa-comment-alt"></i> Comment &nbsp;</div> */}
+                        <div className='post-like' onClick={() => alert("not implemented yet")}><i className="far fa-thumbs-up"></i>Like &nbsp; &nbsp; </div>
                         <div className='post-comment' onClick={()=>$('.comment-index').toggle()}><i className="far fa-comment-alt"></i> Comment &nbsp;</div>
-
+                        {/* should only toggle ONE comment-index  */}
                     </div>
                     <div className='comment-index'>
                             <CreateCommentForm postId={this.props.post.id} currentUserId={currentUser.id} />

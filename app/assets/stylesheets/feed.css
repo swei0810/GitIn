@@ -5,7 +5,7 @@
     box-shadow: 0 0 0 1px rgba(0,0,0,.15);
     border-radius: 2px;
     position: sticky;
-    top: 0;
+    top: 70px;
     left: 0;
 }
 
@@ -56,6 +56,7 @@
     justify-content: space-between;
     padding-left: 100px;
     padding-right: 100px;
+    margin-top: 80px; 
 
 }
 
@@ -89,7 +90,7 @@
     width: 27.5%; 
     height: 100%;
     position: sticky;
-    top: 0;
+    top: 70px;
     left: 0;
 
     
@@ -99,6 +100,7 @@
     width: 100%; 
     box-shadow: 0 0 0 1px rgba(188, 245, 255, 0.795);
     border-radius: 2px;
+    /* z-index: -10;  */
 }
 
 .mini-num-text {
