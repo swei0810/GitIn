@@ -1,9 +1,13 @@
 class Api::SkillsController < ApplicationController
     before_action :require_logged_in
 
+    def index 
+        @skills = User.find(params[:userId]).skills 
+    end 
+
 
     def show
-        @skill = Skill.find(params[:id])   #do i need routes sfor this 
+        @skill = Skill.find(params[:id])   
     end
 
     def create 
@@ -15,17 +19,17 @@ class Api::SkillsController < ApplicationController
         end 
     end 
 
-    def update 
-        @skill = Skill.find(params[:id]) 
-        if @skill.update(skill.params)
-            render :show 
-        else 
-            render json: @skill.errors, status: 422
-        end 
-    end 
+    # def update 
+    #     @skill = Skill.find(params[:id]) 
+    #     if @skill.update(skill_params)
+    #         render :show 
+    #     else 
+    #         render json: @skill.errors, status: 422
+    #     end 
+    # end 
 
     def destroy 
-        @skill = skill.find(params[:id]) 
+        @skill = Skill.find(params[:id]) 
         @skill.destroy 
         render :show 
     end 

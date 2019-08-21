@@ -7,6 +7,7 @@ import modalReducer from './modal_reducer';
 import postReducer from './posts_reducer';
 import companyReducer from './companies_reducer';
 import commentReducer from './comments_reducer'; 
+import skillsReducer from './skills_reducer'; 
 
 
 const entitiesReducer = combineReducers({
@@ -16,7 +17,8 @@ const entitiesReducer = combineReducers({
   modal: modalReducer, 
   posts: postReducer,
   companies: companyReducer,
-  comments: commentReducer
+  comments: commentReducer, 
+  skills: skillsReducer, 
 });
 
 export default entitiesReducer;

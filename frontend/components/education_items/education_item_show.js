@@ -1,5 +1,4 @@
 import React from 'react'; 
-import Modal from '../modal/modal';
 import { connect } from 'react-redux';
 import { fetchEducationItem } from '../../actions/education_item_actions'; 
 import {openModal} from '../../actions/modal_actions'

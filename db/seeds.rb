@@ -13,6 +13,8 @@ Company.delete_all
 ExperienceItem.delete_all 
 EducationItem.delete_all 
 Post.delete_all
+Comment.delete_all 
+Skill.delete_all 
 
 
 
@@ -220,9 +222,6 @@ demo.experience_items.create!(user_id: demo.id,
                              • Performed various laboratory tests, field work and computer work using MATLAB and Microsoft Excel in order to
                              further support faculty research to be published in Spring 2019' )
 
-
-
-
  demo.experience_items.create!(user_id: demo.id, 
                              title:'Entrepreneur' , 
                              company_id: tia.id, 
@@ -261,6 +260,21 @@ demo.education_items.create!(user_id: demo.id,
                              )
 
 
+demo.skills.create!(user_id: demo.id, 
+                    title: 'JavaScript')
+
+demo.skills.create!(user_id: demo.id, 
+                    title: 'Python')
+
+demo.skills.create!(user_id: demo.id, 
+                    title: 'CSS')
+
+
+
+
+
+                    
+                        
 zuck = User.create!(email: 'zuck@gmail.com' , 
                              password: 'hunter12', 
                              first_name: 'Mark', 
@@ -321,7 +335,14 @@ hk.education_items.create!(user_id: hk.id,
 u3= open("https://gitin-seeds.s3.amazonaws.com/hamza.png")
 hk.photo.attach(io: u3, filename: 'profile3.png')
 
+hk.skills.create!(user_id: hk.id, 
+                    title: 'Java')
 
+hk.skills.create!(user_id: hk.id, 
+                    title: 'Python')
+
+hk.skills.create!(user_id: hk.id, 
+                    title: 'C')
 
 
 jw = User.create!(email: 'jessica@gmail.com' , 

@@ -3,6 +3,7 @@ import React from "react"
 import { withRouter } from 'react-router-dom'; 
 import ExperienceItemIndex from "../experience_items/experience_item_index";
 import EducationItemIndex from '../education_items/education_item_index';
+import SkillsIndex from '../skills/skills_index';
 import ProfileSummary from './profile_summary';
 import ProfileAbout from './profile-about';
 import ProfileNavbar from './profile_nav';
@@ -53,6 +54,12 @@ class Profile extends React.Component {
                 <div className='education-item-container'>
                     <EducationItemIndex userId={this.props.user.id} isCurrentUser={isCurrentUser}/>
                 </div> 
+
+                <div className='education-item-container'>
+                    <SkillsIndex userId={this.props.user.id} isCurrentUser={isCurrentUser} />
+                </div>
+
+
             </div>
             </div>
 

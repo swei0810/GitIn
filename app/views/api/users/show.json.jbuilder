@@ -42,6 +42,15 @@ json.educationItems do
 end  
 
 
+json.skiils do 
+    @user.skills.each do |skill|
+        json.set! skill.id do 
+            json.extract! skill, :id, :user_id, :title 
+        end 
+    end 
+end 
+
+
 # if @user.photos.attached? 
     # json.array! json.extract! @user.photo, :service_url
     # json.photoUrl do 

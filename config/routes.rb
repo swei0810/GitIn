@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :education_items, only: [:index, :show, :create, :destroy, :update]
     resources :experience_items, only: [:index, :show, :create, :destroy, :update]
-    # resources :skills, only: [:show, :create, :destroy, ]
+    resources :skills, only: [:index, :show, :create, :destroy] ###working on this!
     resources :posts, only: [:index, :show, :create, :destroy, :update] do 
       resources :comments, only: [:index, :show, :create, :destroy, :update]
     end
     resources :companies, only: [:index, :show]
-    # resources :endorsements, only: [:create, :destroy]
+    resources :endorsements, only: [:index, :show, :create, :destroy, :update] #fix this? 
     # resources :connections, only: [:create, :destroy]
     # resources :interests, only: [:create, :destroy]
     #companies 
