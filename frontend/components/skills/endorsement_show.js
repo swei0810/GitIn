@@ -38,7 +38,6 @@ class EndorsementShow extends React.Component {
                     <div onClick={this.props.closeModal} className="close-x">X</div>
                 </div>
                 <div>This skill is endorsed by ... </div>
-                {/* trasncan icon on click delette */}
                 <br/>
                 <br/>
                 <br/>

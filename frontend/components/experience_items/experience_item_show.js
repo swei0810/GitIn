@@ -98,25 +98,14 @@ class ExperienceItemShow extends React.Component {
         const duration = this.calculateDuration();
 
         return (
-
-
-
-
-
-
             <div > 
-                {/* <div> 
-                <img className='experience-img' src={window.gate}/> 
-                </div>  */}
                 <div className='item'>
                     <div> 
-                    {/* <img className='item-img' src={experienceItem.photoUrl}/>  */}
                     {companyPhoto}
                     </div> 
 
                     <div className='item-info'>
                         <div className='item-title'>
-                            {/* <Modal /> */}
                             <div className='item-title'>{experienceItem.title}</div>
                             {editIcon}
                         </div>
