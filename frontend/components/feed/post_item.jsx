@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {fetchPost} from '../../actions/post_action';
-import {fetchAllComments} from '../../actions/comment_actions';
 import CommentIndex from '../comments/comment_index';
 import CreateCommentForm from '../comments/create_comment_form'; 
 
 const mapStateToProps = (state, ownProps) => {
+    debugger 
     const comments = Object.values(state.entities.comments)
     return {
         comments: comments.filter(comment => comment.post_id === ownProps.post.id)
@@ -23,7 +23,6 @@ class PostItem extends React.Component {
         if (!post) {
             return null; 
         }
-   
 
         let postPhoto=''; 
         if (post.photoUrl){
@@ -62,8 +61,8 @@ class PostItem extends React.Component {
         }
         
      
-    
         return (
+            
             <div> 
 
                 <div className='post-container'>
@@ -92,7 +91,7 @@ class PostItem extends React.Component {
                         {/* should only toggle ONE comment-index  */}
                     </div>
                     <div className='comment-index'>
-                            <CreateCommentForm postId={this.props.post.id} currentUserId={currentUser.id} />
+                            <CreateCommentForm postId={this.props.post.id} />
                             <br/>
                             <CommentIndex comments={this.props.comments} postId={this.props.post.id}/>
                     </div>

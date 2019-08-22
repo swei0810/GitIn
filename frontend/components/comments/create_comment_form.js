@@ -4,7 +4,7 @@ import {createComment} from '../../actions/comment_actions'
 
 const mapStateToProps = (state, ownProps) => {
     const comment = {body:'', post_id: ownProps.postId  }; 
-    const currentUser = state.entities.users[ownProps.currentUserId]; 
+    const currentUser = state.entities.users[state.session.id];  
     return {
         comment, 
         currentUser 
@@ -44,6 +44,7 @@ class createCommentForm extends React.Component {
 
 
     render() {
+    
         return (
             <div className='comment-form-container'>
                 <img className='comment-user-photo' src={this.props.currentUser.photoUrl}/>
