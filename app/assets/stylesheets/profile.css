@@ -215,3 +215,13 @@ html {
     color: red; 
     padding-top: 4px;
 }
+
+.location-connection{
+    display: flex; 
+    z-index: 1; 
+}
+
+.num-connection{
+    color: rgb(64, 192, 224); 
+    font-weight: bold; 
+}

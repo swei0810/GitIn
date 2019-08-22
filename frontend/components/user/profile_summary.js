@@ -1,8 +1,9 @@
 
 import React from "react";
-import Modal from '../modal/modal';
 import { connect } from 'react-redux'; 
 import {openModal} from '../../actions/modal_actions'
+import { Link } from 'react-router-dom';
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -70,7 +71,11 @@ class ProfileSummary extends React.Component {
                     </div>
 
                     <div className='section-header'>{user.headline}</div>
-                    <div className='summary-location' >{user.location} </div>
+                    <div className='location-connection'>
+                        <div className='summary-location' >{user.location} &nbsp; · &nbsp;  </div>
+                        <Link to='/feed' className='num-connection'># connections</Link>
+                    </div>
+          
                 </div>
 
                 {/* <div className='summary-photo'>
