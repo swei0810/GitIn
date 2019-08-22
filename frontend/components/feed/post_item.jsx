@@ -5,7 +5,6 @@ import CommentIndex from '../comments/comment_index';
 import CreateCommentForm from '../comments/create_comment_form'; 
 
 const mapStateToProps = (state, ownProps) => {
-    debugger 
     const comments = Object.values(state.entities.comments)
     return {
         comments: comments.filter(comment => comment.post_id === ownProps.post.id)
