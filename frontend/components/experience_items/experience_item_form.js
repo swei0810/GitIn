@@ -59,7 +59,10 @@ class ExperienceItemForm extends React.Component {
     formatDate(e) {
         e.preventDefault();
         const startDate = this.state.startMonth + ' ' + this.state.startYear;
-        const endDate = this.state.endMonth + ' ' + this.state.endYear;
+        let endDate = this.state.endMonth + ' ' + this.state.endYear;
+        if(endDate === " ") {
+            endDate = 'Present'; 
+        }
         this.setState({start_date:startDate, end_date:endDate}, ()=>{
             this.validateSubmit()});
     }
@@ -161,7 +164,7 @@ class ExperienceItemForm extends React.Component {
 
                     <br/>
                     <br/>
-                    <input type="checkbox" />I am currently working in this role
+                    <input type="checkbox" onClick={()=>$('.select-yr-2').toggle()}/>I am currently working in this role
                     <br/>
                     <br/>
 

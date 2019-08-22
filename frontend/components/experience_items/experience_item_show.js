@@ -19,6 +19,7 @@ class ExperienceItemShow extends React.Component {
 
     calculateDuration() {
 
+
         const start = this.props.experienceItem.start_date; 
         const end =  this.props.experienceItem.end_date;
         const current = new Date(); 
@@ -27,7 +28,7 @@ class ExperienceItemShow extends React.Component {
         const startYr = start.slice(start.length-4);
         let endYr = end.slice(end.length-4);
 
-        if (endYr===""){
+        if (endYr==="" || this.props.experienceItem.end_date === 'Present'){
             endYr = current.getFullYear(); 
         }
 
