@@ -1,6 +1,6 @@
-.comment-index {
+/* .comment-index {
     display: none; 
-}
+} */
 
 .comment-form-container {
     display: flex; 
@@ -93,4 +93,8 @@
 .comment-title-head {
     display: flex; 
     justify-content: space-between;
+}
+
+[class|=comment-index]  {
+    display: none; 
 }

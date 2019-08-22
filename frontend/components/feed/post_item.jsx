@@ -86,10 +86,11 @@ class PostItem extends React.Component {
                     <div className='num-comments'> {numComments} </div>
                     <div className='post-buttons'>
                         <div className='post-like' onClick={() => alert("not implemented yet")}><i className="far fa-thumbs-up"></i>Like &nbsp; &nbsp; </div>
-                        <div className='post-comment' onClick={()=>$('.comment-index').toggle()}><i className="far fa-comment-alt"></i> Comment &nbsp;</div>
+                        <div className='post-comment' onClick={()=>$(`.comment-index-${this.props.post.id}`).toggle()}><i className="far fa-comment-alt"></i> Comment &nbsp;</div>
                         {/* should only toggle ONE comment-index  */}
                     </div>
-                    <div className='comment-index'>
+
+                    <div className={`comment-index-${this.props.post.id}`}>
                             <CreateCommentForm postId={this.props.post.id} />
                             <br/>
                             <CommentIndex comments={this.props.comments} postId={this.props.post.id}/>
