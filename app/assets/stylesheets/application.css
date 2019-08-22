@@ -275,3 +275,13 @@ html {
 
 
 
+input:focus{
+  outline: none;
+  border:2px solid #0073b1;
+
+}
+
+textarea:focus {
+  outline: none;
+  border:2px solid #0073b1;
+}
