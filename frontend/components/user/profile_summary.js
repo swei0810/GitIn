@@ -73,7 +73,8 @@ class ProfileSummary extends React.Component {
                     <div className='section-header'>{user.headline}</div>
                     <div className='location-connection'>
                         <div className='summary-location' >{user.location} &nbsp; · &nbsp;  </div>
-                        <Link to='/feed' className='num-connection'># connections</Link>
+                        <Link to= {`/git/${user.id}/connections`} className='num-connection'># connections</Link>
+                       
                     </div>
           
                 </div>

@@ -18,6 +18,7 @@ import DashBoard from './feed/dashboard_container';
 import Modal from './modal/modal';
 import Network from './network/network_container';
 import Company from './companies/company_index_container';
+import Connection from './connections/connections_index'; 
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -44,9 +45,10 @@ const App = () => (
       <Route exact path="/" component={SplashContainer} />
       <Route exact path='/git/:userId' component={Profile} />
       <ProtectedRoute exact path='/feed' component={DashBoard} />
-      <ProtectedRoute exact path='/network' component={Network} />
+      <ProtectedRoute exact path='/mynetwork' component={Network} />
       <Route exact path='/git/:userId' component={Profile} />
       <ProtectedRoute exact path='/companies' component={Company} />
+      <ProtectedRoute exact path='/git/:userId/connections' component={Connection} />
 
       
 
