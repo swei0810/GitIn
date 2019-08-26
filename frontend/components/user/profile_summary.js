@@ -38,17 +38,11 @@ class ProfileSummary extends React.Component {
 
         return (
         <div className="profile-summary-container">
-         {/* <Modal />  
-                        <div className='icon'>
-                        <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
-                        </div>  */}
 
             <div className='profile-image-container'> 
-         {/* PHOTO */}
             <img className='profile-background' src={window.profile_background}/>
             <div className="profile-image-circle">
                 {profilePhoto}
-                {/* <img className="profile-image" src={user.photoUrl}/> */}
             </div>
             </div>
 
@@ -58,15 +52,7 @@ class ProfileSummary extends React.Component {
                         <div className='github-icon'> <i className="fab fa-github"></i>
                         </div>
                         </div> 
-                        {/* <Modal />  
-                        
-                        <div className='icon'>
-                        <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
-                        </div>  */}
-                            {/* <div className='icon-edit'>
-                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
-                            </div> */}
-                            {/* <Modal /> */}
+                
                             {editIcon}
                     </div>
 
@@ -79,11 +65,7 @@ class ProfileSummary extends React.Component {
           
                 </div>
 
-                {/* <div className='summary-photo'>
-                    <img className="profile-image" src={user.photoUrl}/>
-                    <img className="profile-image" src={user.photoUrl}/>
-
-                </div>  */}
+              
            
 
         </div>

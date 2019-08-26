@@ -10,8 +10,6 @@ import ProfileNavbar from '../user/profile_nav';
 
 const mapStateToProps = state => {
     return {
-        // sent: Object.values(state.entities.connections.sent), 
-        // received: Object.values(state.entities.connections.received)
         sent: state.entities.connections.sent, 
         received: state.entities.connections.received,
         users: state.entities.users,

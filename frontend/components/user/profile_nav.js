@@ -42,17 +42,14 @@ class ProfileNav extends React.Component {
 
                 
                
-                {/* <Link to={`/git/${this.props.currentUser.id}`}> */}
                         <div className='nav-icon-p'> 
                         <div className="profile-image-circle">
-                        {/* <img className="profile-icon" src={this.props.currentUser.photoUrl}/> */}
                             {profilePhoto}
                         </div>
 
                         <div className='dropdown'> Me &nbsp;<i className='fa fa-caret-down'></i> 
                             <div className='dropdown-content'>
                                 <Link to={`/git/${this.props.currentUser.id}`}>View Profile</Link>
-                                {/* <Link to='/'> <div onClick={()=>this.props.logout()}>Sign Out</div></Link> */}
                                 <Link to='/'>  <div onClick={()=>this.props.logout()} >Sign Out</div> </Link>
                                 
                             </div>
@@ -61,7 +58,6 @@ class ProfileNav extends React.Component {
 
 
                          </div> 
-                {/* </Link> */}
 
               
 
@@ -73,4 +69,3 @@ class ProfileNav extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileNav)
-// export default ProfileNav
