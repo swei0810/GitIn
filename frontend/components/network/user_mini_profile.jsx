@@ -1,6 +1,5 @@
 // like post item 
 import React from 'react';
-import { withRouter } from 'react-router-dom'; 
 import { connect } from 'react-redux';
 import {fetchUser} from '../../actions/user_actions';
 import { Link } from 'react-router-dom';

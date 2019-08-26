@@ -8,6 +8,7 @@ import postReducer from './posts_reducer';
 import companyReducer from './companies_reducer';
 import commentReducer from './comments_reducer'; 
 import skillsReducer from './skills_reducer'; 
+import connectionsReducer from './connection_reducer'; 
 
 
 const entitiesReducer = combineReducers({
@@ -19,6 +20,7 @@ const entitiesReducer = combineReducers({
   companies: companyReducer,
   comments: commentReducer, 
   skills: skillsReducer, 
+  connections: connectionsReducer,
 });
 
 export default entitiesReducer;

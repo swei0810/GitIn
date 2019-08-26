@@ -15,6 +15,7 @@ EducationItem.delete_all
 Post.delete_all
 Comment.delete_all 
 Skill.delete_all 
+Connection.delete_all
 
 
 
@@ -770,3 +771,10 @@ si_post2 = Post.create!(author_id: demo.id,
 #Comments 
 comment1 = Comment.create!(user_id: demo.id, post_id: hk_post.id, body: "Your project looks awesome!")
 comment2 = Comment.create!(user_id: ec.id, post_id: hk_post.id, body: "Check out OpenStables as well.")
+
+
+
+#Connections 
+connection1 = Connection.create!(requester_id: hk.id, requestee_id: demo.id, status: 'accepted')
+connection2 = Connection.create!(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
+connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, status: 'pending')

@@ -1,0 +1,77 @@
+
+.connected-profiles {
+    width: 800px;
+    margin: 10px; 
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
+    border-radius: 2px;
+    background-color: white; 
+    margin: auto;
+}
+
+/* connections_item.js */
+.connected-profile {
+    display: flex; 
+    padding-top: 10px; 
+    /* padding-bottom: 20px  */
+    border-bottom: 1px solid lightgrey; 
+}
+
+.mini-img {
+    padding-right: 20px;
+    padding-left: 20px; 
+}
+
+.connected-profile-info {
+    display: flex; 
+    flex-direction: column; 
+    padding-top: 5px; 
+    width: 100%;
+}
+
+.message {
+    border: 1px solid  #2977c9; 
+    color:  #2977c9; 
+    padding: 7px;
+    margin-top: 10px; 
+    margin-right: 20px; 
+
+    /* padding-right: 20px; 
+    padding-left: 20px; 
+    margin-bottom: 6px; */
+    transition: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold; 
+    cursor: pointer;   
+    text-align: center;
+}
+
+.connected-title {
+    padding-top: 5px; 
+}
+
+.connected-location {
+    color: grey; 
+    font-size: 13px; 
+}
+
+.degree {
+    color: grey; 
+}
+
+.connected-name {
+    display: flex; 
+}
+
+.connection-container {
+    margin-top: 80px; 
+}
+
+.connection-header {
+    text-align: center;
+    color: lightblue;
+    font-size: 40px;
+    font-weight: bold; 
+    padding:10px; 
+    margin-top: 50px; 
+}

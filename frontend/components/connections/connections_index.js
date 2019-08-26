@@ -1,12 +1,71 @@
 import React from "react";
 import { connect } from 'react-redux'; 
+import { fetchUserConnections } from '../../actions/connection_actions'; 
+import { fetchUser } from '../../actions/user_actions'; 
+import ConnectionsItem from './connections_item'; 
+import ProfileNavbar from '../user/profile_nav';
+
+
+
+
+const mapStateToProps = state => {
+    return {
+        // sent: Object.values(state.entities.connections.sent), 
+        // received: Object.values(state.entities.connections.received)
+        sent: state.entities.connections.sent, 
+        received: state.entities.connections.received,
+        users: state.entities.users,
+        currentUserId: state.session.id
+
+
+    }
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchUserConnections: () => dispatch(fetchUserConnections()), 
+        fetchUser: (id) => dispatch(fetchUser(id)), 
+
+    }
+}
+  
 
 class ConnectionIndex extends React.Component {
+
+    componentDidMount() {
+        this.props.fetchUserConnections();
+    }
+
     render() {
+        let {sent} = this.props; 
+        let {received} = this.props; 
+
+        if (!sent || !received ){
+            return null;
+        }
+
+        sent = Object.values(sent).filter(connection=>connection.status=='accepted'); 
+        received = Object.values(received).filter(connection => connection.status == 'accepted'); 
+
+      
+
         return (
-            <h2>Connections will be here</h2>
+            <div className='connection-container'> 
+                <ProfileNavbar users={this.props.users} currentUserId={this.props.currentUserId}/>
+
+                <h2 className='connection-header'>Your connections</h2>
+
+                <div className='connected-profiles'> 
+                        {sent.map(user =>  <ConnectionsItem key={user.id} userId={user.requestee_id}/>)}
+                        {received.map(user =>  <ConnectionsItem key={user.id} userId={user.requester_id}/>)}
+                </div>
+            </div>
+
+
         )
     }
 }
 
-export default connect(null, null)(ConnectionIndex); 
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConnectionIndex);
