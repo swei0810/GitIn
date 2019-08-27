@@ -6,7 +6,9 @@ json.user do
         json.experienceIds @user.experience_items.pluck(:id)
         json.educationIds @user.education_items.pluck(:id)  
         json.skillIds @user.skills.pluck(:id)
-        # json.connectionIds @user.requested_connections.pluck(:id), @user.received_connections.pluck(:id)
+        json.connectionIds @user.requested_connections.pluck(:requestee_id)
+        # @user.received_connections.pluck(:id)
+        #this is where you grab the id of the user you are connected to, will be using this in connections_index 
         if @user.photo.attached?
             json.photoUrl url_for(@user.photo)
         end 

@@ -6,7 +6,7 @@ import ConnectionsItem from './connections_item';
 import ProfileNavbar from '../user/profile_nav';
 
 
-
+//Connections is currently grabbing the connection of a currentUser, it should be grabbing all connections of the user for the profile you are in 
 
 const mapStateToProps = state => {
     return {
@@ -14,8 +14,6 @@ const mapStateToProps = state => {
         received: state.entities.connections.received,
         users: state.entities.users,
         currentUserId: state.session.id
-
-
     }
 }
 
