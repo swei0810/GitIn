@@ -36,6 +36,22 @@ class ProfileSummary extends React.Component {
              profilePhoto = (<img className='profile-image' src={window.default_prof}/>);
          }
 
+        let numConnection = '';
+        if (user.receivedConnectionIds) {
+            numConnection = user.receivedConnectionIds.length + user.sentConnectionIds.length;
+        }
+
+        let connection = ''; 
+        if (numConnection === 0) {
+            connection = 'No connections yet'
+        } else if (numConnection === 1) {
+            connection = "1 connection"
+        } else {
+            connection = numConnection + " connections"
+        }
+        //DOES NOT TAKE CARE OF PENDING CONNECTIONS (it also counts it )
+
+
         return (
         <div className="profile-summary-container">
 
@@ -59,7 +75,7 @@ class ProfileSummary extends React.Component {
                     <div className='section-header'>{user.headline}</div>
                     <div className='location-connection'>
                         <div className='summary-location' >{user.location} &nbsp; · &nbsp;  </div>
-                        <Link to= {`/git/${user.id}/connections`} className='num-connection'># connections</Link>
+                        <Link to= {`/git/${user.id}/connections`} className='num-connection'>{connection}</Link>
                        
                     </div>
           

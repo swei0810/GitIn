@@ -67,8 +67,7 @@ class User < ApplicationRecord
 
 
     def total_connections 
-        #count the number of total connections a user has 
-        #In views, can call @user.total_connections 
+
     end 
 
     #Backend Auth 
