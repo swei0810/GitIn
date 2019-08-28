@@ -16,6 +16,7 @@ Post.delete_all
 Comment.delete_all 
 Skill.delete_all 
 Connection.delete_all
+Endorsement.delete_all
 
 
 
@@ -261,15 +262,6 @@ demo.education_items.create!(user_id: demo.id,
                              )
 
 
-demo.skills.create!(user_id: demo.id, 
-                    title: 'JavaScript')
-
-demo.skills.create!(user_id: demo.id, 
-                    title: 'Python')
-
-demo.skills.create!(user_id: demo.id, 
-                    title: 'CSS')
-
 
 
 
@@ -336,14 +328,7 @@ hk.education_items.create!(user_id: hk.id,
 u3= open("https://gitin-seeds.s3.amazonaws.com/hamza.png")
 hk.photo.attach(io: u3, filename: 'profile3.png')
 
-hk.skills.create!(user_id: hk.id, 
-                    title: 'Java')
 
-hk.skills.create!(user_id: hk.id, 
-                    title: 'Python')
-
-hk.skills.create!(user_id: hk.id, 
-                    title: 'C')
 
 
 jw = User.create!(email: 'jessica@gmail.com' , 
@@ -781,3 +766,26 @@ connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, sta
 
 connection4 = Connection.create!(requester_id: hk.id, requestee_id: ec.id, status: 'accepted')
 connection5 = Connection.create!(requester_id: jw.id, requestee_id: hk.id, status: 'accepted')
+
+#Skills 
+hk_java = hk.skills.create!(user_id: hk.id, 
+                    title: 'Java')
+
+hk.skills.create!(user_id: hk.id, 
+                    title: 'Python')
+
+hk.skills.create!(user_id: hk.id, 
+                    title: 'C')
+
+demo.skills.create!(user_id: demo.id, 
+                    title: 'JavaScript')
+
+demo.skills.create!(user_id: demo.id, 
+                    title: 'Python')
+
+demo.skills.create!(user_id: demo.id, 
+                    title: 'CSS')
+
+
+#Endorsements 
+hk_java.endorsements.create!(user_id:demo.id, skill_id:hk_java); 

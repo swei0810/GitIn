@@ -43,7 +43,8 @@ class SkillsIndex extends React.Component {
                     {addIcon}
                 </div>
                 <div className='skill-container'>
-                    {skills.map(skill => <SkillItemShow key={skill.id} skill={skill}/>)}
+                    {skills.map(skill => <SkillItemShow key={skill.id} skill={skill} isCurrentUser={this.props.isCurrentUser}/>)}
+                    {/* also pass in isCurrentUser */}
                 </div>
             </div>
         )

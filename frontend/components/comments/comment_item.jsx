@@ -6,6 +6,7 @@ import { fetchUser } from '../../actions/user_actions';
 //have to fetch the user? or mapStateToProps check what's in there 
 const mapStateToProps = (state, ownProps) => {
     return {
+        currentUserId: state.session.id, 
         user: state.entities.users[ownProps.comment.user_id]
     }
 }
@@ -31,7 +32,7 @@ class CommentItem extends React.Component {
 
         //you can delete your own comments 
         let deleteIcon=''; 
-        if (user.id === currentUser.id) {
+        if (user.id === this.props.currentUserId) {
             deleteIcon = ( <div className='icon-delete' onClick={()=>this.props.deleteComment(comment)}> <i className="far fa-trash-alt"></i></div>)
         }
 

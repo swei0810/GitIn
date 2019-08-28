@@ -8,15 +8,38 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class SkillItemShow extends React.Component {
+    addEndorsement() {
+        $(`.plus-${this.props.skill.id}`).replaceWith("<div class='minus'> ✓ </div>"); 
+        //put it in the state, createEndorsement 
+        //doesnt stay when I refresh 
+        //can't click on the minus button yet
+    }
+
+
     render() {
         const {skill} = this.props; 
         if (!skill) {
             return null; 
         }
 
+
+
+        let plusIcon = '';
+        if (!this.props.isCurrentUser) {
+            // plusIcon = (<div className='plus'>
+            //     <i className="fas fa-plus" onClick={() => alert("Endorse")} ></i>
+            // </div>);
+            plusIcon = (<div className={`plus-${this.props.skill.id}`} onClick={()=>this.addEndorsement()}>
+                +
+            </div>)
+        }
+
+
+
         return (
-            <div>
+            <div className='skill-endorse'>
                 <div className='skill-button' onClick={()=> this.props.openModal('see endorsements', {skill: skill})}>{skill.title } &nbsp;· &nbsp; # </div>
+                {plusIcon}
             </div>
         )
     }

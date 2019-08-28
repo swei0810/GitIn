@@ -21,3 +21,34 @@
     margin-right: 20px; 
     margin-bottom: 20px; 
 }
+
+.skill-endorse {
+    display: flex; 
+}
+
+/* .plus { */
+
+div[class^="plus"] {
+    font-size: 25px; 
+    color:  #2977c9; 
+    cursor: pointer; 
+    border: 2px solid  #2977c9; 
+    border-radius: 50%; 
+    text-align: center; 
+    width:30px;
+    height:30px;
+    margin-left: 5px; 
+}
+
+.minus {
+    font-size: 25px; 
+    color: grey; 
+    cursor: pointer; 
+    border: 2px solid  grey; 
+    border-radius: 50%; 
+    text-align: center; 
+    width:30px;
+    height:30px;
+    margin-left: 5px; 
+}
+
