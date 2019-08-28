@@ -36,6 +36,7 @@ class CommentItem extends React.Component {
         }
 
 
+
         //default photo if photo does not exist for user 
         let profilePhoto = '';
         if (user.photoUrl) {
