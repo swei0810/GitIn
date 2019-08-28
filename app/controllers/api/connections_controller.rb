@@ -2,8 +2,8 @@ class Api::ConnectionsController < ApplicationController
     before_action :require_logged_in
 
     def index 
-        @requested_connections = User.find(current_user.id).requested_connections
-        @received_connections = User.find(current_user.id).received_connections
+        @requested_connections = User.find(params[:userId]).requested_connections
+        @received_connections = User.find(params[:userId]).received_connections
         render :index 
     end 
 

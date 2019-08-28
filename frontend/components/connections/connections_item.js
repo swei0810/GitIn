@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {fetchUser} from '../../actions/user_actions';
 import { Link } from 'react-router-dom';
 
+//1st degree connection is hardcoded right now 
 
 const mapStateToProps = (state, ownProps) => {
     return {

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     const currentUser = state.entities.users[ownProps.currentUserId]
     return {
         currentUser

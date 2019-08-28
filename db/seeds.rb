@@ -778,3 +778,6 @@ comment2 = Comment.create!(user_id: ec.id, post_id: hk_post.id, body: "Check out
 connection1 = Connection.create!(requester_id: hk.id, requestee_id: demo.id, status: 'accepted')
 connection2 = Connection.create!(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
 connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, status: 'pending')
+
+connection4 = Connection.create!(requester_id: hk.id, requestee_id: ec.id, status: 'accepted')
+connection5 = Connection.create!(requester_id: jw.id, requestee_id: hk.id, status: 'accepted')

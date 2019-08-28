@@ -5,14 +5,14 @@ import { fetchUser } from '../../actions/user_actions';
 import ConnectionsItem from './connections_item'; 
 import ProfileNavbar from '../user/profile_nav';
 
+//fetchUserConnection is actually just fetchAllConnections 
 
-//Connections is currently grabbing the connection of a currentUser, it should be grabbing all connections of the user for the profile you are in 
-
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
         sent: state.entities.connections.sent, 
         received: state.entities.connections.received,
         users: state.entities.users,
+        profileUserId: parseInt(ownProps.match.params.userId), 
         currentUserId: state.session.id
     }
 }
@@ -20,9 +20,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserConnections: () => dispatch(fetchUserConnections()), 
+        fetchUserConnections: (userId) => dispatch(fetchUserConnections(userId)), 
         fetchUser: (id) => dispatch(fetchUser(id)), 
-
     }
 }
   
@@ -30,7 +29,7 @@ const mapDispatchToProps = dispatch => {
 class ConnectionIndex extends React.Component {
 
     componentDidMount() {
-        this.props.fetchUserConnections();
+        this.props.fetchUserConnections(this.props.profileUserId);
     }
 
     render() {
@@ -39,18 +38,23 @@ class ConnectionIndex extends React.Component {
 
         if (!sent || !received ){
             return null;
+        }        
+
+        sent = Object.values(sent).filter(connection=>connection.requester_id === (this.props.profileUserId) &&connection.status==='accepted'); 
+        received = Object.values(received).filter(connection =>connection.requestee_id === (this.props.profileUserId) &&  connection.status === 'accepted'); 
+
+
+        let header =''; 
+        if (this.props.profileUserId === this.props.currentUserId) {
+            header = 'Your connections'
+        } else {
+            header = "View connections"
         }
-
-        sent = Object.values(sent).filter(connection=>connection.status=='accepted'); 
-        received = Object.values(received).filter(connection => connection.status == 'accepted'); 
-
-      
-
         return (
             <div className='connection-container'> 
                 <ProfileNavbar users={this.props.users} currentUserId={this.props.currentUserId}/>
 
-                <h2 className='connection-header'>Your connections</h2>
+                <h2 className='connection-header'>{header}</h2>
 
                 <div className='connected-profiles'> 
                         {sent.map(user =>  <ConnectionsItem key={user.id} userId={user.requestee_id}/>)}
