@@ -35,13 +35,12 @@ class SkillItemShow extends React.Component {
 
         let numEndorsements = ''; 
         if (skill.endorsementIds) {
-            debugger
             numEndorsements = skill.endorsementIds.length; 
         }
   
         return (
             <div className='skill-endorse'>
-                <div className='skill-button' onClick={() => this.props.openModal('see endorsements', { skill: skill })}>{skill.title} &nbsp;· &nbsp; {numEndorsements} </div>
+                <div className='skill-button' onClick={() => this.props.openModal('see endorsements', { skill: skill })}>{skill.title} &nbsp;· &nbsp; {numEndorsements ? numEndorsements : '0'} </div>
                 {plusIcon}
             </div>
         )

@@ -42,12 +42,17 @@ class EndorsementShow extends React.Component {
         if (this.props.currentUser.id === this.props.skill.user_id) {
             deleteIcon = (<div className='icon-delete-skill' onClick={() => this.props.deleteSkill(this.props.skill.id).then(() => this.props.closeModal())}> <i className="far fa-trash-alt"></i></div>)
         }
+
+        let numEndorsements = '';
+        if (this.props.skill.endorsementIds) {
+            numEndorsements = this.props.skill.endorsementIds.length;
+        }
        
 
         return (
             <div>
                 <div className='modal-header'>
-                    <h2>{this.props.skill.title} ({this.props.skill.endorsementIds.length}) </h2>
+                    <h2>{this.props.skill.title} ({numEndorsements ? numEndorsements : '0'}) </h2>
                     <div onClick={this.props.closeModal} className="close-x">X</div>
                 </div>
                 <div>This skill is endorsed by ... </div>
