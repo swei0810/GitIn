@@ -11,9 +11,11 @@ const mapStateToProps = (state, ownProps) => {
 
     const skill = ownProps.skill;  
     const endorsements = Object.values(state.entities.endorsements)
+    debugger
     return {
         skill, 
-        endorsements: endorsements.filter(endorsement => endorsement.skill_id === skill.id )
+        endorsements: endorsements.filter(endorsement => endorsement.skill_id === skill.id ), 
+        currentUser: state.entities.users[state.session.id],
     }
 
 }
@@ -39,9 +41,10 @@ class EndorsementShow extends React.Component {
 
     render() {
         let deleteIcon=''; 
-        if (currentUser.id === this.props.skill.user_id) {
-            deleteIcon = ( <div className='icon-delete' onClick={()=>this.props.deleteSkill(this.props.skill.id).then(()=>this.props.closeModal())}> <i className="far fa-trash-alt"></i></div>)
+        if (this.props.currentUser.id === this.props.skill.user_id) {
+            deleteIcon = (<div className='icon-delete' onClick={() => this.props.deleteSkill(this.props.skill.id).then(() => this.props.closeModal())}> <i className="far fa-trash-alt"></i></div>)
         }
+       
 
         return (
             <div>
