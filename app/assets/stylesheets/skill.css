@@ -52,3 +52,10 @@ div[class^="plus"] {
     margin-left: 5px; 
 }
 
+
+.icon-delete-skill {
+    font-size: 20px;
+    color: grey; 
+    cursor: pointer; 
+    margin-top: 20px; 
+}

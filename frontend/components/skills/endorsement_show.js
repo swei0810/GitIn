@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => {
 
     const skill = ownProps.skill;  
     const endorsements = Object.values(state.entities.endorsements)
-    debugger
     return {
         skill, 
         endorsements: endorsements.filter(endorsement => endorsement.skill_id === skill.id ), 
@@ -42,7 +41,7 @@ class EndorsementShow extends React.Component {
     render() {
         let deleteIcon=''; 
         if (this.props.currentUser.id === this.props.skill.user_id) {
-            deleteIcon = (<div className='icon-delete' onClick={() => this.props.deleteSkill(this.props.skill.id).then(() => this.props.closeModal())}> <i className="far fa-trash-alt"></i></div>)
+            deleteIcon = (<div className='icon-delete-skill' onClick={() => this.props.deleteSkill(this.props.skill.id).then(() => this.props.closeModal())}> <i className="far fa-trash-alt"></i></div>)
         }
        
 
