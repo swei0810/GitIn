@@ -36,11 +36,11 @@ class EndorserShow extends React.Component {
         }
 
         return (
-            <div className='connected-profile'>
-                <div className='mini-img'>{profilePhoto}</div>
+            <div className='endorser-profile'>
+                <div className='endorser-img'>{profilePhoto}</div>
 
-                <div className='connected-profile-info'>
-                    {/* <Link to={`/git/${user.id}`}> <div className='connected-name'>{user.first_name + ' ' + user.last_name} <div className='degree'>&nbsp;• 1st</div></div> </Link> */}
+                <div className='endorser-profile-info'>
+                    <Link to={`/git/${endorser.id}`} className='endorser-link'> <div className='endorser-name'>{endorser.first_name + ' ' + endorser.last_name} </div> </Link>
                     <div className='connected-title'>{endorser.headline}</div>
                     <br />
                 </div>

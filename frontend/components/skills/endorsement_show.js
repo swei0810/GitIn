@@ -52,11 +52,7 @@ class EndorsementShow extends React.Component {
                 <div>This skill is endorsed by ... </div>
                     {/* endorser picture just like connections page  */}
                 <br/>
-                <br/>
-                <br/>
-                <br/>
-
-                <div className='connected-profiles'>
+                <div className='endorser-profiles'>
                     {this.props.endorsements.map(endorsement => <EndorserShow key={endorsement.id} userId={endorsement.user_id} />)}
                 </div>
 
