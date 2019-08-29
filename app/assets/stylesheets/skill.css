@@ -16,14 +16,24 @@
 .skill-container {
     display: flex; 
     flex-direction: row; 
+    flex-wrap: wrap; 
     justify-content: space-between;
     margin-left: 40px; 
     margin-right: 20px; 
     margin-bottom: 20px; 
 }
 
+ .skill-container>* {
+          flex: 0 0 33.3333%;
+          margin-bottom: 20px; 
+      }
+
+
 .skill-endorse {
     display: flex; 
+    /* flex-grow: 2;
+    width: 30%; */
+    /* flex: 1 0 calc(33.333% - 20px); */
 }
 
 /* .plus { */
