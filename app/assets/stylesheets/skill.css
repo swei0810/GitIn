@@ -58,4 +58,5 @@ div[class^="plus"] {
     color: grey; 
     cursor: pointer; 
     margin-top: 20px; 
+    text-align: right; 
 }
