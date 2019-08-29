@@ -17,13 +17,12 @@ const experienceItemsReducer = (state={}, action) => {
             return merge({}, state, {[action.experienceItem.id]: action.experienceItem});
         case  RECEIVE_USER_EXPERIENCE_ITEMS:
             return merge({}, action.experienceItems)
-
         case REMOVE_EXPERIENCE_ITEM:
             let newState = merge({}, state); 
             delete newState[action.experienceItemId]; 
             return newState; 
-        // case RECEIVE_USER:
-        //     return merge({}, state, action.payload.experienceItems ) 
+        case RECEIVE_USER:
+            return merge({}, {}, action.payload.experienceItems ) 
         case RECEIVE_CURRENT_USER: 
             return merge({},state, action.payload.experienceItems )
         default: 

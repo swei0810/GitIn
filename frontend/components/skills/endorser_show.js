@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchEndorser} from '../../actions/user_actions';
 import { Link } from 'react-router-dom';
+import { closeModal } from '../../actions/modal_actions'; 
 
 //1st degree connection is hardcoded right now 
 
@@ -14,12 +15,14 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = dispatch => ({
-    fetchUser: id => dispatch(fetchUser(id))
+    fetchEndorser: id => dispatch(fetchEndorser(id)), 
+    closeModal: () => dispatch(closeModal()),
+
 })
 
 class EndorserShow extends React.Component {
     componentDidMount() {
-        this.props.fetchUser(this.props.userId);
+        this.props.fetchEndorser(this.props.userId);
     }
 
     render() {
@@ -40,7 +43,7 @@ class EndorserShow extends React.Component {
                 <div className='endorser-img'>{profilePhoto}</div>
 
                 <div className='endorser-profile-info'>
-                    <Link to={`/git/${endorser.id}`} className='endorser-link'> <div className='endorser-name'>{endorser.first_name + ' ' + endorser.last_name} </div> </Link>
+                    <Link to={`/git/${endorser.id}`} className='endorser-link'> <div className='endorser-name' onClick={()=> this.props.closeModal()}>{endorser.first_name + ' ' + endorser.last_name} </div> </Link>
                     <div className='connected-title'>{endorser.headline}</div>
                     <br />
                 </div>
