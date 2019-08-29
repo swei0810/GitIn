@@ -22,8 +22,8 @@ const experienceItemsReducer = (state={}, action) => {
             let newState = merge({}, state); 
             delete newState[action.experienceItemId]; 
             return newState; 
-        case RECEIVE_USER:
-            return merge({}, state, action.payload.experienceItems ) 
+        // case RECEIVE_USER:
+        //     return merge({}, state, action.payload.experienceItems ) 
         case RECEIVE_CURRENT_USER: 
             return merge({},state, action.payload.experienceItems )
         default: 
