@@ -771,21 +771,27 @@ connection5 = Connection.create!(requester_id: jw.id, requestee_id: hk.id, statu
 hk_java = hk.skills.create!(user_id: hk.id, 
                     title: 'Java')
 
-hk.skills.create!(user_id: hk.id, 
+hk_python = hk.skills.create!(user_id: hk.id, 
                     title: 'Python')
 
-hk.skills.create!(user_id: hk.id, 
+hk_c = hk.skills.create!(user_id: hk.id, 
                     title: 'C')
 
-demo.skills.create!(user_id: demo.id, 
+demo_js = demo.skills.create!(user_id: demo.id, 
                     title: 'JavaScript')
 
-demo.skills.create!(user_id: demo.id, 
+demo_python = demo.skills.create!(user_id: demo.id, 
                     title: 'Python')
 
-demo.skills.create!(user_id: demo.id, 
+demo_css = demo.skills.create!(user_id: demo.id, 
                     title: 'CSS')
 
 
 #Endorsements 
 hk_java.endorsements.create!(user_id:demo.id, skill_id:hk_java); 
+hk_java.endorsements.create!(user_id:ec.id, skill_id:hk_java); 
+
+demo_js.endorsements.create!(user_id: hk.id, skill_id: demo_js); 
+demo_js.endorsements.create!(user_id: ec.id, skill_id: demo_js); 
+demo_js.endorsements.create!(user_id: jw.id, skill_id: demo_js); 
+
