@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux'; 
 import { deleteSkill } from '../../actions/skill_actions';
 import { closeModal } from '../../actions/modal_actions';
-import ConnectionsItem from '../../components/connections/connections_item';
 import {fetchAllEndorsements} from '../../actions/endorsement_actions'; 
 import EndorserShow from './endorser_show'; 
 
