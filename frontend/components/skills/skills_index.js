@@ -3,6 +3,7 @@ import SkillItemShow from './skill_item';
 import { connect } from 'react-redux'; 
 import {fetchUserSkills} from '../../actions/skill_actions'; 
 import {openModal} from '../../actions/modal_actions'; 
+import {withRouter} from 'react-router-dom'; 
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -21,6 +22,15 @@ class SkillsIndex extends React.Component {
     componentDidMount(){
         this.props.fetchUserSkills(this.props.userId)
     }
+
+    componentDidUpdate(prevProps){
+        const userId = this.props.match.params.userId;
+        if (userId !== prevProps.match.params.userId) {
+            this.props.fetchUserSkills(this.props.userId)
+        } 
+    }
+
+
 
     render() {
         const {skills} = this.props; 
@@ -51,4 +61,4 @@ class SkillsIndex extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SkillsIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SkillsIndex))
