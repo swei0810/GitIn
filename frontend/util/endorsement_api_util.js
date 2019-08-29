@@ -8,8 +8,8 @@ export const fetchAllEndorsements = (skillId) => {
 export const createEndorsement = (payload) => {
     return $.ajax({
         method: "POST", 
-        url: `api/skills/${payload.skill_id}/endorsements`, 
-        data: { endorsement }
+        url: `api/skills/${payload.id}/endorsements`, 
+        data: {endorsement: payload }
     })
 }
 

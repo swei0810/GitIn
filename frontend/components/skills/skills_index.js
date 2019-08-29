@@ -7,7 +7,7 @@ import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        skills: Object.values(state.entities.skills)
+        skills: Object.values(state.entities.skills),
     }
 }; 
 
@@ -23,6 +23,8 @@ class SkillsIndex extends React.Component {
         this.props.fetchUserSkills(this.props.userId)
     }
 
+
+    //IMPORTANT, try to redo others
     componentDidUpdate(prevProps){
         const userId = this.props.match.params.userId;
         if (userId !== prevProps.match.params.userId) {

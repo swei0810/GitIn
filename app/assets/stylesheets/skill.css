@@ -50,7 +50,7 @@ div[class^="plus"] {
     margin-left: 5px; 
 }
 
-.minus {
+div[class^="checked"] {
     font-size: 25px; 
     color: grey; 
     cursor: pointer; 
