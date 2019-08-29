@@ -47,7 +47,7 @@ class EndorsementShow extends React.Component {
         return (
             <div>
                 <div className='modal-header'>
-                    <h2>{this.props.skill.title} (#) </h2>
+                    <h2>{this.props.skill.title} ({this.props.skill.endorsementIds.length}) </h2>
                     <div onClick={this.props.closeModal} className="close-x">X</div>
                 </div>
                 <div>This skill is endorsed by ... </div>
