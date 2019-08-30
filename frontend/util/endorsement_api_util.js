@@ -13,10 +13,11 @@ export const createEndorsement = (payload) => {
     })
 }
 
-export const deleteEndorsement = (endorsement) => {
+export const deleteEndorsement = (skill) => {
+    debugger
     return $.ajax({
         method: "DELETE", 
-        url: `api/skills/${endorsement.skill_id}/endorsements/${endorsement.id}`
+        url: `api/skills/${skill.id}/endorsements/${currentUser.id}`
     })
 
 }

@@ -1,7 +1,9 @@
 import React from 'react'; 
 import { connect } from 'react-redux';
 import {openModal} from '../../actions/modal_actions'
-import { createEndorsement} from '../../actions/endorsement_actions'; 
+import { createEndorsement, deleteEndorsement} from '../../actions/endorsement_actions'; 
+import { fetchAllEndorsements } from '../../actions/endorsement_actions'; 
+
 
 const mapStateToProps = (state) => {
     return {
@@ -12,10 +14,18 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     openModal: (modal,info) => dispatch(openModal(modal, info)), 
-    createEndorsement: (endorsement) => dispatch(createEndorsement(endorsement))
+    createEndorsement: (endorsement) => dispatch(createEndorsement(endorsement)), 
+    // deleteEndorsement: (skill) => dispatch(deleteEndorsement(skill)),
+    fetchAllEndorsements: skillId => dispatch(fetchAllEndorsements(skillId))
+
+
 })
 
 class SkillItemShow extends React.Component {
+
+    componentDidMount() {
+        this.props.fetchAllEndorsements(this.props.skill.id);
+    }
 
     constructor(props) {
         super(props); 
@@ -23,12 +33,7 @@ class SkillItemShow extends React.Component {
     }
 
 
-    addEndorsement() {
-        $(`.plus-${this.props.skill.id}`).replaceWith("<div class='minus'> ✓ </div>"); 
-        //put it in the state, createEndorsement 
-        //doesnt stay when I refresh 
-        //can't click on the minus button yet
-    }
+    
 
 
     render() {
@@ -40,9 +45,8 @@ class SkillItemShow extends React.Component {
 
         let plusIcon = ''; 
         if (!this.props.isCurrentUser) {
-            debugger
             if(this.props.skill.endorsementIds.includes(this.props.currentUserId)) {
-                plusIcon = (<div className={`checked-${this.props.skill.id}`} onClick={() => this.props.createEndorsement(this.state)}>
+                plusIcon = (<div className={`checked-${this.props.skill.id}`} onClick={() => alert("You already gave an endorsement!")}>
                     ✓ 
                 </div>)
             } else {

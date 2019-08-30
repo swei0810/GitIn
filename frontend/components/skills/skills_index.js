@@ -5,6 +5,7 @@ import {fetchUserSkills} from '../../actions/skill_actions';
 import {openModal} from '../../actions/modal_actions'; 
 import {withRouter} from 'react-router-dom'; 
 
+
 const mapStateToProps = (state, ownProps) => {
     return {
         skills: Object.values(state.entities.skills),
@@ -14,13 +15,15 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         openModal: modal => dispatch(openModal(modal)), 
-        fetchUserSkills: (userId) => dispatch(fetchUserSkills(userId))
+        fetchUserSkills: (userId) => dispatch(fetchUserSkills(userId)), 
+
+        
     }
 };
 
 class SkillsIndex extends React.Component {
     componentDidMount(){
-        this.props.fetchUserSkills(this.props.userId)
+        this.props.fetchUserSkills(this.props.userId);
     }
 
 

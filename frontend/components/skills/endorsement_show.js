@@ -33,9 +33,9 @@ class EndorsementShow extends React.Component {
         this.state = this.props.skill;
     }
 
-    componentDidMount() {
-        this.props.fetchAllEndorsements(this.props.skill.id);
-    }
+    // componentDidMount() {
+    //     this.props.fetchAllEndorsements(this.props.skill.id);
+    // }
 
     render() {
         let deleteIcon=''; 

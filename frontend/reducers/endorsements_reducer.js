@@ -9,20 +9,24 @@ import {
 import { RECEIVE_ALL_SKILLS } from '../actions/skill_actions'; 
 
 import { RECEIVE_USER } from '../actions/user_actions'; 
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, logoutCurrentUser } from '../actions/session_actions';
 
 
 
-const endorsementsReducer = (state = {}, action ) => {
+const endorsementsReducer = (state = {}, action) => {
+    Object.freeze(state); 
     switch(action.type) {
         case RECEIVE_ALL_ENDORSEMENTS: 
             return merge({}, action.endorsements)
         case RECEIVE_ENDORSEMENT:
             return merge({}, state, {[action.endorsement.id]: action.endorsement})
-        case DELETE_ENDORSEMENT:
-            let newState = merge({}, state); 
-            delete newState[action.endorsementId]; 
-            return newState; 
+        // case DELETE_ENDORSEMENT: 
+        
+        //     // let newState = merge({}, state);
+        //     // debugger
+        //     // delete newState[currentUser.id]; //should fix this later
+        //     // debugger
+        //     return newState; 
         case RECEIVE_ALL_SKILLS: 
             return merge({}, state, action.skills.endorsements)
         case RECEIVE_USER:

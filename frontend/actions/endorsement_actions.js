@@ -19,10 +19,10 @@ const receiveAllEndorsements = (endorsements) => {
 }
 
 
-const removeEndorsement = (endorsementId) => {
+const removeEndorsement = (skill) => {
     return {
         type: DELETE_ENDORSEMENT, 
-        endorsementId
+        skill
     }
 }
 
@@ -38,8 +38,8 @@ export const createEndorsement = endorsement => dispatch => {
     })
 }
 
-export const deleteEndorsement = skillId => dispatch => {
-    return APIUtil.deleteEndorsement(skillId).then(()=> {
-        dispatch(removeEndorsement(skillId))
+export const deleteEndorsement = skill => dispatch => {
+    return APIUtil.deleteEndorsement(skill).then(()=> { 
+        dispatch(removeEndorsement(skill))
     })
 }
