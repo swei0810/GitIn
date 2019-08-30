@@ -6,6 +6,10 @@ json.user do
         json.experienceIds @user.experience_items.pluck(:id)
         json.educationIds @user.education_items.pluck(:id)  
         json.skillIds @user.skills.pluck(:id)
+        json.sentConnectionIds @user.requested_connections.pluck(:requestee_id)
+        json.receivedConnectionIds @user.received_connections.pluck(:requester_id)
+        # @user.received_connections.pluck(:id)
+        #this is where you grab the id of the user you are connected to, will be using this in connections_index 
         if @user.photo.attached?
             json.photoUrl url_for(@user.photo)
         end 
@@ -42,7 +46,7 @@ json.educationItems do
 end  
 
 
-json.skiils do 
+json.skills do 
     @user.skills.each do |skill|
         json.set! skill.id do 
             json.extract! skill, :id, :user_id, :title 
@@ -50,29 +54,20 @@ json.skiils do
     end 
 end 
 
+json.requestedConnections do
+    @user.requested_connections.each do |connection|
+        json.set! connection.id do
+            json.extract! connection, :id, :requester_id, :requestee_id, :status
+        end  
+    end 
+end  
 
-# if @user.photos.attached? 
-    # json.array! json.extract! @user.photo, :service_url
-    # json.photoUrl do 
-    #     json.array! @user.photos.each do |photo| 
-    #         url_for(photo)
-    #     end 
-    # end
-    
-# end 
+json.receivedConnections do
+    @user.received_connections.each do |connection|
+        json.set! connection.id do
+            json.extract! connection, :id, :requester_id, :requestee_id, :status
+        end  
+    end 
+end  
 
 
-# json.photoUrl do 
-#     json.array! @user.photo, :service_url 
-# end 
-
-
-# json.skills do 
-#     @user.skills.each do |skill|
-#         json.set! skill.id do 
-
-#         end
-#     end 
-# end 
-
-### education/exp/skill reducers should listen to receiveUser action 

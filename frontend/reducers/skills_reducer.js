@@ -20,8 +20,8 @@ const skillsReducer = (state={}, action) => {
             let newState = merge({}, state); 
             delete newState[action.skillId]; 
             return newState; 
-        case RECEIVE_USER:
-            return merge({}, state, action.payload.skills)  
+        // case RECEIVE_USER:
+        //     return merge({}, state, action.payload.skills)  
         case RECEIVE_CURRENT_USER: 
             return merge({}, state, action.payload.skills)
          default: 

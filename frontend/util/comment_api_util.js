@@ -1,4 +1,3 @@
-
 export const receiveAllComments = (postId) => {
     return $.ajax({
         method: "GET",

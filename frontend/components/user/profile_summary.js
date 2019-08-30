@@ -1,8 +1,9 @@
 
 import React from "react";
-import Modal from '../modal/modal';
 import { connect } from 'react-redux'; 
 import {openModal} from '../../actions/modal_actions'
+import { Link } from 'react-router-dom';
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -35,19 +36,29 @@ class ProfileSummary extends React.Component {
              profilePhoto = (<img className='profile-image' src={window.default_prof}/>);
          }
 
+        let numConnection = '';
+        if (user.receivedConnectionIds) {
+            numConnection = user.receivedConnectionIds.length + user.sentConnectionIds.length;
+        }
+
+        let connection = ''; 
+        if (numConnection === 0) {
+            connection = 'No connections yet'
+        } else if (numConnection === 1) {
+            connection = "1 connection"
+        } else {
+            connection = numConnection + " connections"
+        }
+        //DOES NOT TAKE CARE OF PENDING CONNECTIONS (it also counts it )
+
+
         return (
         <div className="profile-summary-container">
-         {/* <Modal />  
-                        <div className='icon'>
-                        <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
-                        </div>  */}
 
             <div className='profile-image-container'> 
-         {/* PHOTO */}
             <img className='profile-background' src={window.profile_background}/>
             <div className="profile-image-circle">
                 {profilePhoto}
-                {/* <img className="profile-image" src={user.photoUrl}/> */}
             </div>
             </div>
 
@@ -57,27 +68,20 @@ class ProfileSummary extends React.Component {
                         <div className='github-icon'> <i className="fab fa-github"></i>
                         </div>
                         </div> 
-                        {/* <Modal />  
-                        
-                        <div className='icon'>
-                        <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
-                        </div>  */}
-                            {/* <div className='icon-edit'>
-                            <i className="fas fa-pencil-alt" onClick={() => this.props.openModal('edit intro', {user: user})}></i>
-                            </div> */}
-                            {/* <Modal /> */}
+                
                             {editIcon}
                     </div>
 
                     <div className='section-header'>{user.headline}</div>
-                    <div className='summary-location' >{user.location} </div>
+                    <div className='location-connection'>
+                        <div className='summary-location' >{user.location} &nbsp; · &nbsp;  </div>
+                        <Link to= {`/git/${user.id}/connections`} className='num-connection'>{connection}</Link>
+                       
+                    </div>
+          
                 </div>
 
-                {/* <div className='summary-photo'>
-                    <img className="profile-image" src={user.photoUrl}/>
-                    <img className="profile-image" src={user.photoUrl}/>
-
-                </div>  */}
+              
            
 
         </div>

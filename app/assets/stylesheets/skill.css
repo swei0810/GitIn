@@ -16,8 +16,57 @@
 .skill-container {
     display: flex; 
     flex-direction: row; 
+    flex-wrap: wrap; 
     justify-content: space-between;
     margin-left: 40px; 
     margin-right: 20px; 
     margin-bottom: 20px; 
+}
+
+ .skill-container>* {
+          flex: 0 0 33.3333%;
+          margin-bottom: 20px; 
+      }
+
+
+.skill-endorse {
+    display: flex; 
+    /* flex-grow: 2;
+    width: 30%; */
+    /* flex: 1 0 calc(33.333% - 20px); */
+}
+
+/* .plus { */
+
+div[class^="plus"] {
+    font-size: 25px; 
+    color:  #2977c9; 
+    cursor: pointer; 
+    border: 2px solid  #2977c9; 
+    border-radius: 50%; 
+    text-align: center; 
+    width:30px;
+    height:30px;
+    margin-left: 5px; 
+}
+
+div[class^="checked"] {
+    font-size: 25px; 
+    color: grey; 
+    cursor: pointer; 
+    border: 2px solid  grey; 
+    border-radius: 50%; 
+    text-align: center; 
+    width:30px;
+    height:30px;
+    margin-left: 5px; 
+}
+
+
+.icon-delete-skill {
+    font-size: 20px;
+    color: grey; 
+    cursor: pointer; 
+    margin-top: 20px; 
+    text-align: right; 
 }

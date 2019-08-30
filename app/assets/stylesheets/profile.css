@@ -13,6 +13,7 @@ html {
 
 .section-head {
     display: flex;
+
 }
 
 .experience-item-container, .profile-about {
@@ -175,12 +176,15 @@ html {
 .user-name {
     font-size: 25px; 
     padding-top: 10px;
+    margin-bottom: 0px; 
 }
 
 .summary{
     height: 40%;
     display: flex; 
     flex-direction: column; 
+    margin-top: 15px;
+
     /* justify-content: space-between;  */
 
 }
@@ -214,4 +218,14 @@ html {
 .education-errors {
     color: red; 
     padding-top: 4px;
+}
+
+.location-connection{
+    display: flex; 
+    z-index: 1; 
+}
+
+.num-connection{
+    color: rgb(64, 192, 224); 
+    font-weight: bold; 
 }

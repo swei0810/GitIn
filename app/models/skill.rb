@@ -14,10 +14,10 @@ class Skill < ApplicationRecord
 
     belongs_to :user 
 
-    has_many :endorsments  
+    has_many :endorsements  
 
     has_many :endorsers, 
-        through: :endorsments, 
+        through: :endorsements, 
         source: :endorser
   
 

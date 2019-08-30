@@ -15,6 +15,8 @@ EducationItem.delete_all
 Post.delete_all
 Comment.delete_all 
 Skill.delete_all 
+Connection.delete_all
+Endorsement.delete_all
 
 
 
@@ -260,15 +262,6 @@ demo.education_items.create!(user_id: demo.id,
                              )
 
 
-demo.skills.create!(user_id: demo.id, 
-                    title: 'JavaScript')
-
-demo.skills.create!(user_id: demo.id, 
-                    title: 'Python')
-
-demo.skills.create!(user_id: demo.id, 
-                    title: 'CSS')
-
 
 
 
@@ -335,14 +328,7 @@ hk.education_items.create!(user_id: hk.id,
 u3= open("https://gitin-seeds.s3.amazonaws.com/hamza.png")
 hk.photo.attach(io: u3, filename: 'profile3.png')
 
-hk.skills.create!(user_id: hk.id, 
-                    title: 'Java')
 
-hk.skills.create!(user_id: hk.id, 
-                    title: 'Python')
-
-hk.skills.create!(user_id: hk.id, 
-                    title: 'C')
 
 
 jw = User.create!(email: 'jessica@gmail.com' , 
@@ -770,3 +756,42 @@ si_post2 = Post.create!(author_id: demo.id,
 #Comments 
 comment1 = Comment.create!(user_id: demo.id, post_id: hk_post.id, body: "Your project looks awesome!")
 comment2 = Comment.create!(user_id: ec.id, post_id: hk_post.id, body: "Check out OpenStables as well.")
+
+
+
+#Connections 
+connection1 = Connection.create!(requester_id: hk.id, requestee_id: demo.id, status: 'accepted')
+connection2 = Connection.create!(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
+connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, status: 'pending')
+
+connection4 = Connection.create!(requester_id: hk.id, requestee_id: ec.id, status: 'accepted')
+connection5 = Connection.create!(requester_id: jw.id, requestee_id: hk.id, status: 'accepted')
+
+#Skills 
+hk_java = hk.skills.create!(user_id: hk.id, 
+                    title: 'Java')
+
+hk_python = hk.skills.create!(user_id: hk.id, 
+                    title: 'Python')
+
+hk_c = hk.skills.create!(user_id: hk.id, 
+                    title: 'C')
+
+demo_js = demo.skills.create!(user_id: demo.id, 
+                    title: 'JavaScript')
+
+demo_python = demo.skills.create!(user_id: demo.id, 
+                    title: 'Python')
+
+demo_css = demo.skills.create!(user_id: demo.id, 
+                    title: 'CSS')
+
+
+#Endorsements 
+hk_java.endorsements.create!(user_id:demo.id, skill_id:hk_java); 
+hk_java.endorsements.create!(user_id:ec.id, skill_id:hk_java); 
+
+demo_js.endorsements.create!(user_id: hk.id, skill_id: demo_js); 
+demo_js.endorsements.create!(user_id: ec.id, skill_id: demo_js); 
+demo_js.endorsements.create!(user_id: jw.id, skill_id: demo_js); 
+

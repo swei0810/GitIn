@@ -22,7 +22,8 @@ const educationItemsReducer = (state={}, action) => {
         case RECEIVE_USER_EDUCATION_ITEMS: 
             return merge({}, action.educationItems)
         case RECEIVE_USER:
-            return merge({}, state, action.payload.educationItems)  
+            // so that previous user's info isn't also showing 
+            return merge({}, {}, action.payload.educationItems)  
         case RECEIVE_CURRENT_USER: 
             return merge({}, state, action.payload.educationItems)
         default: 

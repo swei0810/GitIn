@@ -47,9 +47,10 @@
 
 
 
-/* code inspiration from https://codingislove.com/css-speech-bubbles/ */
+/* code inspiration from https://codingislove.com/css-speech-bubbles/ didnt work yet*/
 .comment-bubble {
-    width: 370px;
+    width: 425px;
+    /* width: 100%; */
     display: flex; 
     flex-direction: column; 
     /* margin-left: 60px;  */
