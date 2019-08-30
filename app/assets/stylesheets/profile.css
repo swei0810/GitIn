@@ -13,6 +13,7 @@ html {
 
 .section-head {
     display: flex;
+
 }
 
 .experience-item-container, .profile-about {
@@ -175,12 +176,15 @@ html {
 .user-name {
     font-size: 25px; 
     padding-top: 10px;
+    margin-bottom: 0px; 
 }
 
 .summary{
     height: 40%;
     display: flex; 
     flex-direction: column; 
+    margin-top: 15px;
+
     /* justify-content: space-between;  */
 
 }

@@ -56,16 +56,6 @@ class SkillItemShow extends React.Component {
             }
         }
 
-
-        // let plusIcon = '';
-        // if (!this.props.isCurrentUser) {
-        //     debugger
-            // plusIcon = (<div className={`plus-${this.props.skill.id}`} onClick={()=> this.props.createEndorsement(this.state)}>
-            //     +
-            // </div>)
-        // } 
-
-
         let numEndorsements = ''; 
         if (skill.endorsementIds) {
             numEndorsements = skill.endorsementIds.length; 
