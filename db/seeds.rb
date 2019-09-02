@@ -32,7 +32,7 @@ c1 = open("https://gitin-seeds.s3.amazonaws.com/aa.png")
 app.photo.attach(io: c1, filename: 'app.png')
 
 gate = Company.create!(name: 'Colgate University', 
-                     field:'Higher Education', 
+                     field:'Higher Education',  
                      description:'Liberal Arts College in upstate NY', 
                      website_url: 'http://www.colgate.edu', 
                      location: 'Hamilton, NY')
@@ -194,25 +194,74 @@ waffle = Company.create!(name:'The Waffle Cookie')
 c29 = open("https://gitin-seeds.s3.amazonaws.com/waffle.png")
 waffle.photo.attach(io: c29, filename: 'waffle.png')
 
+
+
+# new seed 
+boston = Company.create!(name:'Boston College')
+c30 = open("https://gitin-seeds.s3.amazonaws.com/bc.png")
+boston.photo.attach(io: c30, filename: 'bc.png')
+
+pfw = Company.create!(name:'Princeton Fitness & Wellness Center')
+c31 = open("https://gitin-seeds.s3.amazonaws.com/pfw.jpg")
+pfw.photo.attach(io: c31, filename: 'pfw.png')
+
+mhs = Company.create!(name:'Montgomery High School')
+c32 = open("https://gitin-seeds.s3.amazonaws.com/Screen+Shot+2019-08-30+at+2.35.19+PM.png")
+mhs.photo.attach(io: c32, filename: 'mhs.png')
+
+samsung = Company.create!(name:'Samsung')
+c33 = open("https://gitin-seeds.s3.amazonaws.com/samsung.png")
+samsung.photo.attach(io: c33, filename: 'samsung.png')
+
+apm = Company.create!(name:'ASCEND Performance Materials')
+c34 = open("https://gitin-seeds.s3.amazonaws.com/ascend.png")
+apm.photo.attach(io: c34, filename: 'apm.png')
+
+tfg = Company.create!(name:'The Forest Group .Inc')
+
+texas = Company.create!(name:'The University of Texas at Austin')
+c35 = open("https://gitin-seeds.s3.amazonaws.com/texas.jpg")
+texas.photo.attach(io: c35, filename: 'tfg.png')
+
+
+
+
 #USER 
 demo = User.create!(email: 'demo@gmail.com' , 
                    password: 'hunter12', 
                    first_name: 'Si', 
                    last_name:'Wei', 
                    location: 'New York, NY', 
-                   summary:'I am currently participating in a 12-week long software development bootcamp at App Academy to become a full-stack developer. I am thrilled to be participating in a highly-selective study abroad group in Geneva, Switzerland, for upcoming Spring. I will be taking classes at The Graduate Institute (IHEID) for International studies and French, while pursing a 14-week part-time internship in an IGO or INGO. As a Computer Science and International Relations double-major, I am particularly interested in ways we can use technology for social justice. My professional interests include software development, cyber security and entrepreneurship. I am actively looking for internships for Summer 2020 in software engineering. ', 
+                   summary:"I am a full-stack developer skilled in Rails, React/Redux, SQL, Ruby, HTML, CSS and more. I also have experience in Python, Java, C and MATLAB through courses I took in school.
+
+I am currently a junior at Colgate University, double-majoring in Computer Science and International Relations. I am thrilled to be participating in a highly-selective study abroad group in Geneva, Switzerland, for upcoming Spring. I will be taking classes at The Graduate Institute (IHEID) for International studies and French, while pursing a 14-week part-time internship in an IGO or INGO. As a Computer Science and International Relations double-major, I am particularly interested in ways we can use technology for social justice. My professional interests include software development, cyber security and entrepreneurship.
+
+Outside of my academics and career, I am a part of Colgate's Division I athletics as a varsity cheerleader. I am a third year flyer who enjoys trying new stunts with my team as well as bringing spirit and passion to football fields and basketball courts. 
+
+I am actively looking for internships for Summer 2020 and a job opportunity upon graduation (2021) in Software Engineering. Please contact me if you have any roles that I would be a good fit for! You can also reach me at swei@colgate.edu.", 
                    github_url:'', 
-                   headline:'Computer Science & International Relations Student at Colgate University')
-u1= open("https://gitin-seeds.s3.amazonaws.com/profile_img.png")
+                   headline:'Software Engineer, Computer Science & International Relations Student at Colgate University')
+u1= open("https://gitin-seeds.s3.amazonaws.com/si.jpeg")
 demo.photo.attach(io: u1, filename: 'profile1.png')
 
 demo.experience_items.create!(user_id: demo.id, 
-                             title:'Software Engineering Bootcamp' , 
-                             company_id: app.id, 
-                             location:'New York, NY', 
-                             start_date: 'June 2019', 
-                             end_date: 'August 2019', 
-                             description: '12-week full-stack web development bootcamp with <3% acceptance rate. Covered technologies include: Ruby on Rails, SQL, Javascript, HTML/CSS' )
+                             title:'Vice President of Women in Computer Science' , 
+                             company_id: gate.id, 
+                             location:'Hamilton, NY', 
+                             start_date: 'September 2019', 
+                             end_date: '', 
+                             description: '• Provide mentoring and tutoring for women in CS field in order to educate peers on the tech industry
+• Hold 2 hour open tutor session every week to provide support for introductory computer science classes to further
+understanding of concepts
+• Collaborate with local high school and library programs to provide coding experience for youths and elders' )
+
+demo.experience_items.create!(user_id: demo.id, 
+                             title:'Teaching Assistant for Computer Science' , 
+                             company_id: gate.id, 
+                             location:'Hamilton, NY', 
+                             start_date: 'September 2019', 
+                             end_date: '', 
+                             description: "Help students in Introduction to Computing (Python)" )
 
 demo.experience_items.create!(user_id: demo.id, 
                              title:'Summer Research Assistant' , 
@@ -235,13 +284,24 @@ demo.experience_items.create!(user_id: demo.id,
                              • Participate in rigorous workshops on entrepreneurship with various alumni and mentors' )
 
 demo.experience_items.create!(user_id: demo.id, 
-                             title:'Entrepreneur' , 
+                             title:'Public Relations Intern' , 
                              company_id: waffle.id, 
                              location:'Hamilton, NY', 
                              start_date: 'October 2017', 
                              end_date: 'May 2018', 
-                             description: '' )
+                             description: '• Collaborated directly with the CEO to develop marketing plans including winter holiday and Valentine’s day sales 
 
+• Promoted the company through social media and seek for press opportunities' )
+
+
+demo.education_items.create!(user_id: demo.id, 
+                            school_id: aa.id, 
+                            degree: 'N/A', 
+                            field: 'Computer Software Engineering', 
+                            start_yr: "2019", 
+                            end_yr: "2019" , 
+                            activities: '12-week, full-stack web development bootcamp with < 3% acceptance rate. Covered technologies include: Ruby,Rails, React, Redux SQL, Javascript, HTML/CSS, AWS, git' 
+                            )
 
 demo.education_items.create!(user_id: demo.id, 
                             school_id: gate.id, 
@@ -305,9 +365,10 @@ hk = User.create!(email: 'hamza@gmail.com' ,
                              first_name: 'Hamza', 
                              last_name:'Khanane', 
                              location: 'Greater New York City Area', 
-                             summary:'The immediate and long-term potential for the possible benefit intelligent technologies can have on transforming consumer experiences and business growth is what led me to pursue my current degree with an emphasis on, Machine Learning, cybersecurity, Mobile Application development and AI. As an undergraduate, I have had incredibly valuable project experience leveraging public data to demonstrate my programming, Agile project management, and team leadership skills. In terms of technical proficiency, I am knowledgeable of Java, C, Python, C++, Linux, GIT, Android Studio and AWS', 
+                             summary:'I am a software engineer with experience in Full Stack, Machine Learning, and Mobile Application Development. With a passion to solve real-world problems, I am always on the lookout for new challenges.  I have the ability to write clean, scalable code and debug my way through it effectively.
+                                      In terms of technical proficiency, I am knowledgeable in Java, C, Python, Ruby, and JavaScript.', 
                              github_url:'', 
-                             headline:'Entry-Level Machine Learning, AI, and Mobile Application Development/Spring 2019 B.Sc. in Computer Science Graduate')                            
+                             headline:'Software Engineer')                            
 
 hk.experience_items.create!(user_id: hk.id, 
                              title:'Resident Advisor' , 
@@ -318,6 +379,16 @@ hk.experience_items.create!(user_id: hk.id,
                              description: "Assisted 28 freshmen with their transition to college. Responsible for organizing educational and community building programs for residents." )
 
 hk.education_items.create!(user_id: hk.id, 
+                           school_id: aa.id, 
+                           degree: 'N/A', 
+                           field: 'Computer Software Engineering', 
+                           start_yr: '2019', 
+                           end_yr: '2019', 
+                           activities: '12-week immersive program focused on Full Stack Development with <3% acceptance rate and more than 1000 hours of programming. Technologies covered: Ruby on Rails, React, Redux, D3, JQuery, PostgreSQL.'
+                          )
+
+
+hk.education_items.create!(user_id: hk.id, 
                              school_id: gm.id, 
                              degree: 'Bachelor of Science', 
                              field: 'Computer Science', 
@@ -325,6 +396,7 @@ hk.education_items.create!(user_id: hk.id,
                              end_yr: "2019" , 
                              activities: 'I have excelled on my individual and team programming assignments creating new data mining programs using large public datasets, building customer and service provider integrations in an Android environment, and designing an Alexa task list tool. Besides the technologies already listed, my coursework has included: autonomous robotics, data structures and algorithms, object-oriented programming, and software testing.' 
                              )
+
 u3= open("https://gitin-seeds.s3.amazonaws.com/hamza.png")
 hk.photo.attach(io: u3, filename: 'profile3.png')
 
@@ -336,9 +408,9 @@ jw = User.create!(email: 'jessica@gmail.com' ,
                              first_name: 'Jessica', 
                              last_name:'White', 
                              location: 'Brooklyn, NY', 
-                             summary:'As a marketing manager at the Viking, Penguin, Penguin Classics & Riverhead imprints of Penguin Random House, Jessica enjoys helping authors and audiences find one another. In her spare time, she performs and teaches dances of the American Jazz Era.', 
+                             summary:'As a full stack developer with experience in JavaScript, React, and Ruby on Rails, I thrive at the crux of creativity and problem solving. Coming from a marketing background, I prioritize clear communication and excel in cross-functional, collaborative environments. In my spare time, I perform and teach dances of the Jazz Era.', 
                              github_url:'', 
-                             headline:'Dancer, Marketer, and Developer-in-the-Making')                            
+                             headline:'Software Engineer')                            
 
 jw.experience_items.create!(user_id: jw.id, 
                              title:'Assistant Marketing Manager' , 
@@ -368,6 +440,16 @@ jw.education_items.create!(user_id: jw.id,
                              end_yr: "2010" , 
                              activities: 'Magna Cum Laude, Fencing Club, President(2006-2009)' 
                              )
+
+jw.education_items.create!(user_id: jw.id, 
+                             school_id: aa.id, 
+                             degree: 'N/A', 
+                             field: 'Computer Software Enginnering', 
+                             start_yr: "2019", 
+                             end_yr: "2019" , 
+                             activities: '• Rigorous, 1000-hour full-stack software development course with < 3% applicant acceptance rate
+• Studies included: OOP, single-page app development, TDD, scalability, algorithms and data structures, REST, application security, pair programming, and web development best practices' 
+                             )                             
 u4= open("https://gitin-seeds.s3.amazonaws.com/jessica.png")
 jw.photo.attach(io: u4, filename: 'profile4.png')
 
@@ -381,9 +463,9 @@ ec = User.create!(email: 'eli@gmail.com' ,
                              first_name: 'Eli', 
                              last_name:'Cohen', 
                              location: 'Greater New York City Area', 
-                             summary:' ', 
+                             summary:'Mechanical engineer turned software engineer. Experienced using q/kdb+, Python, Ruby, Rails, JavaScript, React, Redux, D3.js, and SQL. Outside interests include international and environmental sustainable development, and the beautiful game of soccer.', 
                              github_url:'', 
-                             headline:'Data Scientist at Kx - a division of First Derivatives plc')                            
+                             headline:'Software Engineer')                            
 
 ec.experience_items.create!(user_id: ec.id, 
                              title:'Data Scientist' , 
@@ -391,7 +473,10 @@ ec.experience_items.create!(user_id: ec.id,
                              location:'Greater New York City Area', 
                              start_date: 'November 2018', 
                              end_date: 'May 2019', 
-                             description: " " )
+                             description: "- Worked as a q/kdb+ developer at the U.S. Securities and Exchange Commission on a high-frequency trading analytics platform 
+- Led development of an internal tool to generate and automate testing of faux registrant trading activity created from billions of records across multiple stock exchanges 
+- Validated JSON API endpoint to provide auditors with National Best Bid and Offer (NBBO) of stocks at specific moments in time 
+- Completed accelerated training curated by kdb+ professionals to cover databases, data structures, and scripting in the q programming language" )
 
 ec.experience_items.create!(user_id: ec.id, 
                              title:'Teaching Assistant, Grader' , 
@@ -399,7 +484,8 @@ ec.experience_items.create!(user_id: ec.id,
                              location:'Philadelphia, PA', 
                              start_date: 'August 2017', 
                              end_date: 'December 2017', 
-                             description: "MEAM 302 Fluid Mechanics" )                      
+                             description: "- Led recitations and graded weekly problem sets and quizzes to reinforce mastery of material for MEAM 302 Fluid Mechanics students 
+- Engaged in weekly meetings with teaching team to assess student performance throughout semester" )                      
 
 ec.experience_items.create!(user_id: ec.id, 
                              title:'Technocal Consulting Intern' , 
@@ -407,7 +493,9 @@ ec.experience_items.create!(user_id: ec.id,
                              location:'Mt. Laurel, NJ', 
                              start_date: 'May 2017', 
                              end_date: 'August 2017', 
-                             description: "" ) 
+                             description: "- Interned in the Design & Existing Multifamily division of a building energy and engineering consulting firm
+- Independently calculated Manual J heat loads for residences by learning RHVAC9 to properly size HVAC equipment
+- Analyzed utility bills and modeled energy consumption of multifamily buildings to save thousands of dollars in wasted energy" ) 
 
 ec.experience_items.create!(user_id: ec.id, 
                              title:'Machine Shop Assistant' , 
@@ -415,7 +503,8 @@ ec.experience_items.create!(user_id: ec.id,
                              location:'Philadelphia, PA', 
                              start_date: 'June 2016', 
                              end_date: 'May 2017', 
-                             description: "Precision Machining Laboratory" )     
+                             description: "- Supervised student use of manual and CNC mills and lathes, as well as other machinery, to ensure safety 
+- Utilized subtractive manufacturing techniques to fabricate parts for research projects and lab use based on provided engineering drawings" )     
                              
                              
 ec.education_items.create!(user_id: ec.id, 
@@ -427,9 +516,17 @@ ec.education_items.create!(user_id: ec.id,
                              activities: "Magna Cum Laude, Engineers Without Borders (International Trip Leader), University of Pennsylvania Men's Club Soccer (Persident, Captain), Hexagon Senior Honor Society (Tangent), Phi Fraternity (Secretary, Rush Chair)"
                              )
 
+ec.education_items.create!(user_id: ec.id, 
+                             school_id: aa.id, 
+                             degree: 'N/A', 
+                             field: 'Computer Software Engineering', 
+                             start_yr: "2019", 
+                             end_yr: "2019" , 
+                             activities: "1000-hour intensive full-stack web development program. Topics include Ruby, Rails, SQL, JavaScript, React, Redux, TDD, scalability, algorithms, design patterns, REST, security, single-page apps, and programming best practices"
+                             )
 
-
-
+u12= open("https://gitin-seeds.s3.amazonaws.com/eli.jpeg")
+ec.photo.attach(io: u12, filename: 'profile12.png')
 
 de = User.create!(email: 'daniel@gmail.com' , 
                              password: 'hunter12', 
@@ -640,14 +737,166 @@ bc.education_items.create!(user_id: bc.id,
                              activities: '' 
                              )
 u9= open("https://gitin-seeds.s3.amazonaws.com/bc.png")
-bc.photo.attach(io: u9, filename: 'profile5.png')
+bc.photo.attach(io: u9, filename: 'profile9.png')
+
+
+#Jason 
+jt = User.create!(email: 'jason@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Jason', 
+                             last_name:'Tee', 
+                             location: 'Greater New York City Area', 
+                             summary:'I am a full-time student at Boston College and skilled software engineer. Whether investigating seemingly impossible bugs or discussing innovative algorithmic solutions, I am constantly looking for new ways to sharpen my technical skills. While my friends will describe me as both an inquisitive and methodical learner, I place a strong emphasis in learning through teamwork and collaboration. Skilled in Rails, Ruby, Javascript, and SQL, I am eager to continue learning and developing full-stack web applications. ', 
+                             github_url:'', 
+                             headline:'Student at Boston College'
+                             )                            
+
+jt.experience_items.create!(user_id: jt.id, 
+                             title:'Asian Caucus Community Relations Coordinator' , 
+                             company_id: boston.id, 
+                             location:'Chesnut Hill, MA', 
+                             start_date: 'May 2007', 
+                             end_date: '', 
+                             description: "• Political organization that seeks to increase social awareness especially around the Boston College campus 
+• Integrate the Boston College and Greater Boston areas to promote social justice for minority groups 
+• Organize events to highlight Asian/Asian American issues that affect students of all ethnic backgrounds 
+• Spearhead meetings with faculty, fellow BC students, and guest speakers" )
+
+jt.experience_items.create!(user_id: jt.id, 
+                             title:'Front Desk' , 
+                             company_id: pfw.id, 
+                             location:'Princeton, NJ', 
+                             start_date: 'February 2016', 
+                             end_date: 'December 2018', 
+                             description: "• Managed a variety of customer service duties at the front desk, including phone and personal interaction with members in a
+• Assisted with issues related to billing and personal training services, including dispute resolution and sales
+• Reconciled cash drawer of $200 after every shift to check accuracy of the accounting system" )
+
+jt.experience_items.create!(user_id: jt.id, 
+                             title:'Forensics Speech and Debate Captain' , 
+                             company_id: mhs.id, 
+                             location:'Princeton, NJ', 
+                             start_date: 'September 2016', 
+                             end_date: 'February 2018', 
+                             description: "• Managed logistics such as organizing meetings, coaching the team, and preparing weekly lectures and lesson plans
+• Facilitated relationships between members, teachers, and the administration
+• Planned a series of trips to local, state, and national tournaments
+• Semi-finalist (’15) at Capitol Debate Round Robin Tournament
+• 6th Place Speaker (’15) at Capitol Debate Round Robin Tournament" )
+
+jt.education_items.create!(user_id: jt.id, 
+                             school_id: boston.id, 
+                             degree: 'Bachelor of Science', 
+                             field: 'Mathematics & Computer Science', 
+                             start_yr: "2018", 
+                             end_yr: "2022" , 
+                             activities: '' 
+                             )
+
+jt.education_items.create!(user_id: jt.id, 
+                             school_id: aa.id, 
+                             degree: 'N/A', 
+                             field: 'Computer Software Engineering', 
+                             start_yr: "2019", 
+                             end_yr: "2019" , 
+                             activities: '' 
+                             )
+jt.education_items.create!(user_id: jt.id, 
+                             school_id: mhs.id, 
+                             degree: 'High School', 
+                             field: 'N/A', 
+                             start_yr: "2014", 
+                             end_yr: "2018" , 
+                             activities: '' 
+                             )                            
+
+u10= open("https://gitin-seeds.s3.amazonaws.com/jason.jpeg")
+jt.photo.attach(io: u10, filename: 'profile10.png')
+
+
+#Lillian 
+lw = User.create!(email: 'lilian@gmail.com' , 
+                             password: 'hunter12', 
+                             first_name: 'Lillian', 
+                             last_name:'Wang', 
+                             location: 'austin, Texas Area', 
+                             summary:'', 
+                             github_url:'', 
+                             headline:'Software Engineer'
+                             )                            
+
+lw.experience_items.create!(user_id: lw.id, 
+                             title:'Test Technology Intern' , 
+                             company_id: samsung.id, 
+                             location:'Austin, Texas Area', 
+                             start_date: 'June 2018', 
+                             end_date: 'August 2018', 
+                             description: "• Scripted in C++ to automate the process of capacity planning for wafer testing by reconciling monthly production planning with run times 
+• Automated the pulling of daily resistance check reports using Samsung’s proprietary software and analyzed these reports to distribute updates on probe card health concerns 
+• Designed automated wafer contamination report to mimic composite defect maps for preventing tool downtime " )
+
+
+lw.experience_items.create!(user_id: lw.id, 
+                             title:'Packout and Logistics Co-op' , 
+                             company_id: apm.id, 
+                             location:'Pensacola, FL', 
+                             start_date: 'August 2017', 
+                             end_date: 'December 2017', 
+                             description: "•	Design excess inventory control system using Kanbans to reduce total material on hand by 20% for $20K savings
+•	Implement real time tracking of floor production rates for packaging department
+•	Analyze major causal factors for demonstrated rate of production lagging behind maximum potential rate using Lean Six Sigma tools
+•	Lock Out Tag Out and Fall Protection Authorized Person Training")
 
 
 
 
+lw.experience_items.create!(user_id: lw.id, 
+                             title:'Control Lab Co-op' , 
+                             company_id: apm.id, 
+                             location:'Chocolate Bayou, TX', 
+                             start_date: 'January 2017', 
+                             end_date: 'May 2017', 
+                             description: "•	Improved current Control Lab equipment installation process using Six Sigma procedures
+•	Built fundamental dashboard using Aspen and IP.21 to track incoming samples and results to/from the Control Lab
+•	Translated equipment installation process to a visual, dynamic Excel timeline that shows progression 
+•	Instituted process to prioritize incoming requests to the Control Lab based on availability of resources")
 
 
 
+lw.experience_items.create!(user_id: lw.id, 
+                             title:'Accounting Intern' , 
+                             company_id: tfg.id, 
+                             location:'Austin, Texas Area', 
+                             start_date: 'June 2016', 
+                             end_date: 'August 2016', 
+                             description: "•Improved efficiency of the previous method to relay receivable accounts for customers 
+•Engaged customers with delinquent receivables and resolved underlying issues 
+•Implemented a system using Microsoft Excel to accurately record and measure output of contractors
+•Ensured the health of the accounting system by accurately reconciling the daily closing accounts" )
+
+
+lw.education_items.create!(user_id: lw.id, 
+                             school_id: tfg.id, 
+                             degree: "Bachelor's degree", 
+                             field: 'Chemical Engineering, Buisness Foundations Certificate', 
+                             start_yr: "2015", 
+                             end_yr: "2019" , 
+                             activities: '' 
+                             )
+lw.education_items.create!(user_id: lw.id, 
+                             school_id: aa.id, 
+                             degree: 'N/A', 
+                             field: 'Computer Software Engineering', 
+                             start_yr: "2019", 
+                             end_yr: "2019" , 
+                             activities: 'Rigorous software engineering bootcamp resulting in 1000+ hours of programming experience with a less than 3% acceptance rate' 
+                             )
+
+u11= open("https://gitin-seeds.s3.amazonaws.com/lilian.jpeg")
+lw.photo.attach(io: u11, filename: 'profile11.png')
+
+
+#13 
 
 
 
@@ -752,39 +1001,110 @@ si_post2 = Post.create!(author_id: demo.id,
                           body: "Currently looking for a Software Engineering Internship for Summer 2020. Please let me know if you have an opening!"
                           )
 
+app_post2 = Post.create!(author_id: app.id, 
+                        author_type: 'Company', 
+                        body: "Smiles courtesy of our latest cohort of talented software engineers! 
+
+Come meet the graduates of our #1 ranked web development program at our Software Engineer Showcase + Happy Hour on Thursday, September 5th in #NYC! 
+
+To attend, sign up for your free ticket: http://bit.ly/2KijxKD ")
+p11 = open("https://gitin-seeds.s3.amazonaws.com/aapost2.png")
+app_post2.photo.attach(io: p11, filename: 'app-post2.png')
+
+
 
 #Comments 
 comment1 = Comment.create!(user_id: demo.id, post_id: hk_post.id, body: "Your project looks awesome!")
 comment2 = Comment.create!(user_id: ec.id, post_id: hk_post.id, body: "Check out OpenStables as well.")
+comment3 = Comment.create!(user_id: jt.od, post_id:app_post2.id, body: "So excited to present my projects!")
+comment4 = Comment.create!(user_id: sn.id, post_id: app_post2.id, body: "Congratulations to all. Wish I could be there.")
 
 
 
 #Connections 
 connection1 = Connection.create!(requester_id: hk.id, requestee_id: demo.id, status: 'accepted')
 connection2 = Connection.create!(requester_id: demo.id, requestee_id: ec.id, status: 'accepted')
-connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, status: 'pending')
-
+connection3 = Connection.create!(requester_id: demo.id, requestee_id: jw.id, status: 'accepted')
 connection4 = Connection.create!(requester_id: hk.id, requestee_id: ec.id, status: 'accepted')
 connection5 = Connection.create!(requester_id: jw.id, requestee_id: hk.id, status: 'accepted')
+connection6 = Connection.create!(requester_id: lw.id, requestee_id: demo.id, status: 'accepted')
+connection7 = Connection.create!(requester_id: lw.id, requestee_id: hk.id, status: 'accepted')
+connection8 = Connection.create!(requester_id: lw.id, requestee_id: ec.id, status: 'accepted')
+connection9 = Connection.create!(requester_id: lw.id, requestee_id: jw.id, status: 'accepted')
+
+connection10 = Connection.create!(requester_id: jeff.id, requestee_id: sn.id, status: 'accepted')
+connection11 = Connection.create!(requester_id: jeff.id, requestee_id: ks.id, status: 'accepted')
+connection12 = Connection.create!(requester_id: jeff.id, requestee_id: bc.id, status: 'accepted')
+connection12 = Connection.create!(requester_id: jeff.id, requestee_id: de.id, status: 'accepted')
+
+
+
 
 #Skills 
 hk_java = hk.skills.create!(user_id: hk.id, 
                     title: 'Java')
-
 hk_python = hk.skills.create!(user_id: hk.id, 
                     title: 'Python')
-
 hk_c = hk.skills.create!(user_id: hk.id, 
                     title: 'C')
+hk_ruby = hk.skills.create!(user_id: hk.id, 
+                    title: 'Ruby')       
+hk_js= hk.skills.create!(user_id: hk.id, 
+                    title: 'JavaScript')
+hk_ds= hk.skills.create!(user_id: hk.id, 
+                    title: 'Data Structures')                    
+hk_react= hk.skills.create!(user_id: hk.id, 
+                    title: 'React.js')
+
 
 demo_js = demo.skills.create!(user_id: demo.id, 
                     title: 'JavaScript')
-
 demo_python = demo.skills.create!(user_id: demo.id, 
                     title: 'Python')
-
 demo_css = demo.skills.create!(user_id: demo.id, 
-                    title: 'CSS')
+                    title: 'CSS3')
+demo_c = demo.skills.create!(user_id: demo.id, 
+                    title: 'C')
+demo_ruby = demo.skills.create!(user_id: hdemok.id, 
+                    title: 'Ruby')  
+demo_react= demo.skills.create!(user_id: demo.id, 
+                    title: 'React.js')  
+
+
+ec_js = ec.skills.create!(user_id: ec.id, 
+                    title: 'JavaScript')
+ec_ruby = ec.skills.create!(user_id: ec.id, 
+                    title: 'Ruby')  
+ec_react= ec.skills.create!(user_id: ec.id, 
+                    title: 'React.js')  
+
+jw_js = jw.skills.create!(user_id: jw.id, 
+                    title: 'JavaScript')
+jw_ruby = jw.skills.create!(user_id: jw.id, 
+                    title: 'Ruby on Rails')  
+jw_react= jw.skills.create!(user_id: jw.id, 
+                    title: 'React.js')  
+
+
+jt_react= jt.skills.create!(user_id: jt.id, 
+                    title: 'React.js') 
+jt_js = jt.skills.create!(user_id: jt.id, 
+                    title: 'JavaScript')
+jt_ruby = jt.skills.create!(user_id: jt.id, 
+                    title: 'Ruby on Rails')  
+                   
+
+
+jeff_lead = jeff.skills.create!(user_id: jeff.id, 
+                                title: 'Leadership')
+jeff_pd = jeff.skills.create!(user_id: jeff.id, 
+                                title: 'Product Development')                               
+jeff_sm = jeff.skills.create!(user_id: jeff.id, 
+                                title: 'Social Media')
+jeff_ux = jeff.skills.create!(user_id: jeff.id, 
+                                title: 'User Experience')
+
+
 
 
 #Endorsements 
@@ -794,4 +1114,16 @@ hk_java.endorsements.create!(user_id:ec.id, skill_id:hk_java);
 demo_js.endorsements.create!(user_id: hk.id, skill_id: demo_js); 
 demo_js.endorsements.create!(user_id: ec.id, skill_id: demo_js); 
 demo_js.endorsements.create!(user_id: jw.id, skill_id: demo_js); 
+demo_react.endorsements.create!(user_id: hk.id, skill_id: demo_react); 
+demo_react.endorsements.create!(user_id: ec.id, skill_id: demo_react); 
 
+jt_react.endorsements.create!(user_id: demo.id, skill_id: jt_react); 
+
+ec_js.endorsements.create!(user_id:demo.id, skill_id:ec_js);
+ec_js.endorsements.create!(user_id:hk.id, skill_id:ec_js);
+
+jw_js.endorsements.create!(user_id:hk.id, skill_id:jw_js);
+jw_js.endorsements.create!(user_id:ec.id, skill_id:jw_js);
+
+
+jeff_lead.endorsements.create!(user_id: sn.id, skill_id: jeff_lead); 
