@@ -240,7 +240,7 @@ Outside of my academics and career, I am a part of Colgate's Division I athletic
 
 I am actively looking for internships for Summer 2020 and a job opportunity upon graduation (2021) in Software Engineering. Please contact me if you have any roles that I would be a good fit for! You can also reach me at swei@colgate.edu.", 
                    github_url:'', 
-                   headline:'Software Engineer, Computer Science & International Relations Student at Colgate University')
+                   headline:'Software Engineer, Computer Science & International Relations Student at Colgate')
 u1= open("https://gitin-seeds.s3.amazonaws.com/si.jpeg")
 demo.photo.attach(io: u1, filename: 'profile1.png')
 
@@ -295,7 +295,7 @@ demo.experience_items.create!(user_id: demo.id,
 
 
 demo.education_items.create!(user_id: demo.id, 
-                            school_id: aa.id, 
+                            school_id: app.id, 
                             degree: 'N/A', 
                             field: 'Computer Software Engineering', 
                             start_yr: "2019", 
@@ -379,7 +379,7 @@ hk.experience_items.create!(user_id: hk.id,
                              description: "Assisted 28 freshmen with their transition to college. Responsible for organizing educational and community building programs for residents." )
 
 hk.education_items.create!(user_id: hk.id, 
-                           school_id: aa.id, 
+                           school_id: app.id, 
                            degree: 'N/A', 
                            field: 'Computer Software Engineering', 
                            start_yr: '2019', 
@@ -442,7 +442,7 @@ jw.education_items.create!(user_id: jw.id,
                              )
 
 jw.education_items.create!(user_id: jw.id, 
-                             school_id: aa.id, 
+                             school_id: app.id, 
                              degree: 'N/A', 
                              field: 'Computer Software Enginnering', 
                              start_yr: "2019", 
@@ -517,7 +517,7 @@ ec.education_items.create!(user_id: ec.id,
                              )
 
 ec.education_items.create!(user_id: ec.id, 
-                             school_id: aa.id, 
+                             school_id: app.id, 
                              degree: 'N/A', 
                              field: 'Computer Software Engineering', 
                              start_yr: "2019", 
@@ -736,7 +736,7 @@ bc.education_items.create!(user_id: bc.id,
                              end_yr: "2004" , 
                              activities: '' 
                              )
-u9= open("https://gitin-seeds.s3.amazonaws.com/bc.png")
+u9= open("https://gitin-seeds.s3.amazonaws.com/brian.jpeg")
 bc.photo.attach(io: u9, filename: 'profile9.png')
 
 
@@ -794,7 +794,7 @@ jt.education_items.create!(user_id: jt.id,
                              )
 
 jt.education_items.create!(user_id: jt.id, 
-                             school_id: aa.id, 
+                             school_id: app.id, 
                              degree: 'N/A', 
                              field: 'Computer Software Engineering', 
                              start_yr: "2019", 
@@ -884,7 +884,7 @@ lw.education_items.create!(user_id: lw.id,
                              activities: '' 
                              )
 lw.education_items.create!(user_id: lw.id, 
-                             school_id: aa.id, 
+                             school_id: app.id, 
                              degree: 'N/A', 
                              field: 'Computer Software Engineering', 
                              start_yr: "2019", 
@@ -1016,7 +1016,7 @@ app_post2.photo.attach(io: p11, filename: 'app-post2.png')
 #Comments 
 comment1 = Comment.create!(user_id: demo.id, post_id: hk_post.id, body: "Your project looks awesome!")
 comment2 = Comment.create!(user_id: ec.id, post_id: hk_post.id, body: "Check out OpenStables as well.")
-comment3 = Comment.create!(user_id: jt.od, post_id:app_post2.id, body: "So excited to present my projects!")
+comment3 = Comment.create!(user_id: jt.id, post_id:app_post2.id, body: "So excited to present my projects!")
 comment4 = Comment.create!(user_id: sn.id, post_id: app_post2.id, body: "Congratulations to all. Wish I could be there.")
 
 
@@ -1065,7 +1065,7 @@ demo_css = demo.skills.create!(user_id: demo.id,
                     title: 'CSS3')
 demo_c = demo.skills.create!(user_id: demo.id, 
                     title: 'C')
-demo_ruby = demo.skills.create!(user_id: hdemok.id, 
+demo_ruby = demo.skills.create!(user_id: demo.id, 
                     title: 'Ruby')  
 demo_react= demo.skills.create!(user_id: demo.id, 
                     title: 'React.js')  

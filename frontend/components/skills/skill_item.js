@@ -27,13 +27,11 @@ class SkillItemShow extends React.Component {
         this.props.fetchAllEndorsements(this.props.skill.id);
     }
 
+
     constructor(props) {
         super(props); 
-        this.state = this.props.skill; 
     }
 
-
-    
 
 
     render() {
@@ -50,7 +48,7 @@ class SkillItemShow extends React.Component {
                     ✓ 
                 </div>)
             } else {
-                plusIcon = (<div className={`plus-${this.props.skill.id}`} onClick={() => this.props.createEndorsement(this.state)}>
+                plusIcon = (<div className={`plus-${this.props.skill.id}`} onClick={() => this.props.createEndorsement(this.props.skill)}>
                     +
                 </div>)
             }
