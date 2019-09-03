@@ -5,6 +5,8 @@ import GreetingContainer from '../greeting/greeting_container';
 
 
 const Splash = () => {
+  
+
     return (
 
         <div className='splash'>

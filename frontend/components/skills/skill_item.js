@@ -27,12 +27,9 @@ class SkillItemShow extends React.Component {
         this.props.fetchAllEndorsements(this.props.skill.id);
     }
 
-
     constructor(props) {
         super(props); 
     }
-
-
 
     render() {
         const {skill} = this.props; 
