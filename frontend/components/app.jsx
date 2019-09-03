@@ -32,9 +32,7 @@ const App = () => (
       <ProtectedRoute exact path='/companies' component={Company} />
       <ProtectedRoute exact path='/git/:userId/connections' component={Connection} />
 
-      
-
-
+    
 
     </Switch>
   </div>
