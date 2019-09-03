@@ -876,7 +876,7 @@ lw.experience_items.create!(user_id: lw.id,
 
 
 lw.education_items.create!(user_id: lw.id, 
-                             school_id: tfg.id, 
+                             school_id: texas.id, 
                              degree: "Bachelor's degree", 
                              field: 'Chemical Engineering, Buisness Foundations Certificate', 
                              start_yr: "2015", 
