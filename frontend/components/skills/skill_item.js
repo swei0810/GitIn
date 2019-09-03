@@ -36,7 +36,8 @@ class SkillItemShow extends React.Component {
 
     render() {
         const {skill} = this.props; 
-        if (!skill) {
+        
+        if (!skill.endorsementIds) {
             return null; 
         }
 
