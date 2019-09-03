@@ -18,8 +18,11 @@ const Greeting = ({ currentUser, logout }) => {
   const personalGreeting = () => (
     <hgroup className="header-group">
       <h2 className="header-name">Hi, {currentUser.email}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
-      <Link to="/feed"><button>Check the feed</button></Link>
+      <div className='header-buttons'>
+        <button className="header-button" onClick={logout}>Log Out</button>
+        <Link to="/feed"><button className='feed-button'>Check the feed</button></Link>
+      </div>
+      
 
     </hgroup>
   );
