@@ -23,9 +23,7 @@ const endorsementsReducer = (state = {}, action) => {
         // case DELETE_ENDORSEMENT: 
         
         //     // let newState = merge({}, state);
-        //     // debugger
         //     // delete newState[currentUser.id]; //should fix this later
-        //     // debugger
         //     return newState; 
         case RECEIVE_ALL_SKILLS: 
             return merge({}, state, action.skills.endorsements)

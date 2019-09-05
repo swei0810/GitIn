@@ -14,7 +14,6 @@ export const createEndorsement = (payload) => {
 }
 
 export const deleteEndorsement = (skill) => {
-    debugger
     return $.ajax({
         method: "DELETE", 
         url: `api/skills/${skill.id}/endorsements/${currentUser.id}`
