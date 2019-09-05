@@ -31,12 +31,6 @@ class SkillItemShow extends React.Component {
         super(props); 
     }
 
-    componentDidUpdate(prevProps) {
-        debugger
-        if (this.props.skill.endorsementIds.length !== prevProps.skill.endorsementIds.length) {
-            this.props.fetchAllEndorsements(this.props.skill.id);
-        }
-    }
 
     render() {
         const {skill} = this.props; 
