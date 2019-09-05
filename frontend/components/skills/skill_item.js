@@ -24,11 +24,18 @@ const mapDispatchToProps = dispatch => ({
 class SkillItemShow extends React.Component {
 
     componentDidMount() {
-        this.props.fetchAllEndorsements(this.props.skill.id);
+        this.props.fetchAllEndorsements(this.props.skill.id);        
     }
 
     constructor(props) {
         super(props); 
+    }
+
+    componentDidUpdate(prevProps) {
+        debugger
+        if (this.props.skill.endorsementIds.length !== prevProps.skill.endorsementIds.length) {
+            this.props.fetchAllEndorsements(this.props.skill.id);
+        }
     }
 
     render() {
@@ -46,7 +53,7 @@ class SkillItemShow extends React.Component {
                     ✓ 
                 </div>)
             } else {
-                plusIcon = (<div className={`plus-${this.props.skill.id}`} onClick={() => this.props.createEndorsement(this.props.skill)}>
+                plusIcon = (<div className={`plus-${this.props.skill.id}`} onClick={() => this.props.createEndorsement(this.props.skill).then(location.reload())}>
                     +
                 </div>)
             }
